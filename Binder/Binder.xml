@@ -1,0 +1,1072 @@
+
+<!-- Thanks to all the wonderful help from fara.webeddie.com/frames and the great tutorial found there -->
+
+
+<Ui>xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+	<Script file="Binder.lua"/>
+  
+	<Frame name="Binder_GeneralScripts" hidden="true">
+		<Scripts>     
+			<OnLoad> 
+				Binder_OnLoad()
+			</OnLoad>
+			<OnEvent>
+				Binder_OnEvent()
+			</OnEvent>
+		</Scripts>
+	</Frame>  
+
+	--Virtual Button for selection frame
+	<Button name = "BinderSelectionEntryTemplate" virtual="true">
+		<Size>
+		  <AbsDimension x="220" y="19" />
+		</Size>
+		<NormalFont style="Font_For_Selection_Buttons"/>
+	</Button>
+	
+	<Font name="Font_For_Selection_Buttons" font="Fonts\FRIZQT__.TTF" virtual="true" justifyH="LEFT">
+		<Shadow>
+			<Offset>
+				<AbsDimension x="1" y="-1"/>
+			</Offset>
+			<Color r="0" g="0" b="0"/>
+		</Shadow>
+		<FontHeight>
+			<AbsValue val="13"/>
+		</FontHeight>
+	</Font>
+	
+	
+	
+	--Main Frame used in Binder
+	<Frame name="Binder_Frame" hidden="true" frameStrata="LOW" parent="UIParent" movable="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="600" y="360"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="10" right="10" top="10" bottom="10"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnMouseDown> this:StartMoving(); </OnMouseDown>
+			<OnMouseUp> this:StopMovingOrSizing(); </OnMouseUp>
+			<OnDragStop> this:StopMovingOrSizing(); </OnDragStop>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+
+		</Scripts>
+		<!--The close button in the top right-->
+		<Frames>
+			<Button name="$parent_Button3" inherits="UIPanelCloseButton">
+				<Scripts>
+					<OnClick> Binder_Toggle()</OnClick>
+					<OnEnter>
+						Close_Button_OnEnter(self)
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-4" y="-4"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+	</Frame>
+
+		--Small Title frame above normal Frame
+	<Frame name="Binder_Title" hidden="true" frameStrata="LOW" parent="UIParent">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_Text1" inherits="GameFontNormal" text="Binder 2.1.0">
+					<Anchors>
+						<Anchor point="CENTER"></Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Size>
+			<AbsDimension x="120" y="33"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM" relativePoint="TOP" relativeTo="Binder_Frame">
+				<Offset>
+					<AbsDimension x="0" y="-6"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="20"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	 
+	
+	 
+	 --Loading Frame
+	 <Frame name="Loading_Frame" hidden="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="300" y="400"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Binder_Frame"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	 </Frame>
+	 
+		--Selection Frame
+	 <Frame name="Selection_Frame" hidden="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="262" y="120"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Loading_Frame">
+				<Offset> <Absdimension x="25" y="-20"/> </Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer>
+				<FontString name="$parent_Text1" inherits="GameFontNormal"  justifyH="LEFT" text="Choose Profile to Load:">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="Selection_Frame">
+								<Offset>
+									<AbsDimension x="-1" y="2"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+                    <Color r="1" g="1" b="1" a="1" /> 
+                </FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTexture" file="Interface\AchievementFrame\UI-Achievement-Parchment">
+					<Size>
+						<AbsDimension x="243" y="106"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="Selection_Frame">
+							<Offset>
+								<AbsDimension x="0" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="1" top="0" bottom="1"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<ScrollFrame name="BinderScrollBar" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="240" y="100"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Selection_Frame">
+						<Offset>
+							<AbsDimension x="0" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(this, offset, 19, BinderScrollBar_Update);
+					</OnVerticalScroll>
+					<OnShow>
+						BinderScrollBar_Update()
+					</OnShow>
+				</Scripts>
+			</ScrollFrame>
+			
+			--The First Button
+			<Button name="BinderEntry1" inherits="BinderSelectionEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="BinderScrollBar" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ProfileSelection_OnClick()
+					</OnClick>
+				</Scripts>
+				<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestLogTitleHighlight"/>
+			</Button>
+			
+			--The Second Button
+			<Button name="BinderEntry2" inherits="BinderSelectionEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="BinderEntry1" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ProfileSelection_OnClick()
+					</OnClick>
+				</Scripts>
+				<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestLogTitleHighlight"/>
+			</Button>
+			
+			--The Third Button
+			<Button name="BinderEntry3" inherits="BinderSelectionEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="BinderEntry2" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ProfileSelection_OnClick()
+					</OnClick>
+				</Scripts>
+				<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestLogTitleHighlight"/>
+			</Button>
+			
+			--The Fourth Button
+			<Button name="BinderEntry4" inherits="BinderSelectionEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="BinderEntry3" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ProfileSelection_OnClick()
+					</OnClick>
+				</Scripts>
+				<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestLogTitleHighlight"/>
+			</Button>
+			
+			--The Fifth Button
+			<Button name="BinderEntry5" inherits="BinderSelectionEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="BinderEntry4" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						ProfileSelection_OnClick()
+					</OnClick>
+				</Scripts>
+				<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestLogTitleHighlight"/>
+			</Button>
+			
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	 </Frame>
+	 
+		--Description Frame
+	 <Frame name="Description_Frame" hidden="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="262" y="80"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="Selection_Frame">
+				<Offset> <Absdimension x="0" y="-32.5"/> </Offset>
+			</Anchor>
+		</Anchors>
+		
+		<Backdrop edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="Description_Frame">
+					<Offset>
+						<AbsDimension x="-5" y="-10"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer>
+				<FontString name="$parent_Text1" inherits="GameFontNormal"  justifyH="LEFT" text="Description:">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="Description_Frame">
+								<Offset>
+									<AbsDimension x="0" y="18"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+                    <Color r="1" g="1" b="1" a="1" />
+                </FontString>
+			</Layer>
+			<Layer>
+				<FontString name="$parent_Text2" inherits="GameFontNormal"  justifyH="LEFT" justifyV="TOP" text="(none)" nonspacewrap="false" maxLines="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="Description_Frame">
+								<Offset>
+									<AbsDimension x="12" y="-8"/>
+								</Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT" relativeTo="Description_Frame">
+								<Offset>
+									<AbsDimension x="-12" y="8"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+                    <Color r="1" g="1" b="1" a="1" />
+                </FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnUpdate>
+				Description_Update()
+			</OnUpdate>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	 </Frame>
+	 
+		--Apply or Delete Frame
+	 <Frame name="ApplyOrDelete_Frame" hidden="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="262" y="75"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="Description_Frame">
+				<Offset> <Absdimension x="0" y="-12.5"/> </Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+		<!--
+			<Layer>
+				<Texture name="$parent_Color" setAllPoints="true">
+					<Color r="0" g="1" b="1" a="0.4" />
+				</Texture> 
+			</Layer>
+			-->
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTexture" file="Interface\MoneyFrame\UI-MoneyFrame2">
+					<Size>
+						<AbsDimension x="262" y="75"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER" relativeTo="ApplyOrDelete_Frame">
+							<Offset>
+								<AbsDimension x="6" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left=".65" right="0" top="0" bottom=".7"/>  <!-- these are the corners , 1 means it stretches the original image to Size. 2 means it places 2 images into the size -->
+				</Texture>
+			</Layer> 
+		</Layers>
+		<Frames>
+			<Button name="Apply_Button" inherits="UIPanelButtonTemplate" text="Apply">
+				<Size>
+					<AbsDimension x="90" y="40"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="ApplyOrDelete_Frame">
+						<Offset>
+							<AbsDimension x="-60" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick> Apply_OnClick(arg1)</OnClick>
+					<OnEnter>
+						Binder_ApplyButton_OnEnter(self)
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+					<OnUpdate> 
+						Apply_Button_OnUpdate()
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<Button name="Delete_Button" inherits="UIPanelButtonTemplate" text="Delete">
+				<Size>
+					<AbsDimension x="90" y="40"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="ApplyOrDelete_Frame">
+						<Offset>
+							<AbsDimension x="60" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						Areyousure_Frame:Show();
+					</OnClick>
+					<OnEnter>
+						Binder_DeleteButton_OnEnter(self)
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+					<OnUpdate> 
+						Delete_Button_OnUpdate()
+					</OnUpdate>
+				</Scripts>
+				
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	 </Frame>
+	 
+	 
+			--Are you sure frame
+	 <Frame name="Areyousure_Frame" hidden="true" frameStrata="High" parent="UIParent">
+		<Size>
+			<AbsDimension x="250" y="95"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="Binder_Frame"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="10" right="10" top="10" bottom="10"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+		<Frames>
+			<Button name="Areyousure_Yes" inherits="UIPanelButtonTemplate" text="Yes">
+				<Size>
+					<AbsDimension x="90" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="Areyousure_Frame">
+						<Offset>
+							<AbsDimension x="-60" y="-15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						Hide_Areyousure();
+						Delete_OnClick(arg1);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="Areyousure_No" inherits="UIPanelButtonTemplate" text="No">
+				<Size>
+					<AbsDimension x="90" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="Areyousure_Frame">
+						<Offset>
+							<AbsDimension x="60" y="-15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick> 
+						Areyousure_Frame:Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Layers>
+			<Layer>
+				<FontString name="$parent_Text1" inherits="GameFontNormal"  justifyH="LEFT" text="Are you sure you want to Delete it?">
+						<Anchors>
+							<Anchor point="CENTER" relativeTo="Areyousure_Frame">
+								<Offset>
+									<AbsDimension x="0" y="20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+                    <Color r="1" g="1" b="1" a="1" />
+                </FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+	 
+	 
+	 
+	 --Creation Frame
+	<Frame name="Creation_Frame" hidden="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="300" y="200"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="Binder_Frame"/>
+		</Anchors>
+		<Layers>
+			<Layer>
+				<FontString name="$parent_Text1" inherits="GameFontNormal"  justifyH="LEFT" text="Create New Profile:">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="Creation_Frame">
+								<Offset>
+									<AbsDimension x="10" y="-25"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+                    <Color r="1" g="1" b="1" a="1" />  <!-- White Color -->
+                </FontString>
+				
+				<!--
+				<Texture name="$parent_Color" setAllPoints="true">
+					<Color r="0" g="1" b="0" a=".3" />
+				</Texture> 
+				-->
+				
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="Create_Button" inherits="UIPanelButtonTemplate" text="Create">
+				<Size>
+					<AbsDimension x="80" y="35"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="Creation_Frame">
+						<Offset> 
+							<AbsDimension x="0" y="20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick> 
+						Create_OnClick(arg1) 
+					</OnClick>
+					<OnUpdate> 
+						Create_Button_OnUpdate()
+					</OnUpdate>
+					<OnEnter>
+						Binder_CreateButton_OnEnter(self)
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	 
+		--Name Input Frame
+	<Frame name="Name_Input_Frame" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="275" y="30"/>
+		</Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Text1" inherits="GameFontNormal"  justifyH="LEFT" text="Enter Name: ">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="Name_Input_Frame">
+							<Offset>
+								<AbsDimension x="5" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="1" a="1" />
+				</FontString> 
+				
+				<!--
+				<Texture name="$parent_Color" setAllPoints="true">
+					<Color r="1" g="0" b="0" a=".3" />
+				</Texture> 	
+				-->
+				
+			</Layer>
+		</Layers>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Creation_Frame">
+				<Offset>
+					<AbsDimension x="12.5" y="-50"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<EditBox name="Name_InputBox" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="170" y="26"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="Name_Input_Frame">
+						<Offset>
+							<AbsDimension x="93" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>           
+			</EditBox>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	 
+		--Description Input Frame
+	<Frame name="Description_Input_Frame" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="275" y="100"/>
+		</Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Text1" inherits="GameFontNormal"  justifyH="LEFT" text="Enter Description of Keybind Profile: ">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="Description_Input_Frame">
+							<Offset>
+								<AbsDimension x="5" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="1" a="1" />
+				</FontString> 
+				
+				<!--
+				<Texture name="$parent_Color" setAllPoints="true">
+					<Color r="0" g="0" b="1" a=".3" />
+				</Texture> 	
+				-->
+				
+			</Layer>
+		</Layers>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Creation_Frame">
+				<Offset>
+					<AbsDimension x="12.5" y="-85"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<EditBox name="Description_InputBox" inherits="InputBoxTemplate" multiLine="false" autoFocus="false">
+				<Size>
+					<AbsDimension x="250" y="26"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Description_Input_Frame">
+						<Offset>
+							<AbsDimension x="12" y="-23"/>
+						</Offset>
+					</Anchor>
+				</Anchors>           
+			</EditBox>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	 
+	 
+	 
+	 --Options Frame
+	<Frame name="Options_Frame" hidden="true" toplevel="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="300" y="160"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMRIGHT" relativeTo="Binder_Frame"/>
+		</Anchors>
+		<Frames>
+			<CheckButton name="Minimap_CheckButton1" inherits="UICheckButtonTemplate" text="Minimap">
+                <Size>
+                    <AbsDimension x="20" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Options_Frame">
+                        <Offset>
+                            <AbsDimension x="10" y="-10"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>      
+                <Scripts>
+                    <OnLoad>
+                        getglobal(this:GetName().."Text"):SetText("Hide Minimap Button");
+                    </OnLoad>
+					<OnUpdate>
+						Minimap_Checkbox_OnUpdate()
+					</OnUpdate>
+                </Scripts>
+            </CheckButton>
+		
+			<Button name="Minimap_Reset_Button" inherits="UIPanelButtonTemplate" text="Reset">
+				<Size>
+					<AbsDimension x="100" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="Options_Frame">
+						<Offset>
+							<AbsDimension x="-20" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick> 
+						Minimap_Reset(arg1)
+					</OnClick>
+					<OnEnter>
+						Minimap_Reset_OnEnter(self)
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>
+			
+			-- The Radio Buttons --
+			<!--
+			<CheckButton name="$parent_RadioButton1" inherits="SendMailRadioButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="Minimap_CheckButton1">
+                        <Offset>
+                            <AbsDimension  x="20" y="0"/>
+                         </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        getglobal(this:GetName().."Text"):SetText("Free to Move");
+                    </OnLoad>
+                    <OnClick>
+                        Options_Frame_RadioButton2:SetChecked(nil)
+                    </OnClick>
+                </Scripts>
+            </CheckButton>
+               
+            <CheckButton name="$parent_RadioButton2" inherits="SendMailRadioButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="Options_Frame_RadioButton1">
+                        <Offset>
+                            <AbsDimension  x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Text"):SetText("Locked to Minimap");
+					</OnLoad>
+					<OnClick>
+						Options_Frame_RadioButton1:SetChecked(nil)
+					</OnClick>
+                </Scripts>
+            </CheckButton>
+			-->
+			
+			<Button name="Default_Button" inherits="UIPanelButtonTemplate" text="Set Defaults">
+				<Size>
+					<AbsDimension x="100" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="Minimap_Reset_Button">
+						<Offset> <AbsDimension x="0" y="-35"/> </Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						LoadBindings(0)
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Button name="DeleteAll_Button" inherits="UIPanelButtonTemplate" text="Delete All">
+				<Size>
+					<AbsDimension x="100" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="Options_Frame">
+						<Offset> <AbsDimension x="-20" y="13"/> </Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						DeleteAll_Button:Disable()
+					</OnLoad>
+					<OnClick> 
+						DeleteAll_Button_OnClick()
+					</OnClick>
+					<OnUpdate> 
+						DeleteAll_Button_OnUpdate()
+					</OnUpdate>
+				</Scripts>
+			</Button>
+		
+		<!--
+			<Button name="Truedeleteall_Button" inherits="UIPanelButtonTemplate" text="Delete all">
+				<Size>
+					<AbsDimension x="60" y="40"/>
+				</Size>
+				<Anchors>
+					<Anchor point="Bottom" relativeTo="Options_Frame">
+						<Offset>
+							<AbsDimension x="0" y="-80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						DeleteAll_Button_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			-->
+			
+			
+		</Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Text1" inherits="GameFontNormalSmall"  justifyH="LEFT" text="This Button will restore all keybinds to normal|nsystem defaults. In order to activate it you|nneed to create a profile named|n'Delete All' and then select it.">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="Options_Frame">
+							<Offset>
+								<AbsDimension x="5" y="25"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="1" a="1" />
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	 
+	
+	
+	
+	--Divider Frame 1
+	<Frame name="Divider_Frame1" hidden="true" toplevel="false" parent="UIParent">
+		<Size>
+			<AbsDimension x="2" y="330"/>
+		</Size>
+		<Anchors>
+			<Anchor point="Center" relativeTo="Binder_Frame"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Color" setAllPoints="true">
+					<Color r="1" g="1" b="1" a=".5" />
+				</Texture> 
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	--Divider Frame 2
+	<Frame name="Divider_Frame2" hidden="true" toplevel="false" parent="UIParent">
+		<Size>
+			<AbsDimension x="270" y="2"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM" relativeTo="Creation_Frame">
+				<Offset>
+					<AbsDimension x="-3" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Color" setAllPoints="true">
+					<Color r="1" g="1" b="1" a=".5" />
+				</Texture> 
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	
+	
+	--Downloaded Code Thank you to DrShow for the format!!!
+	--Great Thanks to Gello at http://www.wowinterface.com/forums/showthread.php?t=2762 
+		for his format which helped greatly in the making of the minimap button
+	--And also to Shurshik for the Hover over tooltip
+	<Button name="Binder_MinimapButton" enableMouse="true" movable="true" hidden="false" frameStrata="Medium">
+		<Size>
+			<AbsDimension x="26.4" y="26.4"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="Binder_MinimapButton_Icon" file="Interface\MacroFrame\MacroFrame-Icon">
+					<Size>
+						<AbsDimension x="16.8" y="16.8"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="5.6" y="-4.8"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+					<Size>
+						<AbsDimension x="44.8" y="44.8"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="Binder_MinimapButton_DraggingFrame" hidden="true">
+				<Scripts>
+					<OnUpdate>
+						Binder_MinimapButton_DraggingFrame_OnUpdate()
+					</OnUpdate>
+				</Scripts>
+			</Frame>
+		</Frames>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp")
+				this:RegisterForDrag("RightButton")
+			</OnLoad>
+			<OnEnter>
+				if (not self.dragging) then
+					Binder_MinimapButton_OnEnter(self)
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+			<OnDragStart>
+				self.dragging = true
+				GameTooltip:Hide()
+				this:LockHighlight()
+				Binder_MinimapButton_DraggingFrame:Show()
+			</OnDragStart>
+			<OnDragStop>
+				self.dragging = false
+				this:UnlockHighlight()
+				Binder_MinimapButton_DraggingFrame:Hide()
+			</OnDragStop>
+			<OnClick> 
+				Binder_Toggle()
+			</OnClick>
+		</Scripts>
+	</Button>
+	
+	
+	
+	--Tensai's Button!
+	<Frame name="Inside_Frame1" hidden="true" toplevel="true" parent="UIParent">
+		<Layers>
+			<Layer level="OVERLAY">
+				--Color
+				<!--
+				<Texture name="$parent_Background" setAllPoints="true">
+					<Color r="1" g="1" b="0" a="0.4" />
+				</Texture>   -->
+				
+				<!--See where it says text, that is what gets displayed in the description, the |n adds a line-->
+				<FontString name="$parent_Text1" inherits="GameFontNormal"  justifyH="LEFT" text="Keybindings used by Tensai in a 
+							|nDefault UI Using no addons
+							|nthat modify Actionbars."
+							nonspacewrap="false" maxLines="3">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="Inside_Frame1">
+								<Offset>
+									<AbsDimension x="180" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+                    <Color r="1" g="1" b="1" a="1" />  <!-- White Color -->
+                </FontString>   
+			</Layer>
+		</Layers>
+		<Size>
+			<AbsDimension x="465" y="40"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="Binder_Frame">
+				<Offset>
+					<AbsDimension x="0" y="300"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+		<!--See where it says "text" that is what appears on the button-->
+			<Button name="Tensai_Button1" inherits="UIPanelButtonTemplate" text="Tensai (Default UI)">
+				<Size>
+					<AbsDimension x="150" y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="Inside_Frame1">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick> Tensai1_OnClick(arg1)</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames,this:GetName());
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	
+		--Need any help? E-mail me at JTensai24@gmail.com or visit the blog at Tensai-addons.blogspot.com
+</Ui>
+
+	

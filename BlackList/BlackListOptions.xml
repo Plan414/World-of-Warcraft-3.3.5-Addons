@@ -1,0 +1,158 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	
+	<Script file="BlackListOptions.lua"/>
+	
+	<Frame name="BlackListOptionsFrame" toplevel="true" frameStrata="MEDIUM" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+		<Size><AbsDimension x="320" y="350" /></Size>
+		<Anchors><Anchor point="CENTER" /></Anchors>
+		
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
+			tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />	
+				<Size><AbsDimension x="128" y="17" /></Size>
+			</BackgroundInsets>
+			<TileSize><AbsValue val="32" /></TileSize>
+			<EdgeSize><AbsValue val="32" /></EdgeSize>
+		</Backdrop>	
+		
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentTitle" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size><AbsDimension x="276" y="64" /></Size>
+					<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="12" /></Offset></Anchor></Anchors>
+				</Texture>
+				
+				<FontString inherits="GameFontNormal" text="Black List">
+					<Anchors><Anchor point="TOP" relativeTo="$parent"><Offset><AbsDimension x="0" y="-3" /></Offset></Anchor></Anchors>
+				</FontString>
+				
+				<FontString name="BL_General_Label" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" text="BL_General_Label_Text"><!-- General: -->
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="20" y="-40"/></Offset></Anchor></Anchors>
+				</FontString>
+				
+				<FontString name="BL_Guild_Label" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" text="BL_Guild_Label_Text"><!-- Guild: -->
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="20" y="-190"/></Offset></Anchor></Anchors>
+				</FontString>
+				
+				<FontString name="BL_RankBox_Label_Text" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP" text="BL_RankBox_Label_Text"><!-- + -->
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="92" y="-274"/></Offset></Anchor></Anchors>
+				</FontString>
+				<FontString name="BL_RankBox_Label" inherits="GameFontNormalSmall" justifyH="LEFT" justifyV="TOP" text="BL_RankBox_Label"><!-- Rank filter -->
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="115" y="-277"/></Offset></Anchor></Anchors>
+				</FontString>
+				
+			</Layer>
+		</Layers>
+		
+		<Frames>	
+			
+			<CheckButton name="SoundCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="30" y="-60" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						BlackListOptions:SoundCheckButton_OnShow();
+						getglobal(this:GetName().."Text"):SetText("Play a sound when mouseover");
+					</OnShow>
+					<OnEnter>BL_TooltipOn(this)</OnEnter>
+					<OnLeave>BL_TooltipOff()</OnLeave>
+					<OnClick>BlackListOptions:SoundCheckButton_OnClick();</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="CenterCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="30" y="-90" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						BlackListOptions:CenterCheckButton_OnShow();
+						getglobal(this:GetName().."Text"):SetText("Show warning at screen center");
+					</OnShow>
+					<OnEnter>BL_TooltipOn(this)</OnEnter>
+					<OnLeave>BL_TooltipOff()</OnLeave>
+					<OnClick>BlackListOptions:CenterCheckButton_OnClick();</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="ChatCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="30" y="-120" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						BlackListOptions:ChatCheckButton_OnShow();
+						getglobal(this:GetName().."Text"):SetText("Show reason in chat");
+					</OnShow>
+					<OnEnter>BL_TooltipOn(this)</OnEnter>
+					<OnLeave>BL_TooltipOff()</OnLeave>
+					<OnClick>BlackListOptions:ChatCheckButton_OnClick();</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="IgnoreCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="30" y="-150" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						BlackListOptions:IgnoreCheckButton_OnShow();
+						getglobal(this:GetName().."Text"):SetText("Auto-Ignore players when added in list");
+					</OnShow>
+					<OnEnter>BL_TooltipOn(this)</OnEnter>
+					<OnLeave>BL_TooltipOff()</OnLeave>
+					<OnClick>BlackListOptions:IgnoreCheckButton_OnClick();</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="BanCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="30" y="-210" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						BlackListOptions:BanCheckButton_OnShow();
+						getglobal(this:GetName().."Text"):SetText("Auto-Ban players from your guild");
+					</OnShow>
+					<OnEnter>BL_TooltipOn(this)</OnEnter>
+					<OnLeave>BL_TooltipOff()</OnLeave>
+					<OnClick>BlackListOptions:BanCheckButton_OnClick();</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="KickCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="30" y="-240" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						BlackListOptions:KickCheckButton_OnShow();
+						getglobal(this:GetName().."Text"):SetText("Misc: Auto-Kick inactives from your guild");
+					</OnShow>
+					<OnEnter>BL_TooltipOn(this)</OnEnter>
+					<OnLeave>BL_TooltipOff()</OnLeave>
+					<OnClick>BlackListOptions:KickCheckButton_OnClick();</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<EditBox name="BL_RankBox" inherits="InputBoxTemplate" numeric="true" letters="2" autoFocus="false">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="70" y="-270"/></Offset></Anchor></Anchors>
+				<Size><AbsDimension x="22" y="25" /></Size>
+				<Scripts>
+					<OnShow>BlackListOptions:BL_RankBox_OnShow();</OnShow>
+					<OnEnter>BL_TooltipOn(this)</OnEnter>
+					<OnLeave>BL_TooltipOff()</OnLeave>
+					<OnTextChanged>BlackListOptions:BL_RankBox_OnTextChanged()</OnTextChanged>
+				</Scripts>
+			</EditBox>
+
+			<Button name="$parentClose" inherits="OptionsButtonTemplate" text="CLOSE">
+				<Anchors><Anchor point="CENTER" relativeTo="$parent" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="30" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnClick>BlackListOptions:Handler();</OnClick>
+				</Scripts>
+			</Button>
+			
+		</Frames>
+		
+		<Scripts>
+			<OnMouseDown>
+				if(arg1 == "LeftButton" and IsAltKeyDown()) then
+					this:StartMoving();
+				end
+			</OnMouseDown>
+			<OnMouseUp>this:StopMovingOrSizing();</OnMouseUp>
+		</Scripts>
+		
+	</Frame>
+</Ui>

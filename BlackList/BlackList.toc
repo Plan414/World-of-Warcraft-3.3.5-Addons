@@ -1,0 +1,10 @@
+## Interface: 30500
+## Title: Black List
+## Version: 3.2.02
+## Author: Logan / ElrickEnonimis
+## Notes: Keeps a list of enemy and friendly players, ignoring them and/or warning you if you target, mouse over, or group with them.
+## SavedVariables: BlackListedPlayers
+## SavedVariablesPerCharacter: BlackListConfig
+
+BlackListUI.xml
+BlackListOptions.xml

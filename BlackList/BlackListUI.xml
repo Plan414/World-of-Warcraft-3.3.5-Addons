@@ -1,0 +1,441 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML">
+	<Script file="BlackList.lua" />
+	<Script file="BlackListFunctions.lua" />
+	<Script file="BlackListUI.lua" />
+	<Script file="BlackListOptions.lua" />
+	<Button name="FriendsTabHeaderTab4" parent="FriendsTabHeader" inherits="TabButtonTemplate" text="BLACKLIST" id="4">
+		<Size>
+             <AbsDimension x="50" y="32"/>
+         </Size>
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="FriendsTabHeaderTab3" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				PanelTemplates_Tab_OnClick(self, FriendsTabHeader);
+				BlackList:ShowTab();
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<Button name="FriendsFrameBlackListButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="298" y="16" />
+		</Size>
+		<Frames>
+			<Frame name="$parentButtonText" setAllPoints="true">
+				<Layers>
+					<Layer level="BORDER">
+						<FontString name="$parentName" inherits="GameFontNormal" justifyH="LEFT" parentKey="name">
+							<Size>
+								<AbsDimension x="288" y="12"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="10" y="1" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnClick>
+				BlackList:ClickBlackList();
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+		</Scripts>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD" />
+	</Button>
+
+	<CheckButton name="BlackListDetailsCheckButtonTemplate" inherits="OptionsCheckButtonTemplate" virtual="true">
+		<Scripts>
+			<OnClick>BlackList:UpdateDetails(BlackList:GetSelectedBlackList(), BlackListDetailsFrameCheckButton1, BlackListDetailsFrameCheckButton2);</OnClick>
+		</Scripts>
+	</CheckButton>
+
+	<Frame name="BlackListFrame" parent="FriendsFrame" hidden="true" setAllPoints="true">
+		<Frames>
+			
+			<Button name="FriendsFrameBlacklistPlayerButton" inherits="UIPanelButtonTemplate2" text="BL_PLAYER">
+				<Size><AbsDimension x="131" y="21" /></Size>
+				<Anchors><Anchor point="BOTTOMLEFT" relativeTo="FriendsFrame"><Offset><AbsDimension x="17" y="107" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnClick>BlackListPlayer("target");</OnClick>
+					<OnEnter></OnEnter>
+					<OnLeave></OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="FriendsFrameRemovePlayerButton" inherits="UIPanelButtonTemplate" text="REMOVE_PLAYER">
+				<Size><AbsDimension x="131" y="21" /></Size>
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlacklistPlayerButton" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="-5" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnLoad>this:SetFrameLevel( this:GetFrameLevel() + 3 );</OnLoad>
+					<OnClick>
+						BlackList:RemovePlayer();
+						BlackListDetailsFrame:Hide();
+						BlackListEditDetailsFrame:Hide();
+					</OnClick>
+					<OnEnter></OnEnter>
+					<OnLeave></OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="FriendsFrameOptionsButton" inherits="UIPanelButtonTemplate" text="OPTIONS">
+				<Size><AbsDimension x="131" y="21" /></Size>
+				<Anchors><Anchor point="LEFT" relativeTo="FriendsFrameBlacklistPlayerButton" relativePoint="RIGHT"><Offset><AbsDimension x="66" y="0" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnLoad>this:SetFrameLevel( this:GetFrameLevel() + 3 );</OnLoad>
+					<OnClick>BlackListOptions:Handler();</OnClick>
+					<OnEnter></OnEnter>
+					<OnLeave></OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="FriendsFrameShareListButton" inherits="UIPanelButtonTemplate" text="SHARE_LIST">
+				<Size><AbsDimension x="131" y="21" /></Size>
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameOptionsButton" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="-5" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnLoad>this:SetFrameLevel( this:GetFrameLevel() + 3 );</OnLoad>
+					<OnClick></OnClick>
+					<OnEnter></OnEnter>
+					<OnLeave></OnLeave>
+				</Scripts>
+			</Button>
+
+			<Button name="FriendsFrameBlackListButton1" inherits="FriendsFrameBlackListButtonTemplate" id="1">
+				<Anchors><Anchor point="TOPLEFT" relativeTo="FriendsFrame"><Offset><AbsDimension x="21" y="-102" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton2" inherits="FriendsFrameBlackListButtonTemplate" id="2">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton1" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton3" inherits="FriendsFrameBlackListButtonTemplate" id="3">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton2" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton4" inherits="FriendsFrameBlackListButtonTemplate" id="4">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton3" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton5" inherits="FriendsFrameBlackListButtonTemplate" id="5">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton4" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton6" inherits="FriendsFrameBlackListButtonTemplate" id="6">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton5" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton7" inherits="FriendsFrameBlackListButtonTemplate" id="7">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton6" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton8" inherits="FriendsFrameBlackListButtonTemplate" id="8">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton7" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton9" inherits="FriendsFrameBlackListButtonTemplate" id="9">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton8" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton10" inherits="FriendsFrameBlackListButtonTemplate" id="10">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton9" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton11" inherits="FriendsFrameBlackListButtonTemplate" id="11">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton10" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton12" inherits="FriendsFrameBlackListButtonTemplate" id="12">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton11" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton13" inherits="FriendsFrameBlackListButtonTemplate" id="13">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton12" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton14" inherits="FriendsFrameBlackListButtonTemplate" id="14">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton13" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton15" inherits="FriendsFrameBlackListButtonTemplate" id="15">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton14" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton16" inherits="FriendsFrameBlackListButtonTemplate" id="16">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton15" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+			
+			<Button name="FriendsFrameBlackListButton17" inherits="FriendsFrameBlackListButtonTemplate" id="17">
+				<Anchors><Anchor point="TOP" relativeTo="FriendsFrameBlackListButton16" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+			</Button>
+					
+			<ScrollFrame name="FriendsFrameBlackListScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="298" y="280" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="FriendsFrame">
+						<Offset>
+							<AbsDimension x="-65" y="-99"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size><AbsDimension x="31" y="256" /></Size>
+							<Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT"><Offset><AbsDimension x="-2" y="5" /></Offset></Anchor></Anchors>
+							<TexCoords left="0" right="0.484375" top="0" bottom="1.0" />
+						</Texture>
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size><AbsDimension x="31" y="106" /></Size>
+							<Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT"><Offset><AbsDimension x="-2" y="-2" /></Offset></Anchor></Anchors>
+							<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625" />
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(self, offset, FRIENDS_FRAME_BL_HEIGHT, BL_Update);</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+		</Frames>
+		<Scripts>
+			<OnShow>
+				BlackList:UpdateUI();
+			</OnShow>
+			<OnHide>
+				BlackListDetailsFrame:Hide();
+				BlackListEditDetailsFrame:Hide();
+			</OnHide>
+		</Scripts>
+	</Frame>
+
+	<Frame name="BlackListDetailsFrame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+		<Size><AbsDimension x="297" y="250" /></Size>
+		<Anchors><Anchor point="TOPLEFT" relativeTo="FriendsFrame" relativePoint="TOPRIGHT"><Offset><AbsDimension x="-35" y="-65" /></Offset></Anchor></Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets><AbsInset left="11" right="12" top="12" bottom="11" /></BackgroundInsets>
+			<TileSize><AbsValue val="32" /></TileSize>
+			<EdgeSize><AbsValue val="32" /></EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="BlackListDetailsCorner" file="Interface\DialogFrame\UI-DialogBox-Corner">
+					<Size><AbsDimension x="32" y="32" /></Size>
+					<Anchors><Anchor point="TOPRIGHT"><Offset><AbsDimension x="-6" y="-7" /></Offset></Anchor></Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="BlackListDetailsName" inherits="GameFontNormal" text="">
+					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="17" y="-18" /></Offset></Anchor></Anchors>
+				</FontString>
+				<FontString name="BlackListDetailsLevel" inherits="GameFontHighlightSmall">
+					<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsName" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="8" y="-8" /></Offset></Anchor></Anchors>
+				</FontString>
+				<FontString name="BlackListDetailsRace" inherits="GameFontHighlightSmall">
+					<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsLevel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="-4" /></Offset></Anchor></Anchors>
+				</FontString>
+				<FontString name="BlackListDetailsBlackListedLabel" inherits="GameFontNormal" text="BLACK_LISTED">
+					<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsName" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="-48" /></Offset></Anchor></Anchors>
+				</FontString>
+				<FontString name="BlackListDetailsBlackListedText" inherits="GameFontHighlight" justifyH="LEFT">
+					<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsBlackListedLabel" relativePoint="RIGHT"><Offset><AbsDimension x="2" y="0" /></Offset></Anchor></Anchors>
+				</FontString>
+				<FontString name="BlackListDetailsReasonLabel" inherits="GameFontNormal" text="REASON">
+					<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsBlackListedLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="-38" /></Offset></Anchor></Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="BlackListDetailsCloseButton" inherits="UIPanelCloseButton">
+				<Anchors><Anchor point="TOPRIGHT"><Offset><AbsDimension x="-2" y="-3" /></Offset></Anchor></Anchors>
+			</Button>
+			<Frame name="BlackListDetailsFactionInsigniaFrame">
+				<Size><AbsDimension x="24" y="24" /></Size>
+				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsLevel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="140" y="10" /></Offset></Anchor></Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="BlackListDetailsFactionInsignia">
+							<Size><AbsDimension x="24" y="24" /></Size>
+							<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Button name="BlackListDetailsEditButton" inherits="UIPanelButtonTemplate" text="Edit">
+				<Size><AbsDimension x="66" y="22" /></Size>
+				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsLevel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="174" y="9" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnClick>BlackListEditDetailsFrame:Show();</OnClick>
+				</Scripts>
+				<NormalFont inherits="GameFontNormalSmall" />
+				<HighlightFont inherits="GameFontHighlightSmall" />
+				<DisabledFont inherits="GameFontDisableSmall" />
+			</Button>
+			
+			<CheckButton name="BlackListDetailsFrameCheckButton1" inherits="BlackListDetailsCheckButtonTemplate" id="1">
+				<Size><AbsDimension x="24" y="24" /></Size>
+				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsBlackListedLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="20" y="-7" /></Offset></Anchor></Anchors>
+			</CheckButton>
+			
+			<CheckButton name="BlackListDetailsFrameCheckButton2" inherits="BlackListDetailsCheckButtonTemplate" id="2">
+				<Size><AbsDimension x="24" y="24" /></Size>
+				<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsFrameCheckButton1" relativePoint="RIGHT"><Offset><AbsDimension x="100" y="0" /></Offset></Anchor></Anchors>
+			</CheckButton>
+			
+			<Frame name="BlackListDetailsFrameReasonTextBackground">
+				<Size><AbsDimension x="266" y="93" /></Size>
+				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsReasonLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="-1" y="-4" /></Offset></Anchor></Anchors>
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize><AbsValue val="16" /></EdgeSize>
+					<TileSize><AbsValue val="16" /></TileSize>
+					<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5" /></BackgroundInsets>
+				</Backdrop>
+				<Frames>
+					<ScrollFrame name="BlackListDetailsFrameScrollFrame" inherits="UIPanelScrollFrameTemplate">
+						<Size><AbsDimension x="233" y="81" /></Size>
+						<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="5" y="-7" /></Offset></Anchor></Anchors>
+						<Scripts>
+							<OnMouseDown>BlackListDetailsFrameReasonTextBox:SetFocus();</OnMouseDown>
+							<OnMouseUp>BlackListDetailsFrameReasonTextBox:SetFocus();</OnMouseUp> 
+						</Scripts>
+						<ScrollChild>
+							<EditBox name="BlackListDetailsFrameReasonTextBox" letters="500" multiLine="true" autoFocus="false">
+								<Size><AbsDimension x="230" y="81" /></Size>
+								<Scripts>
+									<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+									<OnTextChanged>
+										local scrollBar = getglobal(this:GetParent():GetName().."ScrollBar");
+										this:GetParent():UpdateScrollChildRect();
+										local min;
+										local max;
+										min, max = scrollBar:GetMinMaxValues();
+										if ( max > 0 and (this.max ~= max) ) then
+											this.max = max;
+											scrollBar:SetValue(max);
+										end
+										BlackList:UpdateDetails(BlackList:GetSelectedBlackList(), nil, nil, this:GetText());
+									</OnTextChanged>
+								</Scripts>
+								<FontString inherits="GameFontHighlight" />
+							</EditBox>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						this:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
+						this:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b);
+					</OnLoad>
+					<OnShow></OnShow>
+				</Scripts>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnHide>BlackListEditDetailsFrame:Hide();</OnHide>
+		</Scripts>
+	</Frame>
+
+	<Frame name="BlackListEditDetailsFrame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+		<Size><AbsDimension x="297" y="90" /></Size>
+		<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsFrame" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="2" /></Offset></Anchor></Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets><AbsInset left="11" right="12" top="12" bottom="11" /></BackgroundInsets>
+			<TileSize><AbsValue val="32" /></TileSize>
+			<EdgeSize><AbsValue val="32" /></EdgeSize>
+		</Backdrop>
+		<Layers>
+		</Layers>
+		<Frames>
+			<Frame name="BlackListEditDetailsFrameLevelBackground">
+				<Size><AbsDimension x="38" y="30" /></Size>
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="23" y="-18" /></Offset></Anchor></Anchors>
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize><AbsValue val="16" /></EdgeSize>
+					<TileSize><AbsValue val="16" /></TileSize>
+					<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5" /></BackgroundInsets>
+				</Backdrop>
+				<Frames>
+					<EditBox name="BlackListEditDetailsFrameLevel" autoFocus="false" frameStrata="HIGH" historyLines="32">
+						<Size><AbsDimension x="64" y="32" /></Size>
+						<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="9" y="1" /></Offset></Anchor></Anchors>
+						<Scripts>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" bytes="3" />
+					</EditBox>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						this:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
+						this:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b);
+					</OnLoad>
+					<OnShow></OnShow>
+				</Scripts>
+			</Frame>
+			<Frame name="BlackListEditDetailsFrameClassDropDown" inherits="UIDropDownMenuTemplate">
+				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListEditDetailsFrameLevelBackground" relativePoint="TOPRIGHT"><Offset><AbsDimension x="-6" y="-1" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnLoad>BlackListEditDetailsFrameClassDropDown_OnLoad();</OnLoad>
+					<OnShow>
+						UIDropDownMenu_Initialize(this, BlackListEditDetailsFrameClassDropDown_Initialize);
+						UIDropDownMenu_SetSelectedID(BlackListEditDetailsFrameClassDropDown, 1);
+					</OnShow>
+<!--					<OnClick>ToggleDropDownMenu(1, nil, BlackListEditDetailsFrameClassDropDown, "BlackListEditDetailsFrameClassDropDown", 0, 0);</OnClick> -->
+				</Scripts>
+			</Frame>
+			<Frame name="BlackListEditDetailsFrameRaceDropDown" inherits="UIDropDownMenuTemplate">
+				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListEditDetailsFrameClassDropDown" relativePoint="TOPRIGHT"><Offset><AbsDimension x="-18" y="0" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnLoad>BlackListEditDetailsFrameRaceDropDown_OnLoad();</OnLoad>
+					<OnShow>
+						UIDropDownMenu_Initialize(this, BlackListEditDetailsFrameRaceDropDown_Initialize);
+						UIDropDownMenu_SetSelectedID(BlackListEditDetailsFrameRaceDropDown, 1);
+					</OnShow>
+<!--					<OnClick>ToggleDropDownMenu(1, nil, BlackListEditDetailsFrameRaceDropDown, "BlackListEditDetailsFrameRaceDropDown", 0, 0);</OnClick> -->
+				</Scripts>
+			</Frame>
+			<Button name="BlackListEditDetailsFrameSaveButton" inherits="UIPanelButtonTemplate" text="Save">
+				<Size><AbsDimension x="131" y="21" /></Size>
+				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListEditDetailsFrame"><Offset><AbsDimension x="18" y="-51" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnClick>BlackListEditDetailsSaveButton_OnClick();</OnClick>
+					<OnEnter></OnEnter>
+					<OnLeave></OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="BlackListEditDetailsFrameCancelButton" inherits="UIPanelButtonTemplate" text="Cancel">
+				<Size><AbsDimension x="131" y="21" /></Size>
+				<Anchors><Anchor point="LEFT" relativeTo="BlackListEditDetailsFrameSaveButton" relativePoint="RIGHT"><Offset><AbsDimension x="0" y="0" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnClick>BlackListEditDetailsFrame:Hide();</OnClick>
+					<OnEnter></OnEnter>
+					<OnLeave></OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnShow>BlackListEditDetailsFrame_Update();</OnShow>
+			<OnHide>
+				BlackListEditDetailsFrameLevel:SetText("");
+				UIDropDownMenu_SetSelectedID(BlackListEditDetailsFrameClassDropDown, 1);
+				UIDropDownMenu_SetSelectedID(BlackListEditDetailsFrameRaceDropDown, 1);
+			</OnHide>
+		</Scripts>
+	</Frame>
+
+	<Frame name="BlackListTopFrame" parent="UIParent" hidden="true">
+		<Scripts>
+			<OnLoad>BlackList:OnLoad();</OnLoad>
+			<OnEvent>BlackList:HandleEvent(event);</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>
