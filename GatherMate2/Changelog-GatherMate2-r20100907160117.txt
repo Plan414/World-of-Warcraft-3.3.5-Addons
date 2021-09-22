@@ -1,0 +1,8 @@
+Sal Scotto:
+	- Renamed locale files
+	- Changes libstub entry in pkgmeta
+	- Added in baseline code from GatherMate. Everything shoud be in place now to begin work on updates and changes for wow 4.0
+	- Added base toc file, copied the descriptions and such from original GatherMate
+	setup some basic localization files, again jsut a copy from gathermate
+	Added a license file and .pkgmeta
+	- Empty toc for git inital setup
