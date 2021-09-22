@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Warmane AH-fix
+## Author: Anyone@Deathwing
+## Version: 1.5
+## Notes: Fixes auction house addon functionality on Warmane wotlk realms
+
+Warmane_AH-fix.lua
