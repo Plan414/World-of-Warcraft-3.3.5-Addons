@@ -1,0 +1,37 @@
+------------------------------------------------------------------------
+r533 | jerry | 2010-09-18 13:15:14 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Options/GridStatuses.lua
+
+Typo fix
+------------------------------------------------------------------------
+r532 | jerry | 2010-09-10 18:36:19 +0000 (Fri, 10 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/Options/GridStatuses.lua
+
+Fix metatable.
+
+------------------------------------------------------------------------
+r531 | jerry | 2010-09-10 17:18:04 +0000 (Fri, 10 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/Options/GridStatuses.lua
+   M /trunk/Options/locales/enUS.lua
+   M /trunk/modules/StatusAuras.lua
+
+Implement status-not-mine (Ticket-167).
+This is drycoded and untested
+
+------------------------------------------------------------------------
+r530 | jerry | 2010-09-09 15:11:11 +0000 (Thu, 09 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/GridFrame.lua
+
+Fix for Ticket-161: Make sure GridFrame unit are only updated when needed
+
+------------------------------------------------------------------------
+r529 | jerry | 2010-08-14 20:43:23 +0000 (Sat, 14 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/GridDefaults.lua
+
+Make sure MakeBuffColorHandler is called on a valid status.
+------------------------------------------------------------------------
