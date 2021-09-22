@@ -1,0 +1,12 @@
+## Interface: 30300
+## Title: EventAlert
+## Notes: Simple warnings for event procs
+## Author: CurtisTheGreat(AIM) [Real ID:  curtis AT fischerfam DOT net]
+## Version: 4.3.6
+## SavedVariables: EA_Config, EA_Position, EA_Items, EA_AltItems, EA_CustomItems
+
+EventAlert.xml
+EventAlertOptions.xml
+EventAlertClassAlerts.xml
+EventAlertIconOptions.xml
+EventAlertCustomAlerts.xml

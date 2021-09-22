@@ -1,0 +1,174 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+<Script file="EventAlertCustomAlerts.lua"/>
+
+    <Frame name="Custom_Events_Frame" toplevel="true" frameStrata="HIGH" movable="true" enableMouse="true" hidden="true" parent="EA_Options_Frame" enableKeyboard="true">
+
+        <Size>
+            <AbsDimension x="325" y="500"/>
+        </Size>
+
+        <Anchors>
+			<Anchor point="LEFT" relativepoint="RIGHT"/>
+        </Anchors>
+
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+            <TileSize>
+                <AbsValue val="32"/>
+            </TileSize>
+            <EdgeSize>
+                <AbsValue val="32"/>
+            </EdgeSize>
+        </Backdrop>
+
+        <Layers>
+
+            <Layer level="ARTWORK">
+
+                <Texture name="$parent_Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size>
+                        <AbsDimension x="400" y="64"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="12"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+
+                <FontString inherits="GameFontNormal" text="Custom Events">
+                    <Anchors>
+                        <Anchor point="TOP" relativeTo="Custom_Events_Frame_Header">
+                            <Offset>
+                                <AbsDimension x="0" y="-14"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+                <FontString inherits="GameFontNormal" text="To look up the spell ID,">
+                    <Anchors>
+                        <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
+                            <Offset>
+                                <AbsDimension x="0" y="65"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+                <FontString inherits="GameFontNormal" text="use the WoWHead link from your browser.">
+                    <Anchors>
+                        <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
+                            <Offset>
+                                <AbsDimension x="0" y="45"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+
+                <FontString inherits="GameFontNormal" text="http://www.wowhead.com/?spell=SPELLIDHERE">
+                    <Anchors>
+                        <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
+                            <Offset>
+                                <AbsDimension x="0" y="25"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+
+
+        <Frames>
+
+        	<EditBox name="$parent_SaveCustom_Box" autoFocus="false" letters="13" ignoreArrows="true" inherits="InputBoxTemplate">
+    			<Size>
+					<AbsDimension x="150" y="24"/>
+    			</Size>
+           		<Anchors>
+		        	<Anchor point="TOPLEFT" relativeTo="Custom_Events_Frame">
+			        	<Offset>
+		    	        	<AbsDimension x="30" y="-30"/>
+		                </Offset>
+		            </Anchor>
+		        </Anchors>
+
+                <FontString inherits="ChatFontNormal"/>
+    		</EditBox>
+
+    		<Button name="$parent_SaveCustom_Button" inherits="OptionsButtonTemplate" text="Save">
+    			<Anchors>
+    				<Anchor point="RIGHT" relativeTo="$parent_SaveCustom_Box">
+    					<Offset>
+    						<AbsDimension x="100" y="0"/>
+    					</Offset>
+    				</Anchor>
+    			</Anchors>
+
+                <Scripts>
+    				<OnClick>
+    					EventAlert_CustomAlert_SaveSetting();
+    				</OnClick>
+    			</Scripts>
+    		</Button>
+
+            <CheckButton name="$parent_DeleteCustom_Box" inherits="UIDropDownMenuTemplate">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="$parent_SaveCustom_Box">
+                        <Offset>
+                            <AbsDimension x="-23" y="-50"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                	<OnLoad>
+                    	EventAlert_DeleteCustom_Box_OnLoad();
+                    </OnLoad>
+					<OnShow>
+                    	EventAlert_DeleteCustom_Box_OnShow();
+                    </OnShow>
+                </Scripts>
+            </CheckButton>
+
+    		<Button name="$parent_DeleteCustom_Button" inherits="OptionsButtonTemplate" text="Delete">
+    			<Anchors>
+    				<Anchor point="RIGHT" relativeTo="$parent_DeleteCustom_Box">
+    					<Offset>
+    						<AbsDimension x="80" y="3"/>
+    					</Offset>
+    				</Anchor>
+    			</Anchors>
+
+                <Scripts>
+    				<OnClick>
+    					EventAlert_CustomAlert_DeleteSetting();
+    				</OnClick>
+    			</Scripts>
+    		</Button>
+
+        </Frames>
+
+
+        <Scripts>
+            <OnLoad>
+	            this:RegisterForDrag("LeftButton");
+                Custom_Events_OnLoad();
+            </OnLoad>
+        	<OnMouseDown>
+	        	Custom_Events_Frame_MouseDown(button);
+	      	</OnMouseDown>
+	      	<OnMouseUp>
+	        	Custom_Events_Frame_MouseUp(button);
+	      	</OnMouseUp>
+        </Scripts>
+</Frame>
+
+
+
+</Ui>
