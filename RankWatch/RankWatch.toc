@@ -1,0 +1,19 @@
+﻿## Interface: 30300
+## Title: RankWatch
+## Version: v1.11
+## Notes: Watch for spells that are not max rank
+## SavedVariablesPerCharacter: RankWatchSettings
+## Dependencies: 
+## X-Curse-Packaged-Version: v1.11
+## X-Curse-Project-Name: RankWatch
+## X-Curse-Project-ID: rankwatch
+## X-Curse-Repository-ID: wow/rankwatch/mainline
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@.
+
+Locales\Locales.xml
+RankData.lua
+RankWatch.lua
+RankWatch.xml

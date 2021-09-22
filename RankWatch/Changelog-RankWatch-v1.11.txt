@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r25 | gronzig | 2010-08-27 15:47:06 +0000 (Fri, 27 Aug 2010) | 1 line
+Changed paths:
+   A /tags/v1.11 (from /trunk:24)
+
+Tagging as v1.11
+------------------------------------------------------------------------
+r24 | gronzig | 2010-05-31 17:07:06 +0000 (Mon, 31 May 2010) | 2 lines
+Changed paths:
+   M /trunk/README.txt
+   M /trunk/RankWatch.lua
+
+Add thank-you to Galead for Russian translation
+Add Amplify/Dampen Magic to target-level list
+------------------------------------------------------------------------

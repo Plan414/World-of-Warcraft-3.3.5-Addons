@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Script file="RankWatch.lua"/>
+  <Frame name="RankWatchFrame">
+    <Scripts>
+      <OnLoad> RankWatch_OnLoad(); </OnLoad>
+      <OnEvent> RankWatch_OnEvent(self, event, ...); </OnEvent>
+      <OnUpdate> RankWatch_OnUpdate(); </OnUpdate>
+  </Scripts>
+  </Frame>
+</Ui>
