@@ -1,0 +1,7 @@
+## Interface: 20400
+## Title: CL_Fix
+## Notes: Workaround for the Combat Log bug introduced in patch 2.4.X, damage meters should work properly now.
+## Author: Gmad (Gjeneth @ Warmane - Outland)
+## SavedVariables: CL_Fix
+
+CL_Fix.lua
