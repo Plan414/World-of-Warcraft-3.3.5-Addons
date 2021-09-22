@@ -1,0 +1,30 @@
+## Interface: 20400
+## Title: Cooldown Count
+## Title-koKR: |CFF99FF99C|r|CFFFFFFFFooldown|r|CFF99FF99C|r|CFFFFFFFFount|r
+## Notes: Display Cooldown Count of Spell Icon and Item
+## Notes-frFR: Affiche les cooldown des sorts et objets.
+## Notes-zhCN: 显示物品和技能的冷却倒计时
+## Notes-zhTW: 顯示物品與法術的冷卻計時
+## Notes-koKR: 주문과 아이템의 재사용 시간을 표시합니다
+## Notes-deDE: Anzeige der Abklingzeit auf den Symbolen von Gegenständen und Fähigkeiten.
+## Notes-ruRU: Отображает таймер отката умений на их иконках.
+## Author: hshh
+## Version: 3.0
+## X-Embeds: Ace3, LibSharedMedia-3.0
+## X-eMail: hshh@hshh.org
+## X-Website: http://www.hshh.org/
+## X-Category: Interface Enhancements
+## OptionalDeps: Ace3, LibSharedMedia-3.0
+## SavedVariables: CooldownCountDB
+
+embeds.xml
+
+Locale.enUS.lua
+Locale.deDE.lua
+Locale.frFR.lua
+Locale.koKR.lua
+Locale.zhCN.lua
+Locale.zhTW.lua
+Locale.ruRU.lua
+
+CooldownCount.lua

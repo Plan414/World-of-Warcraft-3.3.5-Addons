@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r80338 | mukha521 | 2008-08-13 05:29:25 -0400 (Wed, 13 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/CooldownCount/CooldownCount.toc
+   A /trunk/CooldownCount/Locale.ruRU.lua
+
+CooldownCount:
+- ruRU locale implemented.
+------------------------------------------------------------------------
+r78446 | hshh | 2008-07-14 21:30:24 -0400 (Mon, 14 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/CooldownCount/CooldownCount.lua
+
+CooldownCount: force frame toplevel
+------------------------------------------------------------------------
