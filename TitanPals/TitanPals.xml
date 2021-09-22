@@ -1,0 +1,22 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<GameTooltip name="TitanPalsTooltip" inherits="GameTooltipTemplate" parent="UIParent" hidden="true"/>
+	<Frame parent="UIParent">
+		<Frames>
+			<Button name="TitanPanelPalsButton" inherits="TitanPanelComboTemplate" frameStrata="FULLSCREEN" toplevel="true">
+				<Scripts>
+					<OnLoad>
+						TitanPanelPalsButton_OnLoad(self);
+						TitanPanelButton_OnLoad(self);
+					</OnLoad>
+					<OnEvent>
+						TitanPanelPalsButton_OnEvent(self, event, ...);
+					</OnEvent>
+					<OnClick>
+						TitanPanelPalsButton_OnClick(self, button);
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

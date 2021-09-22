@@ -1,0 +1,163 @@
+------------------------------------------------------------------------
+r54 | kanadian | 2010-10-03 14:45:41 -0500 (Sun, 03 Oct 2010) | 2 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/Locale/deDE.lua
+   M /trunk/Locale/enUS.lua
+   M /trunk/Locale/esES.lua
+   M /trunk/Locale/esMX.lua
+   M /trunk/Locale/frFR.lua
+   M /trunk/Locale/koKR.lua
+   M /trunk/Locale/ruRU.lua
+   M /trunk/Locale/zhCN.lua
+   M /trunk/Locale/zhTW.lua
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+
+- Cleaned up localization file
+* Waiting for localization translation
+------------------------------------------------------------------------
+r53 | kanadian | 2010-09-30 18:19:10 -0500 (Thu, 30 Sep 2010) | 1 line
+Changed paths:
+   D /trunk/Artwork
+
+Switched to a image that is supplied by the game client
+------------------------------------------------------------------------
+r52 | kanadian | 2010-09-30 18:16:03 -0500 (Thu, 30 Sep 2010) | 4 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/Locale/enUS.lua
+   M /trunk/TitanPals.lua
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsToolTip.lua
+   M /trunk/TitanPalsUtils.lua
+
+- Fixed 3 Tooltip issues
+- Changed AddOn Artwork for button
+- Readded Custom Tooltips format
+- Added Custom RealID Tooltip format
+------------------------------------------------------------------------
+r51 | kanadian | 2010-09-22 07:31:29 -0500 (Wed, 22 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/Locale/deDE.lua
+   M /trunk/Locale/enUS.lua
+   M /trunk/Locale/ruRU.lua
+   M /trunk/TitanPals.lua
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsToolTip.lua
+   M /trunk/TitanPalsUtils.lua
+
+- Battle Net bug fix Pointed out by Noxxana. This should be the final fix for the disabled RealID stuff
+- Language File are now back up to date.
+- added ## X-Compatible-With: 40000 ( works with current beta )
+------------------------------------------------------------------------
+r50 | kanadian | 2010-09-18 01:38:27 -0500 (Sat, 18 Sep 2010) | 5 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/TitanPals.lua
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsRightClick.lua
+   M /trunk/TitanPalsToolTip.lua
+
+r50:       (Current):
+=====================
+- Battle Net Bug fixed thanks to Noxxana for pointing it out
+- Moved Addon settings out of Titan Panel sub menu. This was done so the setting link inthe right click menu work proper
+* backwords compatible to version r35
+------------------------------------------------------------------------
+r49 | kanadian | 2010-09-16 21:29:51 -0500 (Thu, 16 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/TitanPals.lua
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsRightClick.lua
+   M /trunk/TitanPalsUtils.lua
+
+- Added a function to handle conversion of old friends data to new format
+- minor bug fixes in other places
+------------------------------------------------------------------------
+r48 | kanadian | 2010-09-14 19:03:47 -0500 (Tue, 14 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsUtils.lua
+
+- Bug fix reported by OmniusPrime
+------------------------------------------------------------------------
+r47 | kanadian | 2010-09-14 02:11:42 -0500 (Tue, 14 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsRightClick.lua
+
+- Battle Net whisper issue fix
+------------------------------------------------------------------------
+r46 | kanadian | 2010-09-13 18:19:52 -0500 (Mon, 13 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/TitanPals.lua
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsRightClick.lua
+   M /trunk/TitanPalsUtils.lua
+
+- tweak some code trying to be able to msg ppl that have more them one account loged in
+* As of 4.0.0 Titan [Pals] is done (There might be 1 update to make it compatible for the first release).
+* I will be releasing a friends addon that will have LDB support for Titan, FuBar and Ninja panel
+------------------------------------------------------------------------
+r45 | kanadian | 2010-09-10 07:30:28 -0500 (Fri, 10 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/Locale/deDE.lua
+   M /trunk/Locale/enUS.lua
+   M /trunk/Locale/frFR.lua
+   M /trunk/Locale/ruRU.lua
+   M /trunk/TitanPals.lua
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsRightClick.lua
+   M /trunk/TitanPalsToolTip.lua
+   M /trunk/TitanPalsUtils.lua
+
+- Removed some preset tooltip formats
+- rewrite some code
++ Work on sync code
+------------------------------------------------------------------------
+r44 | kanadian | 2010-09-02 00:32:40 -0500 (Thu, 02 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/Locale/deDE.lua
+   M /trunk/Locale/enUS.lua
+   M /trunk/Locale/ruRU.lua
+   M /trunk/TitanPals.lua
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsRightClick.lua
+   M /trunk/TitanPalsToolTip.lua
+   M /trunk/TitanPalsUtils.lua
+
+- Readded Offline firends
+* Still working on the offline code
++ Tooltip work for Starcraft 2
+------------------------------------------------------------------------
+r43 | kanadian | 2010-08-09 11:00:22 -0500 (Mon, 09 Aug 2010) | 5 lines
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/TitanPals.toc
+   M /trunk/TitanPalsConfig.lua
+   M /trunk/TitanPalsRightClick.lua
+   M /trunk/TitanPalsToolTip.lua
+   M /trunk/TitanPalsUtils.lua
+
+- Starcraft II tooltip fixed
+- Fixed <Away> in Tooltip
++ Will be adding optsion to use <Away> or <AFK>
+= Multi account under 1 Battle Net in tooltip
+* The Multi Account's is still being worked on
+------------------------------------------------------------------------
