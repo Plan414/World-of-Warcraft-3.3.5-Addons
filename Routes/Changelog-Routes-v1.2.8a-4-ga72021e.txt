@@ -1,0 +1,6 @@
+Xinhuan:
+	- Significantly reduce memory usage of Routes. Roughly 13kb less per route so if you have say 50 routes, that's 650kb less. This update has no effect on CPU usage or FPS.
+	- Fix a long standing obscure bug where a route would be created with node types that aren't selected.
+	- Register the /routes slash command for non-English users too.
+Erik Broes:
+	- Normalized 'check' for Cartographer_Waypoints and made it more 'Carbonite-taint-proof'
