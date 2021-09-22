@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Perl Player Frame
+## Notes: Displays a movable player frame to replace the default.
+## Dependencies: Perl_Config
+## OptionalDeps: Clique, GFW_FactionFriend, myAddOns
+## SavedVariables: Perl_Player_Config
+Perl_Player.xml

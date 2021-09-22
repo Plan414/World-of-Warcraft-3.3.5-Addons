@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Perl CombatDisplay
+## Notes: Displays a movable bar that displays health, rage/energy/mana, and combo points.
+## Dependencies: Perl_Config
+## OptionalDeps: Clique, myAddOns
+## SavedVariables: Perl_CombatDisplay_Config
+Perl_CombatDisplay.xml
