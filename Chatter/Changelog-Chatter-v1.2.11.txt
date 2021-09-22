@@ -1,0 +1,13 @@
+tag v1.2.11
+aabc7128b1e2b8a15d8ed2f0e16d04c553f5c091
+root <root@cfrepos1.curseforge.net>
+2010-08-07 21:34:37 +0000
+
+Tagging as v1.2.11
+
+
+--------------------
+
+Sal Scotto:
+	- Added some defautls to fix some load errors
+	- Fixed missing ref to sound list, to Media:Hash("sound")
