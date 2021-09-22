@@ -1,0 +1,715 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+	<Script file="Localization\TellMeWhen-enUS.lua"/>
+	<Script file="TellMeWhen.lua"/>
+	<Script file="TellMeWhen_options.lua"/>
+    <Script file="Lib\LibStub\LibStub.lua"/>
+
+	<Frame name="TellMeWhen_GroupTemplate" enableMouse="false" parent="UIParent" virtual="true">
+		<Size>
+			<AbsDimension x="1" y="1"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parent_ResizeButton" frameStrata="HIGH">
+				<Size>
+					<AbsDimension x="10" y="10"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentTexture" file="Interface\AddOns\TellMeWhen\Textures\Resize">
+							<Size>
+								<AbsDimension x="10" y="10"/>
+							</Size>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						local texture = getglobal(this:GetName().."Texture");
+						texture:SetVertexColor(0.6, 0.6, 0.6);
+					</OnLoad>
+					<OnMouseDown>
+						TellMeWhen_StartSizing(self, button);
+					</OnMouseDown>
+					<OnMouseUp>
+						TellMeWhen_StopSizing(self, button);
+					</OnMouseUp>
+					<OnEnter>
+						TellMeWhen_GUIButton_OnEnter(self, TELLMEWHEN_RESIZE, TELLMEWHEN_RESIZE_TOOLTIP);
+						local texture = getglobal(self:GetName().."Texture");
+						texture:SetVertexColor(1, 1, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+						local texture = getglobal(self:GetName().."Texture");
+						texture:SetVertexColor(0.6, 0.6, 0.6);
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+
+	<Frame name="TellMeWhen_IconTemplate" virtual="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="30" y="30"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\Buttons\UI-EmptySlot-Disabled">
+					<Size>
+						<AbsDimension x="46" y="46"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentTexture" file="Interface\Icons\INV_Misc_QuestionMark">
+					<Size>
+						<AbsDimension x="30" y="30"/>
+					</Size>
+				</Texture>
+				<FontString name="$parentCount" inherits="NumberFontNormalSmall" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-2" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="HIGHLIGHT">
+				<Texture name="$parentHighlight" file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="30" y="30"/>
+					</Size>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnEnter>
+				TellMeWhen_Icon_OnEnter(self, motion);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnMouseDown>
+				TellMeWhen_Icon_OnMouseDown(self, button);
+			</OnMouseDown>
+			<OnDragStart>
+				self:GetParent():StartMoving();
+			</OnDragStart>
+			<OnDragStop>
+				self:GetParent():StopMovingOrSizing();
+			</OnDragStop>
+		</Scripts>
+		<Frames>
+			<Cooldown name="$parentCooldown" inherits="CooldownFrameTemplate">
+				<Size x="30" y="30"/>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Cooldown>
+			<Frame name="$parentDropDown" inherits="UIDropDownMenuTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOP"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						UIDropDownMenu_Initialize(this, TellMeWhen_IconMenu_Initialize, "MENU");
+					</OnLoad>
+					<OnShow>
+						UIDropDownMenu_Initialize(this, TellMeWhen_IconMenu_Initialize, "MENU");
+					</OnShow>
+				</Scripts>
+			</Frame>
+		</Frames>
+	</Frame>
+
+	<Frame name="TellMeWhen_Group1" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="1">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-100"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<Frame name="TellMeWhen_Group2" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="2">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-150"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<Frame name="TellMeWhen_Group3" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="3">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-200"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<Frame name="TellMeWhen_Group4" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="4">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-250"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<Frame name="TellMeWhen_Group5" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="5">
+	<Anchors>
+		<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+			<Offset>
+				<AbsDimension x="100" y="-300"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	</Frame>
+	<Frame name="TellMeWhen_Group6" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="6">
+	<Anchors>
+		<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+			<Offset>
+				<AbsDimension x="100" y="-350"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	</Frame>
+	<Frame name="TellMeWhen_Group7" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="7">
+	<Anchors>
+		<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+			<Offset>
+				<AbsDimension x="100" y="-400"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	</Frame>
+	<Frame name="TellMeWhen_Group8" inherits="TellMeWhen_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="8">
+	<Anchors>
+		<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+			<Offset>
+				<AbsDimension x="100" y="-450"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	</Frame>
+
+
+
+	<!-- INTERFACE OPTIONS PANEL -->
+
+	<Frame name="TellMeWhen_GroupOptionsTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="14" y="20"/>
+		</Size>
+		<Frames>
+			<CheckButton name="$parentEnableButton" inherits="InterfaceOptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT" />
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						local text = getglobal(self:GetName().."Text");
+						text:SetText(TELLMEWHEN_UIPANEL_ICONGROUP..self:GetParent():GetID());
+					</OnLoad>
+					<OnShow>
+						TellMeWhen_GroupEnableButton_Update(self);
+					</OnShow>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT");
+						GameTooltip:SetText(TELLMEWHEN_UIPANEL_TOOLTIP_ENABLEGROUP, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						TellMeWhen_GroupEnableButton_OnClick(self);
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Frame name="$parentColumnsWidget">
+				<Size>
+					<AbsDimension x="64" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="$parent" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="164" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentText" inherits="GameFontHighlight" justifyH="CENTER" text="X">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER" />
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentLeftButton">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parent" relativePoint="CENTER">
+								<Offset>
+									<AbsDimension x="-8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound("gsTitleOptionOK");
+								TellMeWhen_RowColumnsButton_OnClick(self, "Columns", -1);
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+					</Button>
+					<Button name="$parentRightButton">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parent" relativePoint="CENTER">
+								<Offset>
+									<AbsDimension x="8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound("gsTitleOptionOK");
+								TellMeWhen_RowColumnsButton_OnClick(self, "Columns", 1);
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnShow>
+						TellMeWhen_RowColumnsWidget_Update(self, "Columns");
+					</OnShow>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentRowsWidget">
+				<Size>
+					<AbsDimension x="64" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="$parent" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="240" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentText" inherits="GameFontHighlight" justifyH="CENTER" text="X">
+							<Anchors>
+								<Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER" />
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentLeftButton">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parent" relativePoint="CENTER">
+								<Offset>
+									<AbsDimension x="-8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound("gsTitleOptionOK");
+								TellMeWhen_RowColumnsButton_OnClick(self, "Rows", -1);
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+					</Button>
+					<Button name="$parentRightButton">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parent" relativePoint="CENTER">
+								<Offset>
+									<AbsDimension x="8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound("gsTitleOptionOK");
+								TellMeWhen_RowColumnsButton_OnClick(self, "Rows", 1);
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+						<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnShow>
+						TellMeWhen_RowColumnsWidget_Update(self, "Rows");
+					</OnShow>
+				</Scripts>
+			</Frame>
+			<CheckButton name="$parentOnlyInCombatButton" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="25" y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="300" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TellMeWhen_OnlyInCombatButton_Update(self);
+					</OnShow>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT");
+						GameTooltip:SetText(TELLMEWHEN_UIPANEL_TOOLTIP_ONLYINCOMBAT, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						TellMeWhen_OnlyInCombatButton_OnClick(self);
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentPrimarySpecButton" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="25" y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+					<Offset>
+						<AbsDimension x="370" y="0"/>
+					</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TellMeWhen_PrimarySpecButton_Update(self);
+					</OnShow>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT");
+						GameTooltip:SetText(TELLMEWHEN_UIPANEL_TOOLTIP_PRIMARYSPEC, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						TellMeWhen_PrimarySpecButton_OnClick(self);
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentSecondarySpecButton" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="25" y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="420" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TellMeWhen_SecondarySpecButton_Update(self);
+					</OnShow>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT");
+						GameTooltip:SetText(TELLMEWHEN_UIPANEL_TOOLTIP_SECONDARYSPEC, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						TellMeWhen_SecondarySpecButton_OnClick(self);
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Button name="$parentGroupResetButton" text="TELLMEWHEN_UIPANEL_GROUPRESET" inherits="UIPanelButtonTemplate" >
+				<Size>
+					<AbsDimension x="80" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="510" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound("gsTitleOptionOK");
+						TellMeWhen_GroupPositionReset_OnClick(self);
+					</OnClick>
+				</Scripts>
+				<NormalFont inherits="GameFontNormalSmall"/>
+				<HighlightFont inherits="GameFontHighlightSmall"/>
+			</Button>
+		</Frames>
+	</Frame>
+
+	<Frame name="InterfaceOptionsTellMeWhenPanel" hidden="true" parent="InterfaceOptionsFramePanelContainer">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTitle" text="TellMeWhen" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-16"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentVersion" text="TELLMEWHEN_VERSION" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentTitle" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="6" y="-0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSubText1" text="TELLMEWHEN_UIPANEL_SUBTEXT1" inherits="GameFontHighlightSmall" nonspacewrap="true" maxLines="3" justifyH="LEFT" justifyV="TOP">
+					<Size>
+						<AbsDimension y="24" x="0"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-8"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-24" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSubText2" text="TELLMEWHEN_UIPANEL_SUBTEXT2" inherits="GameFontHighlightSmall" nonspacewrap="false" justifyH="LEFT" justifyV="TOP">
+					<Size>
+						<AbsDimension x="0" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="128" y="50"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-24" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentColumnsLabel" text="TELLMEWHEN_UIPANEL_COLUMNS" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="BOTTOM" relativeTo="$parentSubText1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="164" y="-28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentRowsLabel" text="TELLMEWHEN_UIPANEL_ROWS" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="BOTTOM" relativeTo="$parentSubText1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="240" y="-28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentOnlyInCombatLabel" text="TELLMEWHEN_UIPANEL_ONLYINCOMBAT" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="BOTTOM" relativeTo="$parentSubText1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="310" y="-28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentPrimarySpecLabel" text="TELLMEWHEN_UIPANEL_PRIMARYSPEC" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="BOTTOM" relativeTo="$parentSubText1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="400" y="-28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSecondarySpecLabel" text="TELLMEWHEN_UIPANEL_SECONDARYSPEC" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="BOTTOM" relativeTo="$parentSubText1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="450" y="-28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentResetGroupLabel" text="TELLMEWHEN_UIPANEL_GROUPRESETHEADER" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="BOTTOM" relativeTo="$parentSubText1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="510" y="-28"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this.name = "TellMeWhen";
+				this.default = TellMeWhen_Reset;
+				this.cancel = TellMeWhen_Cancel;
+				InterfaceOptions_AddCategory(self);
+				InterfaceOptionsTellMeWhenPanelOnlyInCombatLabel:SetWidth(60);
+				InterfaceOptionsTellMeWhenPanelPrimarySpecLabel:SetWidth(60);
+				InterfaceOptionsTellMeWhenPanelSecondarySpecLabel:SetWidth(60);
+			</OnLoad>
+			<OnShow>
+				TellMeWhen_OldSettings = CopyTable(TellMeWhen_Settings);
+			</OnShow>
+		</Scripts>
+		<Frames>
+			<Frame name="$parentGroup1" inherits="TellMeWhen_GroupOptionsTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentSubText1" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-40"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentGroup2" inherits="TellMeWhen_GroupOptionsTemplate" id="2">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup1" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentGroup3" inherits="TellMeWhen_GroupOptionsTemplate" id="3">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup2" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentGroup4" inherits="TellMeWhen_GroupOptionsTemplate" id="4">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup3" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentGroup5" inherits="TellMeWhen_GroupOptionsTemplate" id="5">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup4" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentGroup6" inherits="TellMeWhen_GroupOptionsTemplate" id="6">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup5" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentGroup7" inherits="TellMeWhen_GroupOptionsTemplate" id="7">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup6" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parentGroup8" inherits="TellMeWhen_GroupOptionsTemplate" id="8">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup7" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-8"/>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Button name="$parentLockUnlockButton" inherits="UIPanelButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="20" y="50"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TellMeWhen_LockUnlockButton_Update(self);
+					</OnShow>
+					<OnClick>
+						TellMeWhen_LockToggle();
+						TellMeWhen_LockUnlockButton_Update(self);
+					</OnClick>
+				</Scripts>
+				<NormalFont inherits="GameFontNormalSmall"/>
+				<HighlightFont inherits="GameFontHighlightSmall"/>
+			</Button>
+		</Frames>
+	</Frame>
+
+</Ui>
