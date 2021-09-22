@@ -1,0 +1,25 @@
+## Interface: 30300
+## Title: Grid2Options
+## LoadOnDemand: 1
+## Dependencies: Grid2
+## SavedVariables: Grid2OptionsDB
+## Version: 533
+## X-Curse-Packaged-Version: r533
+## X-Curse-Project-Name: Grid2
+## X-Curse-Project-ID: grid2
+## X-Curse-Repository-ID: wow/grid2/mainline
+
+locales.xml
+core.lua
+GridCore.lua
+GridFrame.lua
+GridLayout.lua
+GridBlink.lua
+GridMedia.lua
+GridLocations.lua
+GridIndicators.lua
+GridStatuses.lua
+GridCategories.lua
+
+GridDefaults.lua
+
