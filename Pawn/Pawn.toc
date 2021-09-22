@@ -1,0 +1,13 @@
+## Interface: 20400
+## Title: Pawn
+## Version: 1.1.2
+## Notes: Pawn performs item value assessments to make it easier to decide which items are better than others.
+## OptionalDependencies: AtlasLoot, EQCompare, EquipCompare, MultiTips
+## SavedVariablesPerCharacter: PawnOptions
+
+VgerCore\VgerCore.lua
+
+Localization.lua
+Pawn.lua
+PawnUI.lua
+PawnUI.xml

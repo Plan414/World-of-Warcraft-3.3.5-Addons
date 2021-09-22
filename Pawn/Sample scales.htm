@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Pawn - sample scales</title>
+<link rel="stylesheet" type="text/css" href="VgerCore/VgerCore.css" />
+</head>
+<body>
+
+<h1>Sample scales for Pawn</h1>
+<p>The power of Pawn lies in the fact that it&#39;s extremely configurable to meet 
+your needs and match your preferences.&nbsp; But, it can be daunting to start 
+your own scale from scratch.&nbsp; You might find the following scales useful as 
+starting points, or exactly as they are.</p>
+<p><b><span style="color: red;">Important:</span></b> These scales have not been 
+updated for Wrath of the Lich King.&nbsp; In some cases, such as for the new 
+spell power stat, Pawn will try to assign a value to spell power for you based 
+on spell damage and healing.&nbsp; For other changes, such as how enhancement 
+shamans now only get 1 attack power per point of strength, you will need to 
+update these scale accordingly to use them in the Wrath beta.</p>
+<h3 id="ScaleTags">How to use Pawn scale tags</h3>
+<p>Each scale includes a Pawn scale tag that you can use to automatically add 
+the scale to Pawn for your character.&nbsp; To use a scale tag:</p>
+<ol>
+	<li>Highlight all of the scale tag, from the &quot;(&quot; to the &quot;)&quot;, and then press
+	<b>Ctrl+C</b> to copy it.</li>
+	<li>In World of Warcraft, type <b>/pawn </b>in the chat window to open the 
+	Pawn configuration UI.</li>
+	<li>Click the <b>Import</b> button.</li>
+	<li>A window will appear.&nbsp; Press <b>Ctrl+V</b> to paste the scale tag into it.</li>
+	<li>Click OK.</li>
+	<li>Hover over an item or click an item link to see the new scale tag in 
+	action!</li>
+</ol>
+<h3>Finding more Pawn scales</h3>
+<p>You can find more Pawn scales on the unofficial <a href="http://pawnmod.trenchrats.com/index.php" target="_blank">
+Pawn Scales Resources Forum</a>.</p>
+<h2>Druids: Emmerald-Draenor(EU)&#39;s feral combat models</h2>
+<p>Many feral druids follow Emmerald&#39;s gear lists.&nbsp; The published stat 
+values that Emmerald posts can be easily translated into Pawn scales, so you can 
+calculate values automatically and in-game, without having to refer to the 
+spreadsheet.&nbsp; (Emmerald takes a few additional things into account in the 
+spreadsheet, and makes certain decisions regarding gems to socket that Pawn does 
+not, but for the vast majority of gear, you can get very similar values 
+automatically from Pawn.</p>
+<h3>Cat DPS</h3>
+<p>As an example, here&#39;s a scale that calculates cat DPS the same way that 
+Emmerald does, accurate as of January 2008:</p>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Emmerald cat DPS&quot;: Strength=2.0602, Agility=2.4009, Ap=1, FeralAp=1, 
+ArmorPenetration=0.2371, ExpertiseRating=1.1015, HitRating=1.0876, CritRating=1.5052, 
+HasteRating=1.0529, MinDamage=11.0502, RedSocket=19.2072, BlueSocket=9.6036, 
+YellowSocket=14.2616, MetaSocket=54.9375 )</p>
+
+<p>To construct this scale, I took the values for the base stats listed on the
+<a href="http://www.emmerald.net/Cat_DPS/Index.html">cat DPS info page</a>, and 
+put them into Pawn.&nbsp; It&#39;s important to copy over the values of sockets as 
+well.&nbsp; Items with yellow and blue sockets will give slightly different 
+values than what Emmerald lists, as Emmerald ignores the socket color and always 
+uses red gems, discarding the socket bonus when applicable, but Pawn always 
+counts socket bonuses and never mis-sockets gems.&nbsp; But, item comparisons 
+will still be generally valid.</p>
+<p>It&#39;s worth noting that this scale does not take into account other perfectly 
+valid stats like stamina.&nbsp; It&#39;s up to you whether or not you want to add 
+stamina to your version of the scale, and if you do, what value you assign it.
+</p>
+<h3>Bear tanking</h3>
+<p>Similarly, this scale approximates Emmerald&#39;s bear tanking model:</p>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Emmerald bear tank&quot;: Agility=3.6982, Stamina=4.1962, DefenseRating=2.4708, 
+DodgeRating=2.6147, ResilienceRating=1.3027, Armor=0.4987, Health=0.2716, 
+RedSocket=39.97, BlueSocket=50.3544, YellowSocket=35.0604, MetaSocket=75.5316 )</p>
+
+<p>Similarly to how the cat DPS scale does not include stamina, this scale only 
+contains mitigation stats, and not DPS stats such as attack power, which may 
+still be useful to you when selecting tanking gear.</p>
+<h2>Rogues: AEP (Agility Equivalence Points)</h2>
+<p>One item valuation scheme used by many rogues is AEP, or Agility Equivalence 
+Points.&nbsp; This scale uses Agility as the primary stat, and doesn&#39;t factor in 
+too many other stats.&nbsp; For more information on AEP, see 
+<a href="http://shadowpanther.net/" target="_blank">Shadow Panther&#39;s site</a>.&nbsp; 
+This scale is based on the main AEP value (geared toward PvP), but you could 
+also create scales for the DAEP (PvE) and MAEP (max DPS) systems too.</p>
+<p>One thing to note about these scales is that weapon DPS is not factored into 
+the item value.</p>
+<h3>AEP (PvP)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;AEP&quot;: Armor=0.001, Strength=0.5, Agility=1, Stamina=1, HitRating=0.75, 
+CritRating=0.90, Ap=0.5, ExpertiseRating=0.85, HasteRating=0.85, 
+ArmorPenetration=0.15, Resilience=1, DodgeRating=0.001, BlueSocket=12, RedSocket=10, 
+YellowSocket=10, MetaSocket=40 )</p>
+
+<h2>Shamans: Malan&#39;s Elitist Jerks Enhancement Points (EP)</h2>
+<p>Malan suggests in
+<a href="http://elitistjerks.com/f31/t13297-enhance_shaman_collected_works_theorycraft_vol_i/" target="_blank">
+Enhance Shaman: The Collected Works of Theorycraft, Col. 1</a> that&nbsp;all 
+players use a simulator to get customized values for all of their stats.&nbsp; 
+However, some starting values are provided for entry, middle, and high raid 
+situations, provided here.&nbsp; Use these values to begin calculating 
+Enhancement Points (EP) in-game, and then use a simulator to fine-tune them to 
+your needs.</p>
+<p>Similar to many other DPS-oriented scales, Enhancement Points does not take 
+stamina into account, so you may want to value it accordingly depending on your 
+needs.&nbsp; For these scales, I&#39;ve created socket values based on the 
+recommended gems (Bold Living Ruby, Relentless Earthstorm Diamond, etc.).</p>
+<h3>Entry raid (T4)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Enhancement Points&quot;: Ap=1, Strength=2, Agility=1.74, CritRating=1.97, 
+HitRating=1.34, HasteRating=1.28, ArmorPenetration=0.22, ExpertiseRating=3.18, 
+RedSocket=16, YellowSocket=15.88, BlueSocket=8, MetaSocket=20.88, MainHandDps=9.03, 
+OffHandDps=3.7, OneHandDps=3.7 )</p>
+<h3>Middle raid (T5)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Enhancement Points&quot;: Ap=1, Strength=2, Agility=1.8, CritRating=2, 
+HitRating=1.4, HasteRating=1.48, ArmorPenetration=0.28, ExpertiseRating=3.13, 
+RedSocket=16, YellowSocket=16, BlueSocket=8, MetaSocket=24, MainHandDps=9.03, 
+OffHandDps=3.7, OneHandDps=3.7 )</p>
+<h3>High raid (T6)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Enhancement Points&quot;: Ap=1, Strength=2.2, Agility=1.69, CritRating=1.74, 
+HitRating=1.69, HasteRating=1.82, ArmorPenetration=0.35, ExpertiseRating=3.18, 
+RedSocket=17.6, YellowSocket=15.76, BlueSocket=8.8, MetaSocket=20.28, 
+MainHandDps=9.03, OffHandDps=3.7, OneHandDps=3.7 )</p>
+<h2>Shamans: Skyhoof&#39;s Elitist Jerks &quot;how to heal like a pro&quot;</h2>
+<p>In the popular shaman healing guide
+<a target="_blank" href="http://elitistjerks.com/f31/t19181-shaman_how_heal_like_pro/">
+How to Heal like a Pro</a>, Skyhoof outlines some different gear scales for 
+resto shamans based on how far they have progressed.&nbsp; These scales are 
+based on that guide, with sockets valued based on blue-quality gems for T4 and 
+T5, and epic-quality gems for T6.</p>
+<h3>Entry raid (T4)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Shaman healing&quot;: Stamina=0.2, Intellect=1.0, Spirit=0.1, 
+Healing=1.0, SpellCritRating=0.25, Mp5=4.5, SpellHasteRating=0, Armor=0.01, 
+MetaSocket=90.75, RedSocket=18.0, YellowSocket=13.0, BlueSocket=18.0 )</p>
+<h3>Middle raid (T5)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Shaman healing&quot;: Stamina=0.3, Intellect=0.75, Spirit=0.1, 
+Healing=1.1, SpellCritRating=0.5, Mp5=3.75, SpellHasteRating=0.75, Armor=0.01, 
+MetaSocket=74.625, RedSocket=19.8, YellowSocket=12.9, BlueSocket=17.4 )</p>
+<h3>High raid (T6)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Shaman healing&quot;: Stamina=0.3, Intellect=0.55, Spirit=0.1, 
+Healing=1.3, SpellCritRating=0.5, Mp5=3.0, SpellHasteRating=2.0, Armor=0.01, 
+MetaSocket=59.1, RedSocket=28.6, YellowSocket=20.0, BlueSocket=20.3 )</p>
+<h2>Mages: include&#39;s frost and fire PvE scales</h2>
+<p>User <a href="http://ui.worldofwar.net/users.php?id=219677" target="_blank">include</a> on 
+worldofwar.net has assembled these scales for frost and fire mages in PvE based 
+on calculations, WoWWiki research, and in-game tests.&nbsp; One 
+interesting thing about these scales is that include has intentionally chosen not to 
+give any value to sockets on items.</p>
+<h3>Fire (PvE)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Fire (PvE)&quot;: Stamina=0.3, Intellect=0.8875, Spirit=0.48, 
+SpellHitRating=3, SpellCritRating=2.3, Health=0.015, Hp5=0.96, Mana=0.03, 
+Mp5=3.84, SpellPenetration=0.4, SpellDamage=1.85, FireSpellDamage=1.7575, 
+FrostSpellDamage=0.0925, ArcaneSpellDamage=0.2, Dps=0.03, Armor=0.015, AllResist=0.6, 
+FireResist=0.3, ArcaneResist=0.2, FrostResist=0.2, NatureResist=0.2, 
+ShadowResist=0.3 )</p>
+
+<h3>Frost (PvE)</h3>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tag:</a></b><br />
+<br />
+( Pawn: v1: &quot;Frost (PvE)&quot;: Stamina=0.3, Intellect=0.791, Spirit=0.48, 
+SpellHitRating=3, SpellCritRating=1.529, Health=0.015, Hp5=0.96, Mana=0.03, 
+Mp5=3.84, SpellPenetration=0.4, SpellDamage=2, FireSpellDamage=0.1, 
+FrostSpellDamage=1.9, ArcaneSpellDamage=0.2, Dps=0.03, Armor=0.015, AllResist=0.6, 
+FireResist=0.3, ArcaneResist=0.2, FrostResist=0.2, NatureResist=0.2, 
+ShadowResist=0.3 )</p>
+
+<h2>Shamans: Vger&#39;s healbot scales</h2>
+<p>For the curious, here are the scales that Vger uses for shamanly healbotting.&nbsp; 
+I use two different main scales: one for group healing, and one for arena PvP 
+(where stamina and resilience are more important, and MP5 is less important).</p>
+<p>I&#39;ve got a lot of random stats in my scales, which is a little strange to 
+some people.&nbsp; But, I do little raiding and mostly only heal heroics, so, 
+for example, resilience is worth more than nothing to me.&nbsp; Valued at 0.15 versus intellect at 1.4, I figure that getting 
+many points of resilience 
+is probably worth losing 1 intellect.&nbsp; Maybe it will save me from a crit 
+someday when I pull healing aggro, which seems to happen a lot.&nbsp; Also, my 
+current thinking is that intellect is very much undervalued as a stat, since it 
+also gives you healing, spell crit, and mp5 (well, more like mp180 with mana 
+tide), so my value for intellect is high compared to most ideas of what&#39;s good 
+for a shaman.&nbsp; Maybe I&#39;d feel differently if I ever played with a shadow 
+priest.</p>
+<p class="codeblock"><b><a href="#ScaleTags">Pawn scale tags:</a></b><br />
+<br />
+( Pawn: v1: &quot;Healbot value&quot;: Intellect=1.4, SpellHasteRating=0.75, 
+SpellCritRating=0.55, SpellDamage=0.05, CritRating=0.04, Mana=0.06, HasteRating=0.03, 
+ResilienceRating=0.15, DefenseRating=0.05, Agility=0.23, ExpertiseRating=0.03, 
+HitRating=0.05, SpellHitRating=0.2, BlueSocket=16.2, Spirit=0.25, BlockValue=0.05, 
+BlockRating=0.15, RedSocket=17.4, DodgeRating=0.25, AllResist=0.1, Armor=0.005, 
+Healing=0.95, Strength=0.044, MetaSocket=39.3, Dps=0.3, SpellPenetration=0.05, 
+Health=0.05, Hp5=1.4, Stamina=0.5, YellowSocket=14.3, Mp5=3.75, Ap=0.02 )<br />
+<br />
+( Pawn: v1: &quot;Arena PvP value&quot;: Intellect=1.1, SpellDamage=0.4, SpellCritRating=0.7, 
+HasteRating=0.1, SpellPenetration=0.05, Mana=0.05, AllResist=0.1, 
+ResilienceRating=1.35, DefenseRating=0.5, Agility=1.007, ExpertiseRating=0.1, 
+HitRating=0.58, Armor=0.079, Hp5=1.5, Spirit=0.05, BlockValue=0.65, BlockRating=0.5, 
+RedSocket=13.2, Health=0.135, SpellHasteRating=0.8, Healing=0.6, Dps=3.5, 
+Strength=0.256, MetaSocket=24.3, YellowSocket=12.9, CritRating=0.32, DodgeRating=0.75, 
+BlueSocket=16.2, Stamina=1.35, SpellHitRating=0.4, Mp5=1.5, Ap=0.25 )</p>
+
+</body></html>
