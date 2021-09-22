@@ -1,0 +1,33 @@
+------------------------------------------------------------------------
+r969 | shefki | 2010-10-07 02:11:48 +0000 (Thu, 07 Oct 2010) | 2 lines
+Changed paths:
+   M /trunk/AceConfig-3.0/AceConfig-3.0.lua
+
+Add link to documentation of the contents of the options table.
+
+------------------------------------------------------------------------
+r968 | nevcairiel | 2010-10-06 06:44:54 +0000 (Wed, 06 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIContainer-ScrollFrame.lua
+
+AceGUI-3.0: ScrollFrame: Allow for a small margin of error when determining if the scroll bar should be shown.
+------------------------------------------------------------------------
+r967 | nevcairiel | 2010-09-25 08:20:55 +0000 (Sat, 25 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua
+
+AceConfigDialog-3.0: Fix a typo that broke options sorting by name in case of same order (Ticket #172)
+------------------------------------------------------------------------
+r966 | nevcairiel | 2010-09-18 06:34:04 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   D /trunk/AceTab-3.0/AceConfigTab-3.0.lua
+   M /trunk/AceTab-3.0/AceTab-3.0.xml
+
+Remove AceConfigTab as it was never functional and breaks tab completion on 4.0
+------------------------------------------------------------------------
+r965 | mikk | 2010-08-09 00:47:52 +0000 (Mon, 09 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/CallbackHandler-1.0/CallbackHandler-1.0.lua
+
+Upgrade CallbackHandler to rev6 (hrmph... should this be an extern? i guess that might cause packager funz though..)
+------------------------------------------------------------------------
