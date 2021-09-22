@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r41 | nevcairiel | 2009-03-06 10:12:57 +0000 (Fri, 06 Mar 2009) | 1 line
+Changed paths:
+   M /trunk/LibGratuity-3.0.toc
+
+Restore LoD to Libraries, as 3.0.8 fixed all bugs that blocked LoD OptionalDeps to load properly.
+------------------------------------------------------------------------
+r40 | nevcairiel | 2008-10-12 11:40:27 +0000 (Sun, 12 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibGratuity-3.0.toc
+
+Patch 3.0 prep: Remove LoD from Libraries that have no load manager (LoD+OptDep Bug)
+------------------------------------------------------------------------
