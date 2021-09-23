@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: LagBar
+## Author: Derkyle
+## Version:  1.5
+## Notes: Displays a simple bar with some Latency Information.
+## SavedVariables: LagBar_DB
+LagBar.xml
