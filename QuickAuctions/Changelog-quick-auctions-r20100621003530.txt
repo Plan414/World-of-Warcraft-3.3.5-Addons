@@ -1,0 +1,327 @@
+Shadowed:
+	- Added an error and a skipping of a mail entry if you try looting mail while at the gold cap
+	- Using open all when cancelling auctions will cause the opener to wait until all auctions are cancelled then automatically start looting
+	- Fixed patch/batch typo on mail toggle
+	- Added an option to disable groups per profile
+	- Fixed reagent buying
+	- Added materials required buying if the vendor is open
+	- Localization update
+	- Oh and remove debug code
+	- Added support for the Blizzard posting APIs added in 3.3, or maybe it was 3.2, who knows
+	- Oh and remove these two files I'll not need
+	- Quick fix for post time bug from 3.3.3
+	- Added QAAPI:GetData(itemLink), simple API to access scanned auction data
+raptium:
+	- Add zhTW localization(partial)
+Shadowed:
+	- Added /qa cancelall #g#s%c - cancels all auctions without a buyout below the entered amount (thanks Dezzimal)
+	- - Now will wait for more mail even if not every slot can be looted. If you have 100 mail waiting, the first 20 will make your inventory too full, it will wait and keep looting the next 30 slots - After sending mail, will wait twice as long before auto looting to make sure all events fired
+	- When determining where to split items into, QA will pick the items speciality bag, glyphs will go into a scribe bag before the backpack for example
+	- Fixed leaked global
+	- Fixed a gem summary bug that would cause it to break in Russian (Thanks Kos)
+	- When auto looting finishes, any pending mail that is supposed to be auto sent is sent immediately
+	- Fixed mail rechecking not working - After checking all mail indexes and running out, it will reset to #1 and do one more loop before exiting
+	- Sped up scanning again, instead of delaying 0.50, 1.32, 1.98 seconds each time a scan fails to return data QA will soft retry and check for data every 0.10 second until 4 seconds total have elapsed. Should result in faster initial scans, but have little impact after that - Fixed some auctions taking far too long to scan like gems when using summary
+	- Removed unique/full error if we run out of things to loot since mail can be incremented via over means not just full/unique
+	- Fixed whitelist configuration not working
+	- Updated deDE localizatioon, thanks Rothis
+	- Fixed inventory counts not showing up in the summary if there were no items in the auction house (Thanks dr_AllCOM3)
+	- If a split failure occurs, items will no longer be queued for splitting, fixes issues if split failure occurs and you try and repost - Moved split queue reset to split starting to fix any remaining bugs
+	- Increased timeout on splitting to 20 seconds, as it's possible space will be freed up during the split queue due to changes in how posting works - Reduced throttle on bag updates to 0.10s, might slightly speed up splitting, might not
+	- Localization update
+	- Wheeeeeeeeeeee
+	- Oops! Logic is hard
+	- Added debug code to scanning so I don't have to keep adding it back when I test things
+	- Another change to be sure it doesn't show the players name as being undercut
+	- Fixed width bug with general category for options - Updated description texts to indicate prices are per item, not total
+	- Added /qa cancel <filter> allows you to cancel any items matching the given filter. Can be used to single cancel items /qa cancel Glyph of Guardian Spirit or to mass cancel by pattern such as /qa cancel Glyph to cancel anything matching Glyph
+	- Localization update
+	- Improved sorting for posting items, the new order is whatever has the lower stack count, if the stack counts are equal the item with the least in your inventory will be posted first to free up new slots for splitting faster
+	- Mail indicator will get shifted to the left if somebody is using Postal
+	- Fixed lock status on buttons not being reset if there are no auctions to cancel - Fixed visual bug that would make it look like you undercut yourself, so I don't have to listen to people complain
+	- Fixed split error not showing up in the log
+	- Removed debug code
+	- Added a "# mail" tag to the top right of the mailbox indicating the total amount of mail left, including pending
+	- deDE localization update (Thanks Rothis!)
+	- Moved auto mail toggle to a per-character setting, this will reset your auto mail setting but it means you can disable it on characters you don't want now
+	- Localization update
+	- No longer going through every auction, if we find bad data exiting immediately
+	- I am smart, changed cancel and posting to just wipe the entire status table, I am sure this will fail horribly when I remember I stored something useful there
+	- Fixed mail being sent every single item created, oops!
+	- Holding SHIFT down while opening the mailbox will disable auto sending of mail temporarily Fixed auto mail logic, should work properly when you are auto looting items that need to be mailed to another character
+	- Added a specific state reset on cancel
+	- Event throttle will hide itself when splitting is stopped, won't let anything else get split that was queued
+	- Fixed flaggings for post/cancel scans, should fix cancel window popping up when doing a regular scan
+	- Fixed flagging on posting, should only stop if there are no more items to split and will stop posting if the auction house is closed regardless if a scan is running or not
+	- Fixed queued auction scans not being reset if you interrupt the scan
+	- Localization update
+	- Fixed old usage of profile.globals being used when canceling everything in a specific group
+	- Apparently AUCTION_ITEM_LIST_UPDATE will fire even without auction data, so changed it to wait 0.50 seconds if no auction data is found Changed to only watching the first AUCTION_ITEM_LIST_UPDATE after a query is sent
+	- Trying a fix to delay scanning to only skip the delay before scanning if there is 5 or more items found
+	- Changed how auction filters are removed, should reduce number of auctions not being found
+	- Fixed mail erroring if it's opened and items are immediately queued to send
+	- Improved scan retries, when auction data is received it will check if any bad data (no name/no owner) is found, if there is none it will immediately scan the auction data and keep going. This will speed up scanning by at least 0.50 seconds per page after the initial scan
+	- Removed super scan option, it's unnecessary now
+	- Reduced the time between checking if we can send more auction data to every 0.05 seconds
+	- Fixed duplicate "Override Fallback" labels in configuration
+	- Debug code is bad
+	- Clicking "Open all" before the timer on mailbox cache is up will cause it to wait for new mail before auto looting, rather than failing If mail #1 cannot be looted, auto looter will try mail #2 and so on instead of just failing
+	- Switched the ruRU localization to pull from the  namespace table
+	- Fixed frFR localization not pulling from the metatable of the enUS one
+	- If a query is sent while QA is scanning, it will ignore it and continue whatever the last query it needed was, fixes QA bugging out when other mods are being bad
+	- Updated Ace3
+	- Fixed error if mail target is reset while the timer is running
+	- Fixed info popup showing if QA errored
+	- Fixed remove/add items for groups not reloading correctly Fixed new groups not being added to the configuration list
+	- Improved mailer, if you run out of inventory from the looter but you have mail pending due to the auto sender, it will send out the pending mail then keep trying to loot. Let's you do things like mass mail herbs despite the fact that you may only have 5 slots open, rather than 12.
+	- Fixed leaked global
+	- Fixed mail opener button showing when sending mail Added a visible change to the mail send target so users don't panic and think there mail is being sent to some blank name If the players inventory is too full to loot mail, it will try the next mail until it runs out of mail, then it will stop trying to loot mail and error
+	- Hiding preload groups option for now, not ready to implement it yet
+	- Added auto looting, adds a button between prev/next to auto loot all mail, should be a lot faster than Postal due to using the Blizzard API for looting. Not done yet, still need to add checks for inventory being full - Fixed auto mailer being activated even when the mailbox wasn't open
+	- Removed latency and interval for mail looting from options, they shouldn't be necessary
+	- Added auto mail settings Added help test for the general group options Fixed sliders for price gap and maximum fallback price
+	- Added an ignore stacks option, let's you ignore action prices of anything that is stacked beyond a set amount, so you can set it to 1 and it will ignore the prices of any Glyphs that are posted as 2 or more
+	- Switched to case-insensitive matching of mail targets
+	- Shouldn't show the info panel if a module enables
+	- Rewrote the configuration to use AceConfig-3.0 as I can implement UIs faster with it, redid the configuration look too. Most options and panels are not yet implemented, but all group settings and whitelist should work fine.
+	- Updated TOC to Quick Auctions 3
+	- Added a new info panel that will pop up once per new message, lets me make sure users know about changes in QA like certain database values being reset that they need to reconfigure
+	- Auto mail toggle will now persist between sessions Added auto refreshing of the mailbox once new cache data has loaded Implemented the new mail system that handles sending mail to any character automatically based on a predefined list
+	- Updated manage, post and scan modules to pull from the correct profile scopes
+	- Updated summary to pull from the correct profile scope
+	- Fixed tradeskills.lua error when opening it before the item cache has fully loaded after a patch
+	- Added AceDBOptions-3.0
+	- Moved Quick Auctions to the internal namespace tables Blizzard provided in 3.3
+	- Apparently the tooltip field is being set to true, not quite sure how I'll have to look into that
+	- Fixed test on cancel checking, no longer bugs out and not reset the lock on buttons
+	- Fixed mail being sent out too early when using auto mailing and creating stacked items like glyphs
+	- Added a mailbox timer on how long until the mailbox updates the cache data, should be more accurate than Postals number too
+	- Fixed nil tooltip errors
+	- Only reset cancel flag if Auction House is closed while scanning, prevents spam from happening if you close the window while it cancels everything
+	- Fixed cancel state not being reset if it's interrupted - Renamed Cancel -> Start for the click this button to cancel everything frame
+	- Commenting out QueryAuctionItems hook as it's not actually needed right now
+	- Apparently, it is not spelled 'cancle', but 'cancel', who'd have thunk?
+	- Cleaned up flag resetting to handle the fact that auctions are posted while scanned
+	- Updated German localization (Thanks Rothis - Khaz'goroth)
+	- Fixed cancel state not being reset sometimes, probably caused if you interrupt a cancel scan
+	- Removed 1c undercut check, will default to the threshold price in that case
+	- Reordered post messages, no owner is now the last message rather than second
+	- Auctions without a buyout are no longer recorded period, even their quantity is ignored as it's irrelevant data
+	- Comparing nils with numbers is bad
+	- Should have fixed "Auction created." messages that happen on the last post scan
+	- Fixed math.floor nil value error
+	- Fixed potential for an error around line #158 in QuickAuctions.lua if an invalid log id is passed
+	- Redid posting code, auctions are now posted while data is scanning, meaning it'll scan data for Scarlet Ruby then post Scarlet Ruby while it scans the next auction, this should drastically speed up posting Status button is now an indicator for scan progress just like cancel and post will show their progress
+	- Added super scanner option, although it's hidden for now since it doesn't work quite as well as I want it to
+	- Changed how the button disabling functions in QA are called to handle the new changes
+	- Localization update
+	- Price gap is now limited by fallback * fallback cap, meaning if your fallback is 100g, fallback cap is 50g it will ignore auctions above 150g for calculating the price gap
+	- If threshold is 50g, your competition posts at 51g and your undercut is 5g it will now auto undercut by only 1g to prevent going below the threshold
+	- Fixed lastSeenLogID error that randomly happened
+	- Guess I should TOC bump too while I am at it
+	- Implemented new canceling mode that requires a hardware event before it smart cancels
+	- Added configuration for cancel binding and sound when ready to cancel
+	- Added a note describing the changes to canceling in Quick Auctions introduced with 3.3, message is only shown once
+	- - Renamed Price Threshold to make it less confusing
+	- - Price Threshold renamed to Maximum price gap
+	- - Added price threshold option, this applies to both posting and cancelling. Let's you set a price at which it will default to the second lowest auction, eg if there is a 10% price difference between your lowest auction and the second lowest it will post at second lowest price instead
+	- - Added configuration for price threshold option
+	- - Localization update
+	- - Fixed fallback items failing to be recongized when using auto fall back, floating points that are not actually visible floating points are fun
+	- - Fixed error in manage.lua:343
+	- - Localization update
+	- - Added description on using the middle button in the range slider to change it
+	- - Commiting at 2 AM is bad, re-applied soulbound fix
+	- - Fixed post cap failing on any item that was posted in stacks above one
+	- Revert "- Fixed soulbound detection failing for some localizations, such as French"
+	This reverts commit 70c6485d07c97dbcb16d7afd2f5ab7ff8ca3aaef.
+	- - Fixed
+	- - Fixed soulbound detection failing for some localizations, such as French
+	- - Changed log to be hidden by default
+	- - Added French localization (Thanks Galo - Sargeras!)
+	- - Fixed a bug with auto fallback enabled and no other auctions are up
+	- - Reenabled craft queue for enchanting so it can be used as a simple list
+	- - Updated German localization (Thanks Rothis - Khaz'goroth)
+	- - Fixed bug with post cap not taking into auction items posted at the fallback when the market price is below threshold
+	- - Fixed bug that was breaking the manual entry of craft queue from working
+	- - Added "Enable auto fallback" option, allows you to have auctions automatically posted at fallback if the market price is below (or equal) to threshold
+	- - Items are now sorted by group when displaying them in the status report
+	- - Craft queue is now disabled for enchanting scrolls to reduce confusion, craft help indicates this. - Added a hide uncraftables button to hide any item you cannot craft from the summary list
+	- - Updated smart cancelling to indicate it will cancel if there are no other auctions up beyond your own
+	- - Defaults update
+	- - Localization update
+	- - Added partial Russian localization (Thanks Cubert - Thermaplug-RU)
+	- - Fixed deDE localization being loaded for all locales not just German
+	- - Reduced font size of logs slightly
+	- - Updated to a full deDE localization (Thanks Rothis - Khaz'goroth)
+	- - Fixed a bug causing post cap to group all of players auctions into a single one rather than the total theyh actually had at that tier
+	- - Updated deDE localization (Thanks Aratar)
+	- - Fixed post cap being calculated using the total quantity of items posted rather than total auctions posted, eg if you posted 2 auctions with 5 items each and your post cap is 6 it will error because it thought you had 10 auctions, rather than 2
+	- - Fixed a typo in the buyout testing always using the default undercut value
+	- - TOC update to reference deDE localization
+	- - Localization update
+	- - Changed can craft to first check if we know the link, then to check the perfect match as an efficiency improvement - Added a second Perfect <blah> match called ALTER_PERFECT for localizations like French with alternative matchings based on the word type
+	- - Added deDE localization (Thanks chrysokeras!)
+	- - Localization update
+	- - Reverted summary changes for enchanting scrolls
+	- - Added threshold to the status report
+	- - Fixed an error in tradeskills.lua to disable the enhanting stuff for now
+	- - Localization update
+	- - Fixed an error in the craft queue creating the maximum amount all the time
+	- - Added feature to disable auto cancelling in a group
+	- - Fixed craft queue not working for enchants when using manual entry of item quantities - Fixed typo in displaying craft queue
+	- - Craft queue will now work with enchanting scrolls, thanks Cybnext for the code
+	- - Fixed "Post cap" not accepting manual entries and having to be done purely through the slider
+	- - Fixed an error when using the status scan without opening the log
+	- - Added a new status module, this is basically a speedy summary that will get auction house stats for all items in your inventory and active on the auction house that are managed by Quick Auctions. It will show the lowest buyout as well as how many are in the auction house
+	- - Added an additional API call for getting total items up
+	- - Enabled the status module in the button list
+	- - Localization update
+	- - TOC update
+	- - Fixed a rare error in manage.lua:362
+	- - Updated error message when QA fails to find the category index to make it more clear that it needs to be localized
+	- - Changed "Items per auction" and "Post cap" to be 1 - 1000 to account for Engineering bullets and other items that stack above 40 (Generally reputation items)
+	- - Log window will now group items into their proper row and only show that item once when posting, no more spam with 5000 items in it - Log window is now scrollable and won't clear logs when posting or canceling - Fixed an error when mousing over a row with no data in it in the logs
+	- - Localization update
+	- - TOC update
+	- - Library update
+	- - Fixed an error at line #11 regarding lastSeenLogID
+	- - Oops, should actually stop splitting on scan start not clear queue
+	- - Fixed an issue that would cause too many, too little or the wrong price for posting items ifi t was interrupted (Thanks batkuip)
+	- - Might as well bump TOC
+	- - Fixed auctions not being canceled if you are the only one with them up and they are below threshold (Thanks batkuip)
+	- - Fixed auto mail button being unusable on the send mail page
+	- - Added a focus clearing when a mail is sent automatically
+	- - Added a check to make sure the name actually exists when canceling, fixes an error if you cancel after a patch before data loads
+	- - Changed craft queue: Left clicking will now increment the craft queue number, right click will decrement it, SHIFT + Double click will activate the old style of letting you manually enter the number (From Larroke) - ALT + Clicking an item link will now swap it to the browse frame (Also from Larroke) - Fixed backspace not working correctly with clearing the craft queue
+	- - Localization update
+Zachary Anker:
+	- - Merged Larroke's changes in, craft queue now is SHIFT + Double click for manual mode, left click to add one, right click to remove one.\n- Added a shift to the browse frame when ALT + clicking an item\n- Fixed craft queue not being modified when modifying it through backspace.
+Shadowed:
+	- - Fixed an issue with changing settings causing boolean errors
+	- - Added auto mailer, will automatically mail items that are managed by QA (uses the same settings as everything else, you can set it to mail everything globally or per group etc) this will try and group items up into the largest.
+	NOTE: If you typo the banker name it will send it to the wrong person, there's about 5 different warnings noting this if you manage to mess up and complain that you made a mistake you waive all rights to not be made fun of.
+	- - Library update
+	- - Localization update
+	- - Added mail saved variables
+	- - Updated TOC
+	- - Added mailer options
+	- - Updated so reverse lookups can be done outside of the manage module
+	- - Making sure the table you are copying exists is a very good idea
+	- - Updated to use factionrealm
+	- - Updated craft list/craft queue to use realm database instead of factionrealm
+	- - TOC Bump
+	- * Fixed a scan being ran as soon as Quick Auctions loaded, fixes Auctioneer being whiny about errors
+	- * Fixed items being posted at fallback if the player (or whitelist) is the lowest auction
+	- * Fixed a description typo in the configuration
+	- * Fixed craft queue being able to queue items with 0 quantities * Fixed AceEvent-3.0 not being defined in the toc * Increased post timeout to 20 seconds, don't have to cut it close as it'll auto stop when it posts them all
+	- * Localization update
+	- * Fixed bugs with AL support so it actually works
+	- * Random cleanup
+	- * Fixed bids not being a percentage of the buyout but a percentage of the lowest bid
+	- * Updated slash command for cancelall
+	- * Added ability to cancel auctions with less than 12 or 2 hours left (/qa cancelall 12/2) * Added a warning that the player is running out of items if they aren't able to post something at the cap
+	- * Added check to force bid to be the threshold if it goes below it
+	- * Fixed craft queue not working with numpad
+	- * Added a trigger to unlock post/cancel buttons when auction house is closed
+	- * Removed AddonLoader support until I can bug Ammo
+	- * Localization update
+	- * Fixed an issue with QA not loading if you had Addon Loader installed
+	- * Updated localization
+	- * Oops log wipe added to the wrong function
+	- * Fixed mass cancelling not wiping the logs * Fixed poster name not having color codes wrapped around them when mass cancelling
+	- * Fixed log button showing 0 messasges waiting instead of simply "Log"
+	- * Fixed an error that can sometimes happen when opening a tradeskill window due to event ordering
+	- * Fixed smart undercutting option not reflecting waht it is actually set to
+	- * Added a counter for how many items have been posted to the post button * Added a check to immediately end auction posting once everything is posted (As well as the timeout) * Changed log messages a bit
+	- * Added progress for cancelling into the cancel button * Fixed posting interrupted messages showing if you closed the Auction House while scanning (Only supposed to show when actually posting) * Fixed wording for cancelling message * Changed log messages to use a little bit of coloring so they are easier to see
+	- * Added a filter for adding items so you can mass add anything in your inventory matching "Glyph of" (For example
+	- * Added an identifier next to the Log text that says how many log messages are waiting * Improved the log system so it's not as spammy and will properly group messages together when it can
+	* Post and cancel will properly lock during a scan so they can't be pressed again
+	* Hopefully fixed the log frame showing up oddly due to auctions behind it
+	- * Localization update
+	- * Added a floor to bid and buyout as a just in case
+	- * Fixed an error with whitelist not working
+	- * Fixed an error in config.lua:40 when no groups exist
+	- * Fixed an error in ChatFrame.lua:2819 when typing /played * Localization update
+	- * Fixed splitting not being halted if the Auction House is closed * Fixed a bug where splitting wouldn't see the last item in a stack if it became a valid item due to splitting
+	- * Fixed error when trying to craft through the craft queue (tradeskills.lua:172)
+	- * Added some fallback values for scan queries
+	- * Fixed posting not unregistering the auction started event if it was interrupted * Fixed post log not showing bid and buyout total, was showing it as per item
+	- * Fixed post cap and per auction settings not being reset when deleting a group
+	- * Fixed manage.lua:172 error
+	- * Group names are now sorted by alphabetical order * Which tree option you select is saved between sessions even if you close the configuration
+	- * I swear last commit, fixed whitelist not doing a string.lower to check names
+	- * Agh, I remember why I dislike the topleft anchor for items in summary now
+	- * Changed posting log tense from posted -> posting
+	- * Fixed leaked globals * Generated localization
+	- * Dry coding a line strikes again
+	- * Changed the scan logic again * Now uses a 0.50 base delay when the event fires, it then scans all auctions and if any have invalid data it sets a flag and then goes through the soft retries -> hard retries, this should greatly improve scan speed as it takes about 1 - 1.5 seconds per a page and can scan 3,500 auctions in ~60 seconds
+	- * Fixed a visual typo for cancelling, shows correct cancelled numbers now * Fixed smart cancel not working when it can cancel and repost an auction higher
+	- * Changed post timeout to be based off the last auction message instead of last PostAuction call (Fixes large quantities of auctions showing post spam still)
+	- * Added a timer to show how long a scan takes, because everyone loves random statistics * Changed progress bar to be set to 100% when scan is done even if it's interrupted * Changed tooltip to use a top left anchor instead of a left anchor * Fixed ENTER with no number entered into the craft queue causing an error
+	- * Changed log frame to capture mouse events so the auctions behind it aren't being highlighted * Changed log to use a slightly offset white to be easier on the eyes * Fixed copper showing a long decimal number sometimes in summary
+	- * Added craft queue UI back in * Added /qa tradeskill to toggle showing the craft queue window * Fixed materials required showing when no actual materials are required * Fixed materials required list not updating correctly sometimes * Fixed throttle on tradeskill updates being a throttle, was supposed to be a bucket throttle * Fixed craft queue listening to bag and cast events when it didn't have to * Fixed nil error when hitting backspace with craft queue ready for input
+	- * Fixed bugs related to category scans * Fixed player, whitelist and craftQueue using realm instead of factionrealm * Fixed smart undercutting not defaulting to a regular undercut if the price was just gold instead of silver
+	* Changed base delay for scanning auctions to 0.50 seconds, and upped the soft retry to 0.66 seconds per failed, this should make rescanning faster and either the same (or slightly less) time when scanning a completely new page
+	* Moved everything to modules/
+	* Renamed events to QA_ instead of SUF_
+	- * Changed retry logic, now if it finds invalid data it will rescan it in 0.50, 1.0 then 1.5 seconds if that fails it will retry the query 3 times and then give up. This should give more reliable owner data without having to send 50 queries.
+	- * Added a finished posting # items message
+	- * Added cancelling undercut auctions * Added threshold checking when posting * Added an interrupt check for scanning
+	- * Increased group name to 0.50% width * Added cancelall <group> to cancel either all auctions or ones matching a specific group
+	- * Added cancel call in
+	- * Added post cap and items per auction options back * Added splitter in * Added posting in * Fixed up some bugs in scanning
+	- * Quick auctions 2: * Rewriting everything to make it easier to use and less buggy in general, no longer uses slash commands type /qa or /quickauctions for configuration * Still writing everything doesn't work yet
+	- * Fixed an issue in the chat hook causing the original methods not to be seen
+	- * Added a few more tweaks to support sub type categories
+	- * Fixed the bug where not every auction would be posted sometimes (!@#$!@#$!@#$ FINALLY YA%T!#@$) * Added scrolls item type, posts any item enchant, leg armors, scrolls etc * Renamed Scan Items to Cancel Items made the tooltip more descriptive
+unknown:
+	- * Removed upgrade code
+Shadowed:
+	- * Items that are part of a group are now automatically managed by QA, meaning you do not need to manually add them to the item list.
+	- * Changed price cap to 1000% (Not enabled by default basically) * Changed alert threshold to save time() * Hopefully fixed a bug with the cap options not working due to people on the whitelist * Fixed a couple of /qa options missing from help
+	- * Group settings will now fall through to items category (So a Scarlet Ruby in the "scarlet" group will use all of the gems item category configurations that aren't set for scarlet) * Summary now shows the enchant tooltip instead of the item tooltip (When available, and the summary isn't a parent type) * TOC bump 30100
+	- * Not sure how that typo slipped in
+	- * Added /qa pricecap 1-1000 sets a percent at which if the lowest auction is fallback * pricecap it will default to the fallback price
+	- * Added post canceling if the AH window is closed early * /qa cancelall now accepts an item category, so /qa cancelall gems will only cancel all gems, /qa cancelall <group> will only cancel items in that group etc
+	- * Fixed an error for new users in upgrading the table
+	- * Moved all data to be stored by item link instead of name to save space/be more consistent * Added /script QA:LoadGems() quick load of Scarlet, Autumn, Monarch, Earthsiege and Skyflare gems
+	- * Added grouping! What this means is you can manually define a group of items and modify them all at once, for example this means you can add all cut Scarlet Rubys to the "scarlet" group and manage there thresholds without setting each individually * Added /qa list <blah> (See /qa for a list of stuff) lists what options are set to what * Cleaned up parseVariableOptions a little * Threshold alerts now only show up once, until the item is successfully posted * Auctions are now posted by how much they stack by, meaning items that don't stack are posted first (Thus, freeing up space for splitting for items that do stack) * Fixed QuickAuctions being unusable until a reload if you closed the AH window during a scan * Fixed an error in tradeskills.lua with making 5 of an item the queued way, then another one manually * Fixed ALT clicking an item category toggling it (instead of just sending the query)
+	- * Changed post cap logic, we now base post cap off how many are posted that is the lowest, not how many we have period * Added craft queuing. Double click an item in the summary window and type a number of how many you want to make, hit ENTER to save the number, or ESCAPE to clear it, when viewing tradeskill windows you will see a button called "QA", clicking it will show you a list of materials you need/have as well as letting you click the items to make them.
+	- * Fixed smart undercutting not being disabled if an auction was posted below 1g * Fixed a possible error in split.lua if the timer frame wasn't created yet * Changed the summary icons for +/- so they are more intuitive
+	- * Added a 10s timeout for reenabling the post button * Added a return if the link match fails for some reason * Smart undercutting only is used if the buyout is above 1g * Reduced retries to 2, also made them actually work * Fixed no string.trim on links * Fixed an error at line #1137 * Added /qa sumall summary of how much you make on all non-purcahsed items
+	- * Fixed a typo that was causing the smart canceling not to show the right message when it does a cancel due to being able to relist at more
+	- * Added alt support, lets you list a character as an alt and you can see how many of there auctions are int he AH on another character (Or if they were undercut) (/qa addalt and /qa removealt)
+	- * Fixed an error in posting
+	- * Changed the done posting/cancelling messages to indicate how many were done
+	- * Fixed an upgrade issue if you're just installing this
+	- * Fixed data reseting, when doing summary scans we will flag data to be reset, when doing a post or cancel it'll do a full reset
+	- * Fixed a display bug with canceling if someone matched one of your items buyouts but isn't on the white list * Data is now flagged to be reset, and is then reset the next time we see it meaning summary data is available after you've scanned it and not reset when you try and do another scan * Moved creation of the summaryCats table to when the summary frame is created, as that tables getting rather large-ish * Summary frame quantity is now formated as "[<in AH>/<cap>] <total in AH> (<in Inventory>)" (These are hidden/shown based on what you actually have * Added the ability to see what you can, and cannot make in the summary window. If you cannot make an item (AND you have that profession) it'll show an X graphic next to the name, you have to enable this first through /qa tradeskill and open the trade skill windows at least once.
+	- * Removed logging code (I'm sure an issue will come up that needs logging to spite me) * Fixed cancel related bugs with someone on your white list * Fixed typo in /qa time as it persists between sessions now * Added some code to reduce the size of item links if they don't store any extra information beyond itemid * Added a DB so if an item isn't present in the summary, it'll show it as having 0 on the AH with a 0c buyout
+	- * Fixed /qa cap showing "2c" instead of "2" when displaying the value it was set to * Fixed auctions with no buyout being recorded
+	- * Recoded the system used for storing scanned auction data, it'll now be more accurate when figuring out the lowest price, and now I can do some fancy things with the data if I decide to! * Changed /qa cancel to /qa smartcancel * Changed smartcancel so that it will now cancel items if you're the only one with any up, and yours are posted below your fall back price * Added the ability to set auction time by link/category/default * If you are the lowest price on the summary, it'll show the quantity of actives in green, if you aren't it'll show them as red * You can now CTRL click categories in summary to hide them
+	- * Increased time between AUCTION_ITEM_LIST_UPDATE to 1.0 seconds, seems to be far more reliable to make up for being slower * You can alt click items in the summary window and it'll now send an AH search for them
+	- * Increased time between event firing and scanning to 0.50 seconds, was 0.20 + 0.10 every bad request, seems to have less fallback issues this way.
+	- * Removed setting rows to the item link, it'll still show the tooltip on mouse over, but it should look less odd when you see 20-25 items * Playing with the querying code, trying to see if I can fix the issue where it sometimes misses items * Fixed a bug with the cancel messages not being blocked
+	- * Added Flasks, Food, Elixirs, Elemental (Motes/Crystallized stuff/etc), Herbs as summary categories * Added more logging to test an auction bug
+	- * Added /qa cancelall which cancels every auction * Added the number of active items you have of something to the summary, if you have it in the AH it'll show "<total> (<active>)" * Changed split so it's 0.25 seconds after the LAST BAG_UPDATE, not 0.25 seconds after the FIRST BAG_UPDATE fired * Moved auction time to a variable * Moved auction data reseting to our query code instead of doing it every time * Moved active auctions to a function * Moved to using a function call to update our query filter list to clean up variables used more * Fixed an error for new users due to defaults not being set * Fixed a potential issue with a boolean being passed as an filter for auctions * Fixed calculation of total items, it won't bug out when we retry to query a page, and it will in general work better * Fixed Scan button going to "0/1 items"
+	- * Rewrote the scanning code for auctions, it'll be far more efficient, scan faster and have less issues with requesting pages 4 -> 5 -> 6 -> 7 -> 4 -> 8 -> 6 and such, also it's just better in general * Cleaned up a lot of code dealing with auction totals for scanning and posting, and some other general code * Removed unneeded logging * Will now retry if we get a bad item name, or owner name instead of just the latter * Fixed retries going on until the user got bored and cancelled them, will actually stop after 5 tries now * Moved valid stack checks to be called 0.25 seconds after the last BAG_UPDATE
+	- * More logging to try and figure out why splitting is randomly failing
+	- * Fixed the current page we are scanning not being reset to 0 when moving to the next in queue * Fixed (hopefully) another split issue
+	- * Fixed a typo that was causing splits to fail
+	- * Summaries are now in! Let's you quickly see what the lowest price per item is for different categories, currently enchanting materials, scrolls of enchants, gems and glyphs. Shows lowest buyout (per item) as well as how many are on the Auction House. * Reduced time between AUCTION_ITEM_LIST_UPDATE firing and checking for data to 0.20 seconds, then + 0.10 seconds for every retry (Reset to 0.20 seconds when it's successful) * Reduced time between query queue checks to 0.25 seconds instead of 0.50 seconds * Added an AuctionFrameBrwose.page = page call in QueryAuctionItems if we're scanning so it updates mods correctly * Added QA:StartCategoryScan for scanning an entire category, instead of a set name filter * Added the ability to force stop queries * Added /qa summary to toggle summary frame * Fixed Auction posted/Auction canceled not using the GlobalStrings.lua variables provided * Fixed the fact that we used tooltip scanning to get item links, not GetAuctionItemLink (oops!) * Fixed a few typos that were causing scan errors * Moved Quick Auctions to using localization, as some of the new features will need to be localized * Moved the split code into split.lua to clean stuff up
+	- * Cleaned up some of the scanning code * Added support for class/subClass index scanning * Changed splitting slightly, will check how many more stacks to make in BAG_UPDATE now instead of right after the split and guessing
+	- * Fixed cancel logic, if someone is on your white list and they undercut you, it will cancel it, if they match you and they are on your white list, it will not. * Possibly fixed another bug when it comes to posting auctions, if you already had some active ones
+	- * Fixed not all auctions being posted due to the uniqueID in the item string * Fixed not all auctions being posted since it would think it had valid stacks when it really had nothing to post (You want it to post 2 per stack, you only had 1) * Fixed /qa toggle gems and /qa toggle uncut overriding each other * Fixed "Processing..." being shown instead of item amount to post * Fixed DB not being initialized until the Auction House was loaded * Cleaned up the configuration for the default/item type/item link settings * Cleaned up the code for toggling item types * Added the ability to set options by item name, item type, or by default. Meaning you can set it to all cut gems are capped at 2, but Runed Scarlet Ruby's are capped at 5 specifically. * Added enchants as a valid toggle now (All enchanting materials of coursE!) * Added bidpercent, if you set it to 90% and the buyout is 100g then the bid will be 90g (This is a simple global option, cannot be set per item, or type) * Changed add -> addwhite and remove -> removewhite * Changed the ordering around on the slash command information * Changed FindEmptyInventorySlot to go from 0 -> 4 instead of 4 -> 0 (As everything else does the former) * Changed DB format to be cleaner, should upgrade fine
+	- * Fixed some more split issues if you had some items already up in the AH
+	- * Increased button width slightly * Added progress on canceling to the button * Added message if theres nothing to cancel * Fixed typo  at line #313/#314 * Fixed split not continuing if it did a 5 -> 4 stacks of 1, then finding the last one
+	- * Added a bit more logging code to debug some odd issues when splitting things * Fixed an error at line #246 about ContainerIDToInventoryID (Stupid Blizzard) * Fixed an error where it wouldn't recognize a split and think it was an odd stack
+	- * Fixed posting auctions not working, changed to a slower system where we first split an item into the required amount (if needed), we post one of it, then wait until it's gone through, then post and so on. Once we finish with that item it moves onto the next. This means posts are slightly slower (Not by much, and mostly depends how much splitting is needed), but more reliable * Fixed splitting not checking if the item we were splitting it off of was locked, this means it won't sometimes fail when splitting a stack * Fixed special bags (herb/gem/enchanting/glyph/etc) not being recognized as a valid place to put things, now will place items into them if they can be * Fixed /qa threshold defaulting to 100g every time * Fixed error when toggling item types off * Fixed not using the GetItemInfo link for the configurations * Fixed data always being saved even if you weren't running a scan, or had a search filter going * Fixed how the total posts is calculated, now figues out how much we can post, before actually doing it * Fixed how the totals per set are done * Cleaned up splitting code, a lot simpler and more accurate
+	- * Fixed the DB being set to a table * Added description tooltips to the buttons * Cleaned up the split code (a little) * Changed the split code, instead of trying to split everything into the needed stacks it'll now split all of them for that specific item, post the item, split needed for the next, post it and so on to prevent inventory issues. Also means that it won't split unless it's needed, so no splitting then having threshold issues * Moved from print() to QA:Echo()
+	- * Added the ability to set an undercut per an item (/qa undercut <amount> <link>) still can be set globally as well * Removed /qa uncut, it's now /qa toggle <gems/uncut/glyphs> that lets you toggle on/off a category of items (These are ALWAYS going to default to 1 per an auction, must use /qa additem to set a specific quantity for it) so you don't have to add every single cut gem, or glyph * Changed this from focused on Jewelcrafters so that it can be used by anyone, now includes support for splitting items out of stacks and posting them and has new slash commands (/qa itemadd and /qa itemremove) to add new items it should also manage * Changed all the auction code to use buyout per item and bid per item when figuring out everything * Trying out a change so that the first scan is 0.50s and then after that it goes to 0.25s to speed it up * Added some code so it auto sets new defaults that are added in * Renamed the Scan/Post Gems to Scan/Post Items
+	- * Added specific item caps (/qa cap <amount> <link>) as usual entering 0 will remove the cap. * Added the /qa uncut slash command so you can have it manage uncut gems that are unstacked * Added a smart cancel, if you put a threshold of 70g, your auction is posted at 70g and someone posts it at 60g, your 70g auction won't be canceled. * Added a check to make sure the item link is a valid one
+	- * Should be ready to release now * Changed configuration, now uses a money format instead of gold/silver/copper, which means it's now /qa undercut 1s to undercut by 1 silver, or /qa undercut 1g99s to undercut by 1 gold, 99 silver. * Merged /qa spthresh and /qa threshold, if a link is provided after money, it's set specifically, if not, it's set globally * Changed scan time to 0.40 instead of 0.50 seconds * Added the ability to set specific fallbacks per item * Added a chat hook to block the create/cancel spam * Added post/cancel status to the buttons * Added an option to enable or disable smart undercutting * Removed from LoD since it can't be made to auto load on /qa without an external mod * Removed the ability to set a specific fallback bid AND buyout, it just sets them the same now * Fixed posting not checking if we have enough money to actually post it * Fixed posting auctions not resetting the scan data first * Fixed posting auctions not checking how many active we had going first * Fixed posting auctions not working if you had some auctions already posted * Fixed scanning progress updating incorrectly on retries
+	- * Changed the searchFilter variable to be set off of QueryAuctionItems calls so it works with the queuing system * Sort of cleaned up the item scanning code * Added a 0.5s delay (Needs tweaking) before scanning so we increase the chance of the owners being available * Fixed posting not working if we already had data on everything * Fixed check for bad owners, we won't even record there data if the owner isn't available * Fixed the maximum post cap checking auctions that had already been sold but no gold delivered yet * Added specific thresholds for items on top of the global one
+	- * Fixed scan incrementing so it bases it off when the query is sent not the event firing
+	- * Initial Import: QuickAuctions/ * Mostly a quick hack, maybe I'll clean it up later, slash command is /qa * Made to speed up posting gem auctions, has a button in the auctions tab to find out who is undercutting you, and automatically cancels those auctions, and another that will post gems in your inventory (And only keep X amount in the AH at any one time) and auto undercut people

@@ -1,0 +1,39 @@
+## Interface: 30300
+## Title: Quick Auctions 3
+## Notes: Go quick, or go home!
+## Author: Shadowed
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /qa, /quickauction, /quickauctions
+## X-LoadOn-AuctionHouse: true
+## X-LoadOn-Crafting: true
+## X-LoadOn-Mailbox: true
+## SavedVariables: QuickAuctionsDB
+## X-Curse-Packaged-Version: r20100621003530
+## X-Curse-Project-Name: Quick Auctions 3
+## X-Curse-Project-ID: quick-auctions
+## X-Curse-Repository-ID: wow/quick-auctions/mainline
+
+libs\LibStub-1.0\LibStub-1.0.xml
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceAddon-3.0\AceAddon-3.0.xml
+libs\AceEvent-3.0\AceEvent-3.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\AceGUI-3.0\AceGUI-3.0.xml
+libs\AceConfig-3.0\AceConfig-3.0.xml
+libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+
+localization.enUS.lua
+localization.deDE.lua
+localization.ruRU.lua
+localization.frFR.lua
+
+QuickAuctions.lua
+modules\scan.lua
+modules\manage.lua
+modules\post.lua
+modules\split.lua
+modules\summary.lua
+modules\config.lua
+modules\tradeskills.lua
+modules\mail.lua
+modules\status.lua
