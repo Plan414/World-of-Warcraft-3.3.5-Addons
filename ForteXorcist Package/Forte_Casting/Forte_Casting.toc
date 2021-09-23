@@ -1,0 +1,10 @@
+## Interface: 50001
+## Author: Xus (Xussie of Kazzak EU)
+## Title: Forte|c0100dd00Casting|r
+## Notes: ForteXorcist Casting module. It is required to use various other ForteXorcist modules.
+## SavedVariables:
+## OptionalDeps:
+## Dependencies:Forte_Core
+
+Localization.lua
+Forte_Casting.lua

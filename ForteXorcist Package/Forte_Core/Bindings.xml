@@ -1,0 +1,5 @@
+<Bindings>	
+	<Binding name="FX_OPTIONS" header="FORTEXORCIST">
+		FW:ToggleOptions();
+	</Binding>
+</Bindings>

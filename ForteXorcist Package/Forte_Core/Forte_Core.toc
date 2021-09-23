@@ -1,0 +1,12 @@
+## Interface: 50001
+## Author: Xus (Xussie of Kazzak EU)
+## Title: Forte|c0000ff00Xorcist|r II
+## Version: 1.980.8
+## Notes: ForteXorcist is a Powerful AddOn for... Everybody! It provides you with a lot of useful tools to make playing your character easier and more fun. :)
+## SavedVariables: FC_Saved, FX_Saved
+## OptionalDeps: LibSharedMedia-3.0, oRA3
+## Dependencies:
+## X-Category: Buffs & Debuffs, Combat, Class, Death Knight, Warlock
+## X-Email: xuswow@hotmail.com
+
+Forte_Core.xml

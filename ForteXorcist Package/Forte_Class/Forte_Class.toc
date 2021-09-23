@@ -1,0 +1,33 @@
+## Interface: 50001
+## Author: Xus (Xussie of Kazzak EU)
+## Title: Forte|c0200dd00Class|r
+## Notes: ForteXorcist Class module. It registers relevant spells to the other modules and adds class-specific functionality.
+## SavedVariables:
+## OptionalDeps:Forte_Casting, Forte_Timer, Forte_Cooldown
+## Dependencies:Forte_Core
+
+
+DeathKnight\Localization.lua
+DeathKnight\DeathKnight.lua
+Druid\Localization.lua
+Druid\Druid.lua
+Hunter\Localization.lua
+Hunter\Hunter.lua
+Mage\Localization.lua
+Mage\Mage.lua
+Monk\Localization.lua
+Monk\Monk.lua
+Paladin\Localization.lua
+Paladin\Paladin.lua
+Priest\Localization.lua
+Priest\Priest.lua
+Rogue\Localization.lua
+Rogue\Rogue.lua
+Shaman\Localization.lua
+Shaman\Shaman.lua
+Vehicle\Localization.lua
+Vehicle\Vehicle.lua
+Warlock\Localization.lua
+Warlock\Warlock.lua
+Warrior\Localization.lua
+Warrior\Warrior.lua

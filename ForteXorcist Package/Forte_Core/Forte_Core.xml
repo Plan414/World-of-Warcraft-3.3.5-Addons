@@ -1,0 +1,11 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="Forte_Core.lua"/>
+	<Script file="Options.lua"/>
+	<Script file="Localization.lua"/>
+	
+	<Font name="FWFontHighlight" inherits="GameFontHighlightSmall" virtual="true"/>
+	<Font name="FWFontNormal" inherits="GameFontNormalSmall" virtual="true"/>
+	<Font name="FWFontDisable" inherits="GameFontDisableSmall" virtual="true"/>
+
+</Ui>
