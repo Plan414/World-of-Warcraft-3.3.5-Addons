@@ -1,0 +1,9 @@
+## Interface: 90001
+## Title: Critline: AuraMonitor
+## Version: 4.6.14
+## Notes: Aura monitoring module for Critline.
+## Author: Lombra
+
+## RequiredDeps: Critline
+
+Core.lua

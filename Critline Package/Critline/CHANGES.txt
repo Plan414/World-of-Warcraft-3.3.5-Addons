@@ -1,0 +1,10 @@
+------------------------------------------------------------------------
+r140 | Lombra | 2020-10-19 18:02:51 +0000 (Mon, 19 Oct 2020) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.txt
+   M /trunk/Critline.toc
+   M /trunk/Display.lua
+
+- Use BackdropTemplate.
+------------------------------------------------------------------------
+
