@@ -1,0 +1,233 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="Forte_Soulstone.lua"/>
+	
+	<StatusBar name="FWSSBarTemplate" virtual="true" minValue="0" maxValue="1" defaultValue="1" hidden="true">
+		<Size>
+			<AbsDimension x="100" y="12"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTime" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentCooldown" inherits="GameFontHighlightSmall" justifyH="RIGHT" hidden="true">
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentName" inherits="GameFontHighlightSmall" justifyH="CENTER" hidden="false">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativeTo="$parentTime" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentTime" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentWarlock" inherits="GameFontHighlightSmall" justifyH="CENTER" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativeTo="$parentCooldown" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentCooldown" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="$parentSpark" file="Interface\AddOns\Forte_Core\Textures\Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="12" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBack" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar">
+					<Size>
+						<AbsDimension x="100" y="12"/>
+					</Size>
+				</Texture>
+			</Layer>
+	
+		</Layers>
+		<Scripts>
+			<OnEnter>
+				getglobal(self:GetName().."Name"):Hide();getglobal(self:GetName().."Warlock"):Show();
+				getglobal(self:GetName().."Time"):Hide();getglobal(self:GetName().."Cooldown"):Show();
+			</OnEnter>
+			<OnLeave>
+				getglobal(self:GetName().."Name"):Show();getglobal(self:GetName().."Warlock"):Hide();
+				getglobal(self:GetName().."Time"):Show();getglobal(self:GetName().."Cooldown"):Hide();
+			</OnLeave>
+		</Scripts>
+		<BarTexture file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+		<BarColor r=".64" g=".21" b=".93"/>
+	</StatusBar>
+	
+	<Frame name="FWSSFrame" movable="true" toplevel="true" parent="UIParent" hidden="false">
+		<Size>
+			<AbsDimension x="106" y="20" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentAmount" inherits="GameFontHighlightSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="18" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTime" inherits="GameFontHighlightSmall" justifyH="RIGHT" text="waiting...">
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-4" y="0"/>
+							</Offset>
+						</Anchor>
+						
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		
+		<Frames>
+			<Button name="FWSSButton" inherits="SecureActionButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="2" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+						self:SetAttribute("*type*" ,"spell");
+						self:SetAttribute("spell",FW:SpellName(20707));
+						self:SetAttribute("alt-unit*", "player");
+
+					</OnLoad>
+					<OnEnter>
+						self.title = FW.L.USE_:format( (FW:SpellName(20707)) );
+						self.tip = FW.L.USE_:format( (FW:SpellName(20707)) );
+						FW:ShowTip(self);
+					</OnEnter>
+					<OnLeave>
+						FW:HideTip(self);
+					</OnLeave>
+				</Scripts>
+				<NormalTexture file="Interface\AddOns\Forte_Core\Textures\SS1"/>
+				<HighlightTexture file="Interface\AddOns\Forte_Core\Textures\SS3"/>
+			</Button>
+			
+		</Frames>
+		
+		<Scripts>
+			<OnMouseDown>
+				FW:StartMoving(self,button);
+				
+			</OnMouseDown>
+			<OnMouseUp>
+				FW:SSFrame_OnClick(button);
+				FW:StopMoving(self);
+			</OnMouseUp>
+			<OnLoad>
+				FW:SoulstoneOnload();
+			</OnLoad>
+		</Scripts> 
+	</Frame>
+	<Frame name="FWSSBackground" parent="UIParent" hidden="false">
+		<Size>
+			<AbsDimension x="106" y="20" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="FWSSFrame" relativePoint="TOPLEFT"/>
+			<Anchor point="BOTTOMRIGHT" relativeTo="FWSSFrame" relativePoint="BOTTOMRIGHT"/>
+		</Anchors>
+		<Frames>
+			<StatusBar name="FWSSBar1" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar2" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar3" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar4" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar5" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar6" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar7" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar8" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar9" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar10" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar11" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar12" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar13" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar14" inherits="FWSSBarTemplate"/>
+			<StatusBar name="FWSSBar15" inherits="FWSSBarTemplate"/>
+		</Frames>
+		<Backdrop bgFile="Interface\AddOns\Forte_Core\Textures\Background" edgeFile="Interface\AddOns\Forte_Core\Textures\Border" tile="true">
+			<EdgeSize><AbsValue val="5"/></EdgeSize>
+			<TileSize><AbsValue val="5"/></TileSize>
+			<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+		</Backdrop>
+	</Frame>
+</Ui>

@@ -1,0 +1,190 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="Forte_Summon.lua"/>
+	
+	<Button name="FWSUBarTemplate" virtual="true" hidden="true">
+		<Size>
+			<AbsDimension x="100" y="12"/>
+		</Size>
+		<NormalTexture name="$parentNormalTexture" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+		<Layers>
+			<Layer level="OVERLAY">	
+				<FontString name="$parentName" inherits="GameFontHighlightSmall" justifyH="CENTER" hidden="false">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentInfo" inherits="GameFontHighlightSmall" justifyH="CENTER" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnUpdate>
+				-- also update tooltip when self button is changed while we're over it with our mouse
+				if self.over and self.unit ~= self.oldunit then
+					self.oldunit = self.unit;
+					UnitFrame_OnEnter(self);
+				end
+			</OnUpdate>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				self:SetAttribute("type2" ,"menu");
+				self.menu = FW.IgnoreClick;
+			
+			</OnLoad>
+			<OnEnter>
+				self.over = 1;
+				UnitFrame_OnEnter(self);
+				getglobal(self:GetName().."Name"):Hide();getglobal(self:GetName().."Info"):Show();
+			</OnEnter>
+			<OnLeave>
+				self.over = nil;
+				UnitFrame_OnLeave();
+				getglobal(self:GetName().."Name"):Show();getglobal(self:GetName().."Info"):Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	
+	<Frame name="FWSUFrame" movable="true" toplevel="true" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="106" y="20" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentAmount" inherits="GameFontHighlightSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentInfo" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-4" y="-10"/>
+							</Offset>
+						</Anchor>
+						
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="FWSUButton" inherits="SecureActionButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="2" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+						self:SetAttribute("type*" ,"spell");
+						self:SetAttribute("spell", FW:SpellName(46546) );
+					</OnLoad>
+					<OnEnter>
+						self.title = FW.L.CAST_RITUAL_OF_SUMMONING;
+						self.tip = FW.L.CAST_RITUAL_OF_SUMMONING_TT;
+						FW:ShowTip(self);
+					</OnEnter>
+					<OnLeave>
+						FW:HideTip(self);
+					</OnLeave>
+				</Scripts>
+				<NormalTexture file="Interface\AddOns\Forte_Core\Textures\SU1"/>
+				<HighlightTexture file="Interface\AddOns\Forte_Core\Textures\SU2"/>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnMouseDown>
+				FW:StartMoving(self,button);
+			</OnMouseDown>
+			<OnMouseUp>
+				FW:SUFrame_OnClick(button);
+				FW:StopMoving(self);
+			</OnMouseUp>
+			<OnLoad>
+				FW:SummonOnload();
+			</OnLoad>
+		</Scripts> 
+	</Frame>
+	<Frame name="FWSUBackground" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="106" y="20" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="FWSUFrame" relativePoint="TOPLEFT"/>
+			<Anchor point="BOTTOMRIGHT" relativeTo="FWSUFrame" relativePoint="BOTTOMRIGHT"/>
+		</Anchors>
+		<Frames>
+			<Button name="FWSUBar1" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar2" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar3" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar4" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar5" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar6" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar7" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar8" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar9" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+			<Button name="FWSUBar10" inherits="FWSUBarTemplate SecureActionButtonTemplate"/>
+		</Frames>
+		<Backdrop bgFile="Interface\AddOns\Forte_Core\Textures\Background" edgeFile="Interface\AddOns\Forte_Core\Textures\Border" tile="true">
+			<EdgeSize><AbsValue val="5"/></EdgeSize>
+			<TileSize><AbsValue val="5"/></TileSize>
+			<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+		</Backdrop>
+	</Frame>
+
+</Ui>

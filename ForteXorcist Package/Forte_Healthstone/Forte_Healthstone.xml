@@ -1,0 +1,231 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="Forte_Healthstone.lua"/>
+	
+	<StatusBar name="FWHSBarTemplate" virtual="true" minValue="0" maxValue="1" defaultValue="1" hidden="true">
+		<Size>
+			<AbsDimension x="100" y="12"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentAmount" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentName" inherits="GameFontHighlightSmall" justifyH="CENTER" hidden="false">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativeTo="$parentAmount" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentAmount" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="$parentSpark" file="Interface\AddOns\Forte_Core\Textures\Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="12" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBack" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar">
+					<Size>
+						<AbsDimension x="100" y="12"/>
+					</Size>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter>
+				 FW:ShowTip(self);
+			</OnEnter>
+			<OnLeave>
+				FW:HideTip(self);
+			</OnLeave>
+		</Scripts>
+		<BarTexture file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+		<BarColor r=".64" g=".21" b=".93"/>
+	</StatusBar>
+	
+	<Frame name="FWHSFrame" movable="true" toplevel="true" parent="UIParent" hidden="false">
+		<Size>
+			<AbsDimension x="106" y="20" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentAmount1" inherits="GameFontHighlightSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentAmount2" inherits="GameFontHighlightSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="CENTER">
+							<Offset>
+								<AbsDimension x="16" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="FWHSButton" inherits="SecureActionButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="2" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+						self:SetAttribute("type1" ,"spell");
+						self:SetAttribute("spell", FW:SpellName(6201) );
+						
+						self:SetAttribute("*type2", "item");			
+						self:SetAttribute("*item2", (FW:ItemName( FW.ID_HEALTHSTONE )) );
+							
+						self.title="";
+						self.tip="";
+					</OnLoad>
+					<OnUpdate>
+						-- also update tooltip when self button is changed while we're over it with our mouse
+						if self.over and self.oldtip ~= self.tip then
+							self.oldtip = self.tip;
+							FW:ShowTip(self);
+						end
+					</OnUpdate>
+					<OnEnter>
+						self.over = 1;
+						FW:ShowTip(self);
+					</OnEnter>
+					<OnLeave>
+						self.over = nil;
+						FW:HideTip();
+					</OnLeave>
+				</Scripts>
+				<NormalTexture file="Interface\AddOns\Forte_Core\Textures\HS1"/>
+				<HighlightTexture file="Interface\AddOns\Forte_Core\Textures\HS2"/>
+			</Button>
+			<Button name="FWSWButton" inherits="SecureActionButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" relativePoint="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnUpdate>
+						if self.over then
+							self.tip = "";
+							if FW.LastHSCheck ~= 0 then
+								self.tip=string.format(FW.L.LAST_CHECK,math.floor(GetTime()-FW.LastHSCheck));
+							end
+							self.tip = FW.L.GET_HS_UPDATE..self.tip
+							self.title = FW.L.UPDATE_AND_RITUAL;
+							FW:ShowTip(self);
+						end
+					</OnUpdate>
+					<OnEnter>
+						self.over = 1;
+					</OnEnter>
+					<OnLeave>
+						self.over = nil;
+						FW:HideTip();
+					</OnLeave>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+						self:SetAttribute("type2" ,"spell");
+						self:SetAttribute("spell2", FW:SpellName(29893));
+						self:SetAttribute("type1" ,"menu");
+						self.menu = FW.HealthstoneCheck;
+					</OnLoad>
+				</Scripts>
+				<NormalTexture file="Interface\AddOns\Forte_Core\Textures\SW1"/>
+				<HighlightTexture file="Interface\AddOns\Forte_Core\Textures\SW2"/>
+			</Button>
+		</Frames>
+		
+		<Scripts>
+			<OnLoad>
+				FW:HealthstoneOnload();
+			</OnLoad>
+			<OnMouseUp>
+				FW:HSFrame_OnClick(button);
+				FW:StopMoving(self);
+			</OnMouseUp>
+			<OnMouseDown>
+				FW:StartMoving(self,button);
+			</OnMouseDown>
+		</Scripts> 
+	</Frame>
+	<Frame name="FWHSBackground" parent="UIParent" hidden="false">
+		<Size>
+			<AbsDimension x="106" y="20" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="FWHSFrame" relativePoint="TOPLEFT"/>
+			<Anchor point="BOTTOMRIGHT" relativeTo="FWHSFrame" relativePoint="BOTTOMRIGHT"/>
+		</Anchors>
+		<Frames>
+			<StatusBar name="FWHSBar1" inherits="FWHSBarTemplate"/>
+			<StatusBar name="FWHSBar2" inherits="FWHSBarTemplate"/>
+			<StatusBar name="FWHSBar3" inherits="FWHSBarTemplate"/>
+			<StatusBar name="FWHSBar4" inherits="FWHSBarTemplate"/>
+			<StatusBar name="FWHSBar5" inherits="FWHSBarTemplate"/>
+			<StatusBar name="FWHSBar6" inherits="FWHSBarTemplate"/>
+		</Frames>
+		<Backdrop bgFile="Interface\AddOns\Forte_Core\Textures\Background" edgeFile="Interface\AddOns\Forte_Core\Textures\Border" tile="true">
+			<EdgeSize><AbsValue val="5"/></EdgeSize>
+			<TileSize><AbsValue val="5"/></TileSize>
+			<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+		</Backdrop>
+	</Frame>
+</Ui>

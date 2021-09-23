@@ -1,0 +1,10 @@
+<Bindings>	
+	<Binding name="SS_CREATESOULSTONE" header="SOULSTONE">
+	</Binding>
+	<Binding name="SS_USESOULSTONE">
+	</Binding>
+	<Binding name="SS_USESOULSTONESELF">
+	</Binding>
+	<Binding name="SS_OPTIONS">
+	</Binding>
+</Bindings>

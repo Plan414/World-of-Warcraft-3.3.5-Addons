@@ -1,0 +1,10 @@
+## Interface: 50001
+## Author: Xus (Xussie of Kazzak EU)
+## Title: Forte|c949482c9Summon|r
+## Notes: Forte Summon Module
+## SavedVariables:
+## OptionalDeps:
+## Dependencies:Forte_Core, Forte_Casting
+
+Localization.lua
+Forte_Summon.xml

@@ -1,0 +1,26 @@
+<Bindings>
+	<Binding name="SU_SUMMON" header="SUMMON">
+	</Binding>	
+	<Binding name="SU_SUMMON1">
+	</Binding>
+	<Binding name="SU_SUMMON2">
+	</Binding>
+	<Binding name="SU_SUMMON3">
+	</Binding>
+	<Binding name="SU_SUMMON4">
+	</Binding>
+	<Binding name="SU_SUMMON5">
+	</Binding>
+	<Binding name="SU_SUMMON6">
+	</Binding>
+	<Binding name="SU_SUMMON7">
+	</Binding>
+	<Binding name="SU_SUMMON8">
+	</Binding>
+	<Binding name="SU_SUMMON9">
+	</Binding>
+	<Binding name="SU_SUMMON10">
+	</Binding>
+	<Binding name="SU_OPTIONS">
+	</Binding>
+</Bindings>

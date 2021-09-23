@@ -1,0 +1,12 @@
+<Bindings>	
+	<Binding name="HS_CREATEHEALTHSTONE" header="HEALTHSTONE">
+	</Binding>
+	<Binding name="HS_USEHEALTHSTONE">
+	</Binding>
+	<Binding name="HS_GETUPDATE">
+	</Binding>
+	<Binding name="HS_CREATESOULWELL">
+	</Binding>
+	<Binding name="HS_OPTIONS">
+	</Binding>
+</Bindings>
