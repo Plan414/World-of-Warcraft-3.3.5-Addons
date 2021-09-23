@@ -4,12 +4,15 @@ local L = LibStub("AceLocale-3.0"):GetLocale("CooldownCount")
 local SM = LibStub("LibSharedMedia-3.0")
 local config = LibStub("AceConfig-3.0")
 local dialog = LibStub("AceConfigDialog-3.0")
-local blacklist = { "TargetFrame", "PetAction", "TotemFrame" }
+local blacklist = { "TargetFrame", "PetAction", "TotemFrame", "PartyFrame", "TargetofTargetFrame", "FocusFrame", "RaidFrame", "CompactRaidGroup", "LAB10ChargeCooldown" }
 
 local defaults = {
 	profile = {
 		shine = false,
 		shineScale = 2,
+		ShowDecimal = true,
+		UseBlizCounter = false,
+		WarnSpeed = 0.25,
 		minimumDuration = 3,
 		hideAnimation = false,
 		font = SM:GetDefault("font"),
@@ -19,6 +22,7 @@ local defaults = {
 		size2 = 24,
 		size3 = 28,
 		size4 = 34,
+		blacklist = {},
 	}
 }
 local function get(info)
@@ -167,6 +171,7 @@ function CooldownCount:OnInitialize()
 						type = "toggle",
 						name = L["Hide Blizzard Origin Animation"],
 						desc = L["Hide Blizzard origin cooldown animation."],
+						width = "full",
 						order = 21,
 					},
 					header_minimumDuration = {
@@ -183,10 +188,48 @@ function CooldownCount:OnInitialize()
 						step = 0.5,
 						order = 51,
 					},
+					header_WarnSpeed = {
+						type = "header",
+						name = L["Warning speed"],
+						order = 60,
+					},
+					WarnSpeed = {
+						type = "range",
+						name = L["Warning blink speed"],
+						desc = L["Speed at which the warning blinking occurs."],
+						min = 0.1,
+						max = 0.5,
+						step = 0.05,
+						order = 61,
+					},
+					header_decimal = {
+						type = "header",
+						name = L["Show decimal"],
+						order = 70,
+					},
+					ShowDecimal = {
+						type = "toggle",
+						name = L["Show decimal below 1 sec"],
+						desc = L["Show decimal below 1 sec."],
+						width = "full",
+						order = 71,
+					},
+					header_blizCounter = {
+						type = "header",
+						name = L["Blizzard time display"],
+						order = 80,
+					},
+					UseBlizCounter = {
+						type = "toggle",
+						name = L["Use Blizzard time display"],
+						desc = L["Blizzard display 0 between 0 and 0.999 remaining seconds. Disabling this option will show 1 instead."],
+						width = "full",
+						order = 81,
+					},
 					header_resetdb = {
 						type = "header",
 						name = L["Reset"],
-						order = 70,
+						order = 100,
 					},
 					resetdb = {
 						type = "execute",
@@ -198,7 +241,7 @@ function CooldownCount:OnInitialize()
 							self:Print(L["All settings are reset to default value."])
 						end,
 						name = L["Reset"],
-						order = 71,
+						order = 101,
 					},
 				},
 			},
@@ -225,26 +268,59 @@ function CooldownCount:OnInitialize()
 	dialog:AddToBlizOptions("CooldownCount-FontSettings", options.args.FontSettings.name, "CooldownCount")
 end
 
+local actions = {}
+local function action_OnShow(self)
+  actions[self] = true
+end
+
+local function action_OnHide(self)
+  actions[self] = nil
+end
+
+local function action_Add(button, action, cooldown)
+  if not cooldown.cooldownCountAction then
+    cooldown:HookScript('OnShow', action_OnShow);
+    cooldown:HookScript('OnHide', action_OnHide);
+  end
+  cooldown.cooldownCountAction = action;
+end
+
+local function actions_Update()
+  for cooldown in pairs(actions) do
+    local start, duration = GetActionCooldown(cooldown.cooldownCountAction);
+    --CooldownCount.SetCooldown(cooldown, start, duration, 1);
+  end
+end
+
 function CooldownCount:OnEnable()
 	self:initFontStyle()
-	self:SecureHook(getmetatable(CreateFrame('Cooldown', nil, nil, 'CooldownFrameTemplate')).__index, "SetCooldown")
+	hooksecurefunc("CooldownFrame_Set",CooldownCount.SetCooldown);
+    hooksecurefunc('SetActionUIButton', action_Add);
+
+    for i, button in pairs(ActionBarButtonEventsFrame.frames) do
+      action_Add(button, button.action, button.cooldown);
+    end
+
 end
 
 function CooldownCount:initFontStyle()
 	self.font = SM:Fetch('font', self.db.profile.font)
 end
 
-function CooldownCount:SetCooldown(frame, start, duration)
+function CooldownCount.SetCooldown(frame, start, duration, enable, forceShowDrawEdge, modRate)
+	local fname = frame:GetName();
+
 	--black list handle
-	if CooldownCount:CheckBlacklist(frame:GetName()) then
+	if CooldownCount:CheckBlacklist(fname) then
 		return
 	end
 	
 	-- hide blz origin cooldown animation
 	frame:SetAlpha(CooldownCount.db.profile.hideAnimation and 0 or 1)
 
-	if start > 0 and duration > CooldownCount.db.profile.minimumDuration then
-		local CC = frame.textFrame or CooldownCount:CreateCooldownCount(frame, start, duration)
+	if enable and enable ~= 0 and start > 0 and duration > CooldownCount.db.profile.minimumDuration
+	then
+		local CC = frame.cooldownCounFrame or CooldownCount:CreateCooldownCount(frame, start, duration)
 		CC.start = start
 		CC.duration = duration
 		CC.timeToNextUpdate = 0
@@ -252,7 +328,7 @@ function CooldownCount:SetCooldown(frame, start, duration)
 			CC:Show()
 		end
 	else
-		local CC = frame.textFrame
+		local CC = frame.cooldownCounFrame
 		if CC and CC:IsShown() then
 			CC:Hide()
 		end
@@ -260,29 +336,83 @@ function CooldownCount:SetCooldown(frame, start, duration)
 end
 
 function CooldownCount:CreateCooldownCount(frame, start, duration)
-	frame.textFrame = CreateFrame("Frame", nil, frame:GetParent())
-	local textFrame = frame.textFrame
-
-	-- switch action bar fix, but not perfect
-	local ChildFrame = CreateFrame("Frame", nil, frame)
-	ChildFrame:SetScript("OnShow", CooldownCount.Child_OnShow)
-	ChildFrame:SetScript("OnHide", CooldownCount.Child_OnHide)
+	local fname = frame:GetName();
+	frame.cooldownCounFrame = CreateFrame("Frame", nil, frame:GetParent())
+	local textFrame = frame.cooldownCounFrame
 
 	textFrame:SetAllPoints(frame:GetParent())
 	textFrame:SetFrameLevel(textFrame:GetFrameLevel() + 5)
 	textFrame:SetToplevel(true)
+	textFrame.timeToNextUpdate = 0
 
 	textFrame.text = textFrame:CreateFontString(nil, "OVERLAY")
 	textFrame.text:SetPoint("CENTER", textFrame, "CENTER", 0, -1)
 
 	textFrame.icon =
 		--standard action button icon, $parentIcon
-		getglobal(frame:GetParent():GetName() .. "Icon") or
+		_G[frame:GetParent():GetName() .. "Icon"] or
 		--standard item button icon,  $parentIconTexture
-		getglobal(frame:GetParent():GetName() .. "IconTexture")
+		_G[frame:GetParent():GetName() .. "IconTexture"]
 
-	if textFrame.icon then
-		textFrame:SetScript("OnUpdate", CooldownCount.Text_OnUpdate)
+	if textFrame.icon then        
+		textFrame:SetScript("OnUpdate", function(self, elapsed)
+			if textFrame.timeToNextUpdate <= 0 or not textFrame.icon:IsVisible() then
+				--[[
+					If you have a long cooldown spell/item, after reboot your computer, cooldown value will be wrong.
+					I still havn't any idea for it.
+				]]
+				local current_time = GetTime()
+				if current_time < textFrame.start then return end
+
+				local remain = textFrame.duration - (current_time - textFrame.start)
+
+				if floor(remain + 1) > 0 and textFrame.icon:IsVisible() then
+					local text, toNextUpdate, size, isWarn = CooldownCount:GetFormattedTime(remain)
+					textFrame.text:SetFont(CooldownCount.font, size, "OUTLINE")
+					color = CooldownCount.db.profile.color_common
+					if isWarn then -- Switch to Warning blink mode
+						-- Check if entering blink mode for this casted spell
+						if textFrame.isWarn == nil then
+							textFrame.isWarn = 2 -- Warn color
+							textFrame.nextWarnSwitch = current_time + CooldownCount.db.profile.WarnSpeed
+						end
+						-- Check for color switch (blink)
+						if current_time >= textFrame.nextWarnSwitch then
+							if textFrame.isWarn == 2 then -- Was warn color, go to normal color
+								textFrame.isWarn = 1
+							else -- Was normal color, go to warn color
+								textFrame.isWarn = 2
+							end
+							textFrame.nextWarnSwitch = current_time + CooldownCount.db.profile.WarnSpeed
+						end
+						-- Check if we must alter rendering color (warn color)
+						if textFrame.isWarn == 2 then
+							color = CooldownCount.db.profile.color_warn
+						end
+					end
+					textFrame.text:SetTextColor(color.r, color.g, color.b)
+					if type(text) == "number" then
+						if text < 1 and CooldownCount.db.profile.ShowDecimal then
+							textFrame.text:SetText( format("%.1f",text) )
+						else
+							textFrame.text:SetText( format("%.0f",text) )
+						end
+					else
+						textFrame.text:SetText( text )
+					end
+					textFrame.timeToNextUpdate = toNextUpdate
+				else
+					if CooldownCount.db.profile.shine and textFrame.icon:IsVisible() then
+						CooldownCount:StartToShine(textFrame.icon)
+					end
+					textFrame.isWarn = nil
+					textFrame.nextWarnSwitch = 0
+					textFrame:Hide()
+				end
+			else
+				textFrame.timeToNextUpdate = textFrame.timeToNextUpdate - elapsed
+			end
+		end)
 	end
 
 	textFrame:Hide()
@@ -290,60 +420,22 @@ function CooldownCount:CreateCooldownCount(frame, start, duration)
 	return textFrame
 end
 
-function CooldownCount:Child_OnShow()
-	local textFrame = this:GetParent().textFrame
+function CooldownCount:Child_OnShow(self, event, ...)
+	local textFrame = self:GetParent().textFrame
 	if textFrame and not textFrame:IsShown() then
 		textFrame:Show()
 	end
 end
 
-function CooldownCount:Child_OnHide()
-	local textFrame = this:GetParent().textFrame
+function CooldownCount:Child_OnHide(self, event, ...)
+	local textFrame = self:GetParent().textFrame
 	if textFrame and textFrame:IsShown() then
 		textFrame:Hide()
 	end
 end
 
-function CooldownCount:Text_OnUpdate()
-	if this.timeToNextUpdate <= 0 or not this.icon:IsVisible() then
-		--[[
-		If you have a long cooldown spell/item, after reboot your computer, cooldown value will be wrong.
-		I still havn't any idea for it.
-		]]
-		if GetTime() < this.start then return end
-
-		local remain = this.duration - (GetTime() - this.start)
-
-		if floor(remain + 0.5) > 0 and this.icon:IsVisible() then
-			local text, toNextUpdate, size, color2 = CooldownCount:GetFormattedTime(remain)
-			this.text:SetFont(CooldownCount.font, size, "OUTLINE")
-
-			color = CooldownCount.db.profile.color_common
-			if color2 then
-				if this.color2 then
-					color = CooldownCount.db.profile.color_warn
-					this.color2 = nil
-				else
-					this.color2 = true
-				end
-			end
-			this.text:SetTextColor(color.r, color.g, color.b)
-
-			this.text:SetText( text )
-			this.timeToNextUpdate = toNextUpdate
-		else
-			if CooldownCount.db.profile.shine and this.icon:IsVisible() then
-				CooldownCount:StartToShine(this)
-			end
-			this.color2 = nil
-			this:Hide()
-		end
-	else
-		this.timeToNextUpdate = this.timeToNextUpdate - arg1
-	end
-end
-
 function CooldownCount:GetFormattedTime(secs)
+	local addSec = (CooldownCount.db.profile.UseBlizCounter and 0) or 1;
 	-- return cc now value, next update value, font size, toggle two color
 	if secs >= 86400 then
 		return ceil(secs / 86400) .. L["d"], mod(secs, 86400), CooldownCount.db.profile.size1
@@ -354,9 +446,17 @@ function CooldownCount:GetFormattedTime(secs)
 	elseif secs >= 60 then
 		return ceil(secs / 60) .. L["m"], mod(secs, 60), CooldownCount.db.profile.size2
 	elseif secs >= 10 then
-		return floor(secs + 0.5), secs - floor(secs), CooldownCount.db.profile.size3
+		return floor(secs+addSec), 0.100, CooldownCount.db.profile.size3
+	elseif secs >= 2 then
+		return floor(secs+addSec), 0.050, CooldownCount.db.profile.size4, true
+	elseif secs >= 1 then
+		return floor(secs+addSec), 0.025, CooldownCount.db.profile.size4, true
 	end
-	return floor(secs + 0.5), 0.5, CooldownCount.db.profile.size4, true
+	if(CooldownCount.db.profile.ShowDecimal)
+	then
+		return secs, 0.010, CooldownCount.db.profile.size2, true
+	end
+	return floor(secs+addSec), 0.010, CooldownCount.db.profile.size4, true
 end
 
 
@@ -389,26 +489,154 @@ function CooldownCount:CreateShineFrame(parent)
 end
 
 function CooldownCount:Shine_Update()
-	local shine = this.shine
+	local shine = self.shine
 	local alpha = shine:GetAlpha()
 	shine:SetAlpha(alpha * 0.95)
 
 	if alpha < 0.1 then
-		this:Hide()
+		self:Hide()
 	else
-		shine:SetHeight(alpha * this:GetHeight() * CooldownCount.db.profile.shineScale)
-		shine:SetWidth(alpha * this:GetWidth() * CooldownCount.db.profile.shineScale)
+		shine:SetHeight(alpha * self:GetHeight() * CooldownCount.db.profile.shineScale)
+		shine:SetWidth(alpha * self:GetWidth() * CooldownCount.db.profile.shineScale)
 	end
 end
 
 function CooldownCount:CheckBlacklist(frameName)
-	if not frameName or getglobal(frameName).noCooldownCount then
+	if not frameName or _G[frameName].noCooldownCount then
 		return true
 	end
+	-- Global blacklist
 	for _, v in ipairs(blacklist) do
 		if strfind(frameName, v) then
-			getglobal(frameName).noCooldownCount=1
+			_G[frameName].noCooldownCount=1
 			return true
 		end
 	end
+	-- User blacklist
+	if(CooldownCount.db.profile.blacklist) then
+		for _, v in ipairs(CooldownCount.db.profile.blacklist) do
+			if strfind(frameName, v) then
+				_G[frameName].noCooldownCount=1
+				return true
+			end
+		end
+	end
+	return false
 end
+
+local function CooldownCount_ChatPrint(str,r,g,b)
+  if(DEFAULT_CHAT_FRAME)
+  then
+    DEFAULT_CHAT_FRAME:AddMessage("CooldownCount: "..str, r or 1.0, g or 0.7, b or 0.15);
+  end
+end
+
+local function CooldownCount_ShowHelp()
+  CooldownCount_ChatPrint("Usage:");
+  CooldownCount_ChatPrint("  |cffffffff/cc options|r - "..L["Opens options panel"]);
+  CooldownCount_ChatPrint("  |cffffffff/cc bl add <FrameName>|r - "..L["Adds a frame to the user blacklist"]);
+  CooldownCount_ChatPrint("  |cffffffff/cc bl del <FrameName>|r - "..L["Removes a frame from the user blacklist"]);
+  CooldownCount_ChatPrint("  |cffffffff/cc bl list|r - "..L["List user blacklisted frames"]);
+end
+
+local function CooldownCount_Commands(command)
+  local _,_,cmd,param = strfind(command,"^([^ ]+) (.+)$");
+  if(not cmd) then cmd = command; end
+  if(not cmd) then cmd = ""; end
+  if(not param) then param = ""; end
+
+  if((cmd == "") or (cmd == "help"))
+  then
+    CooldownCount_ShowHelp();
+  elseif(cmd == "options")
+  then
+    InterfaceOptionsFrame_OpenToCategory("CooldownCount");
+  elseif(cmd == "bl")
+  then
+    local _,_,cmd2,param2 = strfind(param,"^([^ ]+) (.+)$");
+    if(not cmd2) then cmd2 = param; end
+    if(not cmd2) then cmd2 = ""; end
+    if(not param2) then param2 = ""; end
+    if(cmd2 == "add")
+    then
+      if(param2 == "")
+      then
+        CooldownCount_ChatPrint(L["Missing parameter for 'blacklist add' command"]);
+        CooldownCount_ShowHelp();
+      else
+        if(_G[param2] == nil)
+        then
+          CooldownCount_ChatPrint(string.format(L["Frame '%s' is not known. Cannot add it to user blacklist."],param2));
+        else
+          if(CooldownCount.db.profile.blacklist == nil)
+          then
+            CooldownCount.db.profile.blacklist = {};
+          end
+          tinsert(CooldownCount.db.profile.blacklist,param2);
+          CooldownCount_ChatPrint(string.format(L["Frame '%s' added to user blacklist."],param2));
+        end
+      end
+    elseif(cmd2 == "del")
+    then
+      if(param2 == "")
+      then
+        CooldownCount_ChatPrint(L["Missing parameter for 'blacklist del' command"]);
+        CooldownCount_ShowHelp();
+      else
+        if(CooldownCount.db.profile.blacklist == nil)
+        then
+          CooldownCount.db.profile.blacklist = {};
+        end
+        for i,v in ipairs(CooldownCount.db.profile.blacklist)
+        do
+          if(param2 == v)
+          then
+            tremove(CooldownCount.db.profile.blacklist,i);
+            CooldownCount_ChatPrint(string.format(L["Frame '%s' removed from user blacklist."],param2));
+            return;
+          end
+        end
+        CooldownCount_ChatPrint(string.format(L["Frame '%s' is not in user blacklist."],param2));
+      end
+    elseif(cmd2 == "list")
+    then
+      CooldownCount_ChatPrint(L["User blacklist:"]);
+      if(CooldownCount.db.profile.blacklist)
+      then
+        for _, v in ipairs(CooldownCount.db.profile.blacklist)
+        do
+          CooldownCount_ChatPrint(" - "..v);
+        end
+      end
+      CooldownCount_ChatPrint(L["End of list"]);
+    else
+      CooldownCount_ChatPrint(string.format(L["Unknown or missing parameter for 'blacklist' command: %s"],param));
+      CooldownCount_ShowHelp();
+    end
+  else
+    CooldownCount_ChatPrint(string.format(L["Unknown command: %s"],cmd));
+    CooldownCount_ShowHelp();
+  end
+end
+
+SLASH_COOLDOWNCOUNT1 = "/cooldowncount";
+SlashCmdList["COOLDOWNCOUNT"] = function(msg)
+  CooldownCount_Commands(msg);
+end
+
+SLASH_CC1 = "/cc";
+SlashCmdList["CC"] = function(msg)
+  CooldownCount_Commands(msg);
+end
+
+local f = CreateFrame('Frame'); f:Hide()
+f:SetScript('OnEvent', function(self, event, ...)
+	-- update action cooldowns
+	if event == 'ACTIONBAR_UPDATE_COOLDOWN' then
+		actions_Update()
+	end
+end)
+
+f:RegisterEvent('ACTIONBAR_UPDATE_COOLDOWN')
+
+CooldownCount_ChatPrint(string.format(L["CooldownCount v%s loaded!\nType /cooldowncount (or /cc) for help"],GetAddOnMetadata("CooldownCount", "Version")));

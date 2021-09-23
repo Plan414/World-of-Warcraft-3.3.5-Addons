@@ -1,4 +1,4 @@
---[[ $Id: Locale.zhTW.lua 76919 2008-06-17 13:02:03Z ottokang $ ]]--
+--[[ $Id: Locale.zhTW.lua 68 2008-06-17 13:02:03Z ottokang $ ]]--
 
 local L = LibStub("AceLocale-3.0"):NewLocale("CooldownCount","zhTW")
 if not L then return end

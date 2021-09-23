@@ -1,4 +1,4 @@
---[[ $Id: Locale.enUS.lua 76846 2008-06-16 15:15:09Z cremor $ ]]--
+--[[ $Id: Locale.enUS.lua 98 2011-05-02 12:05:35Z kiki $ ]]--
 
 local L = LibStub("AceLocale-3.0"):NewLocale("CooldownCount","enUS", true)
 
@@ -35,3 +35,27 @@ L["warning color"] = true
 L["Warning font size for cooldown is less than 10 seconds."] = true
 L["Warning Size"] = true
 L["WhatIsCooldownCount"] = true
+L["Show decimal"] = true
+L["Show decimal below 1 sec"] = true
+L["Show decimal below 1 sec."] = true
+L["Warning speed"] = true
+L["Warning blink speed"] = true
+L["Speed at which the warning blinking occurs."] = true
+L["Blizzard time display"] = true
+L["Use Blizzard time display"] = true
+L["Blizzard display 0 between 0 and 0.999 remaining seconds. Disabling this option will show 1 instead."] = true
+L["Opens options panel"] = true
+L["Adds a frame to the user blacklist"] = true
+L["Removes a frame from the user blacklist"] = true
+L["List user blacklisted frames"] = true
+L["Unknown command: %s"] = true
+L["Unknown or missing parameter for 'blacklist' command: %s"] = true
+L["User blacklist:"] = true
+L["End of list"] = true
+L["CooldownCount v%s loaded!\nType /cooldowncount (or /cc) for help"] = true
+L["Missing parameter for 'blacklist add' command"] = true
+L["Frame '%s' is not known. Cannot add it to user blacklist."] = true
+L["Frame '%s' added to user blacklist."] = true
+L["Missing parameter for 'blacklist del' command"] = true
+L["Frame '%s' removed from user blacklist."] = true
+L["Frame '%s' is not in user blacklist."] = true

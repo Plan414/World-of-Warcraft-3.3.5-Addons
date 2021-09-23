@@ -1,0 +1,42 @@
+------------------------------------------------------------------------
+r78 | 01satkins | 2008-10-16 18:06:39 +0000 (Thu, 16 Oct 2008) | 1 line
+Changed paths:
+   M /trunk
+   M /trunk/.pkgmeta
+
+Fixed LSM3 external url, Cleaned up SVN properties
+------------------------------------------------------------------------
+r77 | leech | 2008-10-16 15:01:18 +0000 (Thu, 16 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/CooldownCount.toc
+
+Updated .toc for 3.0.2
+------------------------------------------------------------------------
+r76 | root | 2008-09-30 15:46:50 +0000 (Tue, 30 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Hopefully fix .pkgmeta
+------------------------------------------------------------------------
+r75 | root | 2008-09-29 21:52:08 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   M /trunk
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r73 | root | 2008-09-29 20:57:46 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/CooldownCount
+   A /trunk (from /tmp/trunk/CooldownCount:72)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r72 | mukha521 | 2008-08-13 09:29:25 +0000 (Wed, 13 Aug 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/CooldownCount/CooldownCount.toc
+   A /tmp/trunk/CooldownCount/Locale.ruRU.lua
+
+CooldownCount:
+- ruRU locale implemented.
+------------------------------------------------------------------------

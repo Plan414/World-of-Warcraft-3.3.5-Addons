@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r67210 | trasher | 2008-03-30 22:46:51 -0400 (Sun, 30 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/CooldownCount/Locale.frFR.lua
+
+CooldownCount:
+- frFR update
+------------------------------------------------------------------------
+r67209 | trasher | 2008-03-30 22:43:02 -0400 (Sun, 30 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/CooldownCount/CooldownCount.toc
+
+CooldownCount:
+- toc update
+------------------------------------------------------------------------
