@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Perl Focus Frame
+## Notes: Displays a movable focus frame.
+## Dependencies: Perl_Config
+## OptionalDeps: Clique, myAddOns
+## SavedVariables: Perl_Focus_Config
+Perl_Focus.xml
