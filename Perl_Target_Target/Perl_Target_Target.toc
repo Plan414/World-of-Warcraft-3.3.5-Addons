@@ -1,7 +1,0 @@
-## Interface: 30300
-## Title: Perl Target Target Frames
-## Notes: Displays movable target of target frames.
-## Dependencies: Perl_Config
-## OptionalDeps: Clique, myAddOns
-## SavedVariables: Perl_Target_Target_Config
-Perl_Target_Target.xml
