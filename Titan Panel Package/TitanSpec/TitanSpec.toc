@@ -1,0 +1,17 @@
+﻿## Interface: 30300
+## Title: Titan Panel [|cffaaaa00DualSpec|r] |cff00aa001.5.30300|r
+## Notes: Adds spec information to Titan Panel
+## Title-ruRU: Титан Панель [|cffaaaa00Двойная специализация|r] |cff00aa001.5.30300|r
+## Notes-ruRU: Добавляет информацию и управление наборами талантов в Титан Панель.
+## Author: Rothpada (rothpada@gmail.com)
+## SavedVariables:
+## OptionalDeps:
+## Dependencies: Titan
+## Version: 1.5.30300
+Localization.lua
+Localization.deDE.lua
+Localization.ruRU.lua
+Localization.esMX.lua
+Localization.esES.lua
+TitanSpec.xml 
+TitanSpec.lua

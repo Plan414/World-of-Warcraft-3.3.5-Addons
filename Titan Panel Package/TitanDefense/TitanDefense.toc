@@ -1,0 +1,10 @@
+## Interface: 30200
+## Title: Titan Panel [|cffeda55fDefense|r] |cff00aa003.0.7.30200|r
+## Version: 3.0.7.30200
+## Notes: Tracks WorldDef chatter and prevents zone is under attack spam.
+## Author: HonorGoG of the Titan Panel Development Team; original version by Tekkub
+## X-Email: addons@titanpanel.org
+## X-Website: http://www.titanpanel.org
+## Dependencies: Titan
+## SavedVariables: TitanDefense_options, TitanDefense_newSubzones, TitanDefense_unknowns
+TitanDefense.xml

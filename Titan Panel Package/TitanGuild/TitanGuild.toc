@@ -1,0 +1,12 @@
+## Interface: 30300
+## Title: Titan Panel [Guild]
+##Title-esES: Titan Panel [Hermandad]
+## Notes: A simple guild list for the Titan Panel AddOn.
+##Notes-esES: Una lista de la hermandad para el Titan Panel.
+## Author: chicogrande (jluzier@gmail.com), port to 2.4 and further development by SeGeDel
+## SavedVariables:
+## SavedVariablesPerCharacter: TitanGuildVar 
+## OptionalDeps:
+## Dependencies: Titan
+## Version: 3.6g
+TitanGuild.xml

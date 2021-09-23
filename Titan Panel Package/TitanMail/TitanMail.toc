@@ -1,0 +1,11 @@
+## Interface: 30300
+## Title: Titan Panel [|ccff7fff7fMail|r] |cff00aa003.03.30000|r
+## Notes: A Titan Plugin to let you know you have mail.  Also remembers any Auction alerts. I am not the original author but decided to update it to be usable with Titan Panel v4.3.0.30200.
+## Author: Lothaer
+## Updated: Mikhailo
+## SavedVariables: TITAN_MAIL_SETTINGS
+## Dependencies: Titan
+## OptionalDeps: 
+## Version: 3.03.
+
+TitanMail.xml
