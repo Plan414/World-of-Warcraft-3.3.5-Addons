@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Perl Party Frame
+## Notes: Displays a movable party frame to replace the default.
+## Dependencies: Perl_Config
+## OptionalDeps: Clique, myAddOns
+## SavedVariables: Perl_Party_Config
+Perl_Party.xml
