@@ -1,0 +1,106 @@
+------------------------------------------------------------------------
+r174 | adjo | 2010-05-24 00:46:16 +0000 (Mon, 24 May 2010) | 1 line
+Changed paths:
+   A /tags/3.0.5.1_beta2 (from /trunk:173)
+
+3.0.5.1_beta2
+------------------------------------------------------------------------
+r173 | adjo | 2010-05-24 00:45:33 +0000 (Mon, 24 May 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+BUGFIX; Genie:CombatLeaveNotify()
+------------------------------------------------------------------------
+r171 | adjo | 2010-05-23 10:01:38 +0000 (Sun, 23 May 2010) | 3 lines
+Changed paths:
+   M /trunk/Genie.lua
+
+UPDATE; Automatic equipmentset-handling
+UPDATE; Genie:Automatic(); Execution delayed by 2.7 seconds
+
+------------------------------------------------------------------------
+r170 | adjo | 2010-05-20 14:37:54 +0000 (Thu, 20 May 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+UPDATE; Automatic equipmentset-handling
+------------------------------------------------------------------------
+r169 | adjo | 2010-05-14 17:18:45 +0000 (Fri, 14 May 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+BUGFIX; CLASS.Item:SetCount(count)
+------------------------------------------------------------------------
+r168 | adjo | 2010-05-14 14:55:44 +0000 (Fri, 14 May 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+BUGFIX; CLASS.Item:SetCount(count)
+------------------------------------------------------------------------
+r167 | adjo | 2010-05-07 15:19:24 +0000 (Fri, 07 May 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+BUGFIX; CLASS.Item:New()
+------------------------------------------------------------------------
+r166 | adjo | 2010-05-03 11:49:12 +0000 (Mon, 03 May 2010) | 1 line
+Changed paths:
+   M /trunk/Locale/deDE.lua
+   M /trunk/Locale/enUS.lua
+   M /trunk/Locale/esES.lua
+   M /trunk/Locale/esMX.lua
+   M /trunk/Locale/frFR.lua
+   M /trunk/Locale/koKR.lua
+   M /trunk/Locale/ruRU.lua
+   M /trunk/Locale/zhCN.lua
+   M /trunk/Locale/zhTW.lua
+
+UPDATE;
+------------------------------------------------------------------------
+r165 | adjo | 2010-04-29 22:53:11 +0000 (Thu, 29 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+NEW; Automatic equipmentset-handling; Each equipmentset created with the default ui will be added as a custom family
+------------------------------------------------------------------------
+r164 | adjo | 2010-04-26 23:58:46 +0000 (Mon, 26 Apr 2010) | 2 lines
+Changed paths:
+   M /trunk/Genie.lua
+
+NEW; Option:Combat:waitAfter;
+UPDATE; Some changes with combined ranks
+------------------------------------------------------------------------
+r163 | adjo | 2010-04-25 20:09:07 +0000 (Sun, 25 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+BUGFIX; Class.Item:SetQuestItem(isQuestItem)
+------------------------------------------------------------------------
+r162 | adjo | 2010-04-23 15:23:44 +0000 (Fri, 23 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+UPDATE; Some Debugmessages removed
+------------------------------------------------------------------------
+r161 | adjo | 2010-04-23 14:53:42 +0000 (Fri, 23 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+UPDATE; not equal: != >> ~=, like: ~ >> ==
+------------------------------------------------------------------------
+r160 | adjo | 2010-04-23 11:50:06 +0000 (Fri, 23 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/Genie.lua
+
+BUGFIX; handle['number']
+------------------------------------------------------------------------
+r159 | adjo | 2010-04-23 11:40:03 +0000 (Fri, 23 Apr 2010) | 5 lines
+Changed paths:
+   M /trunk/Genie.lua
+
+UPDATE; Combinable ranks; basically working;
+NEW; command:rank details; displays detailed infos about a rank
+NEW; Utils.tobool(bool)
+NEW; Utils.moneyStringToCopper(money)
+
+------------------------------------------------------------------------
