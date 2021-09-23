@@ -1,0 +1,3 @@
+## Interface: 30300## Title: Lib: CustomTutorials-1.0## Notes: Makes possible the creation of custom tutorials for addons## Author: Jaliborc## Category: Library## Licence: GNU General Public License - Version 3
+## OptionalDeps: LibStub, EmbedHandler-1.0
+## LoadOnDemand: true CustomTutorials-1.0.lua

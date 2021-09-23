@@ -1,0 +1,3 @@
+## Interface: 30200## Title: Lib: EmbedHandler-1.0## Notes: Minimalistic library which allows to embed methods from one object into another## Author: Jaliborc## Category: Library## Licence: GNU General Public License - Version 3
+## OptionalDeps: LibStub
+## LoadOnDemand: 1 EmbedHandler-1.0.lua
