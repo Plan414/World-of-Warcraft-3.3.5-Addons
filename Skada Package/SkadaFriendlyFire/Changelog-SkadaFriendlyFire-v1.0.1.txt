@@ -1,0 +1,41 @@
+------------------------------------------------------------------------
+r7 | mokhtar | 2010-06-09 16:23:15 +0000 (Wed, 09 Jun 2010) | 1 line
+Changed paths:
+   A /tags/v1.0.1 (from /trunk:6)
+
+Tagging as v1.0.1
+------------------------------------------------------------------------
+r6 | Mokhtar | 2010-06-09 16:20:49 +0000 (Wed, 09 Jun 2010) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+- Fixed the packaging bug hopefully
+------------------------------------------------------------------------
+r4 | Mokhtar | 2010-06-08 21:34:16 +0000 (Tue, 08 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/FriendlyFire.lua
+
+- Bugfix
+------------------------------------------------------------------------
+r3 | Mokhtar | 2010-06-01 20:57:01 +0000 (Tue, 01 Jun 2010) | 2 lines
+Changed paths:
+   M /trunk/FriendlyFire.lua
+
+- better use of framework to intercept only events we're interested in
+- fixed blocking bug
+------------------------------------------------------------------------
+r2 | Mokhtar | 2010-05-27 19:58:17 +0000 (Thu, 27 May 2010) | 1 line
+Changed paths:
+   A /trunk/FriendlyFire.lua
+   A /trunk/SkadaFriendlyFire.toc
+
+- Initial commit
+------------------------------------------------------------------------
+r1 | root | 2010-05-27 19:50:19 +0000 (Thu, 27 May 2010) | 1 line
+Changed paths:
+   A /branches
+   A /tags
+   A /trunk
+
+"skada_friendlyfire/mainline: Initial Import"
+------------------------------------------------------------------------

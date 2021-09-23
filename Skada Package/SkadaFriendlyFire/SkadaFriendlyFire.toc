@@ -1,0 +1,12 @@
+## Interface: 30300
+## Title: Skada |r[|caaedc99fFriendlyFire|r]
+## Notes: Adds a Friendly Fire mode and data collection to Skada.
+## Author: Mokhtar
+## Version: 0.1
+## Dependencies: Skada
+## X-Curse-Packaged-Version: v1.0.1
+## X-Curse-Project-Name: Skada_FriendlyFire
+## X-Curse-Project-ID: skada_friendlyfire
+## X-Curse-Repository-ID: wow/skada_friendlyfire/mainline
+
+FriendlyFire.lua
