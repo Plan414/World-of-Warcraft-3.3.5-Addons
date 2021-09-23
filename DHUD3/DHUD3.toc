@@ -1,0 +1,35 @@
+﻿## Interface: 30300
+## Title: DHUD|cff7fff7f 3|r
+## Author: Horacio (Arcanefoam)
+## X-eMail: arcanefoam AT gmail DOT com
+## X-Website: http://www.wowace.com/projects/dhud3/
+## Original Code: Markus Inger (Drathal/Silberklinge) 
+## Version: 3.0
+## Notes: Heads Up Display with Player and Target Info
+## Notes-esES: Heads Up Display con informacion del Jugador y el Blanco
+## Notes-ruRU: Адд-он отображает статусную информацию игрока и его цели с помощью элемента по середине экрана.
+## OptionalDeps: myAddOns
+## SavedVariables: DHUD3DB
+## X-Embeds: Ace3
+## X-Category: Combat
+## X-Curse-Packaged-Version: r169
+## X-Curse-Project-Name: DHUD3
+## X-Curse-Project-ID: dhud3
+## X-Curse-Repository-ID: wow/dhud3/mainline
+
+## Ace Libraries
+embeds.xml
+
+## Locales
+Locale\locale.xml
+
+## DHUD
+DHUD3.lua
+Layout.lua
+Player.lua
+Auras.lua
+Abilities.lua
+Pet.lua
+Outer.lua
+Cast.lua
+Minimap.lua
