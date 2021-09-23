@@ -1,5 +1,0 @@
-<Bindings>
-	<Binding name="TOGGLEOPTIONS" header="PERLCONFIG">
-		Perl_Config_Toggle();
-	</Binding>
-</Bindings>
