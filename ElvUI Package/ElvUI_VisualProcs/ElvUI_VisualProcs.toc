@@ -1,0 +1,10 @@
+## Interface: 30300
+## Author: Bunny, Pinya, brotalnia
+## Version: 1.03
+## Title: |cff1784d1E|r|cffe5e3e3lvUI|r |cff1784d1V|r|cffe5e3e3isual|r |cff1784d1P|r|cffe5e3e3rocs|r
+## Notes: Cataclysm Visual Procs
+## RequiredDeps: ElvUI
+
+LibBlizzardProcs\LibBlizzardProcs.xml
+locales\load_locales.xml
+core.lua
