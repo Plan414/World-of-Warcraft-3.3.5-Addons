@@ -1,0 +1,51 @@
+## Interface: 30300
+## Title: SpamMeNot
+## Notes: Attempts to identify and ignore all chat from commercial spammers.
+## Title-zhTW: SpamMeNot
+## Notes-zhTW: 辨識以及忽略廣告商訊息。
+## Title-deDE: SpamMeNot
+## Title-frFR: SpamMeNot
+## Notes-frFR: Identifie et ignore tous le spam commercial (vente d'or, powerleveling...)
+## Author: Kebian of Defias Brotherhood (EU)
+## Version: 3.3
+## X-Build: $Revision: 79 $
+## X-Donate: PayPal:robs@codexsoftware.co.uk
+## X-Curse-Packaged-Version: 3.3.79-release
+## X-Curse-Project-Name: SpamMeNot
+## X-Curse-Project-ID: spam-me-not
+## X-Curse-Repository-ID: wow/spam-me-not/mainline
+
+## SavedVariables: SpamMeNotDB
+## OptionalDeps: LibStub, LibWho-2.0, WIM, Deformat, WIM_Rewrite, ChatSounds, CallbackHandler-1.0, AceAddon-3.0, AceConsole-3.0, AceEvent-3.0, AceLocale-3.0, AceTimer-3.0, AceGUI-3.0, AceConfig-3.0, AceDB-3.0, AceHook-3.0, AceComm-3.0, AceSerializer-3.0
+## X-Embeds: LibStub, LibWho-2.0, CallbackHandler-1.0, AceAddon-3.0, AceConsole-3.0, AceEvent-3.0, AceLocale-3.0, AceTimer-3.0, AceGUI-3.0, AceConfig-3.0, AceDB-3.0, AceHook-3.0, AceComm-3.0, AceSerializer-3.0
+
+embeds.xml
+
+# prep sets up the SpamMeNot namespace which is needed by the
+# other classes before core.lua is run.
+prep.lua
+
+# Localization
+locales\enUS.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\zhTW.lua
+
+evidence.lua
+players.lua
+player.lua
+analyzer.lua
+filter.lua
+whisper.lua
+whisperhold.lua
+who.lua
+options.lua
+eventHandler.lua
+eventHandlers.lua
+spammers.lua
+tradeMon.lua
+tradeHistory.lua
+defaultHooks.lua
+gui.lua
+updateMonitor.lua
+core.lua

@@ -1,0 +1,18 @@
+------------------------------------------------------------------------
+r80 | octane666 | 2010-09-30 17:21:00 -0500 (Thu, 30 Sep 2010) | 1 line
+Changed paths:
+   A /tags/3.3.79-release (from /trunk:79)
+
+Tagging as 3.3.79-release
+------------------------------------------------------------------------
+r79 | octane666 | 2010-09-30 17:18:54 -0500 (Thu, 30 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/SpamMeNot.toc
+   M /trunk/locales/deDE.lua
+   M /trunk/locales/enUS.lua
+   M /trunk/locales/frFR.lua
+
+- Updated word list.
+
+
+------------------------------------------------------------------------
