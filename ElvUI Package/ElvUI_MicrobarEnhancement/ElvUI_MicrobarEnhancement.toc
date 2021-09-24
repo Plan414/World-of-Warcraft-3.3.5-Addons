@@ -1,0 +1,9 @@
+﻿## Interface: 30300
+## Title: |cff1784d1E|r|cffe5e3e3lvUI|r |cff1784d1M|r|cffe5e3e3icrobar|r |cff1784d1E|r|cffe5e3e3nhancement|r
+## Author: Darth Predator
+## Version: 1.77
+## RequiredDeps: ElvUI
+## DefaultState: Enabled
+
+Locales\Load_Locales.xml
+ElvUI_MicrobarEnhancement.lua
