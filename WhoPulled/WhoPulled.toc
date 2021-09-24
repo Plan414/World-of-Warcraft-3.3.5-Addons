@@ -1,0 +1,11 @@
+## Interface: 30300
+## Version: 0.1
+## Title: Who Pulled?
+## Notes: Notifies you who pulled that boss (or whatever) and allows you to tell everyone who did. FUCK GRIEFERS.
+## SavedVariables: WhoPulled_Settings WhoPulled_RageList WhoPulled_Ignore
+## Author: Aierre
+## X-Curse-Project-Name: Who Pulled?
+## X-Curse-Project-ID: whopulled
+
+WhoPulled.lua
+WhoPulled.xml
