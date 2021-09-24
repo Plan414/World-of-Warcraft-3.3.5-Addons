@@ -1,0 +1,1397 @@
+------------------------------------------------------------------------
+r160 | nogudnik | 2008-12-08 01:39:28 +0000 (Mon, 08 Dec 2008) | 5 lines
+Changed paths:
+   A /tags/1.12.2 (from /trunk:159)
+
+Tagging as 1.12.2
+
+- Show item stats in tooltip
+- Added Eternium Thread as buyable
+- More ArkInventory tweaks
+------------------------------------------------------------------------
+r159 | nogudnik | 2008-12-02 02:44:02 +0000 (Tue, 02 Dec 2008) | 2 lines
+Changed paths:
+   M /trunk/SkilletStitch-1.1.lua
+
+Eternium Thread is buyable.
+
+------------------------------------------------------------------------
+r158 | nogudnik | 2008-11-25 04:05:41 +0000 (Tue, 25 Nov 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPossessions.lua
+
+More tweaking to get ArkInventory counts working.
+
+------------------------------------------------------------------------
+r157 | nogudnik | 2008-11-24 04:03:50 +0000 (Mon, 24 Nov 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPossessions.lua
+   M /trunk/TradeskillInfo.lua
+   M /trunk/UI/MainFrame.lua
+
+Fixed bug with the coloring of the level of a crafted item.
+
+------------------------------------------------------------------------
+r155 | nogudnik | 2008-11-15 23:11:05 +0000 (Sat, 15 Nov 2008) | 3 lines
+Changed paths:
+   M /trunk/LibPossessions.lua
+
+Updated for the new methods in ArkInventory for decoding
+item strings.
+
+------------------------------------------------------------------------
+r154 | StingerSoft | 2008-10-26 21:27:05 +0000 (Sun, 26 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Locale/Locale-ruRU.lua
+
+Skillet:
+- ruRU update
+------------------------------------------------------------------------
+r153 | nogudnik | 2008-10-26 19:38:21 +0000 (Sun, 26 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Locale/Locale-deDE.lua
+   M /trunk/Locale/Locale-enUS.lua
+   M /trunk/Locale/Locale-esES.lua
+   M /trunk/Locale/Locale-frFR.lua
+   M /trunk/Locale/Locale-koKR.lua
+   M /trunk/Locale/Locale-ruRU.lua
+   M /trunk/Locale/Locale-zhCN.lua
+   M /trunk/Locale/Locale-zhTW.lua
+   M /trunk/Skillet.lua
+   M /trunk/Upgrades.lua
+
+Made "Show crafters for items in tooltip" a configurable option.
+
+------------------------------------------------------------------------
+r152 | nogudnik | 2008-10-25 20:30:46 +0000 (Sat, 25 Oct 2008) | 4 lines
+Changed paths:
+   M /trunk/Skillet.lua
+   M /trunk/SkilletStitch-1.1.lua
+
+Fixed problem with events in the queue library not 
+being registered corrected. This clears up the problem
+of items staying in the queue forever.
+
+------------------------------------------------------------------------
+r151 | nogudnik | 2008-10-25 05:45:56 +0000 (Sat, 25 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Skillet.lua
+
+Don't try and register event for methods that have been removed.
+
+------------------------------------------------------------------------
+r150 | nogudnik | 2008-10-24 02:10:14 +0000 (Fri, 24 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/UI/MainFrame.lua
+
+Found another instance of the obsolete CraftFrame.
+
+------------------------------------------------------------------------
+r149 | nogudnik | 2008-10-24 01:32:28 +0000 (Fri, 24 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Skillet.lua
+   M /trunk/Skillet.toc
+
+Started work on version 1.13
+
+------------------------------------------------------------------------
+r148 | nogudnik | 2008-10-24 01:32:00 +0000 (Fri, 24 Oct 2008) | 4 lines
+Changed paths:
+   M /trunk/Skillet.lua
+   M /trunk/SkilletQueue.lua
+   M /trunk/SkilletStitch-1.1.lua
+   M /trunk/ThirdPartyHooks.lua
+   M /trunk/TradeskillInfo.lua
+   M /trunk/UI/MainFrame.lua
+   M /trunk/UI/MainFrame.xml
+
+Removed all references to crafting. In WoW 3.0.2 and
+later, enchanting is now a proper tradeskill and does
+not need to be handled separately.
+
+------------------------------------------------------------------------
+r146 | nogudnik | 2008-10-19 23:10:26 +0000 (Sun, 19 Oct 2008) | 4 lines
+Changed paths:
+   M /trunk/LibPossessions.lua
+
+Updated to work with the 3.01 version of ArkInventory.
+Older versions of ArkInventory will generate and error
+message.
+
+------------------------------------------------------------------------
+r145 | nogudnik | 2008-10-18 23:33:57 +0000 (Sat, 18 Oct 2008) | 6 lines
+Changed paths:
+   M /trunk/SkilletStitch-1.1.lua
+   M /trunk/embeds.xml
+
+Skillet:
+  - Make sure to avoid rescanning tradeskills automatically
+    if the tradeskill is one linked from chat.
+  - Added no-lib tags to the embedds.xml file, for the Curse
+    packager.
+
+------------------------------------------------------------------------
+r144 | nogudnik | 2008-10-18 08:35:05 +0000 (Sat, 18 Oct 2008) | 8 lines
+Changed paths:
+   M /trunk/Skillet.lua
+   M /trunk/Skillet.toc
+   M /trunk/UI/MainFrame.lua
+   M /trunk/UI/MainFrame.xml
+
+Skillet:
+  - Started on verion 1.12
+  - Added button in the title bar to link the tradeskill (if it
+    is linkable)
+  - Use IsTradeSkillLinked() when called to see if the user clicked
+    on a link in chat. In this case we want to stay as far away from
+    it as possible.
+
+------------------------------------------------------------------------
+r142 | StingerSoft | 2008-10-17 01:18:31 +0000 (Fri, 17 Oct 2008) | 3 lines
+Changed paths:
+   A /trunk/Locale/Locale-ruRU.lua
+   M /trunk/Skillet.toc
+   M /trunk/SkilletStitch-1.1.lua
+
+Skillet:
+-
+added ruRU localization
+------------------------------------------------------------------------
+r140 | nogudnik | 2008-10-16 06:34:59 +0000 (Thu, 16 Oct 2008) | 5 lines
+Changed paths:
+   M /trunk/Skillet.lua
+
+Skillet:
+  - Only topen the tradeskill window if the trade is 
+    one we actually know. If we do not know it, it must
+    be a tradeskill that was linked to us.
+
+------------------------------------------------------------------------
+r139 | nogudnik | 2008-10-16 06:10:00 +0000 (Thu, 16 Oct 2008) | 5 lines
+Changed paths:
+   M /trunk/LibPossessions.lua
+
+Skillet:
+   - If no inventory addon can be found to get item counts
+     from alts, stop checking for addons every time we need
+     item counts. (performance)
+
+------------------------------------------------------------------------
+r138 | nogudnik | 2008-10-16 04:47:01 +0000 (Thu, 16 Oct 2008) | 4 lines
+Changed paths:
+   M /trunk/UI/MainFrame.xml
+   M /trunk/UI/RecipeNotes.xml
+   M /trunk/UI/ShoppingList.xml
+
+Skillet:
+  - Updated for the change to FauxScrollFrame_OnVerticalScroll
+    in WoW 3.0.
+
+------------------------------------------------------------------------
+r137 | nogudnik | 2008-10-16 03:55:08 +0000 (Thu, 16 Oct 2008) | 4 lines
+Changed paths:
+   M /trunk
+   M /trunk/.pkgmeta
+   M /trunk/Skillet.toc
+   M /trunk/embeds.xml
+
+Skillet:
+  - Updated the list of embeds to include the rest
+    of the tradeskill libs currently in use.
+
+------------------------------------------------------------------------
+r136 | nogudnik | 2008-10-15 20:14:52 +0000 (Wed, 15 Oct 2008) | 3 lines
+Changed paths:
+   M /trunk/SkilletStitch-1.1.lua
+
+Skillet:
+   - Removed a left over debugging statement.
+
+------------------------------------------------------------------------
+r134 | nogudnik | 2008-10-15 06:14:08 +0000 (Wed, 15 Oct 2008) | 8 lines
+Changed paths:
+   M /trunk
+   M /trunk/.pkgmeta
+   M /trunk/LibPossessions.lua
+   M /trunk/Locale/Locale-deDE.lua
+   M /trunk/Locale/Locale-enUS.lua
+   M /trunk/Locale/Locale-esES.lua
+   M /trunk/Locale/Locale-frFR.lua
+   M /trunk/Locale/Locale-koKR.lua
+   M /trunk/Locale/Locale-zhCN.lua
+   M /trunk/Locale/Locale-zhTW.lua
+   M /trunk/Skillet.lua
+   M /trunk/Skillet.toc
+   M /trunk/SkilletStitch-1.1.lua
+   M /trunk/ThirdPartyHooks.lua
+   M /trunk/TradeskillInfo.lua
+   M /trunk/UI/MainFrame.lua
+   M /trunk/UI/MainFrame.xml
+
+Skillet:
+   - Preliminary update for patch 3.0.2 (no support for inscriptions yet)
+   - Items from mods that track alternate character inventory cached a little
+     smarted (performance)
+   - Item tooltips can now be set to display the name of all alternate characters
+     that can craft the item
+   - First attempt at a .pkgmeta file
+
+------------------------------------------------------------------------
+r133 | root | 2008-09-30 16:10:59 +0000 (Tue, 30 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Hopefully fix .pkgmeta
+------------------------------------------------------------------------
+r132 | root | 2008-09-29 21:51:34 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   M /trunk
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r130 | root | 2008-09-29 20:58:39 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/Skillet
+   A /trunk (from /tmp/trunk/Skillet:129)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r129 | mikk | 2008-08-27 08:03:46 +0000 (Wed, 27 Aug 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/LibPossessions.lua
+
+Skillet:
+- LibPossessions: Add support for Baggins_AnywhereBags
+
+
+------------------------------------------------------------------------
+r128 | mikk | 2008-08-17 07:28:46 +0000 (Sun, 17 Aug 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+
+Skillet:
+- Only scan current trade for craftable dependencies. It was trying to add items from other trades to the current one! (No, I really don't need to make 22 boomsticks to get some fel iron bars made from my ores, really..)
+
+------------------------------------------------------------------------
+r125 | StiviS | 2008-05-12 06:45:32 +0000 (Mon, 12 May 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/TradeskillInfo.lua
+
+Skillet:
+- GetTradeSkillInfo function - Check index to exit function in a nil value
+
+------------------------------------------------------------------------
+r124 | StiviS | 2008-05-05 18:12:45 +0000 (Mon, 05 May 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-esES.lua
+
+Skillet:
+- esES updated
+------------------------------------------------------------------------
+r123 | StiviS | 2008-04-30 08:34:10 +0000 (Wed, 30 Apr 2008) | 3 lines
+Changed paths:
+   A /tmp/trunk/Skillet/Locale/Locale-esES.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet:
+- esES added
+
+------------------------------------------------------------------------
+r122 | xinhuan | 2008-04-28 23:44:42 +0000 (Mon, 28 Apr 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/LibPossessions.lua
+
+Skillet:
+- Update LibPosesssions.lua to work with BankItems minor storage format change.
+
+------------------------------------------------------------------------
+r120 | ammo | 2008-04-13 08:24:08 +0000 (Sun, 13 Apr 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.toc
+
+.Undo all of Scorpio0920 schanges. You will lose your SVN account.
+I wish you were on IRC #wowace on freenode.net so we can have a chat.
+
+------------------------------------------------------------------------
+r119 | scorpio0920 | 2008-04-13 07:45:03 +0000 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet:
+- toc to 2.4
+------------------------------------------------------------------------
+r117 | nogudnik | 2008-02-17 19:56:45 +0000 (Sun, 17 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/LibPossessions.lua
+
+Skillet:
+  - SKL-73: Added support for getting item counts from ArkInventory. Only tested
+    with version 2.26 of ArkInventory.
+
+------------------------------------------------------------------------
+r116 | next96 | 2008-02-12 05:09:51 +0000 (Tue, 12 Feb 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r115 | nogudnik | 2008-02-12 03:39:52 +0000 (Tue, 12 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+
+Skillet:
+  - QueueAll/CraftAll need to account for the number of 
+    items produced by the recipe.
+
+------------------------------------------------------------------------
+r114 | nogudnik | 2008-02-12 02:43:41 +0000 (Tue, 12 Feb 2008) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-frFR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+  - SKL-65 Added new option "Features" -> "Show craftable counts"
+    that defaults to false. When true, display the number of time
+    you can craft a receipe, not the total number of items produced.
+
+------------------------------------------------------------------------
+r113 | nogudnik | 2008-02-10 20:50:12 +0000 (Sun, 10 Feb 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+
+Skillet:
+  - Fixed problem, determining if a reagent can be purchased from a vendor
+
+------------------------------------------------------------------------
+r112 | nogudnik | 2008-02-10 19:42:16 +0000 (Sun, 10 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+  - Cache (and restore) the text used for filtering recipes on
+    a per-tradeskill basis.
+
+------------------------------------------------------------------------
+r111 | next96 | 2008-02-10 04:56:21 +0000 (Sun, 10 Feb 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r110 | nogudnik | 2008-02-09 23:34:36 +0000 (Sat, 09 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+  - Added workaround for missing items in LibPeriodicTable
+  - Fixed poissible problem with determining if an item can be purchased
+
+------------------------------------------------------------------------
+r109 | nogudnik | 2008-02-09 23:00:01 +0000 (Sat, 09 Feb 2008) | 6 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-frFR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+  - SKL-59 Added ability to display one or more "+" characters after the
+    recipe name to indicate the difficulty of that recipe. This should
+    make life easier for those that have trouble distinguishing between
+    the colours we use for recipe difficulty.
+
+------------------------------------------------------------------------
+r108 | nogudnik | 2008-02-09 21:55:08 +0000 (Sat, 09 Feb 2008) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+
+Skillet:
+  - SKL-67 : Attempt to detect and report on any infinite 
+    recursion encountered  when queuing craftable reagents. 
+    Still not a complete fix though.
+
+------------------------------------------------------------------------
+r107 | nogudnik | 2008-02-09 21:43:23 +0000 (Sat, 09 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+
+Skillet:
+   - SKL-62 the "Clear" button now clears that current queue *and*
+     save the new state of the queue.
+
+------------------------------------------------------------------------
+r106 | nogudnik | 2008-02-09 21:37:08 +0000 (Sat, 09 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+
+Skillet:
+  - SKL-69 craftable item counts are now adjusted to take into account the
+    reagents that will be consumed by queued items.
+
+------------------------------------------------------------------------
+r105 | nogudnik | 2008-02-09 20:22:28 +0000 (Sat, 09 Feb 2008) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-frFR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/Upgrades.lua
+
+Skillet:
+  - SKL-68 Added option to only include current bag contents when 
+    calculating craftable item counts. This defaults to off and 
+    bank and alt character inventories are checked.
+
+------------------------------------------------------------------------
+r104 | nogudnik | 2008-02-05 03:58:07 +0000 (Tue, 05 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/LibPossessions.lua
+
+Skillet:
+  - SKL-66: Added support for OneBag/OneBank/OneView. All three are required
+    for best results, but OneView is the absolute minimum.
+
+------------------------------------------------------------------------
+r103 | next96 | 2008-02-04 16:57:08 +0000 (Mon, 04 Feb 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r102 | nogudnik | 2008-02-03 20:10:08 +0000 (Sun, 03 Feb 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+
+Skillet:
+   - SKL-46 Add the max number of items created for crafting as 
+     well as trade skills.
+
+------------------------------------------------------------------------
+r101 | nogudnik | 2008-02-03 20:01:01 +0000 (Sun, 03 Feb 2008) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+
+Skillet:
+  - SKL-46 include the number of items crafted in the icon for the item. 
+    You may need to rescan your recipes to get this information to display
+    properly.
+
+------------------------------------------------------------------------
+r100 | nogudnik | 2007-11-21 21:53:23 +0000 (Wed, 21 Nov 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+  - Call SelectTradeSkill for those mods that expect 
+    GetTradeSkillSelectionIndex to return something sane.
+
+------------------------------------------------------------------------
+r99 | nogudnik | 2007-11-21 20:50:28 +0000 (Wed, 21 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+  - SKL-54: Handle adding third party buttons more than once.
+
+------------------------------------------------------------------------
+r98 | nogudnik | 2007-11-21 19:58:16 +0000 (Wed, 21 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/description.txt
+   M /tmp/trunk/Skillet/embeds.xml
+
+Skillet:
+  - SKL-53: Upgraded the embedded periodic table to LibPeriodicTable-3.1
+
+------------------------------------------------------------------------
+r97 | nogudnik | 2007-11-21 19:46:00 +0000 (Wed, 21 Nov 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+
+Skillet:
+  - SKL-44: We now check to make sure the bag we try an 
+    put items in has space and is not a special (ammo, hearb, etc)
+    bag.
+
+------------------------------------------------------------------------
+r96 | nogudnik | 2007-11-18 17:45:14 +0000 (Sun, 18 Nov 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+
+Skillet:
+  - When looking to see if reagents can be crafted, check created 
+    item links, not recipe names. The name of a recipe is often not 
+    the same as the produced item.
+
+------------------------------------------------------------------------
+r95 | nogudnik | 2007-11-18 17:23:30 +0000 (Sun, 18 Nov 2007) | 4 lines
+Changed paths:
+   A /tmp/trunk/Skillet/Locale/Locale-frFR.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+  - Added French localization (courtesy of tazmanyak)
+  - Fixed nil pointer bug when closing the window.
+
+------------------------------------------------------------------------
+r94 | kergoth | 2007-11-17 04:48:16 +0000 (Sat, 17 Nov 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Skillet/LibPossessions.lua
+
+Skillet: LibPossessions: Bagnon_Forever support.
+------------------------------------------------------------------------
+r93 | nogudnik | 2007-11-15 00:05:30 +0000 (Thu, 15 Nov 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MerchantWindow.lua
+
+Skillet:
+ - SKL-42: Remove the vendor buy button from the merchant
+   frame after all items have been purchased.
+
+------------------------------------------------------------------------
+r92 | nogudnik | 2007-11-14 23:28:30 +0000 (Wed, 14 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   A /tmp/trunk/Skillet/TradeskillInfo.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+ - SKL-36, SKL-37: Started implementation of the skill query API
+
+------------------------------------------------------------------------
+r91 | nogudnik | 2007-11-13 19:02:37 +0000 (Tue, 13 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet:
+ - updated .toc to 20300 for patch 2.3.0 
+
+------------------------------------------------------------------------
+r90 | kuja | 2007-11-12 19:20:25 +0000 (Mon, 12 Nov 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+
+Skillet:
+- deDE update
+------------------------------------------------------------------------
+r89 | yhwh | 2007-11-06 23:56:47 +0000 (Tue, 06 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+
+Skillet:
+- update zhCN localization
+
+------------------------------------------------------------------------
+r88 | mcc | 2007-11-06 20:04:51 +0000 (Tue, 06 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+
+Skillet:
+-update Locale zhTW
+
+------------------------------------------------------------------------
+r87 | next96 | 2007-11-05 05:59:03 +0000 (Mon, 05 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r86 | nogudnik | 2007-11-04 19:51:51 +0000 (Sun, 04 Nov 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet
+   A /tmp/trunk/Skillet/LibPossessions.lua
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/Utils.lua
+   M /tmp/trunk/Skillet/description.txt
+   M /tmp/trunk/Skillet/embeds.xml
+
+Skillet:
+ - SKL-4: Added tracking inventory on alternate characters. Requires a
+   supported inventory tracking mob.
+   (N.B.: LibPossessions is not ready for general use)
+
+------------------------------------------------------------------------
+r85 | nogudnik | 2007-11-04 02:35:49 +0000 (Sun, 04 Nov 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+
+Skillet: 
+  - Fixed bug reteiving items from the bank when more 
+    than 1 stack is needed.
+
+------------------------------------------------------------------------
+r84 | nogudnik | 2007-11-01 03:32:32 +0000 (Thu, 01 Nov 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+
+Skillet:
+  - SKL-20: When recursively searching for reagents needed to create
+    the currently queued item, restrict the search to exact name 
+    matches only.
+
+------------------------------------------------------------------------
+r83 | nogudnik | 2007-11-01 03:05:31 +0000 (Thu, 01 Nov 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/UI/Sorting.lua
+
+Skillet:
+ - Cleaned up the buttons used to display recipe names.
+   Makes better use of space now.
+
+------------------------------------------------------------------------
+r82 | nogudnik | 2007-10-29 01:40:28 +0000 (Mon, 29 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/Sorting.lua
+
+Skillet:
+  - Fixed bug with sorting. The list of recipes was being 
+    sorted *way* too often.
+
+------------------------------------------------------------------------
+r81 | nogudnik | 2007-10-28 05:14:10 +0000 (Sun, 28 Oct 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+  - Attempt to build in a workaround for SKL-38. When new recipe
+    buttons are created, force their frame level to be one greater
+    that their parent.
+
+------------------------------------------------------------------------
+r80 | next96 | 2007-10-28 03:28:52 +0000 (Sun, 28 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r79 | scorpion | 2007-10-27 23:22:58 +0000 (Sat, 27 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+
+Skillet:
+- Update locale zhCN
+- Update locale zhTW
+------------------------------------------------------------------------
+r78 | nogudnik | 2007-10-27 22:03:38 +0000 (Sat, 27 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/Sorting.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+ - SKL-17: Added colouring of item level based on its
+   quality and sorting by item quality.
+
+------------------------------------------------------------------------
+r77 | nogudnik | 2007-10-27 19:08:51 +0000 (Sat, 27 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+ - Version 1.9 released, now working on 1.10
+
+------------------------------------------------------------------------
+r76 | nogudnik | 2007-10-26 02:22:28 +0000 (Fri, 26 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+ - SKL-32: Name searches now check recipes names *and*
+   reagent names.
+
+------------------------------------------------------------------------
+r75 | yhwh | 2007-10-25 23:48:47 +0000 (Thu, 25 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+
+Skillet:
+-updata zhCN
+
+------------------------------------------------------------------------
+r74 | nogudnik | 2007-10-25 04:35:01 +0000 (Thu, 25 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+
+Skillet:
+  - zhTW locale update courtesy of whocare.
+
+------------------------------------------------------------------------
+r73 | nogudnik | 2007-10-25 02:50:04 +0000 (Thu, 25 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+
+Skillet:
+ - SKL-29: Chat commands are now available even when the mod is disabled.
+ - SKL-30: Code to restore Blizzard frames now called on all code paths.
+
+------------------------------------------------------------------------
+r72 | nogudnik | 2007-10-24 05:43:22 +0000 (Wed, 24 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/UI/Sorting.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- SKL-14: Added reverse sorting toggle. The sort direction is saved
+  per-character/per-tradeskill/per-sortmethod.
+
+------------------------------------------------------------------------
+r71 | nogudnik | 2007-10-24 03:12:37 +0000 (Wed, 24 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MerchantWindow.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+ - SKL-27: The merchant buy button is now properly updated when the merchant window 
+   is open and the list of queued recipes is changed
+
+------------------------------------------------------------------------
+r70 | nogudnik | 2007-10-24 02:51:25 +0000 (Wed, 24 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+ - SKL-23: Skillet recipe tooltip now obeys the UI scale setting
+
+------------------------------------------------------------------------
+r69 | nogudnik | 2007-10-24 02:46:07 +0000 (Wed, 24 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+
+Skillet:
+- SKL-22: When Skillet is disabled (/skillet standby), restore the 
+  default trade skill window code.
+
+------------------------------------------------------------------------
+r68 | nogudnik | 2007-10-24 02:36:58 +0000 (Wed, 24 Oct 2007) | 3 lines
+Changed paths:
+   D /tmp/trunk/Skillet/ChangeLog
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- SKL-25: Shopping list settings are now stored per-character.
+
+------------------------------------------------------------------------
+r67 | nogudnik | 2007-10-22 23:33:48 +0000 (Mon, 22 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/Sorting.lua
+
+Skillet:
+- Added more checks when sorting recipes.
+
+------------------------------------------------------------------------
+r66 | nogudnik | 2007-10-21 20:39:22 +0000 (Sun, 21 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+
+Skillet:
+- SKL-21: Make Skillet behave pretty much the same way the default
+  craft window does when EnchantingSell is enabled.
+
+------------------------------------------------------------------------
+r65 | next96 | 2007-10-21 06:30:09 +0000 (Sun, 21 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r64 | nogudnik | 2007-10-20 19:28:24 +0000 (Sat, 20 Oct 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+
+Skillet:
+ - SKL-11, attempt to trick other Blizzard frames by setting 
+   the original tradeskill window width/height to 5 when we
+   take them over.
+
+------------------------------------------------------------------------
+r63 | nogudnik | 2007-10-20 19:13:09 +0000 (Sat, 20 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+
+Skillet:
+- SKL-19, shopping list will now search through all bags for a place
+  to store items retrieved from the bank.
+
+------------------------------------------------------------------------
+r62 | nogudnik | 2007-10-20 03:32:40 +0000 (Sat, 20 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- Cosmetic change, recipe reagents are now shown in a single column.
+
+------------------------------------------------------------------------
+r61 | nogudnik | 2007-10-20 03:31:48 +0000 (Sat, 20 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/Sorting.lua
+
+Skillet:
+- Broke sorting last night. Oops.
+
+------------------------------------------------------------------------
+r60 | nogudnik | 2007-10-20 01:22:21 +0000 (Sat, 20 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- SKL-18: do not reset the filters after creating an item.
+
+------------------------------------------------------------------------
+r59 | yhwh | 2007-10-19 22:49:44 +0000 (Fri, 19 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+
+Skillet:
+--Update locale zhCN
+
+------------------------------------------------------------------------
+r58 | scorpion | 2007-10-19 16:58:28 +0000 (Fri, 19 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+
+Skillet:
+-Update locale zhTW
+
+------------------------------------------------------------------------
+r57 | next96 | 2007-10-19 04:49:18 +0000 (Fri, 19 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r56 | nogudnik | 2007-10-19 04:30:44 +0000 (Fri, 19 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- SKL-16 : Added option to set the scale of the trade skill window.
+
+------------------------------------------------------------------------
+r55 | nogudnik | 2007-10-19 04:24:43 +0000 (Fri, 19 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- Added Skillet:AddPreButtonShowCallback() and 
+  Skillet:AddPreButtonHideCallback()
+
+------------------------------------------------------------------------
+r54 | nogudnik | 2007-10-18 23:42:19 +0000 (Thu, 18 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   A /tmp/trunk/Skillet/UI/Sorting.lua
+
+Skillet:
+- Added public method to resort recipes
+- Moved recipe sorting to a separate file
+
+------------------------------------------------------------------------
+r53 | nogudnik | 2007-10-18 22:50:19 +0000 (Thu, 18 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- Fixed SKL-15, more stringent checks for nil are now done
+  when sorting.
+
+------------------------------------------------------------------------
+r52 | nogudnik | 2007-10-17 02:45:43 +0000 (Wed, 17 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- Add asserts to ensure correct params passed
+- call show_button callback for recipe headers as well.
+
+------------------------------------------------------------------------
+r51 | scorpion | 2007-10-16 19:15:45 +0000 (Tue, 16 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+
+Skillet:
+- Updated localization zhTW
+------------------------------------------------------------------------
+r50 | nogudnik | 2007-10-16 01:14:27 +0000 (Tue, 16 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+
+Skillet:
+- SKL-2: sort methods are now saved per-tradeskill/per-character.
+
+------------------------------------------------------------------------
+r49 | nogudnik | 2007-10-16 00:37:15 +0000 (Tue, 16 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- minor fix when passing the name of the current trade to 
+  the pre- and post-show callbacks
+
+------------------------------------------------------------------------
+r48 | next96 | 2007-10-15 03:53:46 +0000 (Mon, 15 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r47 | yhwh | 2007-10-14 23:21:45 +0000 (Sun, 14 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+
+Skillet:
+- update zhCN locale
+------------------------------------------------------------------------
+r46 | nogudnik | 2007-10-14 20:48:14 +0000 (Sun, 14 Oct 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- Speed up display when recipes are sorted
+- Added sorting by crafted item level
+- Trucate text of recipe buttons when there is not enough room.
+- Added hookable method Skillet:UpdateTradeSkillWindow()
+
+------------------------------------------------------------------------
+r45 | nogudnik | 2007-10-14 17:06:57 +0000 (Sun, 14 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- Comment out translations that are not available yet.
+
+------------------------------------------------------------------------
+r44 | mcc | 2007-10-14 13:35:36 +0000 (Sun, 14 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+
+Skillet:
+- Modify Locale-zhTW.lua for new Translations
+- Sort By name seems not work in zhTW
+------------------------------------------------------------------------
+r43 | stan | 2007-10-14 12:14:13 +0000 (Sun, 14 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+
+Skillet:
+- deDE Update
+
+------------------------------------------------------------------------
+r42 | nogudnik | 2007-10-14 07:24:11 +0000 (Sun, 14 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- Added sorting by recipe difficulty
+- Fixed bug when both sort and filter applied to recipe list
+
+------------------------------------------------------------------------
+r41 | nogudnik | 2007-10-14 05:56:55 +0000 (Sun, 14 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+
+Skillet:
+- First stab at adding pluggable sorting to the recipe list
+
+------------------------------------------------------------------------
+r40 | yhwh | 2007-10-13 22:35:22 +0000 (Sat, 13 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+
+Skillet:
+-
+- update zhCN locale
+------------------------------------------------------------------------
+r39 | nogudnik | 2007-10-13 22:33:55 +0000 (Sat, 13 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- Added more hook methods: BeforeRecipeButtonShow()/BeforeRecipeButtonHide()
+
+------------------------------------------------------------------------
+r38 | yhwh | 2007-10-13 22:25:02 +0000 (Sat, 13 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+
+Skillet:
+-
+- update zhCN locale
+------------------------------------------------------------------------
+r37 | nogudnik | 2007-10-13 21:43:50 +0000 (Sat, 13 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+
+Skillet:
+- Do not display the shopping list at banks/auctions if empty
+
+------------------------------------------------------------------------
+r36 | next96 | 2007-10-13 07:32:23 +0000 (Sat, 13 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+
+Skillet:
+- more Locale 
+- Updare locale koKR
+
+------------------------------------------------------------------------
+r35 | next96 | 2007-10-13 06:15:59 +0000 (Sat, 13 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+
+Skillet:
+- Update locale koKR
+
+------------------------------------------------------------------------
+r34 | nogudnik | 2007-10-13 04:05:29 +0000 (Sat, 13 Oct 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- Add hookable method Skillet:GetMinSkillButtonWidth to allow
+  the minimum width of the skill scroll button to be set by
+  other mods.
+
+------------------------------------------------------------------------
+r33 | stan | 2007-10-12 19:33:19 +0000 (Fri, 12 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+
+Skillet:
+- deDe fix
+
+------------------------------------------------------------------------
+r32 | stan | 2007-10-12 19:30:21 +0000 (Fri, 12 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+
+Skillet:
+- deDe Update for 1.9
+
+------------------------------------------------------------------------
+r31 | nogudnik | 2007-10-12 06:12:23 +0000 (Fri, 12 Oct 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/Skillet/ChangeLog
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   M /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   M /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- Cleanup start/stop/clear queue buttons
+- Fixed shopping list when showing reagent used by more than one recipe
+- Added transparency option
+- Possible bug fix for enchanting cooldowns
+
+------------------------------------------------------------------------
+r30 | nogudnik | 2007-10-11 16:33:48 +0000 (Thu, 11 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+
+Skillet:
+- Removed call to function that no longer exists.
+
+------------------------------------------------------------------------
+r29 | nogudnik | 2007-10-11 07:59:10 +0000 (Thu, 11 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+
+Skillet:
+- Added some hefty comments on how to hook and use the extra
+  detail methods.
+
+------------------------------------------------------------------------
+r28 | nogudnik | 2007-10-11 06:39:38 +0000 (Thu, 11 Oct 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/Skillet/ChangeLog
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/SkilletQueue.lua
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+   A /tmp/trunk/Skillet/UI/Utils.lua
+   M /tmp/trunk/Skillet/description.txt
+
+Skillet:
+- Fixed a bug with recursively adding reagents for recipes to the queue.
+- Main trade skill window is now resizeable
+- Added GetRecipeNamePrefix(), GetRecipeNameSuffix(), and GetExtraItemDetailText() 
+  to ThirdPartyHooks.lua so that other mods can add info to the tradeskill window.
+
+------------------------------------------------------------------------
+r27 | stan | 2007-10-11 01:12:03 +0000 (Thu, 11 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+
+Skillet:
+- deDE update for 1.6
+------------------------------------------------------------------------
+r26 | nogudnik | 2007-10-09 21:31:31 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet:
+- updated the author line so it auto-parses properly.
+
+------------------------------------------------------------------------
+r25 | nogudnik | 2007-10-09 20:54:24 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet:
+- Window-1.0 is actually called WindowLib
+
+------------------------------------------------------------------------
+r24 | nogudnik | 2007-10-09 20:44:04 +0000 (Tue, 09 Oct 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   M /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.lua
+   M /tmp/trunk/Skillet/UI/MainFrame.xml
+   M /tmp/trunk/Skillet/UI/RecipeNotes.lua
+   M /tmp/trunk/Skillet/UI/ShoppingList.lua
+
+Skillet:
+- Added Window-1.0 to X-Embeds
+- Moved some function wrappers into ThirdPartyHooks.lua (public API)
+- Moved the OnHide/OnShow scripts into the XML definition.
+
+------------------------------------------------------------------------
+r23 | next96 | 2007-10-09 03:54:33 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   A /tmp/trunk/Skillet/Locale/Locale-koKR.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet:
+- Add locale koKR
+
+------------------------------------------------------------------------
+r22 | nogudnik | 2007-10-09 02:59:48 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet
+   M /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+   M /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+
+Skillet:
+- Updated zhTW translations
+
+------------------------------------------------------------------------
+r21 | nogudnik | 2007-10-09 02:23:00 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet: 
+- Removed WaterfallLib from X-Embeds
+
+------------------------------------------------------------------------
+r20 | nogudnik | 2007-10-09 02:09:28 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   A /tmp/trunk/Skillet/UI/ShoppingList.lua
+   A /tmp/trunk/Skillet/UI/ShoppingList.xml
+   A /tmp/trunk/Skillet/Upgrades.lua
+
+Skillet:
+- Added files missed in the original import.
+
+------------------------------------------------------------------------
+r19 | nogudnik | 2007-10-09 01:47:51 +0000 (Tue, 09 Oct 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Skillet/Skillet.lua
+   M /tmp/trunk/Skillet/Skillet.toc
+
+Skillet:
+- Upped the version to 1.8
+- Fixed dependency on Waterfall
+
+------------------------------------------------------------------------
+r18 | nogudnik | 2007-10-09 01:27:44 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Skillet
+
+Skillet:
+- Added externals
+
+------------------------------------------------------------------------
+r17 | nogudnik | 2007-10-09 01:22:51 +0000 (Tue, 09 Oct 2007) | 3 lines
+Changed paths:
+   A /tmp/trunk/Skillet
+   A /tmp/trunk/Skillet/ChangeLog
+   A /tmp/trunk/Skillet/LICENSE.txt
+   A /tmp/trunk/Skillet/Locale
+   A /tmp/trunk/Skillet/Locale/Locale-deDE.lua
+   A /tmp/trunk/Skillet/Locale/Locale-enUS.lua
+   A /tmp/trunk/Skillet/Locale/Locale-zhCN.lua
+   A /tmp/trunk/Skillet/Locale/Locale-zhTW.lua
+   A /tmp/trunk/Skillet/Skillet.lua
+   A /tmp/trunk/Skillet/Skillet.toc
+   A /tmp/trunk/Skillet/SkilletQueue.lua
+   A /tmp/trunk/Skillet/SkilletStitch-1.1.lua
+   A /tmp/trunk/Skillet/ThirdPartyHooks.lua
+   A /tmp/trunk/Skillet/UI
+   A /tmp/trunk/Skillet/UI/MainFrame.lua
+   A /tmp/trunk/Skillet/UI/MainFrame.xml
+   A /tmp/trunk/Skillet/UI/MerchantWindow.lua
+   A /tmp/trunk/Skillet/UI/MerchantWindow.xml
+   A /tmp/trunk/Skillet/UI/RecipeNotes.lua
+   A /tmp/trunk/Skillet/UI/RecipeNotes.xml
+   A /tmp/trunk/Skillet/description.txt
+   A /tmp/trunk/Skillet/embeds.xml
+
+Skillet: initial import
+Skillet it s tradeskill window replacement
+
+------------------------------------------------------------------------
