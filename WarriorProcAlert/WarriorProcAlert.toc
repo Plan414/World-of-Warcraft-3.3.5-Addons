@@ -1,0 +1,13 @@
+## Interface: 30300
+## Title: Warrior Proc Alert
+## Author: Lambsauce, KCmilam
+## Version: 1.2.2
+## Notes: Warrior Proc Notifications
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariablesPerCharacter: WarriorProcAlert_SavedOptions
+## X-Curse-Packaged-Version: r67
+## X-Curse-Project-Name: Warrior Proc Alert
+## X-Curse-Project-ID: warrior-proc-alert
+## X-Curse-Repository-ID: wow/warrior-proc-alert/mainline
+WarriorProcAlert.xml

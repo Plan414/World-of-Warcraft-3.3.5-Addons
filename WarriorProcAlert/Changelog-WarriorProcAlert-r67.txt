@@ -1,0 +1,76 @@
+------------------------------------------------------------------------
+r67 | lambsauce | 2010-08-23 02:48:05 +0000 (Mon, 23 Aug 2010) | 4 lines
+Changed paths:
+   M /trunk/Localization.de.lua
+   M /trunk/Localization.en.lua
+   M /trunk/Localization.fr.lua
+   M /trunk/WarriorProcAlert.lua
+   M /trunk/WarriorProcAlert.toc
+   M /trunk/WarriorProcAlert.xml
+
+<dev>No shout alerts will happen while in a sanctuary</dev>
+<dev>Changed the way we decided which alert function to call by making it more efficient</dev>
+<dev>Added a checkbox that allows you to turn off getting any alerts until you are in an instance of some kind (including arenas, raids, dungeons, battlegrounds etc)<dev>
+<dev>Fixed small bug that happens when logging out of the game...apparently sunder and execute did not get monitored after logging out.</dev>
+------------------------------------------------------------------------
+r61 | lambsauce | 2010-08-14 21:34:05 +0000 (Sat, 14 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/Localization.de.lua
+   M /trunk/Localization.en.lua
+   M /trunk/Localization.fr.lua
+
+<dev>changed the /commands to be correct (bs and cs for shouts)</dev>
+------------------------------------------------------------------------
+r59 | lambsauce | 2010-08-14 21:25:04 +0000 (Sat, 14 Aug 2010) | 3 lines
+Changed paths:
+   M /trunk/Localization.de.lua
+   M /trunk/Localization.en.lua
+   M /trunk/Localization.fr.lua
+   M /trunk/WarriorProcAlert.lua
+   M /trunk/WarriorProcAlert.toc
+   M /trunk/WarriorProcAlert.xml
+
+<dev>changed /commands shouts to be cs and bs instead of commanding and battle</dev>
+<dev>Added execute and sunder alerts</dev>
+<dev>made procs only alert while in combat</dev>
+------------------------------------------------------------------------
+r57 | lambsauce | 2010-08-07 16:14:15 +0000 (Sat, 07 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/WarriorProcAlert.lua
+
+<dev>Fixed a small bug that resulted in lua errors when you enable a buff/debuff alert and another player already applied a non-stacking buff/debuff.<dev>
+------------------------------------------------------------------------
+r55 | lambsauce | 2010-07-23 11:07:01 +0000 (Fri, 23 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/WarriorProcAlert.lua
+   M /trunk/WarriorProcAlert.xml
+
+<dev>fixed some small bugs</dev>
+------------------------------------------------------------------------
+r53 | lambsauce | 2010-07-23 10:43:21 +0000 (Fri, 23 Jul 2010) | 6 lines
+Changed paths:
+   M /trunk/Localization.de.lua
+   M /trunk/Localization.en.lua
+   M /trunk/Localization.fr.lua
+   M /trunk/WarriorProcAlert.lua
+   M /trunk/WarriorProcAlert.toc
+   M /trunk/WarriorProcAlert.xml
+
+<dev>
+Fixed error w/ checking the alert options
+Changed version to 1.2
+Fixed collision w/ previous version saved variables
+Added better profile management (/ commands, and better ui behavior)
+</dev>
+------------------------------------------------------------------------
+r51 | lambsauce | 2010-07-21 03:37:23 +0000 (Wed, 21 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Localization.de.lua
+   M /trunk/Localization.en.lua
+   M /trunk/Localization.fr.lua
+   M /trunk/WarriorProcAlert.lua
+   M /trunk/WarriorProcAlert.toc
+   M /trunk/WarriorProcAlert.xml
+
+<dev>Completely rewrote the UI interface so that it was more intuitive and provided for different users to allow different procs under different profiles.</dev>
+------------------------------------------------------------------------

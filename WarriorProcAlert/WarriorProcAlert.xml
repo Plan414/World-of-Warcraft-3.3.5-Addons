@@ -1,0 +1,1078 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+<Script file="Localization.en.lua"/>
+<Script file="Localization.fr.lua"/>
+<Script file="Localization.de.lua"/>
+<Script file="WarriorProcAlert.lua"/>
+
+<Frame name="WarriorProcAlert_Transparent_Frame"  parent="UIParent">
+      <Scripts>
+		<OnUpdate>
+			WarriorProcAlert_Transparent_Update()
+	    </OnUpdate>
+		<OnEvent>
+			WarriorProcAlert_OnEvent(event, ...)
+		</OnEvent>
+      </Scripts>
+</Frame>
+
+
+<Frame name="WarriorProcAlertProc_Frame" toplevel="true"
+     frameStrata="HIGH"
+     enableMouse="true" movable="true" parent="UIParent"
+     clampedToScreen="true">
+      <Size>
+         <AbsDimension x="120" y="50"/>
+      </Size>
+      <Anchors>
+         <Anchor point="CENTER"/>
+
+      </Anchors>
+      <Backdrop edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+     bgFile="Interface\Tooltips\UI-Tooltip-Background">
+         <BackgroundInsets>
+            <AbsInset left="4" right="4" top="4" bottom="4"/>
+         </BackgroundInsets>
+         <EdgeSize>
+            <AbsValue val="16"/>
+         </EdgeSize>
+         <Color r="0" g="0" b="1" a="1"/>
+         <BorderColor r="0" g="0" b="0" a="1"/>
+      </Backdrop>
+      <Layers>
+         <Layer level="OVERLAY">
+	 <FontString name="$parent_Text" inherits="GameFontNormal">
+		<Anchors>
+			<Anchor point="TOP">
+				<Offset>
+				<AbsDimension x="0" y="-10" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</FontString>
+	<FontString name="$parent_Timer" inherits="GameFontNormal">
+		<Anchors>
+			<Anchor point="BOTTOM">
+				<Offset>
+				<AbsDimension x="0" y="10" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</FontString>
+         </Layer>
+      </Layers>
+
+      <Scripts>
+
+         <OnMouseDown>
+            if ( button == "RightButton" and not WarriorProcAlert_SavedOptions.Lock ) then
+               self:StartMoving();
+               self.isMoving = true;
+            end
+         </OnMouseDown>
+         <OnMouseUp>
+            if ( self.isMoving ) then
+               self:StopMovingOrSizing();
+               self.isMoving = false;
+            end
+         </OnMouseUp>
+         <OnHide>
+            if ( self.isMoving ) then
+               self:StopMovingOrSizing();
+               self.isMoving = false;
+            end
+         </OnHide>
+		</Scripts>
+</Frame>
+
+<Frame name="WarriorProcAlertOptions_Frame" toplevel="true"
+    frameStrata="HIGH"
+    enableMouse="true" movable="true" parent="UIParent"
+	clampedToScreen="true">
+    <!--<FrameSkin skinid="f15d4970-d66d-444e-bb2d-1ad102c87fed" frameid="f15d4971-d66d-444e-bb2d-1ad102c87fed" />-->
+    <Size>
+      <AbsDimension x="290" y="440" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" relativeTo="UIParent">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+      <BackgroundInsets>
+        <AbsInset left="4" right="4" top="4" bottom="4" />
+      </BackgroundInsets>
+      <TileSize>
+        <AbsValue val="16" />
+      </TileSize>
+      <EdgeSize>
+        <AbsValue val="16" />
+      </EdgeSize>
+    </Backdrop>
+    <Frames>
+      <Button name="$parentButton1" text="OK">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508884-59c2-4f83-ae10-27aaad48391b" />-->
+        <Size>
+          <AbsDimension x="64" y="28" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="208" y="-398" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <NormalTexture file="Interface\Buttons\UI-Panel-Button-Up">
+          <TexCoords left="0" right="0.625" top="0" bottom="0.6875" />
+        </NormalTexture>
+        <PushedTexture file="Interface\Buttons\UI-Panel-Button-Down">
+          <TexCoords left="0" right="0.625" top="0" bottom="0.6875" />
+        </PushedTexture>
+        <DisabledTexture file="Interface\Buttons\UI-Panel-Button-Disabled">
+          <TexCoords left="0" right="0.625" top="0" bottom="0.6875" />
+        </DisabledTexture>
+        <HighlightTexture file="Interface\Buttons\UI-Panel-Button-Highlight" alphaMode="ADD">
+          <TexCoords left="0" right="0.625" top="0" bottom="0.6875" />
+        </HighlightTexture>
+        <ButtonText name="$parentText">
+          <FontHeight>
+            <AbsValue val="10" />
+          </FontHeight>
+        </ButtonText>
+        <NormalFont style="GameFontNormal" />
+        <HighlightFont style="GameFontHighlight" />
+        <DisabledFont style="GameFontDisable" />
+		<Scripts>
+              <OnClick>WarriorProcAlertOptions_Toggle();</OnClick>
+		</Scripts>
+      </Button>
+      <CheckButton name="$parentCheckButton1">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-194" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <Button name="$parentProfileComboBox" inherits="UIDropDownMenuTemplate">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d50888b-59c2-4f83-ae10-27aaad48391b"><Property name="Items">&lt;?xml version="1.0"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Property><Property name="OnSelectionChanged">&lt;?xml version="1.0"?&gt;
+&lt;string /&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="200" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-138" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" justifyH="RIGHT">
+              <Size>
+                <AbsDimension x="175" y="10" />
+              </Size>
+              <Anchors>
+                <Anchor point="RIGHT" relativeTo="$parentRight">
+                  <Offset>
+                    <AbsDimension x="-43" y="20" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+			  <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+			<OnLoad>UIDropDownMenu_Initialize(this, WarriorProcAlertOptions_ProfileDropDownMenu_OnLoad);</OnLoad>
+          <OnHide>CloseDropDownMenus();</OnHide>
+        </Scripts>
+      </Button>
+      <Button name="$parentShoutComboBox" inherits="UIDropDownMenuTemplate">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d50888b-59c2-4f83-ae10-27aaad48391b"><Property name="Items">&lt;?xml version="1.0"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Property><Property name="OnSelectionChanged">&lt;?xml version="1.0"?&gt;
+&lt;string /&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="200" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-98" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" justifyH="RIGHT">
+              <Size>
+                <AbsDimension x="175" y="10" />
+              </Size>
+              <Anchors>
+                <Anchor point="RIGHT" relativeTo="$parentRight">
+                  <Offset>
+                    <AbsDimension x="-43" y="20" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+			  <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+			<OnLoad>UIDropDownMenu_Initialize(this, WarriorProcAlertOptions_ShoutDropDownMenu_OnLoad);</OnLoad>
+			<OnHide>CloseDropDownMenus();</OnHide>
+        </Scripts>
+      </Button>
+      <CheckButton name="$parentchkLock">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;80&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-27" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>if (WarriorProcAlert_SavedOptions.Lock == true) then self:SetChecked(true); end</OnLoad>
+          <OnClick>WarriorProcAlert_Lock(self);
+</OnClick>
+        </Scripts>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentchkShow">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;80&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-27" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>if (WarriorProcAlert_SavedOptions.Showing == true) then self:SetChecked(true); end</OnLoad>
+		  <OnClick>WarriorProcAlert_DependencyButton(self)</OnClick>
+        </Scripts>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+	  <CheckButton name="$parentchkInstance">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;80&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="28" y="28" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="35" y="-54" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <Frame name="$parentFOFlbl">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508885-59c2-4f83-ae10-27aaad48391b" />-->
+        <Size>
+          <AbsDimension x="160" y="18" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="68" y="-3" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="Warrior Proc Alert">
+              <Anchors>
+                <Anchor point="TOPLEFT" />
+                <Anchor point="BOTTOMRIGHT" />
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="16" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+      </Frame>
+      <CheckButton name="$parentCheckButton2">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-222" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton3">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-249" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton4">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-275" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton5">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-301" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton6">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-328" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton8">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-194" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton9">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-222" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton10">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-249" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton11">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-275" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+	  <CheckButton name="$parentCheckButton12">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-301" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+	  <CheckButton name="$parentCheckButton13">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-328" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+	  <CheckButton name="$parentCheckButton14">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="150" y="-354" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+      <CheckButton name="$parentCheckButton7">
+        <!--<FrameSkin skinid="dcb143e1-a4ab-4e7c-b934-1efa40101d21" frameid="2d508886-59c2-4f83-ae10-27aaad48391b"><Property name="Size">&lt;?xml version="1.0"?&gt;
+&lt;Size xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Width&gt;100&lt;/Width&gt;
+  &lt;Height&gt;32&lt;/Height&gt;
+&lt;/Size&gt;</Property></FrameSkin>-->
+        <Size>
+          <AbsDimension x="32" y="32" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="20" y="-354" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="-2" y="0" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <FontHeight>
+                <AbsValue val="10" />
+              </FontHeight>
+              <Color r="1" g="0.8196079" b="0" />
+              <Shadow>
+                <Color r="0" g="0" b="0" />
+                <Offset>
+                  <AbsDimension x="1" y="-1" />
+                </Offset>
+              </Shadow>
+            </FontString>
+          </Layer>
+        </Layers>
+        <NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+        <PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+        <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+        <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+      </CheckButton>
+    </Frames>
+	<Scripts>
+        <OnLoad>
+            WarriorProcAlert_OnLoadOptions(self);
+        </OnLoad>
+        <OnMouseDown>
+            if ( button == "RightButton" and not WarriorProcAlert_SavedOptions.Lock ) then
+               self:StartMoving();
+               self.isMoving = true;
+            end
+        </OnMouseDown>
+        <OnMouseUp>
+            if ( self.isMoving ) then
+               self:StopMovingOrSizing();
+               self.isMoving = false;
+            end
+        </OnMouseUp>
+        <OnHide>
+            if ( self.isMoving ) then
+               self:StopMovingOrSizing();
+               self.isMoving = false;
+            end
+        </OnHide>
+	</Scripts>
+  </Frame>  
+</Ui>
+
+
+
