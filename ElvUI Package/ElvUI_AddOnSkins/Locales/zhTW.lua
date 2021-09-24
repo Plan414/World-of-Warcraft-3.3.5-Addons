@@ -1,0 +1,22 @@
+local E = unpack(ElvUI); --Import: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
+local L = E.Libs.ACL:NewLocale("ElvUI", "zhTW")
+
+L["AddOn Skins"] = "插件美化"
+L["AuraBar Backdrop"] = true
+L["DBM Half-bar Skin"] = "DBM 計時條美化"
+L["Default"] = true
+L["Double"] = true
+L["Embed Type"] = true
+L["Font Size"] = true
+L["Icon Cooldown"] = true
+L["Left Panel"] = true
+L["Left Window Width"] = true
+L["Misc Options"] = true
+L["None"] = "無"
+L["Right Panel"] = true
+L["Single"] = true
+L["Template Gloss"] = true
+L["Template"] = true
+L["Title Template Gloss"] = true
+L["Title Template"] = true
+L["Toggle Embedded Addon"] = true
