@@ -1,0 +1,9 @@
+## Interface: 30300
+## Author: Blazeflack
+## Version: 1.00
+## Title: |cff1784d1E|r|cffe5e3e3lvUI|r |cff1784d1E|r|cffe5e3e3xtra|r |cff1784d1A|r|cffe5e3e3ction|r |cff1784d1B|r|cffe5e3e3ars|r
+## Notes: Adds 4 extra actionbars to ElvUI.
+## RequiredDeps: ElvUI
+
+config.lua
+core.lua

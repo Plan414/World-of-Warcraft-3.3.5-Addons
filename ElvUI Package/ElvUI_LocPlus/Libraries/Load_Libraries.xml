@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="LibBabble-Zone-3.0\LibBabble-3.0.lua"/>
+	<Script file="LibBabble-Zone-3.0\LibBabble-Zone-3.0.lua"/>
+	<Script file="LibTourist-3.0\LibTourist-3.0.lua"/>
+</Ui>
