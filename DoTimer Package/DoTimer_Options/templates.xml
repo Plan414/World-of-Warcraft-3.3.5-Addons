@@ -1,0 +1,276 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <Frame name="Ash_CoreColumnBackgroundTemplate" virtual="true">
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="16"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="16"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="5" right="5" top="5" bottom="5"/>
+            </BackgroundInsets>
+        </Backdrop>
+        <Scripts>
+            <OnLoad>
+                self:SetBackdropBorderColor(0.4, 0.4, 0.4, .5);
+                self:SetBackdropColor(0.1, 0.1, 0.1, .3);
+            </OnLoad>
+        </Scripts>
+    </Frame>
+    <CheckButton name="Ash_CoreCheckButtonTemplate" virtual="true" inherits="UICheckButtonTemplate">
+        <Size>
+            <AbsDimension x="28" y="28"/>
+        </Size>
+        <Scripts>
+            <OnEnter>
+                if self.tooltipText then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                    GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+                end
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+    </CheckButton>
+    <CheckButton name="Ash_CoreToggleTemplate" virtual="true" inherits="UICheckButtonTemplate">
+        <Size>
+            <AbsDimension x="12" y="12"/>
+        </Size>
+        <Scripts>
+            <OnEnter>
+                if self.tooltipText then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                    GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+                end
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+    </CheckButton>
+    <Slider name="Ash_CoreSliderTemplate" virtual="true" orientation="HORIZONTAL" enableMouse="true" inherits="OptionsSliderTemplate">
+        <Size>
+            <AbsDimension x="100" y="17"/>
+        </Size>
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parentValue" inherits="GameFontHighlightSmall">
+                    <Anchors>
+                        <Anchor point="LEFT" relativePoint="RIGHT">
+                            <Offset>
+                                <AbsDimension x="3" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                <FontString name="$parentTitle" inherits="GameFontNormalSmall">
+                    <Anchors>
+                        <Anchor point="BOTTOM" relativePoint="TOP"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnEnter>
+                if self.tooltipText then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                    GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+                end
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+    </Slider>
+    <Button name="Ash_CoreButtonTemplate" virtual="true" inherits="UIPanelButtonTemplate">
+        <Size>
+            <AbsDimension x="100" y="21"/>
+        </Size>
+        <Frames>
+            <Frame name="$parentDropDown" inherits="UIDropDownMenuTemplate" hidden="true"/>
+        </Frames>
+        <Scripts>
+            <OnEnter>
+                if self.tooltipText then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                    GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+                end
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+            <OnClick>
+                ToggleDropDownMenu(nil, nil, getglobal(self:GetName() .. "DropDown"), self:GetName());
+                PlaySound("igMainMenuOptionCheckBoxOn");
+            </OnClick>
+        </Scripts>            
+    </Button>
+    <Button name="Ash_CoreDropDownTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="24" y="24"/>
+        </Size>
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="LEFT" relativeTo="$parent" relativePoint="RIGHT">
+                            <Offset>
+                                <AbsDimension x="0" y="1"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame name="$parentDropDown" inherits="UIDropDownMenuTemplate" hidden="true"/>
+        </Frames>
+        <NormalTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up"/>
+        <PushedTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down"/>
+        <DisabledTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Disabled"/>
+        <HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+        <Scripts>
+            <OnHide>
+                CloseDropDownMenus();
+            </OnHide>
+            <OnEnter>
+                if this.tooltipText then
+                    GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+                    GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+                end
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+            <OnClick>
+                ToggleDropDownMenu(nil, nil, getglobal(self:GetName() .. "DropDown"), self:GetName(), 12, 0);
+                PlaySound("igMainMenuOptionCheckBoxOn");
+            </OnClick>
+        </Scripts>
+    </Button>
+    <EditBox name="Ash_CoreEditBoxTemplate" enableMouse="true" virtual="true" autoFocus="false" inherits="InputBoxTemplate">
+        <Size>
+            <AbsDimension x="115" y="20"/>
+        </Size>
+        <Scripts>
+            <OnEnter>
+                if self.tooltipText then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                    GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+                end
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+        <FontString inherits="GameFontNormalSmall"/>
+    </EditBox>
+    <EditBox name="Ash_CoreEditBoxDropDownTemplate" enableMouse="true" virtual="true" autoFocus="false" inherits="InputBoxTemplate">
+        <Size>
+            <AbsDimension x="100" y="20"/>
+        </Size>
+        <Frames>
+            <Button name="$parentButton">
+                <Size>
+                    <AbsDimension x="24" y="24"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="-2" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Frame name="$parentDropDown" inherits="UIDropDownMenuTemplate" hidden="true"/>
+                </Frames>
+                <Scripts>
+                    <OnClick>
+                        ToggleDropDownMenu(nil, nil, getglobal(self:GetName() .. "DropDown"));
+                        PlaySound("igMainMenuOptionCheckBoxOn");
+                    </OnClick>
+                    <OnEnter>
+                        GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                        GameTooltip:SetText("Click on entries to remove them.", nil, nil, nil, nil, 1);
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+                <NormalTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up"/>
+                <PushedTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down"/>
+                <DisabledTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Disabled"/>
+                <HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnEnter>
+                if self.tooltipText then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+                    GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+                end
+            </OnEnter>
+            <OnLeave>
+                GameTooltip:Hide();
+            </OnLeave>
+        </Scripts>
+        <FontString inherits="GameFontNormalSmall"/>
+    </EditBox>
+    <Button name="Ash_CoreColorSwatchTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="18" y="18"/>
+        </Size>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parentSwatchBg">
+                    <Size>
+                        <AbsDimension x="16" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="CENTER">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="1.0" g="1.0" b="1.0"/>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <FontString name="$parentTitle" inherits="GameFontNormalSmall" justifyH="CENTER" justifyV="CENTER">
+                    <Anchors>
+                        <Anchor point="LEFT" relativePoint="RIGHT">
+                            <Offset>
+                                <AbsDimension x="5" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch"/>
+    </Button>
+    <Frame name="Ash_CoreMenuTemplate" virtual="true">
+        <Frames>
+            <ScrollFrame name="$parentScrollFrame" inherits="UIPanelScrollFrameTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset x="8" y="-6"/>
+                    </Anchor>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset x="-5" y="5"/>
+                    </Anchor>
+                </Anchors>
+                <ScrollChild>
+                    <Frame name="$parentContainer">
+                        <Anchors>
+                            <Anchor point="TOPLEFT"/>
+                        </Anchors>
+                    </Frame>
+                </ScrollChild>
+            </ScrollFrame>
+        </Frames>
+    </Frame>
+</Ui>

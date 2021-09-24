@@ -1,0 +1,9 @@
+## Interface: 30200
+## Title: DoTimer Options
+## Author: Asheyla
+## eMail: ross456@gmail.com
+## URL: http://wow.curse.com/downloads/details/3260/
+## Notes: Options GUI for DoTimer
+## Dependencies: DoTimer
+## LoadOnDemand: 1
+main.xml

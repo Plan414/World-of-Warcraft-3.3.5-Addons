@@ -1,0 +1,10 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <Include file="templates.xml"/>
+    <Script file="core.lua"/>
+    <Script file="dotimer.lua"/>
+    <Script file="cooldowns.lua"/>
+    <Script file="notifications.lua"/>
+    <Script file="playerauras.lua"/>
+    <Script file="timerlib timers.lua"/>
+    <Script file="timerlib anchors.lua"/>
+</Ui>

@@ -1,0 +1,11 @@
+FUTURE:
+ghosting?
+max timers per group?
+if stack in bar text, not on icon
+prevent loops in basis timer setting
+prevent leading or trailing spaces in timer settings names?
+write the helper funcs for the timer gui
+timers/anchors explain how being used?
+show tick marks?
+tooltips not clickable
+better preview

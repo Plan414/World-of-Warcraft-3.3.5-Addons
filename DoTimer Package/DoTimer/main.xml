@@ -1,0 +1,7 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <Include file="Core\main.xml"/>
+    <Include file="DoTimer\main.xml"/>
+    <Include file="Cooldowns\main.xml"/>
+    <Include file="PlayerAuras\main.xml"/>
+    <Include file="Notifications\main.xml"/>
+</Ui>

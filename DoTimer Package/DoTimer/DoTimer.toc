@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: DoTimer
+## Version: 4.4.1
+## X-Date: February 2, 2010
+## Author: Asheyla
+## eMail: ross456@gmail.com
+## URL: http://wow.curse.com/downloads/details/3260/
+## Notes: Displays duration timers for DoTs/HoTs, cooldowns, and your buffs/debuffs
+## SavedVariables: AsheylaLib_Settings
+main.xml

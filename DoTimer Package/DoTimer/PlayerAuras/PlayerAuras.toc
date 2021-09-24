@@ -1,0 +1,4 @@
+## Interface: 30200
+## Title: PlayerAuras
+## RequiredDeps: DoTimer
+main.xml

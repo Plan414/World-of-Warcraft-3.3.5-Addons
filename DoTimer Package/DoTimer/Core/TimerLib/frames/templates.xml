@@ -1,0 +1,108 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <GameTooltip name="Ash_GameTooltip" inherits="GameTooltipTemplate" parent="UIParent"/>
+    <Frame name="TimerLibTimerFrameTemplate" frameStrata="MEDIUM" virtual="true">
+        <Frames>
+            <Frame parentKey="Bar">
+                <Frames>
+                    <Button parentKey="Button"/>
+                    <Frame parentKey="Icon">
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture parentKey="Background">
+                                    <Color r="0" g="0" b="0" />
+                                </Texture>
+                            </Layer>
+                            <Layer level="BORDER">
+                                <Texture parentKey="Texture"/>
+                            </Layer>
+                            <Layer level="ARTWORK">
+                                <Texture parentKey="Border" file="Interface\AddOns\DoTimer\Core\Files\Border"/>   
+                            </Layer>
+                            <Layer level="OVERLAY">
+                                <Texture parentKey="Spark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD"/>
+                                <FontString parentKey="Stack" inherits="NumberFontNormal" justifyH="RIGHT" justifyV="BOTTOM"/>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                    <Frame parentKey="Status">
+                        <Frames>
+                            <StatusBar parentKey="Front" minValue="0.0" maxValue="1.0">
+                                <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>                     
+                            </StatusBar>
+                            <StatusBar parentKey="Background" minValue="0.0" maxValue="1.0" defaultValue="1.0" setAllPoints="true">
+                                <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+                            </StatusBar>
+                        </Frames>
+                        <Layers>
+                            <Layer level="ARTWORK">
+                                <FontString parentKey="Text" inherits="GameFontNormal" justifyH="LEFT" justifyV="CENTER"/>
+                                <FontString parentKey="TextRight" inherits="GameFontNormal" justifyH="RIGHT" justifyV="CENTER"/>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                </Frames>
+            </Frame>
+            <Frame parentKey="Icon">
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString parentKey="Text" text="0:00" inherits="GameFontNormal" justifyH="CENTER" justifyV="CENTER"/>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <Button parentKey="Button">
+                        <NormalTexture parentKey="Border" file="Interface\AddOns\DoTimer\Core\Files\Border"/>
+                        <HighlightTexture parentKey="Highlight" alphaMode="ADD" file="Interface\Buttons\CheckButtonHilight"/>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture parentKey="Background">
+                                    <Color r="0" g="0" b="0" />
+                                </Texture>
+                            </Layer>
+                            <Layer level="ARTWORK">
+                                <Texture parentKey="Texture"/>
+                            </Layer>
+                            <Layer level="OVERLAY">
+                                <FontString parentKey="Text" text="0:00" inherits="NumberFontNormal" outline="NORMAL" justifyH="CENTER" justifyV="CENTER"/>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <Cooldown parentKey="Cooldown" reverse="true" drawEdge="true"/>
+                            <Frame parentKey="Holder">
+                                <Layers>
+                                    <Layer level="OVERLAY">
+                                        <FontString parentKey="Stack" inherits="NumberFontNormal" outline="THICK" justifyH="RIGHT" justifyV="BOTTOM"/>
+                                    </Layer>
+                                </Layers>
+                            </Frame>
+                        </Frames>
+                    </Button>
+                </Frames>
+            </Frame>
+        </Frames>
+    </Frame>
+    <Frame name="TimerLibGroupFrameTemplate" frameStrata="MEDIUM" virtual="true">
+        <Frames>
+            <Frame parentKey="TimerAnchor"/>
+            <Button parentKey="Name">
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString parentKey="Text" text="name" inherits="GameFontNormal" justifyH="CENTER" justifyV="CENTER"/>
+                    </Layer>
+                    <Layer level="OVERLAY">
+                        <Texture parentKey="Icon" file="Interface\TargetingFrame\UI-RaidTargetingIcons"/>
+                    </Layer>
+                </Layers>
+            </Button>
+        </Frames>
+    </Frame>
+    <Frame name="TimerLibAnchorFrameTemplate" frameStrata="MEDIUM" virtual="true">
+        <Size>
+            <AbsDimension x="1" y="1"/>
+        </Size>
+    </Frame>
+    <Frame name="TimerLibAnchorFrameAnchorTemplate" frameStrata="MEDIUM" virtual="true">
+        <Size>
+            <AbsDimension x="5" y="5"/>
+        </Size>
+    </Frame>
+</Ui>
