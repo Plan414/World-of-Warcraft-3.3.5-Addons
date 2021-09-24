@@ -1,0 +1,9 @@
+## Interface: 80100
+## Title: Best In Slot Redux [|cffff975bBattle for Azeroth Raids|r]
+## Notes: Battle for Azeroth Raid Module for BestInSlotRedux
+## Author: Beleria @ Argent Dawn-EU, Anhility @ Ravencrest-EU, Sar\195\173th @ Tarren Mill-EU
+## Version: @project-version@
+## Dependencies: BestInSlotRedux
+
+Uldir.lua
+DazarAlor.lua

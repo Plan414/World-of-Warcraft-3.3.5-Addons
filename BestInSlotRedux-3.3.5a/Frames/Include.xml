@@ -1,0 +1,15 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="FramesCore.lua"/>
+	<Include file="BestInSlotTutorialFrame.xml"/>
+	<Script file="Tutorials.lua"/>
+	<Script file="Manager.lua"/>
+	<Script file="RaidTierOverview.lua"/>
+	<Script file="CustomItems.lua"/>
+	<Script file="CustomLists.lua"/>
+	<Script file="RequestBestinslots.lua"/>
+	<Script file="GuildBiSLists.lua"/>
+	<Script file="IO.lua"/>
+	<Script file="Options.lua"/>
+	<Script file="Credits.lua"/>
+	<!-- <Script file="History.lua"/> -->
+</Ui>

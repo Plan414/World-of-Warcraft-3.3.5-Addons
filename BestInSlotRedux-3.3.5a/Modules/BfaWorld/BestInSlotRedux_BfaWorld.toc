@@ -1,0 +1,8 @@
+## Interface: 80100
+## Title: Best In Slot Redux [|cffff975bBattle for Azeroth World|r]
+## Notes: Battle for Azeroth World Module for BestInSlotRedux
+## Author: Beleria @ Argent Dawn-EU, Anhility @ Ravencrest-EU, Sar\195\173th @ Tarren Mill-EU
+## Version: @project-version@
+## Dependencies: BestInSlotRedux
+
+World.lua

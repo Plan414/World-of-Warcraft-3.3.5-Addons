@@ -1,0 +1,609 @@
+# BestInSlotRedux Changelog
+
+## Version 8.1.1
+### Bug fixes
+* Added loot for Conclave from Battle of Dazar Alor
+* Fixed loading the encounter information in Battle of Dazar Alor
+
+## Version 8.1.0
+### Minor additions
+* Added loot for Battle of Dazar Alor
+* Added loot for the new world boss Ivus
+
+## Version 8.0.2
+### Minor additions
+* Removed Legion modules
+* Added Worldboss module
+* Added trash loot to Uldir
+
+### Bug fixes
+* Fixed minimum itemlevel for custom items
+* Artifact neck is being shown in the BiS List now
+* Tier levels revamped: dungeons -> worldbosses -> raids
+* Fixed NPCIds for zone detection
+
+##Version 8.0.1
+###Major changes
+* Works now for Battle for Azeroth
+* Added the first raid
+* Added Battle for Azeroth Dungeons
+
+## Release 7.3.17
+### Minor additions
+* Added additional translator to credits page (Iberian Spanish)
+
+### Bug fixes
+* Fixed a small bug with custom lists that caused an error message to be wrongly encoded when translated
+
+## Release 7.3.16
+### Minor additions
+* Updated Legion Dungeon loot to new item levels
+* Added additional translator to credits page (Latin American Spanish)
+
+### Bug fixes
+* Fixed so the BiS tooltip correctly show on Antorus bosses
+
+## Release 7.3.15
+### Minor additions
+* Added clickable links when reporting BiS list to chat (Thanks Meivyn)
+* Added additional translator to credits page (Brazilian Portuguese)
+
+### Bug fixes
+* Fixed a minor translation string error that bricked the addon for Russian locale. Sorry Ruskies!
+* Fixed small error that made so Leggo's didn't show up with Antorus items
+
+## Release 7.3.14
+### Other
+* Fixed the localization issues for Russian
+* Added additional translators to credits page (German & Traditional Chinese)
+
+## Release 7.3.13
+### Minor additions
+* Added missing BoE trash loot to ToS & Antorus
+* Added Argus greater rift boss loot
+
+### Other
+* Commented out all unused strings from enUS.lua
+* Removed all unused strings from localization page on CurseForge
+* Added new translators to credist page
+* Added acknowledgment to the previous translators in the credits page
+
+## Release 7.3.12
+### Bug fixes
+* Fixed /bis help command to work once more
+
+## Release 7.3.11
+### Minor additions
+* All languages are enabled for localization once more
+* Russian, Korean, Simplified and Traditional Chinese needs to be translated once more as decoding the old lua files is too much work
+
+## Release 7.3.10
+### Minor additions
+* Readded the translation for the rest of the Latin based languages:
+    * Spanish (es_ES)
+    * Portuguese (pt_BR)
+    * Italian (it_IT)
+* Re-enabled Latin American Spanish (es_MX) even though translation is missing
+
+## Release 7.3.09
+### Minor additions
+* The old translations were incorrectly encoded when imported so I'll be re-adding them by hand.
+* The current available translations are:
+    * German (de_DE)
+    * French (fr_FR)
+
+## Release 7.3.08
+### Bug fixes
+* Fixed the wrongly linked libraries
+
+## Release 7.3.07
+### Minor additions
+* Re-added the old translations
+* Fixed addon dependencies for Legion_Dungeon module
+
+## Release 7.3.06
+### Bug fixes
+* Update of lib.xml due to change of path in LibDBIcon-1.0
+
+## Release 7.3.05
+### Bug fixes
+* Fixed version variable to get a integer from repo substitution and not a hexadecimal string from the packager
+
+## Release 7.3.04
+### Bug fixes
+* Fixed .pgkmeta and main ToC file so Utils folder is properly excluded
+* Fixed so project revision is properly displayed in Core.lua
+
+## Release 7.3.03
+### Bug fixes
+* Changing tabs in .pgkmeta file to spaces... Hopefully this was the last error and that will deploy properly this time
+
+## Release 7.3.02
+### Bug fixes
+* Fixed the .pgkmeta and ToC files so the Curse client can correctly deploy the addon
+
+## Release 7.3.01
+### Major additions
+* Seat of the Triumvirate loot added
+* Antorus, the Burning Throne loot added
+
+### Bug fixes
+* TOC updated for 7.3
+
+### Other
+* Forked and renamed with new developer
+* Credits page updated, new external links to project
+
+#Old BestInSlot Changelog
+
+##Release 7.2.02
+### Major additions
+* Added missing items in Tomb of Sargeras
+* Tomb of Sargeras bosses will now be detected
+
+###Bug fixes
+* Simcraft exports should once again work
+* Item levels of the Legion Legendaries are updated to ilvl 970
+* Update LegionDungeons module with Cathedral of Eternal Night and Karazhan
+
+##Release 7.2.01
+###Major additions
+* Added Tomb of Sargeras
+
+###Bug fixes
+* Item levels should now be properly shown again
+
+##Release 7.1.03
+###Major additions
+* You can now import BiS lists from other characters of the same class and spec, provided they made one
+
+###Bug fixes 
+* Display issues in the BiS Manager should be fixed
+
+##Release 7.1.02
+###Major additions
+* The RequestBiS section now has a filter for armor types.
+* Dungeons are now available (As seperate module, if you don't want dungeons you can simply disable the Dungeon part in your AddOn list)
+
+###Minor additions
+* Custom Items that are part of modules are now automatically deleted
+* Replaced some references to "Dungeons" to "Instance"
+
+###Bug fixes
+* Added the Stormfury Diamond to Elerethe Renferal's loottable
+* Fixed the Item Level of Trial of Valor
+* Fixed a bug where a third relic wouldn't appear if it was the only selected relic
+
+##Release 7.1.01
+###Bug fixes
+* Fixed a bug where the detection module would not start when entering an instance
+
+##Release 7.1.00
+###Major additions
+* Added Trial of Valor loot
+* The Legion module should once again detect bosses, when enabled. (Including the new Trial of Valor raid)
+
+##Release 7.0.13
+###Bug fixes
+* Fixes an error where Artifacts didn't load properly
+
+##Release 7.0.12
+###Minor additions
+* Custom items now retain their secondary item data like mythic quality and suffix.
+
+###Bug fixes
+* Custom items can be edited and removed again
+* Fel relics once again show a loot table
+
+##Release 7.0.11
+###Bug fixes
+* Fixed cloak/waist slots disapearing after picking them.
+
+##Version 7.0.09
+###Major additions
+* Added the first 2 raids to the Legion database
+* Added World legendaries to Emerald Nightmare's global loot table (for Nighthold this can be seen by pressing "Add lower raid tiers")
+* Added relics to the BiS Manager for Legion raids
+
+Removed features
+* Removed the Stats panel from the BiS Manager, it caused to many bugs
+* Removed the Preview button from the BiS Manager, it caused to many bugs
+* Removed BiSLink until a better way of linking BiSlists over chats is found
+
+###Bug fixes
+* Fixed several LUA errors for the new 7.0 patch
+
+##Version 6.2.05
+###Major additions
+* Custom lists are available locally
+** Create a custom list by going to the 'Custom List' menu item
+** Once created, it should appear in the 'Specialization' dropdown menu
+
+###Bug fixes
+* Fixed an issue where, when fixed size is selected as an option, the initial width and height of the screen weren't setup correctly.
+* Fixed ticket 74 - Errors on entering certain zones
+* [c] Added the spirit prefixes to Custom Items
+* [d] Fixed ticket #84
+
+##Version 6.2.04
+###Major additions
+* Simcraft is now available for exporting
+* Implemented the Bugs and Recommendations sections for more convenient reporting of bugs and recommendations
+
+###Minor additions
+* Difficulty will not change when selecting an instance/raidtier that has that difficutly available aswell.
+* HFC tier tokens and badges should now show BestInSlot tooltips
+
+###Bug fixes
+* [6.2.04b]Possible fix for the "invisible" frame
+* [6.2.04b]Bug reports now shows the LUA error as intended
+* [6.2.04c]Prevents unknown items from crashing a module on startup
+* [6.2.04d]Fix tickte #56 > Incorrect tables were fetched from the item data table
+
+##Version 6.2.03
+###Minor additions
+* Added trash loot to Normal, Heroic, and Mythic Hellfire Citadel
+* Added Supreme Lord Kazzak loot to Normal and Heroic Hellfire Citadel
+* Added Spell Power + Attack Power from gear to the stats panel
+
+###Bug fixes
+* Tooltips should once again show BestInSlot information
+
+##Version 6.2.02
+###Bug fixes
+* Fixed several tooltip bugs where BestInSlot didn't recognise the right difficulty
+* Added several NPCs to NPC tracking
+
+###Minor additions
+* Behind the scenes rework of modules
+
+##Version 6.2.01
+###Minor additions
+* Fixed lua error at startup for europeans still on 6.1
+
+##Version 6.2.0
+###Major additions
+* Added Hellfire Citadel loot list
+* Added stage 5 and 6 for custom items
+* Added Zone Detection NPCs for Hellfire Citadel NPCs
+
+###Minor additions
+* Adjusted item handling to the new itemlink structure of patch 6.2
+
+##Version 6.1.07
+###Minor additions
+* Added a 'Select all items' button to the Manager.
+** This button allows users to see all the items that fit in a slot, even if they can't wear it.
+** This can be used to find the off-pieces that technically don't belong to your spec, but are actually BestInSlot
+
+##Version 6.1.06
+* Implemented stat windows in the Manager and the Preview Window
+** The stats in the preview window are shown by default
+** The stats in the Manager window can be collapsed and expanded by using the arrow button in the bottomright
+
+Minor changes
+* Changed font colors to be more inline with Blizzard's default font styles. The red color is not as bright red anymore.
+* LFR Loot Table now has access to the Legendary Ring and World Boss loot
+
+##Version 6.1.05
+###Minor additions
+* Tooltips now show the source of the item when enabled in the options (enabled by default).
+* Healers and tanks should now see DPS items as possible loot as well as their healing/tanking loot.
+* April fools?
+** This does not work for Holy Paladins just yet, a fix for this is in process
+
+###Bug fixes
+* WoD Dungeon Module should now properly show the correct item levels. [Requires BestInSlot WoDDugeon version 6.1.01 or higher]
+* The overview tab should now properly show items that are attainable from different sources.
+* Disabled importing to and from Looking for Raid
+* BrF LFR should now show the correct bosses for its loot.
+* BestInSlot now registers Looking for Raid instances as valid instances for showing tooltips.
+
+##Version 6.1.04
+###Major additions
+* LFR Loot is now added to Highmaul and Blackrock Foundry
+** LFR Loot is a separate AddOn which may be disabled at your own leisure.
+
+###Minor additions
+* Protection warriors now have access to Fury Warrior items for the Gladiator Warriors out there.
+
+
+###Bug fixes
+* [b]The preview window will now properly show all items when not all items have been set.
+
+##Version 6.1.03
+###Minor additions
+* Increased efficiency of hooking into tooltips
+** BestInSlot will do nothing with items that are lower then epic quality.
+** BestInSlot will no longer attempt to show Guild BiS information on items that are not part of BestInSlot (including custom items).
+
+###Bug fixes
+* Caster jewelry (trinkets, rings and necklaces) can now be chosen by healers.
+
+##Version 6.1.02
+###Minor additions
+* Caster jewelry (trinkets, rings and necklaces) can now be chosen by healers.
+
+##Version 6.1.01
+###Major additions
+* Implemented History to track changes made in Guild Members' BestInSlot lists (Must be enabled in the options)
+** History is not fully implemented yet, but it will start tracking for future updates.
+** History keeps track of when your guildmember has set his/her first BestInSlot since 6 BestInSlot 6.1.01
+** History requires both users (the received, and your guild member) to have Version 6.1.01
+** You can access guild members history by navigating to 'Guild BiS lists', right-clicking on the person you want to view the history off, and then clicking 'Show History' when available.
+** More implementations, for instance tooltip implementations, will follow soon.
+
+###Minor additions
+* Added an option to disable BestInSlot from adding information to tooltips while in combat.
+
+###Bug fixes
+* Darmac's Unstable Talisman and Goren Soul Repository are now selectable by specs that are considered Healers. (See hotfix 10-02-2015)
+* Healels can now pick Spellcaster rings as BestInSlot items
+
+
+##Version 6.1.0
+###Major additions
+* BestInSlot links are added
+** The overview page will use BestInSlot links when you're using version 6.1 or higher.
+** When sending overviews, those without BestInSlot will still see the old output (The list of bosses with required items)
+** Clicking on BestInSlot links will show the BestInSlot list for that person in the new Preview page
+* Export functionality to export your BiS list to WoWhead.
+** I'm thinking of adding more, but I'd like to get some feedback on where people would like to export their lists to.
+** Import functionality is also in the process of being created, but this will slip in a later milestone
+* BestInSlot tooltips will now show in Tooltips generated by AtlasLoot
+** Yes, this should include that awesome LootTooltip thing that AtlasLoot makes when you are thinking of using a Warforged Seal.
+* Spanish localization is now available
+* Korean localization is now available
+
+###Minor additions
+* The setting to disable tutorials is now an account wide setting.
+* The tutorial frame has a checkbox to disable the tutorials without navigating to the options screen
+* The overview section will now save your settings between sessions
+* Added a new preview button to the Manager that will use the new Preview Window to show a preview of you wearing your BestInSlot gear
+
+###Bug fixes
+* The overview page will now once again group items together and add the required specs behind it instead of seperating them
+
+##Version 6.0.24
+###Major additions
+* Added sort options for the Guild BiS section
+
+###Bug fixes
+* Warlords Crafted Trinkets no longer require a suffix to be added in the custom items section.
+* [b]Fixed an issue where Subtlety rogues were not able to see unique items that were selected in their respective Combat BiS list.
+* [c]Fixed an issue where with the instant animations options enabled the game would freeze in the Manager.
+* [d]The zone detection module should now properly list Blackhand and Iron Maidens in Blackrock Foundry
+* [e]Tier tokens should now show guild members that need that tier token.
+
+##Version 6.0.23
+###Major additions
+* French localization is now available.
+
+##Version 6.0.22
+###Minor additions
+* Your selection of raid tiers and difficulties is saved between sessions
+* Your window position is now saved between sessions.
+** If your window is gone, use '/bis reset' to reset the window to it's original position.
+
+###Bug fixes
+* Fixed the options menu not showing up properly in some localizations
+* Fixed a couple of bosses that weren't tracked by BestInSlot in the WoD Dungeons module.
+* [b]Clicking on the Credits label should no longer cause errors
+* [b]The missing text in the options section should once again be back
+* [c]Fixed errors when entering an instance without having BiS loaded.
+* [d]Fixed an issue with lower raid tier items messing up which items appear in the item container
+* [d]Fixed an issue with items not being unregistered properly, resulting in unique items not appearing after removing them as BestInSlot items
+* [e]Fix for sub rogues and fury warriors not showing lower raid tier items for trinkets (rogues) and weapons(warriors)
+* [f]Fix for 32-bit WoW clients not showing the Guild BiS lists properly
+* [g]Fix for linked realms: When people have the same name on different realms it should now work correctly with BestInSlot [needs confirmation]
+
+##Version 6.0.21
+Major changes
+* Custom items may now be added using the Custom Items screen
+** Custom items are mostly personal
+** The Guild BiS list will show other guild members' custom items
+* You can now select items from lower raid tiers for higher raid tiers.
+** For example: You can select Highmaul loot in Blackrock Foundry if you so desire.
+** PvP modules and Dungeon module are on a seperate lockout for these. You will be able to select 'old' PvP tiers for 'new' PvP tiers, but you can't mixmatch PvP with PvE.
+* The tooltips on tier tokens will now show if you need an item.
+* zhCN translation by nrg3331
+* Russian translation by Je?ka and KAPMA
+ 
+###Minor additions
+* Added a credits section to BestInSlot
+* ItemRefTooltip tooltips (When you click on an item in the chat) now also show BestInSlot information.
+* Rewrite of the GUI to improve performance
+* Changed the opacity of the GUI to be slightly darker to improve readability
+* Rewrote the options screen to improve readability
+* Added ilvl 690 rings to the Highmaul loot table
+* The Best In Slot Frame is now closable by hitting the 'escape' key.
+* ++[d]ADded an extra notice when users try to insert an item name in the custom item section++
+
+###Bug fixes
+* Wands should no longer lock the off-hand icon
+* Subtlety rogue's can now pick weapons other then daggers
+* Non-officers can no longer attempt to report to the officer channel in the overview section.
+* [b]Bugfix for Guild BiS Lists giving an error on trying to close it without opening anything
+* [c]Bugfix for wands not being selectable anymore
+* [c]Bugfix for option screen spazzing out on custom UI scales
+* ++[d]Fix for instant animations in Manager not showing the items++
+* ++[d]Fix for lower raid tiers not showing unique items that were  already set as BiS++
+* ++[d]Fix for items that are unregistered as BiS to unregister lower raid tiers aswell.++
+* ++[d]Fix for custom items not loading in properly after restarting the client++
+* ++[d]Fix for some custom items not appearing in the loot window++
+* ++[d]Fix for PvP trinkets not showing up in the PvP module++
+
+##Version 6.0.20
+Major changes
+* Support for the PvP module of BestInSlot
+
+###Bug fixes
+* [20b] Fixed lua errors on tooltips showing for bosses
+
+##Version 6.0.19
+###Minor additions
+* The overview page can now post to custom channels
+
+###Bug fixes
+* Fixed several errors with regards to the boss tooltip.
+
+##Version 6.0.18
+###Minor additions
+* Added guild rank filtering for the guild tooltips
+* Added an option to disable boss tooltips.
+
+##Version 6.0.17
+Major changes
+* Boss tooltips are now available! Bosses that drop your BiS item will now show it on their tooltip!
+* Russian translation (partially) available! Credits to KAPMA.
+
+###Minor additions
+* BestInSlot will now detect instances. It will automatically set the right instance when opening the window.  
+
+##Version 6.0.16
+###Minor additions
+* BestInSlot will now look for items on higher difficulties as well.
+** When you have an item on heroic, and not on normal, it will still consider that you've got the normal BiS item as well.
+
+* You should now alongside with the BestInSlot list, also receive wether your friends have obtained the item.
+** The guild tooltip is seperated in two sections: Those who need the item, and those whose it is BestInSlot for, but already have the item.
+** The Request BiS window has an additional option to hide items that people have already obtained for an easy overview of who actually needs the item.
+
+###Bug fixes
+* The item tooltips well now properly show guild BestInSlot lists. There was an issue where it only showed the BestInSlot lists of the guild when the item was your BestInSlot aswell.
+
+##Version 6.0.15
+Major changes
+* Item tooltips will now show if people from your guild need the item.
+
+###Bug fixes
+* When the BiS window has not been opened yet, the tooltips will still show wether an item is your BestInSlot.
+
+##Version 6.0.14
+Major changes
+* Tutorials have been added to the AddOn. It'll briefly explain where everything is located and how to use the AddOn to its fullest extent.
+** Tutorials can be reset, or disabled in the Options menu
+** Tutorials will only be shown once per character.
+
+###Minor additions
+* You can now right-click icons in the manager to quickly remove them from your BiS list.
+
+Removals
+* The 'Saved BiS Lists' page has been deleted. The 'Guild BiS' page is taking over its duties.
+* Removed the type selection in the Request BiS window. The 'Guild BiS' page is taking over the duties of viewing a per player BestInSlot list.
+
+###Bug fixes
+* Fixed the error when trying to delete a character from a raid tier in the 'Guild BiS' page.
+* Fixed the guild BiS page from showing up in the menu even though there were no guild BiS lists present.
+
+##Version 6.0.13
+###Minor additions
+* Added the plausible trash loot to Blackrock Foundry (subject to change)
+* Removed the ilvl 680 'legendary' rings from the Blackrock Foundry loot table
+* Added the ivl 710 'legendary' rings to the Blackrock Foundry loot table
+
+###Bug fixes
+* Fixed an issue where the Guild BiS window would not show guild members while they were in your party/raid.
+* Unique items can no longer be selected in two slots
+* Wands are no longer considered two-handed weapons
+* Trash loot's tooltip should now reflect it's proper difficulty
+
+##Version 6.0.12
+###Minor additions
+* Added an option to filter the overview by obtained items. The default of this option is ON.
+** This option will only show items that you have yet to obtain from raids.
+
+##Version 6.0.11b
+Major changes
+* Guild BiS lists section
+** This window will (eventually) replace the 'Saved BiS lists' window. For now I kept both in because testing is not completely done.
+** This will show all the guild's BestInSlot lists that are available in your cache after they have been requested in the Request BiS section.
+
+###Minor additions
+* Highmaul trash loot has been added to the Highmaul loot table
+
+###Bug fixes
+Ticket 10: The overview section will now properly take difficulty into account when showing wether one has obtained an item or not.
+Ticket 11: Fixed error when viewing the Overview section when not all inventory slots have an item equipped.  (Version 6.0.11B only) 
+
+##Version 6.0.10
+###Bug fixes
+* Fixed an issue that the import Dropdown box wasn't showing the right difficulties
+* Fixed an issue when picking a per player overview in the request BiS section
+
+##Version 6.0.10
+###Major additions
+* The manager has an option to import loot from other difficulties. You can only do this for Warlords of Draenor raids.
+
+###Minor additions
+* Implemented timers to await information instead of immediatly refreshing
+** When multiple responses were received, the screen would lag out. I've put the responses in a 1 second queue to prevent this from happening.
+** When doing an automatic update towards your guild members, it'll now wait 10 seconds to gather up data, instead of sending each item when quickly selecting a lot of items.
+ 
+###Bug fixes
+* Rukhmar's loot table is now associated with Blackrock Foundry normal, instead of Highmaul Normal.
+* When requesting the BiS list from the raid/party/guild the player him/herself will also appear in the list now.
+
+##Version 6.0.09
+###Minor additions
+* Fixed an error in the versioning system. Versions weren't updated properly.
+
+##Version 6.0.08
+###Minor additions
+* Added the epic 680 versions of the Legendary ring to the loottable of both Blackrock Foundry and Highmaul.
+* The source of an item is highlighted in red in the tooltips of items, if BestInSlot knows that item ID.
+
+##Version 6.0.07
+###Minor additions
+* Slightly increased the speed of the animations in the BiS Manager window.
+
+###Bug fixes
+* Potential fix for the UI spazzing out when entering the options screen after the UI just loaded.
+* The /bis versioncheck should no longer incorrectly show Development Version as response.
+
+##Version 6.0.06
+
+###Minor additions
+* When receiving an add-on message from a player with a higher version then you, you will be reminded to update your add-on.
+
+###Bug fixes
+* Fury warriors will now be able to choose an off-hand weapon when they select a two-handed weapon in their main hand.
+
+##Version 6.0.05
+
+###Bug fixes
+* When disabled, the minimap button should no longer appear upon logon.
+
+##Version 6.0.04
+
+Major changes
+* Support for dungeons
+
+
+##Version 6.0.03
+
+Major changes
+* Seperated Highmaul from the Blackrock Foundry instance due to popular request.
+
+Minor changes
+* Changed the module colour to blue instead of red.
+* Small Bug fixes to the filter in the Request Best In Slot window
+
+
+##Version 6.0.02
+
+Major changes
+* Seperated Highmaul from the Blackrock Foundry instance due to popular request.
+
+Minor changes
+* Changed the module colour to blue instead of red.
+
+
+##Version 6.0.01
+
+Problems fixed
+* Using the manager with instant animations should no longer cause errors.
+* There's no longer a weird graphical glitch for users who reskin the add-on.
+
+Minor changes
+* New versioning systems, versions will now be <WoW Major patch revision>.<AddOn Version for that patch>. For example: For patch 6.0.03, the first revision would be: 6.0.01.
