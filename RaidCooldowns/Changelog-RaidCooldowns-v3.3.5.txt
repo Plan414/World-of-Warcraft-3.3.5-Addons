@@ -1,0 +1,71 @@
+tag v3.3.5
+c6b07e9ceeb039772f67f4992e467fc0023ecec1
+root <root@cfrepos1.curseforge.net>
+2010-07-29 07:33:02 +0000
+
+Tagging as v3.3.5
+
+
+--------------------
+
+nivfreak:
+	- Update for Patch 3.3. Several spells had thier cooldowns reduced. Bump TOC to 30300.
+rspeicher:
+	- TOC bump
+	- Innervate down to 3 minutes
+	- Embed AceLocale-3.0 properly
+	- Fix OnEnable when joining a raid
+	- Changes from using RCD during a few raids.
+	- Reduce some debug spam
+	- Attempt to fix the disable/enable when leaving/joining a raid.
+	- Display wasn't getting enabled properly when the user joined a raid.
+	- Typo
+	- In Display:StopCooldown, call UpdateDisplay so that a gap gets removed in certain edge cases.
+	- Add Death Knight and other cooldowns from Ropoem on WoWI
+	- Clean up some comments
+	- Trying out the WoWAce localizer.
+	- Priest module
+	Add support for Glyph of Guardian Spirit resetting our cooldown to 1 minute.
+	- Support cooldowns of 0 in RaidCooldowns:OnCommReceived
+	- ModuleBase
+	- Move canScanCooldowns from a local variable to an instance variable so that class modules can modify it.
+	- Register some more talent change events so that dual spec changes can be detected. This lets changing from Priest Disc to Priest Holy cancel any running Pain Suppression cooldowns, for example.
+	- Move the oRA syncing into the base:Sync method rather than base:ScanSpells
+	- We now sync cooldowns at 0 so that any running cooldowns for this spell can be stopped.
+	- Display
+	- Use SetTimer instead of UpdateTimer so that it, you know, works.
+	- Add a StopCooldown method; send a sync with a cooldown value of 0 to stop a bar.
+	- Clean up some code.
+	- spaces/tabs
+	- Forgot LibBars-1.0 lib
+	- Add .pkgmeta; update embeds.xml
+	- Had Debug/Non-Debug mixed up.
+	- Add the rest of the localizations from the old version.
+	- I fail at alphabetizing.
+	- Think I finally worked around the Sync spam without losing any functionality.
+	- Attempts to reduce spam; debugging
+	- Add a Debug spell, PW:S
+	- Apparently if you scan a talent-based spell without the talent, GetSpellCooldown returns nil, so account for that
+	- Change comm distribution back to RAID
+	- Add remaining class files.
+	- Change debug output in CLEU
+	- Update Shaman cooldowns.
+	- Remove Fire/Earth Elemental totems. No one ever cared about that crap.
+	- Call RaidCooldowns:Print rather than self:Print in TimerFinished, to shorten output
+	- Update Warrior cooldowns
+	- Update Paladin cooldowns
+	- Update Mage cooldowns
+	- Update Hunter cooldowns
+	- Update Druid cooldowns
+	- Update Warlock cooldowns
+	- Update Priest cooldowns.
+	- Call math.ceil on cooldown calculation; re-add oRA sending if the user isn't running oRA.
+	- Move CLEU processing from Display to RaidCooldowns, where the rest of the processing lives.
+	- Cooldowns update
+	- More progress
+	- Comment out every cooldown except Priest/Rogue/Warlock (our dev characters) until we're ready to update the others.
+	- Move from Spell Success messages to Spell Cooldown messages; instead of relying on scanning inventories or glyphs, just use GetSpellCooldown on specific spells to find the cooldown.
+	- Add .gitignore
+	- Progress!
+	We can log in, see the anchor, open the config, hit Test and get running bars. It's a start.
+	- initial commit

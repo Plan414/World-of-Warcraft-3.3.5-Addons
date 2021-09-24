@@ -1,0 +1,38 @@
+## Interface: 30300
+## Title: RaidCooldowns
+## Notes: Tracks, transmits and displays the cooldowns of your raid.
+## Author: tsigo
+## X-Category: Raid
+## X-Curse-Packaged-Version: v3.3.5
+## X-Curse-Project-Name: RaidCooldowns
+## X-Curse-Project-ID: raid-cooldowns
+## X-Curse-Repository-ID: wow/raid-cooldowns/mainline
+
+## SavedVariables: RCD_DB
+## Dependencies:
+## OptionalDeps: Ace3, LibSharedMedia-3.0, LibBars-1.0
+## X-Embeds: Ace3, LibSharedMedia-3.0, LibBars-1.0
+
+embeds.xml
+locale\enUS.lua
+locale\koKR.lua
+locale\zhCN.lua
+locale\zhTW.lua
+
+# Base
+RaidCooldowns.lua
+Cooldowns.lua
+ModuleBase.lua
+classes\Druid.lua
+classes\Mage.lua
+classes\Hunter.lua
+classes\Paladin.lua
+classes\Priest.lua
+classes\Rogue.lua
+classes\Shaman.lua
+classes\Warlock.lua
+classes\Warrior.lua
+
+# Display
+Display.lua
+Config.lua
