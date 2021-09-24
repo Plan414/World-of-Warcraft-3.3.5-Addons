@@ -1,0 +1,4 @@
+## Interface: 30200
+## Title: SnowfallKeyPressSettings
+## Notes: Configuration settings for SnowfallKeyPress
+SnowfallKeyPressSettings.lua

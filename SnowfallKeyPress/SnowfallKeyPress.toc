@@ -1,0 +1,7 @@
+## Interface: 30200
+## Title: SnowfallKeyPress
+## Notes: Modify key bindings to work on key press rather than key release
+## OptionalDeps: SnowfallKeyPressSettings
+## SavedVariables: SnowfallKeyPressSV
+SnowfallKeyPressSettings\SnowfallKeyPressSettings.lua
+SnowfallKeyPress.lua
