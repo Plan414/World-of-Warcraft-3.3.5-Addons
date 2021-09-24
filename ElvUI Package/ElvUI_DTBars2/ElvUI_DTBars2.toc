@@ -1,0 +1,12 @@
+﻿## Interface: 30300
+## Title: |cff1784d1E|r|cffe5e3e3lvUI|r |cff1784d1D|r|cffe5e3e3atatext|r |cff1784d1B|r|cffe5e3e3ar|r |cff1784d12|r
+## Author: |cff9482c9Darth Predator|r
+## Version: 8.1.5.0015
+## Notes: The plugin to create and manage additional datatext panels.
+## Notes-ruRU: Плагин для создания и управления дополнительными панелями инфо-текстов.
+## RequiredDeps: ElvUI
+## DefaultState: Enabled
+
+locales\load_locales.xml
+core.lua
+options.lua
