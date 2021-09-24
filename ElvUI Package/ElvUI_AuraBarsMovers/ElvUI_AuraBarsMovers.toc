@@ -1,0 +1,13 @@
+## Interface: 30300
+## Title: |cff1784d1E|r|cffe5e3e3lvUI|r |cff1784d1A|r|cffe5e3e3ura|r |cff1784d1B|r|cffe5e3e3ars|r |cff1784d1M|r|cffe5e3e3overs|r
+## Author: Darth Predator
+## Version: 1.31
+## Notes: Moveble unit aura bars for |cff1784d1E|r|cffe5e3e3lvUI|r
+## Notes-ruRU: Возможноть перемещения полос аур в |cff1784d1E|r|cffe5e3e3lvUI|r
+## eMail: darthpred@gmail.com
+## URL: 
+## RequiredDeps: ElvUI
+## DefaultState: Enabled
+
+core.lua
+options.lua
