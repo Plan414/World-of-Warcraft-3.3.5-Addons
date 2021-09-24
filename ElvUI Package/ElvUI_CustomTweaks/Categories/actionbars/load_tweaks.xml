@@ -1,0 +1,4 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file='ClickThroughActionBars.lua'/>
+	<Script file='PushedColor.lua'/>
+</Ui>

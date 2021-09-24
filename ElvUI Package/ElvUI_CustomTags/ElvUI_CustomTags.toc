@@ -1,0 +1,9 @@
+## Interface: 30300
+## Author: Blazeflack
+## Version: 1.03
+## Title: |cff1784d1E|r|cffe5e3e3lvUI|r |cff1784d1C|r|cffe5e3e3ustom|r |cff1784d1T|r|cffe5e3e3ags|r
+## Notes: A collection of custom unitframe tags requested by users.
+## RequiredDeps: ElvUI
+## DefaultState: enabled
+
+core.lua
