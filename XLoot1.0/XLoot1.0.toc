@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: XLoot
+## Notes: A reskin of the default loot frame
+## Version: 1.1
+## Author: Xuerian
+## X-Category: Inventory
+## X-AceForum: 2278
+## X-eMail: sky.shell@gmail.com
+## X-Website: http://wowace.com/index.php/XLoot
+
+## OptionalDeps: ButtonFacade
+## SavedVariables: XLoot_Options
+
+XLoot.lua
