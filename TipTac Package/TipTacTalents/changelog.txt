@@ -1,0 +1,71 @@
+TipTacTalents Changes | 2010 Feb 27
+-----------------------------------
+- Changed the TOC version to 30300 for the 3.3 patch.
+
+TipTacTalents Changes | 2009 Aug 13
+-----------------------------------
+- Changed the TOC version to 30200 for the 3.2 patch.
+
+TipTacTalents Changes | 2009 May 17
+-----------------------------------
+- Cleaned up the code a bit.
+
+TipTacTalents Changes | 2009 Apr 17
+-----------------------------------
+- Changed the TOC version to 30100 for the 3.1 patch.
+- Will now show the proper spec, for people using their secondary spec.
+- The tooltip line added will now be localised.
+- Optimised the code a bit.
+
+TipTacTalents Changes | 2009 Mar 26
+-----------------------------------
+- It is now possible to configure TipTacTalents through the TipTac Options dialog.
+
+TipTacTalents Changes | 2009 Mar 19
+-----------------------------------
+- Will no longer try and update the tip, if it does not show a unit anymore.
+
+TipTacTalents Changes | 2009 Mar 17
+-----------------------------------
+- Can now obtain talents even if the tip shown is from a concated unit frame such as "targettarget".
+
+TipTacTalents Changes | 2009 Mar 13
+-----------------------------------
+- Occasionally the TipTac fadeout could get halted because of an update from TipTacTalents, I've fixed this by not allowing TipTacTalents to call "GTT:Show()" to resize the tip during fadeout.
+
+TipTacTalents Changes | 2009 Mar 12
+-----------------------------------
+- After some more testing with adjusting the trottle time, it seems that compeltely removing it, that is setting it to zero, actually seems like the best solution, at least this is where I found the least mixed talents. Please let me know if you're still seeing wrong specs in the tips.
+- Made some minor code changes.
+
+TipTacTalents Changes | 2008 Nov 05
+-----------------------------------
+- Increased the throttle time for talent queries from 0.25 to 0.75 sec, hopefully that fixes some more of the problems with wrong talents listed on tips. But they will still occur with rapid mouse moving.
+
+TipTacTalents Changes | 2008 Oct 22
+-----------------------------------
+- TipTacTalents will no longer request talents when the default inspect window is open, just like it already does when the Examiner addon is open.
+
+TipTacTalents Changes | 2008 Oct 16
+-----------------------------------
+- Changed the TOC version to 30000 for the Wrath of the Lich King patch.
+- When Examiner is installed, and opened, TipTacTalents will not request talent info, as this would cause problems in Examiner's talent tab.
+- If the player has no talents, it will no longer state the name of the first talent tab and (0/0/0), but instead: "No Talents".
+- Changed the default cache size up to 25.
+
+TipTacTalents Changes | 2008 Jun 11
+-----------------------------------
+- Changed the default cache size up to 15.
+- Player inspection has been throttled, hopefully that fixes some problem with talents showing up on the wrong player.
+
+TipTacTalents Changes | 2008 Apr 06
+-----------------------------------
+- Added some different formatting styles for the Talent line in the tip, you have to edit the Lua file to change it though, by uncommenting some lines. Look at line 17 and after.
+- Removed the obsolete 2.3.3 inspect checking.
+- Fixed a nil error that could happen under special circumstances.
+- TipTacTalents should no longer block you from getting the talents of same faction players who are marked for PvP.
+- Cached players who are now out of range should now show with the cached data.
+
+TipTacTalents Changes | 2008 Mar 24
+-----------------------------------
+- Initial Release.

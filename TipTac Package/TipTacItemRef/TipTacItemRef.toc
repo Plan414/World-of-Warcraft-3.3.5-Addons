@@ -1,0 +1,6 @@
+## Interface: 30300
+## Version: 10.02.27
+## Title: TipTacItemRef
+## Author: Aezay (Earthen Ring EU)
+## Notes: Improved ItemRefTooltip
+core.lua

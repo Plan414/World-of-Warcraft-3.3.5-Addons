@@ -1,0 +1,31 @@
+TipTacItemRef Changes | 2010 Feb 27
+-----------------------------------
+- Changed the TOC version to 30300 for the 3.3 patch.
+
+TipTacItemRef Changes | 2009 Aug 13
+-----------------------------------
+- Changed the TOC version to 30200 for the 3.2 patch.
+- Added a Lua option to toggle item level and id for item tooltips.
+- Added a Lua option to toggle spell id and rank for spell tooltips.
+
+TipTacItemRef Changes | 2009 May 25
+-----------------------------------
+- No longer creates a table for each time you view an achievement link.
+
+TipTacItemRef Changes | 2009 Apr 17
+-----------------------------------
+- Changed the TOC version to 30100 for the 3.1 patch.
+
+TipTacItemRef Changes | 2009 Mar 19
+-----------------------------------
+- Achivements now show how many points they give in the icon.
+
+TipTacItemRef Changes | 2008 Dec 13
+-----------------------------------
+- When showing your achievements, the statistic will be shown as well. This could for example be "157 / 250" for the "250 Emblems of Heroism" achievement.
+- If the GameTooltip is showing a hyperlink, while the ItemRefTooltip is shown, it will no longer hide the icon.
+- Fixed a problem that could make it skip the first two criteria of a shown achievement.
+
+TipTacItemRef Changes | 2008 Dec 03
+-----------------------------------
+- First Release.
