@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="DetachedPortrait.lua"/>
+	<Script file="TargetClass.lua"/>
+	<Script file="PortraitHDModelFix.lua"/>
+</Ui>

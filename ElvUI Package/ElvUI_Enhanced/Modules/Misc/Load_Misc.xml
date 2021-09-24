@@ -1,0 +1,15 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Misc.lua"/>
+	<Script file="Faction.lua"/>
+	<Script file="EquipmentInfo.lua"/>
+	<Script file="Movers.lua"/>
+	<Script file="QuestLevel.lua"/>
+	<Script file="QuestReward.lua"/>
+	<Script file="LoseControl.lua"/>
+	<Script file="AlreadyKnown.lua"/>
+	<Script file="TrainAllSkills.lua"/>
+	<Script file="UndressButton.lua"/>
+	<Script file="AddonsCompatibility.lua"/>
+	<Script file="MerchantBuyStack.lua"/>
+	<Script file="InterruptTracker.lua"/>
+</Ui>
