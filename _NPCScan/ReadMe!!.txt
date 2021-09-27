@@ -1,3 +1,5 @@
+Adding ALL Rares to the list!
+
 --- INSTRUCTIONS ---
 
 > Make sure WoW is not open
