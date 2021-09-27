@@ -1,0 +1,23 @@
+## Interface: 30300
+## Title: What's Training?
+## Version: 3.0.0
+## Author: Sveng, Anhility (3.3.5 backport)
+## Notes: Shows you what spells are available at your class trainer
+
+Utils.lua
+Cache.lua
+
+Classes\DeathKnight.lua
+Classes\Druid.lua
+Classes\Hunter.lua
+Classes\Mage.lua
+Classes\Paladin.lua
+Classes\Priest.lua
+Classes\Rogue.lua
+Classes\Shaman.lua
+Classes\Warlock.lua
+Classes\Warrior.lua
+
+Localization.lua
+WhatsTrainingUI.lua
+WhatsTraining.lua
