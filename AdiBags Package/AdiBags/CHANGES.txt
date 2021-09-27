@@ -1,0 +1,10 @@
+tag be6010fece47cc4f121c8371e5dd7e0a7e6c917f v1.9.26-bcc
+Author:	Talyrius <contact@talyrius.net>
+Date:	Wed Sep 15 13:01:58 2021 -0700
+
+commit 17594af17f03dd5f74782f619e6d1eda456b6e93
+Author: Talyrius <contact@talyrius.net>
+Date:   Wed Sep 15 13:01:06 2021 -0700
+
+    Updated for Patch 2.5.2: Overlords of Outland.
+
