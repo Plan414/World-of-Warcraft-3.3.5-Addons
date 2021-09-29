@@ -1,5 +1,5 @@
 # World-of-Warcraft-3.3.5-Addons
-A collection of all the addons for 3.3.5 version of World of Warcraft
+A collection of addons for 3.3.5 version of World of Warcraft
 
 This GitHub was made to organize all the WOTLK 3.3.5 addons in one secure place. 
 
