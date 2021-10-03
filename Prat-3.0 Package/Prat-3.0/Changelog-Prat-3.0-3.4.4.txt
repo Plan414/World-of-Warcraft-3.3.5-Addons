@@ -1,0 +1,356 @@
+------------------------------------------------------------------------
+r666 | sylvanaar | 2010-10-10 08:57:15 +0000 (Sun, 10 Oct 2010) | 1 line
+Changed paths:
+   A /tags/3.4.4 (from /trunk:665)
+
+Tagging as 3.4.4
+------------------------------------------------------------------------
+r665 | sylvanaar | 2010-10-10 08:47:14 +0000 (Sun, 10 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/services/chatsections.lua
+
+attept to fix errpr "attempt to index local 'globalstring' (a nil value)"
+------------------------------------------------------------------------
+r664 | sylvanaar | 2010-10-09 19:08:45 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+fix some gmotd and motd spellings
+------------------------------------------------------------------------
+r663 | sylvanaar | 2010-10-09 19:07:26 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+fix some gmotd and motd spellings
+------------------------------------------------------------------------
+r662 | sylvanaar | 2010-10-09 18:24:00 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+add another option to not delay the gmotd
+------------------------------------------------------------------------
+r661 | sylvanaar | 2010-10-09 16:02:13 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Editbox.lua
+
+make BN editboxes behave like real ones
+------------------------------------------------------------------------
+r660 | sylvanaar | 2010-10-09 15:29:33 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CopyChat.lua
+
+try to fix a string overflow on a copy
+------------------------------------------------------------------------
+r659 | sylvanaar | 2010-10-09 13:54:18 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/CopyChat.lua
+   M /trunk/modules/Font.lua
+   M /trunk/modules/Timestamps.lua
+
+fix major bugs in BN chat frame handler. issue #436
+------------------------------------------------------------------------
+r658 | sylvanaar | 2010-10-09 05:10:55 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scroll.lua
+
+updated the text in the scroll module #272
+------------------------------------------------------------------------
+r657 | sylvanaar | 2010-10-09 03:13:17 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+address what i think #437 probably is
+------------------------------------------------------------------------
+r653 | sylvanaar | 2010-10-09 02:50:37 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scrollback.lua
+
+the scrollback module now shows the time delta in days hours minutes and seconds
+------------------------------------------------------------------------
+r652 | sylvanaar | 2010-10-09 00:49:21 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/services/chatsections.lua
+
+support the mobile icon
+------------------------------------------------------------------------
+r651 | sylvanaar | 2010-10-09 00:42:27 +0000 (Sat, 09 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/services/chatsections.lua
+
+create a new chatsection for MOBILE, right before MESSAGE. Will probably just hold the blizz icon
+------------------------------------------------------------------------
+r650 | sylvanaar | 2010-10-08 20:03:29 +0000 (Fri, 08 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+make gmotd coloring an option
+------------------------------------------------------------------------
+r649 | sylvanaar | 2010-10-08 19:43:40 +0000 (Fri, 08 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+   M /trunk/modules/Scrollback.lua
+
+added localization
+------------------------------------------------------------------------
+r648 | sylvanaar | 2010-10-08 13:09:37 +0000 (Fri, 08 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+prevent double gmotds
+------------------------------------------------------------------------
+r647 | sylvanaar | 2010-10-08 12:56:06 +0000 (Fri, 08 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/AltNames.lua
+   M /trunk/modules/Font.lua
+   M /trunk/modules/Timestamps.lua
+   M /trunk/services/chatsections.lua
+
+commt all the current beta changes except the links module
+------------------------------------------------------------------------
+r646 | sylvanaar | 2010-10-08 12:54:51 +0000 (Fri, 08 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/ChatTabs.lua
+
+chattabs disabled and noload by default
+------------------------------------------------------------------------
+r644 | sylvanaar | 2010-10-07 10:49:43 +0000 (Thu, 07 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChatTabs.lua
+
+removed the chat tabs module for next release. I'm tired of the crash reports. Lua code should not cause crashes in the C code.
+------------------------------------------------------------------------
+r643 | sylvanaar | 2010-10-02 17:04:41 +0000 (Sat, 02 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/fonts/fonts.lua
+
+remove one of the new fonts, and label teh unicode fonts with (U)
+------------------------------------------------------------------------
+r642 | sylvanaar | 2010-10-02 16:07:58 +0000 (Sat, 02 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Timestamps.lua
+
+disable bliz's timestamps when prat's are on
+------------------------------------------------------------------------
+r641 | sylvanaar | 2010-10-02 15:16:54 +0000 (Sat, 02 Oct 2010) | 1 line
+Changed paths:
+   A /trunk/fonts/CODE2001.TTF
+   A /trunk/fonts/FSEX300.ttf
+   M /trunk/fonts/fonts.lua
+
+2 new built in fonts - probably going to remove 2 others
+------------------------------------------------------------------------
+r640 | sylvanaar | 2010-10-01 12:20:50 +0000 (Fri, 01 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/services/print.lua
+
+finally address #141 - new command /pratdebugmsg prints out debugging info and opens a frame for the user to copy from
+------------------------------------------------------------------------
+r639 | sylvanaar | 2010-10-01 11:18:23 +0000 (Fri, 01 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+add coloring to the GMOTD globalstring - until someone complains
+------------------------------------------------------------------------
+r638 | sylvanaar | 2010-10-01 11:06:55 +0000 (Fri, 01 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/CopyChat.lua
+   M /trunk/services/chatsections.lua
+
+updates for latest beta build also may address #427
+------------------------------------------------------------------------
+r637 | sylvanaar | 2010-10-01 11:05:03 +0000 (Fri, 01 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+   M /trunk/modules/Scrollback.lua
+
+address #154 and possibly #427
+------------------------------------------------------------------------
+r636 | sylvanaar | 2010-09-30 15:30:36 +0000 (Thu, 30 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+   M /trunk/modules/Scrollback.lua
+
+make number of scrollback lines configurable. ran code formatter
+------------------------------------------------------------------------
+r635 | sylvanaar | 2010-09-30 15:28:47 +0000 (Thu, 30 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Fading.lua
+
+dim the fading delay if no frames are faded
+------------------------------------------------------------------------
+r634 | sylvanaar | 2010-09-30 13:18:18 +0000 (Thu, 30 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Fading.lua
+
+adjust the max fade delay slider to 240 (#130)
+------------------------------------------------------------------------
+r632 | sylvanaar | 2010-09-27 14:32:06 +0000 (Mon, 27 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scrollback.lua
+
+fix possible nil error if scrollback saved for a chatframe that no longer exists
+------------------------------------------------------------------------
+r631 | sylvanaar | 2010-09-26 04:36:55 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+use correct id
+------------------------------------------------------------------------
+r630 | sylvanaar | 2010-09-26 03:43:00 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChatTabs.lua
+
+remove the tab drag hooks and "prevent drag" option. Hopefully this addresses #411 et.al.
+------------------------------------------------------------------------
+r629 | sylvanaar | 2010-09-26 03:36:01 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Prat-3.0.toc
+   M /trunk/modules/Scrollback.lua
+   M /trunk/pullouts/Prat-3.0_HighCPUUsageModules/Prat-3.0_HighCPUUsageModules.toc
+
+move the per-char saved variables to the high-cpu addon since it is the one actually using them (for scrollback)
+------------------------------------------------------------------------
+r628 | sylvanaar | 2010-09-26 03:28:44 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/addon/modules.lua
+
+make the module options tab separation locale independent
+------------------------------------------------------------------------
+r627 | sylvanaar | 2010-09-24 19:57:44 +0000 (Fri, 24 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scrollback.lua
+
+restore the GMOTD when using the scrollback feature
+------------------------------------------------------------------------
+r626 | sylvanaar | 2010-09-24 13:26:40 +0000 (Fri, 24 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/addon/modules.lua
+
+made note in the code on how to address #430
+------------------------------------------------------------------------
+r625 | sylvanaar | 2010-09-24 13:08:39 +0000 (Fri, 24 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/addon/locales.lua
+
+messed up but unused name match pattern
+------------------------------------------------------------------------
+r624 | sylvanaar | 2010-09-23 19:56:46 +0000 (Thu, 23 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scrollback.lua
+
+fix error message when timestamps module not loaded
+------------------------------------------------------------------------
+r623 | sylvanaar | 2010-09-23 12:20:03 +0000 (Thu, 23 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scrollback.lua
+
+if the history module isnt loaded - dont allow the module extension to load
+------------------------------------------------------------------------
+r622 | sylvanaar | 2010-09-21 23:50:38 +0000 (Tue, 21 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+   M /trunk/modules/Scrollback.lua
+
+turn the scrollback module into a module extension of the history module.
+------------------------------------------------------------------------
+r621 | sylvanaar | 2010-09-20 21:19:30 +0000 (Mon, 20 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CopyChat.lua
+
+drycode fix for missing text in the right click copy on beta
+------------------------------------------------------------------------
+r620 | sylvanaar | 2010-09-20 05:07:41 +0000 (Mon, 20 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scrollback.lua
+
+add a marker to indicate where the scrollback ends and the current chat begins. maybe in the furture i'll desaturate the colors of the scrollback instead
+------------------------------------------------------------------------
+r619 | sylvanaar | 2010-09-19 18:26:33 +0000 (Sun, 19 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+
+fix another global this usage
+------------------------------------------------------------------------
+r618 | sylvanaar | 2010-09-18 06:48:14 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scrollback.lua
+
+add descriptive text for the option panel. pick up localizations. pick up latest ace3 fix
+------------------------------------------------------------------------
+r617 | sylvanaar | 2010-09-18 06:25:59 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   A /trunk/modules/Scrollback.lua
+   M /trunk/modules/highcpu.xml
+
+finally..new module: scrollback - saves the last 50 lines of actual chat text on each frame and restores them at login. off by default - currently has no options
+------------------------------------------------------------------------
+r616 | sylvanaar | 2010-09-18 04:52:30 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Font.lua
+
+improve handling of font face and font size
+------------------------------------------------------------------------
+r614 | sylvanaar | 2010-09-16 23:31:02 +0000 (Thu, 16 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/UrlCopy.lua
+
+fix urlcopy on live and beta
+------------------------------------------------------------------------
+r613 | sylvanaar | 2010-09-16 23:04:54 +0000 (Thu, 16 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+fix the dynamic chatbubble expansion feature which was broken during optimization of scan frequency
+------------------------------------------------------------------------
+r612 | sylvanaar | 2010-09-16 22:41:01 +0000 (Thu, 16 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+use the correct value for insetting the text
+------------------------------------------------------------------------
+r611 | sylvanaar | 2010-09-16 22:32:07 +0000 (Thu, 16 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+make the chat bubbles size upwards and downwards along with changes to the text length and font/font size. This should prevent both early truncation and large blank spaces when using a small font
+------------------------------------------------------------------------
+r610 | sylvanaar | 2010-09-16 21:49:52 +0000 (Thu, 16 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Prat-3.0.toc
+
+pickup localizations
+------------------------------------------------------------------------
+r609 | sylvanaar | 2010-09-16 21:28:02 +0000 (Thu, 16 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+new option. set the font size of the chat bubble text
+------------------------------------------------------------------------
+r608 | sylvanaar | 2010-09-16 21:15:19 +0000 (Thu, 16 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+fix issues with text wrapping due to text size or length changes. Resize the chatbubble if it is too small to fix the text after it has been reformatted
+------------------------------------------------------------------------
+r607 | sylvanaar | 2010-09-14 21:50:59 +0000 (Tue, 14 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/UrlCopy.lua
+
+fix urlcopy on beta
+------------------------------------------------------------------------
+r604 | sylvanaar | 2010-09-11 21:45:47 +0000 (Sat, 11 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+fix the bubbles module to display the correct font
+------------------------------------------------------------------------
+r603 | sylvanaar | 2010-09-08 18:56:26 +0000 (Wed, 08 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/services/events.lua
+
+revert last
+------------------------------------------------------------------------
