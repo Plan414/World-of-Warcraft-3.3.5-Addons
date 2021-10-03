@@ -1,0 +1,29 @@
+## Interface: 30300
+## Title: Afflicted3
+## Notes: PvP timer and cool down tracking mod
+## Author: Shadowed
+## SavedVariables: AfflictedDB
+
+libs\LibStub-1.0\LibStub-1.0.xml
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\LibSharedMedia-3.0\lib.xml
+libs\AceAddon-3.0\AceAddon-3.0.xml
+libs\AceEvent-3.0\AceEvent-3.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+libs\AceGUI-3.0\AceGUI-3.0.xml
+libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
+libs\AceGUI-3.0-Spell-EditBox\AceGUI-3.0-Spell-EditBox.xml
+libs\AceConfig-3.0\AceConfig-3.0.xml
+libs\GTB-1.0\GTB-1.0.xml
+
+localization.enUS.lua
+localization.zhTW.lua
+localization.zhCN.lua
+localization.koKR.lua
+
+spells.lua
+Afflicted.lua
+config.lua
+bars.lua
+icons.lua

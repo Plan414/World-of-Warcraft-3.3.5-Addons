@@ -1,0 +1,1435 @@
+commit fafcff3f22d9f01adaa0d3b06576538fa4db5ef7
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Feb 6 10:06:14 2010 -0800
+
+    Library update
+
+commit cd9529998e8f2a28fcb525b56c79c0c9164e80fa
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Feb 6 10:04:00 2010 -0800
+
+    Fixed index nil error at Afflicted.lua:79, probably shouldn't set a table with a known nil index!
+
+commit d596100f66e590b929a92d93bd996a2796d71f44
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Dec 22 01:21:15 2009 -0800
+
+    Bug fix when accessing Afflicted.spells with a nil index
+
+commit 11b511b05a7e74da35effa0ce90ff7d6c434d771
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Dec 5 09:31:14 2009 -0800
+
+    - Reapplied the #120 fix
+
+commit 6f18b513c949ebe05e3614f166199f01a5d94733
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Dec 4 17:18:34 2009 -0800
+
+    Revert "- Fixed error on line 120"
+    
+    This reverts commit c12a2ffe1b1ac33ee6ca2171a2129dcea2d0a105.
+
+commit c12a2ffe1b1ac33ee6ca2171a2129dcea2d0a105
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Dec 4 17:17:45 2009 -0800
+
+    - Fixed error on line 120
+
+commit 0bf30a7c93950d6d88bc62786441906359cfd403
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Dec 4 09:05:00 2009 -0800
+
+    Divine Sacrifice, 10 second duration -> 6 seconds
+    Aura Mastery, 10 second duration -> 6 seconds
+
+commit 0c793238cfc931b7a61f4efc4d9df8a667043e71
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Dec 4 09:04:18 2009 -0800
+
+    Removed unneeded library files
+
+commit 0dd691b4c7b83eede50a7d2020212d344bb931ce
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Dec 4 08:53:08 2009 -0800
+
+    Tweaked default loading of spells
+
+commit 43198a6ba08a108e694664dc77c1574556cbe46a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Dec 4 08:52:58 2009 -0800
+
+    TOC Bump 30300
+
+commit da495ff9e0b1d2dc4be28788b297e6ff03d70e4d
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Dec 4 08:44:30 2009 -0800
+
+    - Library update
+
+commit 07d12ef8c5dc611677a912879fde8172649fb5ce
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 9 16:31:37 2009 -0700
+
+    - Changed spell updating, only duration, cooldown, type and class will be merged meaning anchor, enabled/disabled status and so on will not be reset when updating spells
+
+commit fff115f9f0e86e53eca5d64b49fa82bf2b5dd377
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 9 16:30:52 2009 -0700
+
+    - Bestial Wrath, 18 seconds -> 10
+    - Vampiric Blood, 120 second cooldown -> 60 second cooldown, 20 second duration -> 10 econd duration
+
+commit 2fb397fd81fe76ab4f1393e0db391b8375475489
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Sep 3 19:05:59 2009 -0700
+
+    - Library update
+
+commit 17b361923ff831ed9845b53ba02f919a77e9eeb4
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Sep 3 19:05:24 2009 -0700
+
+    - Localization update
+
+commit 4dac08361899280c42d7755349e6decef57556fa
+Merge: 0830174 2af997b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 2 18:40:23 2009 -0700
+
+    Merge branch 'master' of github.com:Shadowed/Afflicted
+
+commit 0830174bb1aaa1c6b8db810d4f8461e5e35077a4
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 2 18:39:09 2009 -0700
+
+    - Scale can no longer be set to 0
+    - Added ConfigMode
+
+commit ce864b8f0986414270db4e53a4d92051a3df85c8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 2 18:38:30 2009 -0700
+
+    - I am stupid and selected the wrong file, bars and icons will now be staggered in their position, first one is at 0, 0 second one is at 0, 20 and so on so they aren't just a cluster of anchors to start with
+
+commit d265ab9d39ff0a8d56c204127d0857e6a5e48c0c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 2 18:37:27 2009 -0700
+
+    - Localization update
+
+commit 4bc4ff094eda8f181dd4ce2ee0a87d703c23b8a6
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 2 18:36:58 2009 -0700
+
+    - Anchors are now unlocked by default, added a new help frame (similiar to Shadowed Unit Frames) that indicates where you go to lock them as well as a button to lock them
+
+commit 64e68c7ad128c9e0a5e617a2ab070951a7de2ffe
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 2 18:15:06 2009 -0700
+
+    - Fixed icons requiring ALT + Drag while bars only required dragging
+
+commit fcbdbbefb2545e489c4c7b6eb8fdc792279f6068
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Sep 2 18:14:52 2009 -0700
+
+    - Fixed error in bars.lua
+
+commit 2af997b7a048636c800e1925b6b76d8683566289
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Aug 27 21:53:49 2009 -0700
+
+    - Fixed error in bars.lua:134
+
+commit 2661f136555a6990143d78271c2c735fac232b58
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Aug 11 09:40:46 2009 -0700
+
+    - Fixed an attempt to index field GTB a nil value error
+
+commit de333ecd25bf0617e8f21997a19d9648ffbcefb3
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 12:45:27 2009 -0700
+
+    - Updated to support the configName/cooldownName/name fields in spells so I can customize stuff a bit more
+
+commit 505ed037981aa9fe4e8a4cac4dca7b7f60fee548
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 12:44:09 2009 -0700
+
+    - Cleaned up bar code a little bit
+
+commit b11f418c73deaf8551e1e34c505f54a6f6ebcb71
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 12:43:45 2009 -0700
+
+    - Changed to support the config name in spells
+
+commit 67577c42a063e2ef963c3cbc6deebe1092a74494
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 12:42:09 2009 -0700
+
+    - Library update
+
+commit 7c3c9d3a246a23498b2b18386ccee5ab00c5b95a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 12:06:26 2009 -0700
+
+    - Library update
+
+commit 7319799545694086b9e19608f2d29776c228586a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 12:06:02 2009 -0700
+
+    - Added lower ranks of Psychic Scream
+
+commit 368df095a4fe8670f01d89ee8a3809c1f7d9c1eb
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 12:03:03 2009 -0700
+
+    - Added Recklessness and Freezing Arrow
+    - Added name overrides so I can set specific names for spells, cooldowns and the configuration
+    - Feral Charge - Bear/Cat are now shown as Feral Charge in the bars and output
+    - Fixed Frost Trap being categorized as a Nature trap
+    - Changed Frost Trap/Freezing Trap to be categorized as Frost traps
+    - Changed Immolation Trap/Explosive Trap/Black Arrow to be categorized as Fire traps
+    - Changed Snake Trap to be categorized as Nature traps
+
+commit 6e998d17298dc43961a53548e792e7eaff858aa5
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 11:58:00 2009 -0700
+
+    - Localization update
+
+commit a8d04463dde5429fc61303efc6a70e270a31bc7d
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Aug 10 11:57:48 2009 -0700
+
+    - Updated zhCN localization (Thanks wowui.cn)
+
+commit 6fa441ce0ad04425890a489ff25b50585b52cb50
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Aug 2 22:05:02 2009 -0700
+
+    * Added a note about Purgeatory in place of the announcement options for interrupt/dispels
+    * Added an option under Afflicted -> Spells (Same page you add new spells) to mass move spells from anchor A to anchor B
+
+commit e5de7f3e2a6b428c3cfd3abe96d6de554ddde2ef
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Aug 2 19:44:18 2009 -0700
+
+    * Removed interrupt and dispel alert options, split into a separate mod
+    * Fixed usage of getglobal
+
+commit 1f51c6acb0db03f455b58955240459742d827e4a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Aug 2 00:21:29 2009 -0700
+
+    * Added Ardent Defender (2 minute auto save)
+    * Added Wind Shock
+    * Added Immolation Trap, Explosive Trap, Black Arrow to a flame trap category
+    * Added Snake Trap to a nature trap category
+    * Added Frost Trap and Freezing Trap to a water (frost?) trap category
+    * Removed Earth Shock, Flame Shock, Frost Shock
+    * Updated Icebound Fortitude, Dancing Rune Weapon, Lichborne, Innervate, Dispersion, Fel Domination, Shamanistic Rage,
+
+commit 21573d6222a03356b80fbcce8db2ae20278055c8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Aug 2 00:19:25 2009 -0700
+
+    * Fixed leaked globals
+    * Fixed errors related to a spellID being shown in the configuration
+    * Added spell database management in to clear out old spells/update changed ones
+    * Added spell browser widget for adding spells
+    * Library update
+    * TOC bump (As this is a 3.2 version)
+
+commit d2f4399d4b74a71cb68af8848cacb4988e8eec96
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jun 28 19:28:41 2009 -0700
+
+    * Updated zhCN and zhTW localization (Thanks wowui.cn)
+
+commit 30290b0b41d282cb3f589b9ff334c9f653f81e25
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jun 28 17:27:03 2009 -0700
+
+    * Adding new spells or anchors will immediately take you to their page to modify
+    * Redid the general configuration look and help text, they should be easier to understand and the configuration itself will look less ugly now
+    * Changed spells to sort by alphabetical order in the spell categories option
+    * Removed the ability to delete anchors or spells that are added by default, instead shows a message explaining you must disable them instead
+
+commit ccaaefd676ad915a15b788f834336bd67d95170b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jun 28 17:23:17 2009 -0700
+
+    * Removed Hysteria, Divine Protection, Demonic Circle, Snatch, Sonic Blast, Killing Spree, Shadow Dance, Blade Flurry, Cold Blood
+
+commit bf7451ba84fa30a5380fc5da063f6f750b74ed5b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 27 17:55:02 2009 -0700
+
+    * Moved to using a default profile
+
+commit 006ead88d80fbb2e667355740874c27d8889aa5c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 27 17:44:04 2009 -0700
+
+    * Changed to enable Afflicted in arenas and battlegrounds by default
+    * Removed the fancy spell loading, it'll simply load any non-existent spellID in as well as do a quick DB cleanup of spells
+    * Added debug code to figure out whats breaking Afflicted
+
+commit 0ba13c04ad662dda39f7f1d1418b4339cf202304
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 27 17:39:57 2009 -0700
+
+    * Removed advanced spell settings in the configuration as it was just more confusing than it's worth
+    * Fixed disable spells by arena bracket not actually working
+
+commit 40dac4b5074ad5acb3c23edf5c2529980e4aa945
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 27 17:38:34 2009 -0700
+
+    * Cleaned up localization database
+
+commit d986906686dc75fe2c6a1097e6c60326efbe7f14
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 27 17:38:17 2009 -0700
+
+    * Removed Empower Rune Weapon, Deathchill, Rune Tap, Shattering Throw, Recklessness, Intimidating Shout, Retaliation, Force of Nature, Tiger's Fury, Psychic Horror, Metamorphosis, Demonic Empowerment, Feral Spirit, Master's Call, Presence of Mind, Tricks of the Trade
+    * Corrected Death Grip to 25 second cooldown
+    * Corrected spellID typo in Hex
+
+commit 2fe37b07cacd30b00c8b74c8492372e41745600a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat May 30 15:13:54 2009 -0700
+
+    * Changed bracket detection code to use a delay if needed
+
+commit 5a045476ebc52eb4cdec36762d55f10ce3d0dbb8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat May 23 21:35:38 2009 -0700
+
+    * Removed super hack method of opening spells, for less hack way that will work more
+
+commit 760b5e2af79921042c81a3d12eb0980078248e8d
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon May 11 16:42:43 2009 -0700
+
+    * Fixed an error with adding spellID as a new spell
+
+commit 19b31c66765c9f5e0c6f3848fb219af624074b7b
+Author: unknown <Shadowed@.(none)>
+Date:   Thu May 7 14:37:36 2009 -0700
+
+    * Fixed toc to include koKR localization
+
+commit 96b8601776d3b2cbfee0b56593da9509216aec71
+Author: unknown <Shadowed@.(none)>
+Date:   Thu May 7 14:15:55 2009 -0700
+
+    * Changed something, not a clue what
+
+commit 53c7fe80f51b3365e2b197a14b7892489788224f
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun May 3 16:01:24 2009 +0000
+
+    * More tweaks to the spell DB, more spells are listed as disabled now (Interrupts still are not thought)
+    * Small code clean ups
+
+commit 202ca5da84fa6a42abcc94c36f0eda6833929e3e
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri May 1 00:08:25 2009 +0000
+
+    * Fixed a bug with certain spells being disabled in arenas not working if it was a spell added by name, not spellID.
+    * Added icons back to spell announcements
+
+commit 5a805c66357054949256bca380d0093f65912826
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Apr 24 19:56:05 2009 +0000
+
+    * Fixed a Nature's Grasp spell linking to itself
+
+commit fde0f956f4aa7e616ec708c2b1960774acf5a812
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 22 05:01:31 2009 +0000
+
+    * Added a tooltip stating that you can set a custom slider number by clicking the number in the middle (Do I hate the users, or AceGUI-3.0 author for having to do this? hmm...)
+    * Added Shield Reflect back (Disabled by default)
+
+commit 3968fabc9203b0fd6ac6deb36c3128694b69946c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Apr 20 00:07:11 2009 +0000
+
+    * Fixed typo in Counterspell spellID, was Fire Blast, not Counterspell
+
+commit 38eead157d0bba1d9ac4d36a9c624585f0a5ecc9
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 19 06:16:09 2009 +0000
+
+    * Agh typo in config.lua
+    * Fixed bar timers showing when the anchor was disabled after reloading, or logging out/back in.
+
+commit 86e1b0d298bcc1a71c238478a8d97950568aa55f
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 19 06:07:53 2009 +0000
+
+    * Updated GTB-1.0 since SVN was being a pain
+
+commit 470b4cc594f351a1b0c6497c4be8cac7506a76f4
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 19 06:05:28 2009 +0000
+
+    * Fixed instanceType typo that was causing UNIT_DIED to be used in arenas, causing timers to be removed when a Hunter FD's
+    * Fixed Shaman totems not being removed when they are killed off (I hope)
+    * Fixed announcements in general to be more consistent and actually work
+    * Fixed font settings for bar timers not actually working
+    * Changed the general setting grouping a little bit to make it more obvious that just the anchor settings are
+    * Added custom announcements per spell back in
+    * Added alerts when you spell steal something back
+    * Added PLAYER_ENTEIRNG_WORLD back to triggering ZONE_CHANGED_NEW_AREA as reloadui's don't fire ZCNA
+
+commit 5cc2bbfc6983fd7cc4cc008b82175bcdf63a0888
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 19 05:10:48 2009 +0000
+
+    * Fixed bars that are forcibly removed (but fade) trigger a fade callback
+    * Fixed font settings, they will actually be set correctly now and not randomly work/not work
+
+commit 7282ad767d8b59f97088514c246f687824e68dc8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Apr 14 03:21:44 2009 +0000
+
+    * GTB-1.0 update to fix a possible repeating error
+
+commit edbf36c360d8d9023d27cea17cadc3b168a87289
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 12 22:02:53 2009 +0000
+
+    * Final pass through spells to flag a few as disabled
+    * Removed some temp upgrade code for Afflicted3
+
+commit 7465994538bb37ef306a75cd40f59947d70ba840
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 12 20:25:04 2009 +0000
+
+    * Fixed AceGUI-3.0-SharedMediaWidgets not being included
+    * Library updates
+
+commit b61044b6889809d5fbb234260b856025fc438bf7
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 12 20:17:05 2009 +0000
+
+    * Added Shield Bash
+    * Changed default disabled/cdDisabled flags
+
+commit b9a4eef2ca8c5b5bda382c6a7ffa88b2fdd2158f
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 8 17:22:43 2009 +0000
+
+    * Changed DB formats for spells to be loadstringable instead of having to parse it (Spell data will be reset)
+    * Added partial koKR (Thanks Gz)
+    * Added PvP Trinket, Every Man for Himself, Escape Artist
+    * Fixed a few spells not flagged with a class
+
+commit 97a5591a172c8c9e6aa822f3c9c9c78908b31c18
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Apr 7 01:59:22 2009 +0000
+
+    * Fixed totems and traps triggering double timers
+    * Changed Divine Plea, Disarm, Survival Instincts, Berserk, Bash, Metamorphosis, Fel Domination, Hex, Bloodlust, Mana Tide Totem, Grounding Totem, Vanish, Sprint, Evasion to be disabled either fully or only cooldowns (or durations) by default
+
+commit fe3e0958da6f204baf3b735b5691a19e57c39d51
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Apr 4 22:26:08 2009 +0000
+
+    * Added localization.zhCN.lua (Thanks wowui.cn)
+    * Changed Divine Sacrifice to be tagged as a buff
+    * Changed description for deleting anchors to be more clear
+    * Updated TOC to 30100
+
+commit 3e32b2c4659d54d8d66eb516a3c93b625933116e
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 2 22:15:56 2009 +0000
+
+    * Fixed Nature's Grasp, Innervate, Guardian Spirit, Pain Suppression, Bloodlust, Icy Veins, Ice Block not being listed as dispellable
+    * Fixed Dismantle, Evasion, Tricks of the Trade, Shadow Dance, being enabled by default
+    * Fixed another error in cooldown resetting
+
+commit e5d01d32146977e255ba46bb4b4d862f3e5ac089
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 2 22:06:10 2009 +0000
+
+    * Added Pummel, Kidney Shot, Silencing Shot, Pummel (Gorilla, 3.1), Kick to spell list
+    * Added interrupt and dispel announcements back in. Dispel announcements are only for enemies however.
+    * Fixed an error when a reset skills ability (Preparation/etc) is used
+    * Fixed Afflicted not being enabled (or disabled) until reload or zone change when configuring it
+
+commit bc48d7dd343f590a409fc144d3a3f36666e90b14
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 2 04:14:07 2009 +0000
+
+    * Fixed the texture paths using the old Afflicted3 folder name
+
+commit 89d3187b36848d1eb476d0af697828592fa01681
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 1 21:43:13 2009 +0000
+
+    * Added key words
+    * Added upgrade code
+    * Added the profile config in
+
+commit 9e3a85e0ab3eaf7ca397acbd82105e7fb4975064
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 1 21:34:04 2009 +0000
+
+    * Afflicted3 beta import
+
+commit 2d0a9ee53f0a19298b841b252e093eeb78f9ad8f
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 1 21:31:23 2009 +0000
+
+    * Clearing out Afflicted2 files
+
+commit dabbf09dbc37b19e630a75bd55559971610848ce
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Mar 20 21:12:20 2009 +0000
+
+    * Added zhCN localization (Thanks wowuicn)
+    * Fixed an error with using anchors with spaces in the name
+    * Fixed server name not being stripped from buff display
+    * Updated spell database
+    * Strangulate down to one rank
+    * Death Pact cooldown down to 90 seconds
+    * Dancing Rune Weapon down to 22 seconds duration
+    * Adrenaline Rush down to 180 seconds
+    * Aura Mastery added (120 cooldown/10 duration)
+    * Divine Sacrifice added (120 cooldown/10 duration)
+    * Shattering Throw added (300 cooldown)
+    * Heroism/Bloodlust cooldown down to 300
+
+commit 1555442b98cda9e50bb4348790d58bbccf442fa8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Mar 4 16:10:37 2009 +0000
+
+    * Fixed no upgrade code to set the fadeTime being present
+
+commit fe7e5322a41b8edb7c5fe0fae8f54dafa6fac5e9
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Mar 4 06:48:00 2009 +0000
+
+    * Updated to support font, font name, fade time and icon position for bar display
+    * nameOnly option from double width to full
+    * Library update
+
+commit e99367dcb79d1e073923838997be5c3630530a81
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Feb 28 03:21:00 2009 +0000
+
+    * Fixed the show timers in this anchor not working
+
+commit bc65f28b70a74467e180be7969279643e3e375cb
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Feb 26 22:17:41 2009 +0000
+
+    * Added Hysteria and Dancing Rune Weapon
+    * Removed Shadow of Death, extra ranks of Viper Sting
+    * Changed dontFlag, now is doFlag, meaning the spell has to be specifically set to fade, instead of set not to
+    * Fixed a few bugs relating to anchors being disabled and redirection in bars, if you set Spells to redirect to Buffs, and you set Spells not to show timers, it will no longer not show timers from that, as long as Buffs is enabled still
+    * Removed most of the upgrade code, anything below 838 will have a DB reset
+    * Fixed the spellID showing when a custom spell is added by spellID
+    * Fixed /afflicted test not checking the redirected anchor to see if it's enabled or disabled
+    * Removed a dontFade check on UnitDied for icon display, the only thing that will remain is cooldowns when someone dies
+    * Updated a bunch of libraries
+
+commit 0100bc900a08c3db96363f610a805dc6e7baff43
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Jan 27 05:39:29 2009 +0000
+
+    * Should have fixed the PVP trinket firing two trinket ready events due to the 0.01s buff you gain.
+
+commit f8203d592c5ed4cde7b627a82a47c3332dc1cb69
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Jan 20 04:15:02 2009 +0000
+
+    * Added Divine Plea
+
+commit a00f8f7cacb3f7b8533871a1cc5ddefd57686f32
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jan 10 16:08:17 2009 +0000
+
+    * Anti-Magic Shell, 60 cooldown -> 45
+    * Anti-Magic Zone, 30 duration -> 10
+    * Lichborne, 30 duration -> 15
+    * Invisibility, 23 duration -> 20
+    * Bestial Wrath, 18 second duration, 120 cooldown (Listed as 18 cooldown before, no idea why)
+    * Sprint, Vanish, Blind, Evasion all to 120 cooldown
+    * Escape Artist, moved from buffs to spells
+    * Added Shadow of Death (25 seconds)
+    * Added Rank 7 of Devour Magic
+    * Added level 80 Tremendous Fortitude spellID
+    * Added Deep Freeze to the list to be reset when Cold Snap is used
+    * Added Nitro Boost
+    * Removed Swiftmend, Hammer of Justice, Shadow Word: Death, Perception, Berserker's Call, Bloodlust Brooch,  Skull of Gul'dan, Figurine, Nigh Invulnerability Belt
+    * Library update
+
+commit 9db92b29318dc27140baedc4e08e3846eb2cd74c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Dec 29 00:51:21 2008 +0000
+
+    * Added Every Man for Himself (Human racial trinket)
+    * Library update
+
+commit c8a06af47f68a0e22f255f1523c2858a2d70dd8b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Oct 23 16:31:36 2008 +0000
+
+    * Moved Water Elemental from cooldown to buffs
+    * Moved Earth Shock from a 5 second duration to 5 second cooldown
+    * Fixed a leaked global
+
+commit 81bf2a97176d31d04295e7cb7f36d192162749ec
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Oct 22 20:29:36 2008 +0000
+
+    * Fixed a bug with bar display where if the spell was in anchor A, and the cooldown was in anchor B, and anchor A was disabled then it would never show the cooldown in anchor B
+
+commit 6b97abc3ee09b5b845492048776f3690a609b0c4
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Oct 21 22:14:44 2008 +0000
+
+    * PvP trinket is enabled by default now
+    * Cooldowns that are listed in another anchor besides cooldowns, OR in an anchor that is redirected to another will have "[CD]" suffixed to them
+    * Tweaked widget positioning for configuration
+    * Added spell rank if multiple spells exist with the same name (Just Hand of Protection right now)
+
+commit b275edcc6275b3e110e14b938e5e8448f721f257
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Oct 17 16:56:59 2008 +0000
+
+    * Fixed some spells using type instead of showIn (Don't know why)
+    * Fixed Mind Freeze, Divine Shield, Deep Freeze having more ranks listed than exit (Beta change I guess)
+    * Removed Chastise
+    * Updated a ton of libraries
+    * Updated GTB-1.0 to fix a SetFormattedText error
+
+commit c9d0a545e283334fc0ac658a972b724478064057
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Oct 10 22:03:54 2008 +0000
+
+    * This is a 3.0 only version now
+    * Merged in all the new 3.0 spells
+    * Added Wind Shock (Earth Shock without the damage)
+    * Removed Hypothermia as you can just see it on the debuffs now
+
+commit 7fff88b65b8b176e3123ea4dd10ff3bb21edc517
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Oct 3 15:37:51 2008 +0000
+
+    * Fixed a typo causing a GetSpellDuration error
+
+commit 80698e3b3a0ab17cc57b8fc6e7b0d5dc91a5d73f
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Oct 1 22:57:31 2008 +0000
+
+    * TOC bump to 30000
+
+commit b3c07cfe158895fdf67d33a26b3b07f8bd95181a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Oct 1 22:54:50 2008 +0000
+
+    * Fixed Hand of Protection cooldown being 180 seconds instead of 300
+    * Added Survival Instincts (Feral Last Stand)
+
+commit 41b591cd7a9a1f27328e38e6d654efd83036bd5b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Sep 30 14:52:47 2008 +0000
+
+    * Changed timers to call GetSpellDuration first so I can modify it with AfflictedTalents
+
+commit 56582e3d3c2e23c49eaf51bfe3e8b020e8d01036
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Sep 28 02:54:42 2008 +0000
+
+    * Cleaned up positioning of a few widgets in configution
+    * "Show anchors" is now "Hide timer anchors", "Enable anchors" is now "Enable showing timers in this anchor" hopefully this clears it up so people don't uncheck "Enable anchors" thinking it hides the actual anchor, not disables it
+    * Moved all of the WoTLk spells to a check so will automatically use them in builds >=30000
+    * Updated GTB-1.0, and a ton of other things
+
+commit fa86033abc4491d5e6dc1ab628f5e3ee1a35d7bc
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Sep 1 16:47:39 2008 +0000
+
+    (These are WoTLK changes, and just so I can uncomment them when WoTLK goes live)
+    * Anti-Magic Shell, 3 seconds -> 5 seconds
+    * Added Shadow Dance (9 seconds/120 cooldown)
+    * Added Hex (45 cooldown)
+    * Added PVP Trinket for WoTLK
+    * Deep Freeze, 30 seconds to 30 seconds cooldown
+    * Removed Shatter Shield
+
+commit 1ae8fdfb16628b530cbb5b5c17f597470f5c41b8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Aug 30 22:01:29 2008 +0000
+
+    * Added a dontSave flag that'll prevent the icon from being stored, this is only applied to traps... speaking of which traps will show the icon of the actual trap now instead of frost the frost trap one
+    * Added in Bazaar support
+    * Changed anchors to be shown by default so you have to configure them first and hopefully less people complaining
+
+commit 4f9fd4c68827acb56772299210219fea36c349a8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Aug 10 03:02:21 2008 +0000
+
+    * Updated to use the GTB-1.0/ folder instead of GTB/
+
+commit 1324b2b90bd3d066455a91edce2b17d51da08aed
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Aug 9 17:03:59 2008 +0000
+
+    * Oops, fixed a bug that popped up in getSpellData
+
+commit 675d5e9ea56d5ecdf982b308a266dccb056a505d
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Aug 9 07:41:06 2008 +0000
+
+    * Fixed Sacrifice (Void Walker) and Fel Domination being listed as SPELL_AURA_APPLIEDBUFFENEMY instead of SPELL_CAST_SUCCESS for triggers
+    * Fixed cooldowns not triggering fade announcements
+    * Changed the fade message of the cooldown anchor to "READY *spell (*target)"
+
+commit 37198225e76daebb5b8f09ebf4885b1fe6eb9825
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Aug 6 20:56:44 2008 +0000
+
+    * Changed interrupts, if you're using local (Combat Text/Chat Frame #) output then the text will be "Interrupted <spell>" if you're using another kind of output like Party or Raid then "Interrupted <name> (<spell>)" is used, school is no longer sent.
+    * Fixed interrupt alerts not stripping server from the interrupted persons name
+
+commit 2292e9a5fb4ba52918de093168137797fb43961e
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Jul 23 19:06:36 2008 +0000
+
+    * Slightly increased the height of the configuration so it's more obvious that you can configure cooldown (Which ties into the changes below)
+    * Added cooldowns for Bloodlust/Heroism, Power Infusion, Adrenaline Rush, Blade Flurry
+    * Added Swiftmend, Invisibility
+    * Added (WoTLK) ranks of Chastise, Frost Nova, Earth/Flame/Frost Shock, Sacrifice, Intercept, Shadow Word: Death, Immolation/Explosive Trap,
+    * Added (WoTLK) Strangulate, Death Pact, Anti-Magic Shell, Lichborne, Mind Freeze, Icebound Fortitude, Berserk, Feral Charge (Cat), Dismantle, Hand of Protection, Hand of Freedom, Hand of Sacrifice, Guardian Spirit, Dispersion
+    * Removed Rocket Boots (No longer usable in arenas, 2.4.3)
+    * Moved a ton of spells to cooldowns as their timer instead of seconds, this is mainly things like Feral Charge so it now shows [CD] next to it. While the conversion shouldn't be noticable, if you see spells not showing up then make sure you go to them
+
+commit 3e67caf2f3ab7f16fc6b5a2e9fc6f438ef776a11
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jul 20 03:16:39 2008 +0000
+
+    * Fixed dispel alerts not working due to 2.4.3 changes
+    * Added Figurine - Shadowsong Panther
+    * Clarified the tooltip for arena spells, because people are idiots and reading is hard.
+
+commit ddac3601173c0de6495220df2b6c038f8a2cf4b8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jul 12 03:28:54 2008 +0000
+
+    * Fixed Shadowstep cooldown, is 30 was listed as 15 for some reason.
+
+commit 69aed7645568043201b11ff3788c773237d6051c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Jul 7 06:16:47 2008 +0000
+
+    * Changed announcements slightly, if you enable a custom announcement on a spell it'll announce to the anchors destination even if the anchor has announcements disabled
+    * Fixed Sprint cooldown being listed as 240 not 210
+    * Fixed a few spells that were missing a don't fade flag
+    * Added Bash, Maim, SW:D, Skull of Gul'dan, Rocket Boots and Nigh Invulnerability Belt to the spell list
+    * Added a cooldown for Tremendous Fortitude
+
+commit 13314d9145738074a8db88da73b32e164c29807b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jul 3 16:47:14 2008 +0000
+
+    * Fixed a typo at line 305 in Afflicted.lua
+
+commit d6589eeab9a1bef802c65e68181ff1c7a3337d6c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jul 3 09:26:14 2008 +0000
+
+    * Added support for ability resets, Evasion, Vanish, Sprint, Frost Nova and Ice Block will have their cooldowns reset when Preparation is used, will get around to adding Hunters reset later
+    * Fixed spells not being removed correctly sometimes, should fix Fel Domination not being removed when it fades early, or totems not being removed when they time out/get destroyed
+    * Cleaned up the code for processing abilities that ended early
+    * Cleaned up the icon removing code
+    * Removed our text check in ProcessAbility, not needed since it's in config.lua now
+    * Removed Magma Totem, Searing Totem, Fire Nova Totem from the spell list
+    * Added Innervate, Death Wish, Berserker's Call, Bloodlust Brooch, Preparation, Cold Snap, Sprint, Escape Artist to the spell list
+    * Fixed Scare Beast, Scatter Shot, Silencing Shot, Fear Ward not being listed as to not fade early
+
+commit 0010e78d24696d3ca7beb2e6b96c8f85c36f7da1
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jun 29 03:13:41 2008 +0000
+
+    * Cleaned up the spell list, removed unneeded fields
+    * Added a format for timers over 60 seconds in icons
+    * Added Mana Tide Totem
+    * Fixed Sacrifice beign listed as Fel Domination
+
+commit 6f93dc560dbc711ea5c731f7967b2e43ac254055
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jun 13 20:39:27 2008 +0000
+
+    * Cleaned up the icon detection code, if it's blank or nil will set it, if you're using the question mark icon then remove it from the spell and it'll auto detect
+    * Added an icon check in /afflicted test so you don't have to wait for the icon to be found
+
+commit 62eada803edaedc0d153dcc5c8312875dcc0f11b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Jun 11 01:02:41 2008 +0000
+
+    * Merged the <= 619 and 655 upgrade checks into one so your DB is reset either way instead of a half-ish upgrade
+    * Changed the message for 2s/3s/5s spell enabling to be a bit more clear since some people need to learn how to read
+
+commit 4cf1c4de97f9502341b8cce4b2e0ef2847849d5b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 7 23:47:11 2008 +0000
+
+    * Fixed positioning not being saved
+
+commit 3cad790a29d6d0cba0fdc376a492ccdf88c2c43b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 7 20:42:07 2008 +0000
+
+    * Fixed an error when typing /afflicted ui
+    * Fixed icons not showing up unless the anchor was visible
+    * Added the LSM widget back in since it works fine now
+
+commit adbd2dd064a7475d514c561e1376178dbcb93a75
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jun 7 16:52:26 2008 +0000
+
+    * Removed the LSM widget to see if it'll fix an error in AceGUIWidget-DropDown.lua
+
+commit 6a6bfeda128f678562a8ad011b994cdd0fb743f0
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jun 6 23:58:41 2008 +0000
+
+    * BAH, fixed timers not working
+
+commit f7d0c12e62ba061abcd9a49d304759285e33f909
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jun 6 09:36:06 2008 +0000
+
+    * Fixed icons not showing up unless anchors were visible
+    * Fixed multiple positioning tables being created
+    * Changed the per-arena configuration, instead of setting profiles per bracket you now set it per spell in the "Arena spells" option
+
+commit 96adf59420d7fa8b90e54e5f465e59f9b1f3f53a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jun 6 02:47:17 2008 +0000
+
+    * Fixed a small typo in the upgrade code for r748
+
+commit b5406adda632b0fe41165fc38d2413cd4b68d3cd
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jun 5 23:46:44 2008 +0000
+
+    * Added support for different display styles per anchor, can now set one to icons and another to bars, or whatever you want now
+    * Added an option to set how many timers should be displayed per an anchor at the same time
+    * Cleaned up the GUI a lot, you can now set scale/grow up/display type for all anchors at the same time under the General options, positioning is better and looks cleaner now as well
+    * Cleaned up the quick spell disabling frame, now is just a list of check boxes with tooltips for spell info, can disable or enable spells a lot easier now
+    * Moved dispel/interrupt alerts to their own category in the config
+    * Fixed up a lot of the icon code, now uses one table for recycling icons instead of per anchor
+    * Fixed icon positioning for real this time
+
+commit 1a2e398e305887009509bb48c2fc1e9a88557aca
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jun 5 08:28:30 2008 +0000
+
+    * Updated to use GTB-1.0
+    * Changed the status bars to use the SM AceGUI-3.0 widget
+    * Changed bar display style to register with SML and only update the texture when needed
+    * Cleaned up the bar code a bit due to the new GTB-1.0
+    * Fixed a bug with both icon and bar style where disabling/enabling anchors didn't have them correctly working until a reloadui
+    * Fixed repeating timers not working with icon display
+    * Fixed positioning for icon display
+    * Fixed alt + drag tooltip not hiding for icon display
+    * Fixed icon display sorting by timeLeft instead of endTime
+
+commit 24f2de6a8baf76e93099bc3aa2df9555008d795c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Jun 3 08:22:21 2008 +0000
+
+    * Fixed a bug with dispel alerts showing even with the option disabled
+    * Removed trigger limit options, doesn't seem to be needed anymore due to a change in how we actually start timers, will remove completely in an update or two if nobody notices
+    * Added the SM widget for status bars so you get a preview of what it looks like
+
+commit dbb096b3b17391c20c9ac0403ef18d17ae5c3c44
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu May 29 09:08:04 2008 +0000
+
+    * Cleaned up timer triggering, we now do test timers directly in config.lua so we don't need special checks to see if we're trying to process a test timer
+    * Removed the debuffID trigger limit check, as we don't use it anymore
+    * Removed timerExists API since we don't need it anymore
+    * Removed the commented out linked code, won't need it
+    * Updated AceConfig-3.0 and AceGUI-3.0
+
+commit 375e7f013b02117282d585640657a0ea071e0cea
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu May 22 18:02:31 2008 +0000
+
+    * Fixed an error in UnitDied when an anchor is disabled
+
+commit d9d3ad825fe4761d16aae8090d7a54bb243b6d98
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed May 21 04:41:13 2008 +0000
+
+    * Added a new anchor for totems, all totem timers are now listed in this anchor instead of cooldowns
+    * Fixed a concat nil error at around line #320 in Afflicted.lua
+    * Fixed the barID for cooldowns, it's now id,CD instead of id:CD
+    * Fixed some small visual issues with the UI
+    * Fixed dropdowns with no value inside for anchors and spells
+    * Fixed spell categorization errors, Evasion, Icy Veins, Berserker Rage and Perception will show up in the buffs anchor instead of spells now
+    * Removed Counterspell - Silenced from the spell list, this should no longer be needed due to the timer triggering changes in Afflicted2
+    * Removed the ability to link spells, as far as I can tell this is no longer needed I'll re-add it back if this turns out to be wrong
+    * Changed the way cooldowns show up visually, if their shown in their own anchor it won't display [CD] next to them, but if you redirect them to another anchor it will append [CD] like normal
+
+commit 0137cdb4f6d344adeeb1d6ad5ec7318aad9e5f0a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun May 18 08:42:00 2008 +0000
+
+    * Removed the Blizzard embed
+
+commit 51121e2c804c799ccbb2c743e86458a71a823cba
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat May 10 05:28:26 2008 +0000
+
+    * Added tooltip for ALT + Drag to move since people don't seem to know that already
+
+commit abc61c355daad6c07618cb30467bc1298e519d88
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat May 3 00:34:45 2008 +0000
+
+    * Fixed timers not repositioning for icon style
+    * Fixed Intervene, Intimidating Shout and Fear Ward, will use the correct spellID's now
+
+commit 6ee5d917013d913ecc991918002f698f45bd1050
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 30 07:42:08 2008 +0000
+
+    * We now track buffs and debuffs of enemies again, since Cheat Death doesn't have a SPELL_CAST_START trigger
+    * When we summon a new object of the same spellID, we kill the old one this means Shamans resummoning totems will have the old one die off
+    * Fixed a typo that was causing a concat error at line #318 when a spell was removed early
+    * Updated GTB to hopefully fix some 59:59 timer issues
+    * Added Tremendous Fortitude (Battlemaster trinket) and Cheat Death (Disabled by defualt)
+
+commit 5b3b4dabe4796b8c8112b7425317b74541459070
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 27 00:52:54 2008 +0000
+
+    * Fixed up abilities ending, will correctly report the fade message now
+
+commit 7142940d8e90c9e045bb778772e17dbcb6fe3de8
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Apr 26 03:29:28 2008 +0000
+
+    * Trying out a new profile feature, you can set specific profiles to use in different arenas, meaning you can set different spells to be used, you cannot however switch between bar and icon style depending on arena.
+    * Will only process debuffs now, since those are all we care about instead of buffs as well
+    * Removed the name trigger limit, because we catch timers based on success will always only trigger one so no Shadowstep types of issues
+    * Changed the messages to be more generic, we only use one trigger/fade message now, if you want specific messages based on buff type do it by anchor then
+    * Updated GTB to fix callback issues
+    * Added Blade Flurry, Adrenaline Rush, Devour Magic to spell list, all disabled by default
+
+commit b62ff6f12f92066cd411f7dae3e298a25608cb92
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Apr 19 22:39:28 2008 +0000
+
+    * Added current revision to the Blizzard GUI description
+    * Added Pain Suppression cooldown
+    * Set Hunter trap timers to disabled by default
+
+commit e2fbc24fc20b97031eb426b7444bfc72e19dd359
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 17 20:41:58 2008 +0000
+
+    * Added Shadowstep as a default spell
+    * Removed isDestGroup and isSourceGroup checks, we don't use them anyway
+    * Changed trigger limit, will do spellName..sourceGUID as a single limit instead of a global
+
+commit 8936a3fe14f473a0616d1c269f69b26222239354
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 17 17:38:55 2008 +0000
+
+    * Updated GTB, AceDB-3.0, AceDBOptions-3.0
+
+commit e23f82dda6e740c4936f5a39b3f47838a5fd6e05
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 16 18:17:46 2008 +0000
+
+    * Fixed a bug with ranks 1, 2, 3, 4 or Frost Shock triggering an error
+
+commit 5d23ebc147db3c31da00d8ad818b4511a587dd59
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 16 06:51:37 2008 +0000
+
+    * Fixed up death identification, will check both dest and source GUID so things like totems get removed if the totem dies OR the owner
+    * Added the following spells, most of these are disabled by default
+    * Heroism, Bloodlust, Water Elemental, The Beast Within, Blink, Grounding Totme, Tremor Totem, Fire Nova totem, Magma Totem, Searing Totem.
+    * Linked all of the Shaman shocks into one timer, it'll still show Flame/Frost/Earth, but it'll always use the Earth Shock icon
+    * Added Hunter trap timers, will show both CD before they can lay another trap, and time before the trap disappears
+
+commit e3edec6b9cb5f487bb9d679f03df3d05ac37bd3b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Apr 15 21:55:41 2008 +0000
+
+    * For some whacky reason, it's called "self" not "sellf"
+
+commit ba8f269d547b79631dbda873f3452bc6c7cb1cc4
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Apr 15 18:28:10 2008 +0000
+
+    * Cleaned up the COMBAT_LOG_EVENT_UNFILTERED code as well since we aren't watching as many events
+
+commit 8780468e3fc8049557238c387137a6f64460979b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Apr 15 18:12:23 2008 +0000
+
+    * Fixed up the upgrade code, should reset DB if <= 619, wipe anchors/spells if <= 655, reset check events if <= 666
+    * Removed all check events except for enemy gains debuff, enemy casts spell, enemy summons object, enemy summons creates object. Upgrade code has been added in to adjust the check events for this
+
+commit f5f18a3a7f048081992220f8f2d9a489e6d35352
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 13 21:00:51 2008 +0000
+
+    * Fixed dispel fails not showing up for enemies, even if the option was enabled
+    * Removed OH/HA as optdeps
+    * Anchors are now disabled by default
+    * Added in reset code, if you're using a version before 619 it'll wipe your configuration
+    * Fixed cooldowns not being removed for icon style
+
+commit ff604b0906e93346fae28aaafa10fba749b32030
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 13 18:48:32 2008 +0000
+
+    * If we don't see any messages will exit quickly for everything, not just custom ones
+    * Added the show target/focus option back
+    * Added some quick verification to prevent a gsub error in config.lua
+    * Fixed an error in repositionTimers when a unit dies
+
+commit 1bba1122ddb6869826cc9db08b2781dfe70ee63c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Apr 13 01:56:49 2008 +0000
+
+    * Trying out a new system where we only check SPELL_CAST_SUCCESS instead of everything else, if this works out then most likely all other checks will be removed and only debuffs will remain
+    * Cleaned up spell defaults, fixed an error when creating new spells
+    * Cleaned up some of the configuration, added a "Delete" button for spells
+    * Added a quick spell check when the version changes to remove bad spells
+    * Fixed upgrade code, forgot to make it <= 660 instead of <= 658
+    * Fixed gain message not being used for enemy debuffs
+    * Fixed spell fades not taking into account downranked spells
+    * Fixed line #247 error in icons.lua
+
+commit cbea4800bbc2a617e15b537ce15e38fb516573bb
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Apr 12 02:35:55 2008 +0000
+
+    * Fixed remaining spells that weren't just checking the cast event
+    * Fixed debuff tracking not working
+    & Fixed a bug where no text would be shown instead of spell name for bar timers
+    * Fixed anchors moving around for bar display when changing scale
+    * Changed Feral Charge Effect -> Feral Charge using the new method for tracking, added Intercept to the list
+    * Added an option to enable/disable cooldowns without changing the time left
+    * Added an option to set where cooldown timers go, new anchor added called "Cooldowns" as well
+    * Added an option to only show the trigger name instead of spell - name in bar text
+
+commit c47304defe16d86dae76b3c028dc6121848fdcff
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 10 19:52:02 2008 +0000
+
+    * Switched SPELL_MISC to false by default and using SPELL_CAST_START instead for now, that seems accurate enough, I'll change it around if I must
+    * Fixed a expected number not string error in bars.lua
+    * Fixed the enable inside option not working
+    * Fixed the custom anchor messages not working correctly and all changing to the same
+    * Fixed the quick toggle option being reversed
+    * Fixed type casting issue with creating a new spell if you do it by ID instead of name
+    * Fixed typo in "Spell Reflection"
+    * Fixed cooldown timer being removed when the regular timer spells when using the icon display
+    * Added Perception to the spell list
+
+commit 311a628121247bea63dcb45264abe34dba03eb68
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 9 20:16:20 2008 +0000
+
+    * We now can track spells based off of SPELL_CAST_SUCCESS, this will GREATLY improve the accuracy for things like Counterspell or Psychic Scream and will have a timer triggered even if they don't interrupt people
+    * Fixed auto spell text saving, won't error when a lower rank spell is used
+    * Fixed color selection not working and reverting to red
+    * Fixed icon display not working
+    * Fixed /afflicted test not working
+    * Added Scare Beast, Scatter Shot, Freeze, Frost Nova, Blink, Disarm, Intervene, Intimidating Shout, Fear Ward, Repentance, Hammer of Justice to the default spell list
+    * Added in the AceDBOptions-3.0 profile things so you can manage profiles from the GUI now
+    * Added a basic quick enable/disable to the spell list, I'll keep improving this
+    * Added in the profile/general options to the default Blizzard frame, can't add spells/anchors due no sub categories being supported
+
+commit 672c87c9a66e8bb516d538a357032e7a5feeec57
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 9 06:58:29 2008 +0000
+
+    * Dry code a fix in, if no version field is found we won't wipe anything
+
+commit c0371a9b7e7ba12e9bdf3db53d4f29d3fd725db3
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Apr 9 05:19:40 2008 +0000
+
+    * NOTE: Game restart is required for this to load the new config, all saved anchors/spells will be wiped.
+    * Changed SPELL_DAMAGE -> SPELL_MISC
+    * Cleaned up the icon saving code
+    * Fixed spell linking, it'll check it by linkedTo instead of spellID so it atually works now
+    * Added auto spell name detection code for spellID things
+    * Added in code so we can link spells together so a lower rank points to max rank
+    * Current spell list, not all of these are enabled by default
+    
+    Divine Shield, Kidney Shot, Psychic Scream, Power Infusion, Evasion, Icy Veins, Berserker Rage, Viper Sting, Ice Block, Hypothermia, Blessing of Protection, Blessing of Freedom, Blessing of Sacrifice, Pain Suppression, Cloak of Shadows, Spell Reflection, Silencing Shot, Silence, Feral Charge, Spell Lock, Counterspell, Counterspell - Silence, Kick, Pummel, Shield Bash, Earth Shock, Flame Shock, Frost Shock
+
+commit 63d87c2731579964d16b2c1d6ee013c9a849e8ae
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Apr 8 08:30:32 2008 +0000
+
+    * Fixed cooldown tracking on bars, changed format to [CD] <text>
+    * Fixed more Ace3 annoyances
+
+commit 63e168681c0e441817409da0d3e5b3bdeb48cea5
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Apr 7 17:05:55 2008 +0000
+
+    * Fixed the GUI not displaying any values due to Ace3 stupidity
+    * Fixed UnitDied not working
+    * Added in basic cooldown code
+    * Added temp upgrade code in to make it worked
+
+commit 634641d2cdfd02b508ae45f169232733d91b5173
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Apr 5 20:16:37 2008 +0000
+
+    * Moving the configuration to AceConfig3, spells still don't fully work but general options and anchors should
+    * Added a fix so /afflicted test works even if showTarget is on
+    * Cleaned up trigger limit code so we don't have to check 10 different tables for everthing
+    * Cleaned up icon saving code
+    * Fixed eventType for gain message not being updated
+
+commit 15a897deeef4cc79ebd79cc6ea6123cfa7b5e4c1
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 3 23:35:17 2008 +0000
+
+    * Fixed check events text not showing up
+
+commit 5332b37c71143de68fe7035b5f2c461c7856d14e
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Apr 3 08:01:50 2008 +0000
+
+    * Changed default, everything is sent to party chat by default, announcements are disabled by default
+    * Fixed interrupts being shown even if the option was disabled
+
+commit 498c4058fd936e0ea498156e4bdd00087590c340
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Tue Apr 1 08:55:30 2008 +0000
+
+    * DIAF FUNKEH
+
+commit e22d0de96bdd98c10a00e762df1d713fe3939c67
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Mar 31 23:29:11 2008 +0000
+
+    * Fixed flag checking, so you'll no longer have timers triggered by friendly players debuffing an enemy
+    * Fixed global debuff lockout using checkDebuff flag instead of checkEvents.SPELL_AURA_APPLIEDDEBUFFGROUP
+    * Fixed enemy debuffs being an event to check for by default (Upgrade script updated as well, checkDebuffs -> true flag for it)
+    * Fixed /afflicted test not working
+    * Fixed spell defaults not doing a table copy
+    * Fixed bugs with the grow up option not actually doing anything, this applies to both icons and bars
+    * Increased default lockout timer to 1.75 seconds (was 1.0)
+    * Updated GTB to fix a bug with bar timers not being able to resize up
+
+commit 2bb32b8f94df5acfe61a63b300ba4abe452463e0
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Mar 30 20:40:52 2008 +0000
+
+    * Fixed repeating timers so they actually work now,
+    * Fixed a bug with old linked code being in, will actually work if you link spells together now
+    * Fixed anchor bugs with icon style either not showing up, or not hiding
+    * Fixed icon timers not showing if the anchor wasn't visible
+    * Fixed a bug at line #76 in config.lua (I hope)
+    * Fixed dispel alerts not showing up correctly
+    * Added option to only record timers for your target, or your focus
+    * Added an option that lets you set which events to check for, this replaces the "Check buffs" option for spells
+    * Updated AceAddon-3.0, GTB
+    * Added LSM-3.0 to optdeps
+
+commit 347fbada8bfd3c00e493e3b7f6dab1dc97c83918
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Mar 26 06:48:55 2008 +0000
+
+    * Forgot to check if we had a table before before modifying it as a table in our upgrade code
+    * Re-added the LoadData check into Config, not sure why I need this again, AceAddon-3.0 is being whacky
+    * Fixed an error in config.lua line #296something
+
+commit 1469a8bb10ea3275e9c7c38fdc22f2efdb6cbe06
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Mar 26 05:18:39 2008 +0000
+
+    * GAME RESTART IS REQUIRED FOR THIS
+    * Visual styles were split off into "modules", meaning we can now switch between bar style timers and icon style, a game restart is required however to change modes
+    * Performance improvements made to COMBAT_LOG_EVENT_UNFILTERED
+    * You can now start timers based on SPELL_CREATE and SPELL_SUMMON (Totems created/traps created)
+    * Custom messages can be set per anchor, and per timer, if you don't want a specific message like fade to show up for a timer, enable custom messages and just set the message to blank
+    * Added a "None" option for output
+    * Added repeating timers option, for things like tracking totem pulses
+    * Added redirection for anchors, you can change the timer displays to another GTB based timer group
+    * Improved limiters, you can now set per player and global spell limits
+
+commit 6c447cee591377b3aa4bc3cfb300be22e74bbcee
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Mar 9 07:02:27 2008 +0000
+
+    * No longer does an "or <bit>" for combat log info as we got a non-LoD file with the constants, we still localize however, we just don't define our own
+    * Fixed PARTY_KILL and UNIT_DIED doing their own bit.band checks when we can just use isDestEnemy
+    * Fixed icons not using 0 height/width, so not it'll be auto chosen
+
+commit 942a26a8a6e021c911ead0ba35550b9e4c6bb75b
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Mar 3 21:58:29 2008 +0000
+
+    * Updated HousingAuthority in order to fix a bug with the enable only in option not working
+
+commit b92882a1c1ebae34447a051ea46ea3648e1fd255
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Mar 3 21:36:25 2008 +0000
+
+    * Fixed "spellId" typo on aura removal
+    * Fixed /afflicted help slash commands not working
+    * Added /afflicted test back in
+    * Added in death removal of timers, only uses UNIT_DIED when outside of an arena, inside arenas we only use PARTY_KILL so feign death doesn't remove timers. If the timer has the "Ignore spell fade" option toggled, then the death event will be ignored on removing
+
+commit 8ef26dcb8bc7f1a97e3c8c0288bba9ea239bfe82
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Mar 2 22:27:04 2008 +0000
+
+    * Removed our file of bit things, only using the ones we want as locals now
+
+commit 413e5b4246d2cbc41254c029b611577c15ad18db
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Mar 1 20:05:19 2008 +0000
+
+    * Oops, forgot to add the spell school -> text code, and to pass the spellID of the interrupted spell instead of what we used to interrupt
+
+commit 319dadb1f96eadc1fb0191824a7a004faf2249d4
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Mar 1 19:26:21 2008 +0000
+
+    * Fixed interrupt event output, it was showing the spell you used to interrupt them
+
+commit 62d261268b9765bd45cdc60a2a0d65a32bf76bad
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 27 05:26:10 2008 +0000
+
+    * Updated AceAddon-3.0, AceDB-3.0 and CallbackHandler-1.0
+
+commit 3aa9e96fb63232acef4e4f8b90bdaa3d48a91e81
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 27 05:23:54 2008 +0000
+
+    * Fixed trigger limits on debuffs an interrupts, shouldn't have two types of timers for the same abilities anymore
+    * Fixed positioning, GetEffectiveScale was being a pest
+    * Fixed anchor showing, will work properly again
+    * Fixed timers not defaulting to Spell, Buff or the first found anchor when you delete an anchor
+
+commit c27bade7fb3e7d1f338caa0074b373d32a057f78
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Feb 25 01:14:02 2008 +0000
+
+    * THIS IS A 2.4 ONLY VERSION FROM NOW ON, IF YOU USE IT ON 2.3 LIVE IT'LL BREAK
+    * Recoded adding and removing spells, should be a bit cleaner now
+    * You can now link spells, for example you can link Counterspell - Silence to Counterspell, meaning if a Counterspell timer is going on and Counterspell - Silence is triggered it'll skip the second timer.
+    * Spell types are now removed, however you can flag a spell to be checked as a debuff as well
+    * Added Flame/Frost Shock because they are the same cooldowns as Earth Shock
+    * You can now spawn your own anchors, type /afflicted ui to add new ones, or to change which anchor a spell goes to
+    * Added Parrot support
+    * Added icon support with texture embedding, includes an option to disable which I forgot to implement
+    * Fixed positioning of anchors, will correctly work if scale changes now
+
+commit 1d29235c0e21a132a5a02d678de6a9bc49a44fab
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Feb 8 22:22:48 2008 +0000
+
+    * Stupid slashes
+
+commit b5b0ac397b892fe9b410819502cb0b8b8e2c5e6e
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Feb 8 22:20:29 2008 +0000
+
+    * Redid the enable in options, you can set which instance types it should be enabled in, instead of only being able to enable it in arenas and having to run it all the time otherwise
+
+commit 7472456243ee1de0ebafe1e43284e515d663ea2f
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 6 05:51:53 2008 +0000
+
+    * I really really really really really really god damn hate Warlocks, so added supported for tracking spells that are done through spell removal, specifically you can now track Devour Magic.
+
+commit 8f60d706eb1af5cc172384de0c79424d152e0642
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 6 00:46:01 2008 +0000
+
+    * Added a don't fade option to spells, mostly for things like Bloodlust or Shadowstep where you want to see the duration of the buff left. But you don't want the entire timer removed as soon as one person loses it.
+
+commit bcc66bacafec201776dd4b8072208bdc5cafa728
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Feb 3 23:35:44 2008 +0000
+
+    * Updated to Ace3 Beta trunk
+
+commit a69b4b77692fb70ae47fc39700fdd66c6b225512
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Jan 28 17:59:40 2008 +0000
+
+    * Fixed typo "debff" as spell type in Feral Charge
+    * Fixed a bug where we aren't creating a table before copying things into the spell list
+
+commit 67c18dccd023bdbef342bba6cd5217a546e61444
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jan 24 21:55:27 2008 +0000
+
+    * Removed the afflicted key, we now use spell, debuff or buff for spell types, simplifies logic needed in configuration
+    * Cleaned up anchor code so I can modify them easily or switch things around
+
+commit dc83706e1f3e777de02f9157b1c26c4d249bd14f
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Mon Jan 21 10:10:05 2008 +0000
+
+    * If a spell exists in Afflicted.spellList but not in Afflicted.db.profile.spells will copy the spellList data into the SV spells table (Fixes not being able to modify default timers)
+
+commit 480f267437982fa58dd5b2fd4d9464c44585346a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jan 18 20:38:32 2008 +0000
+
+    * Fixed spell list frame not hiding
+    * Fixed trigger limit not letting you put a float, and only a number
+
+commit e83af30351528e47969f5af7b9e396aed07ad329
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jan 18 00:03:27 2008 +0000
+
+    * Timers are now cleared when changing zones
+    * Middle of screen now uses it's own custom frame which shows up to 2 things at a time, and fades after 2 seconds
+
+commit 86c1c9036ed56912c79a402f9af81939c4fa2f47
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Jan 16 07:21:45 2008 +0000
+
+    * Added a check to make sure we actually have limit set in spell data, it should always be at least 0 but this is mostly to be safe
+    * Fixed debuff not being selectable in configuration
+    * Fixed the spell list showing when you delete a spell, then edit another
+
+commit 9c9563378ee8e8bbfcd10a3adbfbd4e7a1452f42
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jan 13 05:16:03 2008 +0000
+
+    * Updated OptionHouse
+    * Added in the trigger limit feature, lets you set a spell to only be allowed to trigger after X seconds have passed, mainly needed for things like Psychic Scream or Howl of Terror where we can't get the "XX casts" or "XX hits you" messages but the "XX is afflicted by" message triggers for each person whos hit
+
+commit fea153beb92a224762fa21a9e407f5dec1eb1a4d
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jan 13 04:39:45 2008 +0000
+
+    * Added in a GUI for adding new spells/buffs/debuffs
+
+commit 28ffb5c308133423a836ee0fb32884832df36265
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jan 12 21:24:21 2008 +0000
+
+    * Updated AceDB-3.0 and HousingAuthority
+    * Added option to output to raid warning frame instead of sending a raid warning to party + it showing up in frame
+    * Added a list of spells that are currently being used to the OH UI, modifying/removing them is coming later
+    * Added in a spell list variable so you can add your own custom spells without them being overwritten each time you update
+    * Fixed anchor code, it should now correctly show/hide all the time
+    * Removed usage of 5 concats per a spell fire, just using one with a variable set
+
+commit da176a2a7178df7a8118e2464f5ce6fdbbe11c68
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jan 12 08:26:20 2008 +0000
+
+    * Added Pain Suppression (8 Seconds)
+
+commit caecba451c946d9088da1dd6c6091d9196233058
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jan 11 06:35:07 2008 +0000
+
+    * Fixed Earth Shock cooldown, supposed to be 5 was 12
+    * Fixed anchors not obeying the hide anchor option
+    * Fixed scaling for icons not being applied during a :Reload()
+
+commit 89bd1b46a15c05d521241b3d317367fb87fe73ff
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sun Jan 6 23:27:15 2008 +0000
+
+    * Fixed Priest Silence, Feral Charge and Spell Lock not being flagged as afflicted spells
+    * Added a type check on top of the id in AbilityEnded
+
+commit 6fd1dea1dd5a583465a2ee219558156ef116c056
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jan 5 07:24:17 2008 +0000
+
+    * Fixed enable only in arenas option
+
+commit 195af14b5edbf991e605b2e90747f97cbcba9604
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jan 5 06:44:15 2008 +0000
+
+    * Fixed duplicate spells showing up (Silencing Shot twice for example)
+    * Fixed timers not showing up along with anchors not auto hiding
+
+commit ce1e8d98e9c8551949b1d828007b6df3e617615e
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Sat Jan 5 03:10:21 2008 +0000
+
+    * Added the players name to the chat output if a target is available for spells
+    * Added support for melee based attacks, need to add spells like Earth Shock next
+    * Added support for Kick, Pummel and Shield Bash
+    * Fixed Blessing of Freedom being on a 16 second timer not a 14 second
+
+commit bb8bd87a4841ff935313ee7d781899e5808e4385
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Fri Jan 4 01:49:40 2008 +0000
+
+    * Fixed raid warning and party options not taking effect
+
+commit fbd68606e224fd980b8a5f392e82881aea4146bc
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jan 3 20:45:19 2008 +0000
+
+    * With this release, it's "mostly stable-beta-ish"
+    * Fixed test timers, limited to 5 buffs/spells each now
+    * Fixed anchor visibility, if anchors are enabled will show them when the GUI is open, and hide them once you close it (if no active timers are running)
+    * Fixed a usage of ProcessAbility being used when we wanted AbilityEnded
+    * Added Raid Warning, Party and Combat Text options to output
+    * Added Shadow Priest Silence to spell list
+    * Cleaned up code and our API calls
+    * Changed formatting to "FADED <spell> (<name>)", "READY <spell>", "GAINED <spell> (<name>)", "USED <spell>"
+    * Performance tweaks to combat, will just do one string match and see if the variables aren't nil instead of one, then doing the variable checks
+    * Updated AceDB-3.0 and HousingAuthority
+
+commit 49414be89f1ccc5411f48122b1e6ee1d63600ed5
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jan 3 06:54:36 2008 +0000
+
+    * Fixed type being classified in the event itself, instead of by spell name
+    * Timers not show just how many seconds left is above 10, or ##.# if it's below 10 seconds left
+    * Changed moving to require ALT + Drag instead of just drag to move the anchor
+    * Added OH configuration
+    * Added option for which chat frame things should be sent to
+    * Added option to only enable in arenas (Untested, no un-rated games up)
+    * Changed to AceAddon-3.0/AceEvent-3.0 (restart required) for sanity
+
+commit 5feac96907b12fa244ddf08a3a5e4ce574aa470c
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jan 3 01:34:15 2008 +0000
+
+commit da9d779b3cae95c444e5194f83e50572fb9572db
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Thu Jan 3 01:10:56 2008 +0000
+
+    * Initial Import, Afflicted.
+    * A "simple" PvP ability tracking mod, the goal is to not track every single ability but ones that actually matter.
+    * No configuration yet, modify the DB defaults
+    * Two anchors are used, buffs and spells.
+    * Spells: Silencing Shot, Feral Charge, Spell Lock, Counterspell - Silenced
+    * Buffs: Cloak of Shadows, Spell Reflection, Blessing of Sacrifice, Blessing of Freedom, Blessing of Protection, Ice Block and Divine Shield
