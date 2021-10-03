@@ -1,0 +1,44 @@
+﻿## Interface: 30200
+## X-Curse-Packaged-Version: r435
+## X-Curse-Project-Name: Baggins
+## X-Curse-Project-ID: baggins
+## X-Curse-Repository-ID: wow/baggins/mainline
+
+## Title: Baggins
+## Notes: Inventory Management with virtual bags divided into sections.
+## Notes-zhCN: 使用分类的形式来管理背包。
+## Notes-zhTW: 智慧型自動分類背包
+## Notes-deDE: Inventar Manager mit virtuellen Taschen unterteilt in Kategorien.
+## Notes-ruRU: Управление инвентарём, путём деления его на виртуальные сумки-секции
+
+## Author: Nargiddley
+## X-Email: nargiddley@gmail.com
+## Version: 435
+## SavedVariables: BagginsDB
+## X-Category: Inventory
+
+## OptionalDeps: Ace2, Ace3, FuBar, LibGratuity-3.0, TabletLib, DewdropLib, LibBagUtils-1.0, LibPeriodicTable-3.1, LibBabble-Inventory-3.0, Waterfall-1.0, FubarPlugin-2.0
+## X-Embeds: Ace2, Ace3, LibGratuity-3.0, TabletLib, DewdropLib, LibBagUtils-1.0, LibPeriodicTable-3.1, LibBabble-Inventory-3.0, Waterfall-1.0
+
+## X-Localizations: enUS, enGB, deDE, frFR, esES, esMX, zhCN, zhTW, koKR, ruRU
+## X-CompatibleLocales: enUS, enGB, deDE, frFR, esES, esMX, zhCN, zhTW, koKR, ruRU
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+Baggins-enUS.lua
+Baggins-deDE.lua
+Baggins-koKR.lua
+Baggins-frFR.lua
+Baggins-esES.lua
+Baggins-zhTW.lua
+Baggins-zhCN.lua
+Baggins-ruRU.lua
+
+Baggins.lua
+Baggins-Options.lua
+Baggins-Skins.lua
+Baggins-Filtering.lua
+Baggins_ItemOps.lua
+

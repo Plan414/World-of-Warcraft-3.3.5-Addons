@@ -1,0 +1,38 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+
+<script file="libs\LibStub\LibStub.lua"/>
+<script file="libs\CallBackHandler-1.0\CallbackHandler-1.0.lua"/>
+<include file="libs\AceLocale-3.0\AceLocale-3.0.xml"/>
+
+<script file="libs\AceLibrary\AceLibrary.lua"/>
+<script file="libs\AceOO-2.0\AceOO-2.0.lua"/>
+<script file="libs\AceAddon-2.0\AceAddon-2.0.lua"/>
+<script file="libs\AceConsole-2.0\AceConsole-2.0.lua"/>
+<script file="libs\AceDB-2.0\AceDB-2.0.lua"/>
+<script file="libs\AceDebug-2.0\AceDebug-2.0.lua"/>
+<script file="libs\AceEvent-2.0\AceEvent-2.0.lua"/>
+<script file="libs\AceLocale-2.2\AceLocale-2.2.lua"/>
+<script file="libs\AceHook-2.1\AceHook-2.1.lua"/>
+
+<script file="libs\Tablet-2.0\Tablet-2.0.lua"/>
+<script file="libs\Dewdrop-2.0\Dewdrop-2.0.lua"/>
+<script file="libs\FuBarPlugin-2.0\FuBarPlugin-2.0.lua"/>
+<script file="libs\Waterfall-1.0\Waterfall-1.0.lua"/>
+
+<script file="libs\LibPeriodicTable-3.1\LibPeriodicTable-3.1.lua"/>
+<script file="libs\LibPeriodicTable-3.1-Consumable\LibPeriodicTable-3.1-Consumable.lua"/>
+<script file="libs\LibPeriodicTable-3.1-Gear\LibPeriodicTable-3.1-Gear.lua"/>
+<script file="libs\LibPeriodicTable-3.1-GearSet\LibPeriodicTable-3.1-GearSet.lua"/>
+<script file="libs\LibPeriodicTable-3.1-InstanceLoot\LibPeriodicTable-3.1-InstanceLoot.lua"/>
+<script file="libs\LibPeriodicTable-3.1-InstanceLootHeroic\LibPeriodicTable-3.1-InstanceLootHeroic.lua"/>
+<script file="libs\LibPeriodicTable-3.1-Misc\LibPeriodicTable-3.1-Misc.lua"/>
+<script file="libs\LibPeriodicTable-3.1-Reputation\LibPeriodicTable-3.1-Reputation.lua"/>
+<script file="libs\LibPeriodicTable-3.1-Tradeskill\LibPeriodicTable-3.1-Tradeskill.lua"/>
+<script file="libs\LibPeriodicTable-3.1-TradeskillResultMats\LibPeriodicTable-3.1-TradeskillResultMats.lua"/>
+
+<Include file="libs\LibGratuity-3.0\lib.xml"/>
+<Include file="libs\LibBagUtils-1.0\LibBagUtils-1.0.xml"/>
+<Include file="libs\LibBabble-Inventory-3.0\lib.xml"/>
+
+</Ui>
