@@ -1,0 +1,47 @@
+Shefki:
+	- Fix a lua error in the VisualHeal5 module.
+	- Add support for the built in incoming heals data in 4.0.x.
+	This is implemented as a separate module so that LibHealComm will not be
+	loaded on 4.0.x.  Unless LibHealComm is installed as a separate addon or
+	embedded in another addon it will not be loaded on a 4.0.x client.
+	
+	Both modules have the same loaded name in PitBull4, so they share the
+	same config.
+	- Allow StatusBar texture to be configured for Eclipse Module.
+	Will follow the default bar texture selection for the layout.
+	- Fix LuaTexts for 4.0.x.
+	- Fix ManaSpark for 4.0.x.
+	- Fix PowerBar for 4.0.x.
+	- Fix HappinessIcon for 4.0.x.
+	- Fix CombatFader for 4.0.x.
+	- Fix DruidManaBar for 4.0.x.
+	- Update detection of dispel types for changes to healing classes in 4.0.x.
+	- Fix the unknown spells in Aura filters, filters still need work though.
+	Druid filters should be up to date, everything else still needs a lot of
+	work.
+	- Update revamped Clique support to a newer version of the spec.
+	Lesson: Always reload the page you loaded 2 days ago with the newest
+	spec.
+	- Add support for the new revamped cata only Clique.
+	- Add Eclipse module to .pkgmeta and modules.xml.
+	- Commit the code to deal with Lunar and Solar Power colors.
+	Fixes the Eclipse module.
+	- Eclipse Module: Initial checkin, still needs some work but it's useable.
+	- Fix HideBlizzard to be aware of ConsolidateBuffs and avoid taint in 4.0.x
+	- Fix a bug related to switching profiles while in a group.
+	Can happen anytime you're switching to a profile with a group that is
+	showing to another profile that a group of that name does not exist.
+ckknight:
+	- Add SoulShards module, for 4.0 Warlock Soul Shards
+	- Add HolyPower module, for 4.0 and above
+Shefki:
+	- Ticket #792, Warlock/Shadow Priest filter fixes.
+	- Support Party and Raid frames on Cataclysm.
+	- Fix RoleIcon module for Cataclysm.
+	- Disable the ability to cancel buffs from within PitBull4 for Cataclysm. Use /cancelaura AuraName if you want to remove buffs now.
+	- Detect failure to create groups on Cataclysm Beta and disable group features.
+	- Fix LuaTexts error on Cata Beta that prevents Health from showing.
+	- Ticket #771: Mage Filers missing Improved Counterspell and Deep Freeze.
+	- Remove compat code for pre 3.3.x from Filters and update Priest filters.
+	Resolves Ticket #785.
+	- Ticket #780: Add Eclipse (Lunar) to druid self buffs
