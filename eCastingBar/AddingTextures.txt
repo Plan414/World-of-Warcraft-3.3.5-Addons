@@ -1,0 +1,9 @@
+To add a custom texture to eCastingBars, follow these simple steps:
+
+1) Place the custom texture in the eCastingBars/Textures directory.  Try to give it a unique name (not StatusBar.tga).
+2) Open up the file "textures.lua" in the eCastingBars/Textures directory.
+3) There are two tables, CASTINGBAR_TEXTURES_MENU, and CASTING_BAR_TEXTURES.  The MENU table has multiple entries that look like { text = "Perl", value = "Perl"}.  You will need to make a new line in the same format using the name of your texture.  Do the same for CASTING_BAR_TEXTURES.  
+4) If this procedure intimidates you in any way, I recommend not bothering with it.  You can always just delete one of the included textures and rename your own texture to match the deleted texture's name.
+
+
+NOTE:  This procedure has changed slightly from 2.00.03.   I realized that texture names don't need to be localized, so I moved them here to a seperate file that can be easily changed and updated as needed.

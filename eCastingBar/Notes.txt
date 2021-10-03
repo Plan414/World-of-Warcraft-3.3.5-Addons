@@ -1,0 +1,103 @@
+A castingbar replacement mod
+Version 2.0+ reworked by: Neuro (neuro_tx@yahoo.com)
+Original Author: elvendawn (c0elvenn@yahoo.com)
+Reworked by Repent (repent@kc.rr.com)
+Additional Coding by: Bitz (Bitz@dreamwiz.com)
+Localization by: Bitz (Korean), Malkoms (Francais), wowui.cn (Chinese)
+----------------------------------------------------
+eCastingBar is a movable and configurable casting bar replacement.  It includes a Mirror Bar that handles Breathing, Feign Death, and Exhaustion, as well as a new Target Bar, showing what your target is casting.  eCastingBar was originally written by elvendawn, and then re-written by Repent.  Since patch 2.0.1, eCastingBar has been maintained by Neuro, who has rewritten about 25% of the base code, with contributions by Bitz.  
+
+
+
+
+Much thanks go out to Bitz of Korea, who added a much-improved Options Window, Spell Ranks, and Localization for Korea.  Thanks also go out to the guys at wowui.cn for the Chinese localization, Malkoms for his French Localization, and especially to elvendawn and Repent for coding eCastingBar 1.0. 
+
+New in 2.00.06: A new Focus Bar, the ability to set the Alpha level of the bars, and French localization
+
+New in 2.00.05: Use Flight Timer and Flight Timer color options (only works with FlightMap addon)
+
+New in 2.00.04: Spell Rank support, revamped Options Window (both thanks to Bitz), and Spell Icons now available.
+
+New in 2.00.03: Textures!  No longer restricted to just Perl, eCastingBar now has 15 New Textures!  Check the options page to see them in action!  There is an example bar on the options page, it is set to mimic the color Casting Bar Spell, Target Bar Spell, and Mirror Bar Breath, respectively.  Change those colors to see the example bar in a different color.
+
+Most of these Textures were obtained from Thunder12 at WoWInterface.  Special thanks to Banto for Banto texture, Moonmaster for his texture, and Tem for helping me find a few others.  Some textures were obtained from Bigwigs and ag_UnitFrames, many thanks to these fine Addons.
+To add your own texture, read the file "AddingTextures.txt".  
+
+
+Please report any bugs or problems to Neuro_tx@yahoo.com.
+
+
+
+
+
+	
+Slash Commands: /castingbar or /ecb
+config
+help
+
+The Mirror Bar is used for the Blizzard Timers (Feign Death, Breath, Exhaustion)
+
+
+Changes:
+2.01.00
+- Changed TOC to 20100
+
+2.00.07
+- Changed TOC to 20003
+
+2.00.06d
+- Fixed an issue with FlightMap support causing a stack overflow error in certain cases.
+- Fixed an issue with the second Mirror Bar not disappearing properly.
+- Changed how Spell_Justify is done.  There is a global constant at the beginning of the file eCastingBar.lua that sets the Spell_Justify.  Eventually I may add this back in as an option, but for now, if you desire a different spell justify other than Center, you can change this variable from "Center" to "Left" or "Right" in the eCastingBar.lua file with a text editor.
+
+2.00.06b
+- Fixed a minor issue with the Target Bar not showing if Focus bar is disabled and you are Targeting your Focus
+
+2.00.06
+- A Focus Bar has been added.
+- A new option, Background Alpha, added.  Set to adjust the transparency of the individual bars.
+- Added smaller font sizes for bar text.
+- Fixed an issue with Target Bar not reporting the correct color.
+- Re-wrote the entire Event Handler to be more efficient and consistant with Blizzard castbar.  This rewrite fixed several issues involving calculating delay and spelltimes.  This also removed reporting the "delay" for Channeled spells, which wasn't very accurate.
+- Fixed an issue where disabling the main castbar disabled the target and mirror bars as well.
+- Fixed a minor graphical issue with the background being slightly larger than the Status Bar if you selected the Hide Border option.
+
+2.00.05
+- Fixed an issue with the Halcyon texture being misspelled. (Fixed last release, but upgrading to 2.00.04 if you were previously using Halcyon would bug the addon, fixed now)
+- Fixed an issue with Target Bar not showing Delay properly
+- Changed FlightMap support to use the Mirror Bar instead of Casting Bar.  In addition, the countdown is done in minutes:seconds now.
+- Added option to turn off Flight Map support.  If you are in-flight, it won't kick in till the next flight.
+- eCastingBar will now turn off Bongo's CastBar when enabled, and turn it back on when disabled (doing so mid-cast might give you very strange results).
+- The example bar in the Options Menu will now match whatever bar color you selected last.  Only works with full bar colors (Spell Color, Channel Color, Breath Color, etc)
+
+2.00.04
+- Spell Icon Support added.  Select Left, Right, or Hidden from the Options Page to select your preference.
+- Options Window revamped to be much easier to work with (Thanks to Bitz of Korea for this)
+- Bar can now show Spell Rank if desired (Again, credit to Bitz)
+- Spell Justify has been replaced with "Show Spell Name" (Bitz as well)
+- Texture setup has been changed slightly. Read "Adding Textures.txt" for details.
+- Re-added Flight Map support.  I went ahead and fixed a Flight Map bug while I was at it.
+
+
+2.00.03
+- Fixed a bug with Target Bar sometimes popping up when it was disabled.
+- Fixed an issue with Fonts not scaling properly.  (Thanks to SilverSurfR at WoWInterface for this fix)
+- Fixed a bug with Spell Justify not working properly.
+- Fixed an issue where the Target Bar was not properly displaying spellcast delays.
+- Added: Several New Textures,  See details above.
+
+
+2.00.02
+- Fixed small bug with Localization load path
+
+
+2.00.01
+- Fixed a bug with Enabling/Disabling the Target Bar.
+
+
+
+2.00.00
+- Rewrote for 2.0 Compatibility
+- Added Target Bar
+- Removed the FlightMap stuff
+- Changed how variables were stored

@@ -1,0 +1,15 @@
+﻿## Interface: 30300
+## Title: eCastingBar
+## Title-koKR: [시전바] eCastingBar R2
+## Author: Neuro & Bitz, Repent, elvendawn
+## Notes: Casting Bar replacement mod
+## Notes-koKR: 시전바의 모양을 이쁘게 바꿔줍니다.
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: eCastingBar_Settings
+## SavedVariablesPerCharacter: eCastingBar_Saved
+Localization\localization.lua
+eCastingBar.xml
+eCastingMirrorBar.xml
+eOptions_Menu.xml
+eOptions.xml
