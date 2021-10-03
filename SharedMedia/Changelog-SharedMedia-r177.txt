@@ -1,0 +1,41 @@
+------------------------------------------------------------------------
+r177 | elkano | 2009-06-09 06:46:50 +0000 (Tue, 09 Jun 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/SharedMedia.toc
+
+added CallbackHandler-1.0 external
+------------------------------------------------------------------------
+r176 | elkano | 2009-06-05 09:54:53 +0000 (Fri, 05 Jun 2009) | 4 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   D /trunk/Core.lua
+   M /trunk/INSTRUCTIONS for MyMedia.txt
+   D /trunk/Libs
+   D /trunk/MyMedia files
+   A /trunk/MyMedia.bat.txt
+   M /trunk/SharedMedia.lua
+   M /trunk/SharedMedia.toc
+   D /trunk/fonts/ABF.ttf
+   D /trunk/fonts/Adventure.ttf
+   D /trunk/fonts/Avqest.ttf
+   D /trunk/fonts/Bazooka.ttf
+   D /trunk/fonts/BigNoodleTitling-Oblique.ttf
+   D /trunk/fonts/BigNoodleTitling.ttf
+   D /trunk/fonts/BlackChancery.ttf
+   D /trunk/fonts/Emblem.ttf
+   D /trunk/fonts/Enigma__2.ttf
+   D /trunk/fonts/Movie_Poster-Bold.ttf
+   D /trunk/fonts/Porky.ttf
+   D /trunk/fonts/Tangerin.ttf
+   D /trunk/fonts/Tw_Cen_MT_Bold.ttf
+   D /trunk/fonts/Ultima_Campagnoli.ttf
+   D /trunk/fonts/VeraSe.ttf
+   D /trunk/fonts/Yellowjacket.ttf
+   D /trunk/fonts/rm_midse.ttf
+
+WARNING: If you used MyMedia, make sure to backup your files before updating!
+- from now on SharedMedia will only register with LibSharedMedia-3.0
+- removed all fonts because of license issues; some of them may be readded later
+- changed the way MyMedia works to prevent eg CC from deleting your stuff in future read the instructions
+------------------------------------------------------------------------
