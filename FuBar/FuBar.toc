@@ -1,0 +1,51 @@
+﻿## Interface: 30300
+## Title: FuBar 3.6
+## Notes: A panel that modules can plug into.
+## Notes-ruRU: Панели для отображения различных плагинов.
+## Notes-deDE: Eine Leiste in der sich Module einbinden können.
+## Notes-frFR: Un panneau entièrement modulable.
+## Notes-zhCN: 插件式信息面板。
+## Notes-zhTW: 插件式訊息面板。
+## Notes-esES: Un panel donde puedes colocar plugins
+## Author: ckknight
+## X-eMail: ckknight AT gmail DOT com
+## X-Website: http://www.wowace.com/
+## X-Category: Interface Enhancements
+## SavedVariables: FuBar2DB
+## OptionalDeps: LibRock-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockLocale-1.0, LibRockHook-1.0, LibRockConfig-1.0, LibRockDB-1.0, LibJostle-3.0
+## X-WoWIPortal: ckknight
+## X-Donate: PayPal:ckknight AT gmail DOT com
+## X-Curse-Packaged-Version: v3.6.6
+## X-Curse-Project-Name: FuBar 3.6
+## X-Curse-Project-ID: fubar
+## X-Curse-Repository-ID: wow/fubar/mainline
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+
+#@no-lib-strip@
+libs\AceLibrary\AceLibrary.lua
+libs\LibRock-1.0\lib.xml
+libs\LibRockConfig-1.0\lib.xml
+libs\LibRockEvent-1.0\lib.xml
+libs\LibRockLocale-1.0\lib.xml
+libs\LibRockHook-1.0\lib.xml
+libs\LibRockDB-1.0\lib.xml
+libs\LibRockTimer-1.0\lib.xml
+libs\LibJostle-3.0\lib.xml
+libs\LibFuBarPlugin-3.0\lib.xml
+libs\Dewdrop-2.0\Dewdrop-2.0.lua
+libs\Tablet-2.0\Tablet-2.0.lua
+#@end-no-lib-strip@
+
+FuBar-Locale-enUS.lua
+FuBar-Locale-ruRU.lua
+FuBar-Locale-deDE.lua
+FuBar-Locale-frFR.lua
+FuBar-Locale-koKR.lua
+FuBar-Locale-zhCN.lua
+FuBar-Locale-zhTW.lua
+FuBar-Locale-esES.lua
+
+FuBar_Panel.lua
+FuBar.lua

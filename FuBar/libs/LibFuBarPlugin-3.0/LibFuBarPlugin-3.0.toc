@@ -1,0 +1,20 @@
+﻿## Interface: 30000
+## LoadOnDemand: 1
+## Title: Lib: FuBarPlugin-3.0
+## Notes: A library to provide a means create a FuBar-compatible plugin.
+## Notes-zhTW: 一個提供支援FuBar所需功能的插件。
+## Notes-esES: Una biblioteca para crear plugins compatibles con Fubar.
+## Author: ckknight
+## eMail: ckknight@gmail.com
+## X-Credits: Arrowmaster
+## Version: 3.0
+## X-Category: Library
+## OptionalDeps: FuBar
+## X-License: LGPL v2.1
+## X-Curse-Packaged-Version: r64
+## X-Curse-Project-Name: LibFuBarPlugin-3.0
+## X-Curse-Project-ID: libfubarplugin-3-0
+## X-Curse-Repository-ID: wow/libfubarplugin-3-0/mainline
+
+LibStub\LibStub.lua
+lib.xml

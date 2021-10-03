@@ -1,0 +1,17 @@
+﻿## Interface: 30000
+## X-Curse-Packaged-Version: r236
+## X-Curse-Project-Name: LibRockEvent-1.0
+## X-Curse-Project-ID: librockevent-1-0
+## X-Curse-Repository-ID: wow/librockevent-1-0/mainline
+
+## Title: Lib: RockEvent-1.0
+## Notes: Event library
+## Author: ckknight
+## X-Website: http://www.wowace.com
+## X-Category: Library
+## X-Donate: Paypal:ckknight AT gmail DOT com
+## X-eMail: ckknight AT gmail DOT com
+## X-License: LGPL v2.1
+## LoadOnDemand: 1
+
+lib.xml
