@@ -1,0 +1,34 @@
+## Interface: 50001
+## Title: SLDataText
+## Author: Taffu
+## Notes: Simple Light Data Text!
+## Version: 5.0.41
+## SavedVariables: SLDTDB
+
+Libs\Libstub\Libstub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+Libs\LibSL-1.0\LibSL-1.0.lua
+Libs\LibSLTip-1.0\LibSLTip-1.0.lua
+
+Localization\deDE.lua
+Localization\enUS.lua
+Localization\frFR.lua
+Localization\ruRU.lua
+Localization\zhTW.lua
+
+core.lua
+Elements\armor.lua
+Elements\bag.lua
+Elements\clock.lua
+Elements\coords.lua
+Elements\currency.lua
+Elements\exp.lua
+Elements\fps.lua
+Elements\gold.lua
+Elements\latency.lua
+Elements\mail.lua
+Elements\memory.lua
+Elements\reputation.lua
+Elements\zonetext.lua
