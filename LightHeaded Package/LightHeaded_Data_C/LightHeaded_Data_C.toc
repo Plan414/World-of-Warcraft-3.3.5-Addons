@@ -1,0 +1,9 @@
+## Interface: 50400
+## Author: jnwhiteh
+## Title: LightHeaded_Data_C
+## Version: 370
+## Notes: Load on demand data addon for LightHeaded
+## License: All Rights Reserved
+## LoadOnDemand: 1
+
+..\LightHeaded\Data\LH_Data_C.lua

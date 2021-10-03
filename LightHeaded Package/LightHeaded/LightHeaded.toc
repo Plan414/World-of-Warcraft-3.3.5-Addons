@@ -1,0 +1,23 @@
+## Interface: 50400
+## Author: jnwhiteh
+## Title: LightHeaded
+## Version: 370
+## Notes: Allows you to view WoWHead comments for quests in-game
+## License: All Rights Reserved
+## SavedVariables: LightHeadedDB
+## OptionalDeps: Dongle
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Execute: local done = false; LightHeaded = setmetatable({}, {__index = function(t,k) if not done then AddonLoader:LoadAddOn("LightHeaded"); done = true; return _G.LightHeaded[k]; end; end})
+## X-LoadOn-Execute2: do local f = CreateFrame("Frame", nil, QuestLogFrame); f:SetScript("OnShow", function() if not IsAddOnLoaded("LightHeaded") then AddonLoader:LoadAddOn("LightHeaded"); end; f:SetScript("OnShow", nil) end) end;
+## X-LoadOn-Execute3: do local f = CreateFrame("Frame", nil, QuestLogDetailFrame); f:SetScript("OnShow", function() if not IsAddOnLoaded("LightHeaded") then AddonLoader:LoadAddOn("LightHeaded"); end; f:SetScript("OnShow", nil) end) end;
+## X-LoadOn-Slash: /lh, /lightheaded, /lighthead
+
+Data\LH_QIDMap.lua
+
+Dongle.lua
+LightHeaded.lua
+
+LightHeaded_Config.lua
+LibSimpleOptions-1.0\LibStub\LibStub.lua
+LibSimpleOptions-1.0\lib.xml

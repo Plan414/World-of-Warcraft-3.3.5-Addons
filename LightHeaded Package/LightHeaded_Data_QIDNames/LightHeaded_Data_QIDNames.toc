@@ -1,0 +1,9 @@
+## Interface: 50400
+## Author: jnwhiteh
+## Title: LightHeaded_Data_QIDNames
+## Version: 370
+## Notes: Load on demand data addon for LightHeaded containing a mapping between names and QIDs
+## License: All Rights Reserved
+## LoadOnDemand: 1
+
+..\LightHeaded\Data\LH_QIDNames.lua
