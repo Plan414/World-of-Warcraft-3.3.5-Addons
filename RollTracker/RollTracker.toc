@@ -1,0 +1,9 @@
+## Interface: 30000
+## Title:|cffffd200|r|cff00ff00Roll Tracker|r
+## Notes: |cff00ff99Tracks rolls and list them so you can report to guild, party, raid or self.|r
+## eMail: rune_25r@hotmail.com
+## URL: http://wow.curse.com/downloads/wow-addons/details/deadly-pvp-mods.aspx
+## SavedVariablesPerCharacter: RT_firstlogin, RT_settings, RT_savedrolls
+## DefaultState: enabled
+## Author: Zandrak / Zagorm (Turalyon - Horde)
+RollTracker.lua
