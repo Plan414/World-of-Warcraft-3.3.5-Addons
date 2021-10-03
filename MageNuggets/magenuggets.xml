@@ -1,0 +1,4332 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <Script file="magenuggets.lua" />
+ <Frame name="MageNuggets">
+    <Scripts>
+		<OnLoad> 
+            self.TimeSinceLastUpdate = 0
+            MN_Start(self)	
+        </OnLoad>
+		<OnUpdate> 
+            MageNuggets_OnUpdate(self, elapsed) 
+        </OnUpdate>
+		<OnEvent>
+            MageNuggets_OnEvent(self, event, ...);
+        </OnEvent>
+	    </Scripts>
+ </Frame>
+ 
+ <Frame name="MageNugSP_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="76" y="46" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="13"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="3" right="4" top="4" bottom="3"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <FontHeight>
+                   <AbsValue val="9"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+     <Frames>
+        <Button name="$parentButtonShowOptions" inherits="OptionsButtonTemplate" text="">
+	        <Size>
+               <AbsDimension x="4" y="4"/>
+            </Size>
+            <Anchors>
+		        <Anchor point="TOPRIGHT">
+			        <Offset>
+				       <AbsDimension x="-4" y="-4"/>
+		     	    </Offset>
+		        </Anchor>
+	        </Anchors>
+	        <Scripts>
+		        <OnClick>
+                    InterfaceOptionsFrame_OpenToCategory("Mage Nuggets");
+                </OnClick>
+	        </Scripts>
+        </Button>
+    </Frames>
+    <Scripts>
+       <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0
+       </OnLoad>
+	   <OnDragStart> MNLockFrames();</OnDragStart>
+	   <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+       <OnEnter> SPMonitor_OnEnter() </OnEnter>
+       <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsSP_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MNTorment_Frame" parent="MageNugSP_Frame" hidden="true">
+    <Size x="18" y="18" />
+    <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parent">
+        <Offset>
+            <AbsDimension x="3" y="15"/>
+        </Offset>
+        </Anchor>
+    </Anchors>
+    <Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="10"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="4" right="4" top="4" bottom="4"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture" file="Interface\Icons\Ability_mage_tormentoftheweak">
+                <Size>
+                    <AbsDimension x="15" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" />
+                </Anchors>
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+            </Texture>
+        </Layer> 
+    </Layers>
+     <Frames>
+       
+    </Frames>
+    <Scripts>
+       <OnEnter>
+			if (MageNugz.toolTips == true) then
+                GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+			    GameTooltip:AddLine("Current target is affected by \n       Torment the Weak")
+			    GameTooltip:Show()
+            end
+        </OnEnter>
+		<OnLeave>
+			GameTooltip:Hide()
+		</OnLeave>
+    </Scripts>
+</Frame>
+
+<Frame name="MNicyveins_Frame" parent="MageNugSP_Frame" hidden="true">
+    <Size x="18" y="18" />
+    <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parent">
+        <Offset>
+            <AbsDimension x="20" y="15"/>
+        </Offset>
+        </Anchor>
+    </Anchors>
+    <Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="10"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="4" right="4" top="4" bottom="4"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture" file="Interface\Icons\Spell_frost_coldhearted">
+                <Size>
+                    <AbsDimension x="15" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" />
+                </Anchors>
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+            </Texture>
+        </Layer> 
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="15"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="10"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0
+        </OnLoad>
+        <OnEnter> SPMonitor_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsIcy_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+
+<Frame name="MNarcanepower_Frame" parent="MageNugSP_Frame" hidden="true">
+    <Size x="18" y="18" />
+    <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parent">
+        <Offset>
+            <AbsDimension x="37" y="15"/>
+        </Offset>
+        </Anchor>
+    </Anchors>
+    <Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="10"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="4" right="4" top="4" bottom="4"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture" file="Interface\Icons\Spell_nature_lightning">
+                <Size>
+                    <AbsDimension x="15" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" />
+                </Anchors>
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+            </Texture>
+        </Layer>
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="15"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="10"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+     <Frames>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0
+        </OnLoad>
+       <OnEnter> SPMonitor_OnEnter() </OnEnter>
+       <OnLeave> GameTooltip:Hide() </OnLeave>
+       <OnUpdate> 
+            MageNuggetsArcaneP_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MNlust_Frame" parent="MageNugSP_Frame" hidden="true">
+    <Size x="18" y="18" />
+    <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parent">
+        <Offset>
+            <AbsDimension x="50" y="15"/>
+        </Offset>
+        </Anchor>
+    </Anchors>
+    <Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="10"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="4" right="4" top="4" bottom="4"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture" file="Interface\Icons\Spell_nature_bloodlust">
+                <Size>
+                    <AbsDimension x="15" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" />
+                </Anchors>
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+            </Texture>
+        </Layer>
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="15"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="10"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+     <Frames>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0
+        </OnLoad>
+       <OnEnter> SPMonitor_OnEnter() </OnEnter>
+       <OnLeave> GameTooltip:Hide() </OnLeave>
+       <OnUpdate> 
+            MageNuggetsLust_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugClearcast_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="36" y="36" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop  edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <EdgeSize>
+        <AbsValue val="10"/>
+    </EdgeSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture" file="Interface\Icons\spell_shadow_manaburn">
+                <Size>
+                    <AbsDimension x="35" y="35"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" />
+                </Anchors>
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+            </Texture>
+        </Layer> 
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="-1"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="30"/>
+                </FontHeight>
+                 <Shadow>
+                    <offset>
+                       <AbsDimension x="1" y="1"/>
+                    </offset>
+                    <color r="0" g="0" b="0"/>
+                </Shadow>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="-19"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+        <Frames>
+        <StatusBar name="$parent_Bar" frameStrata="LOW" inherits="TextStatusBar">
+            <Size x="35" y="8"/>
+            <Anchors>
+                <Anchor point="center" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="0" y="-19"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(0, 0.1, 1)
+                   this:SetMinMaxValues(0,13)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsClearCast_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugSmallLB_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="36" y="36" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop  edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <EdgeSize>
+        <AbsValue val="10"/>
+    </EdgeSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture" file="Interface\Icons\ability_mage_livingbomb">
+                <Size>
+                    <AbsDimension x="35" y="35"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" />
+                </Anchors>
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+            </Texture>
+        </Layer> 
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="-1"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="30"/>
+                </FontHeight>
+                 <Shadow>
+                    <offset>
+                       <AbsDimension x="1" y="1"/>
+                    </offset>
+                    <color r="0" g="0" b="0"/>
+                </Shadow>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="-19"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+        <Frames>
+        <StatusBar name="$parent_LBBar" frameStrata="LOW" inherits="TextStatusBar">
+            <Size x="35" y="8"/>
+            <Anchors>
+                <Anchor point="center" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="0" y="-19"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 0, 0)
+                   this:SetMinMaxValues(0,13)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsSmallLB_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugScorch_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="36" y="36" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop  edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <EdgeSize>
+        <AbsValue val="10"/>
+    </EdgeSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture" file="Interface\Icons\Spell_Fire_SoulBurn">
+                <Size>
+                    <AbsDimension x="35" y="35"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" />
+                </Anchors>
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+            </Texture>
+        </Layer> 
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="-1"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <color r="1" g="1" b="1"/>
+                <FontHeight>
+                   <AbsValue val="25"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+        <Frames>
+        <StatusBar name="$parent_Bar" inherits="TextStatusBar">
+            <Size x="35" y="5"/>
+            <Anchors>
+                <Anchor point="center" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="0" y="-18"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 0, 0)
+                   this:SetMinMaxValues(0,30)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsScorch_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+
+<Frame name="MageNugAB_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="36" y="36" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+-       <TileSize>
+            <AbsValue val="32" /> 
+        </TileSize>
+-       <EdgeSize>
+            <AbsValue val="10" /> 
+        </EdgeSize>
+-       <BackgroundInsets>
+            <AbsInset left="2" right="2" top="2" bottom="2" /> 
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+-           <Texture name="$parentTexture" file="Interface\Icons\Spell_Arcane_Blast">
+-               <Size>
+                    <AbsDimension x="35" y="35" /> 
+                </Size>
+-               <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER" /> 
+                </Anchors>
+                <TexCoords left="0" right="1" top="0" bottom="1" /> 
+            </Texture>
+        </Layer>
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="30"/>
+                </FontHeight>
+                 <Shadow>
+                    <offset>
+                       <AbsDimension x="1" y="1"/>
+                    </offset>
+                    <color r="0" g="0" b="0"/>
+                </Shadow>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER" relativePoint="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="-20"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                 <Shadow>
+                    <offset>
+                       <AbsDimension x="1" y="1"/>
+                    </offset>
+                    <color r="0" g="0" b="0"/>
+                </Shadow>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_ABBar" frameStrata="LOW" inherits="TextStatusBar">
+            <Size x="33" y="7"/>
+            <Anchors>
+                <Anchor point="BOTTOM" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="0" y="-5"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 0.1, 1)
+                   this:SetMinMaxValues(0,5)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0    
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsAB_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MNabCast_Frame" parent="MageNugAB_Frame" hidden="false">
+    <Size x="36" y="13" />
+    <Anchors>
+        <Anchor point="TOP" relativeTo="$parent">
+        <Offset>
+            <AbsDimension x="0" y="11"/>
+        </Offset>
+        </Anchor>
+    </Anchors>
+    <Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="10"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="1" right="1" top="1" bottom="1"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="8"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+    </Frames>
+    <Scripts>
+        <OnEnter>
+			GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+			GameTooltip:AddLine("Cast Time")
+			GameTooltip:Show()
+		</OnEnter>
+		<OnLeave>
+			GameTooltip:Hide()
+		</OnLeave>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugProcFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="150" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <Texture name="$parentTexture" file="Interface\Icons\ability_Mage_HotStreak">
+                <Size>
+                    <AbsDimension x="26" y="26"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                            <AbsDimension x="2" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="10" y="3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="13"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                           <AbsDimension x="-3" y="4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_ProcBar" inherits="TextStatusBar">
+            <Size x="120" y="8"/>
+            <Anchors>
+                <Anchor point="BOTTOMLEFT" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="27" y="2"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Layers>
+                <Layer level="OVERLAY">
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+			    </Layer>
+            </Layers>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 0, 0)
+                   this:SetMinMaxValues(0,9)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton");  
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsHS_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugPolyFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="140" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="13"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="3" right="4" top="4" bottom="3"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <Texture name="$parentTexture" file="Interface\Icons\Spell_magic_polymorphrabbit">
+                <Size>
+                    <AbsDimension x="23" y="23"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                            <AbsDimension x="4" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="10" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="8"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentTimerText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                           <AbsDimension x="-5" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="9"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton");
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnUpdate> 
+            MageNuggetsPoly_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugImpactProcFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="150" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+        </Layer> 
+        <Layer level="ARTWORK">
+            <Texture name="$parentTexture" file="Interface\Icons\Spell_Fire_MeteorStorm">
+                <Size>
+                    <AbsDimension x="26" y="26"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                            <AbsDimension x="2" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="10" y="3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="13"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                           <AbsDimension x="-3" y="4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_ProcBar" inherits="TextStatusBar">
+            <Size x="120" y="8"/>
+            <Anchors>
+                <Anchor point="BOTTOMLEFT" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="27" y="2"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Layers>
+            <Layer level="OVERLAY">
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+            </Layers>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 0, 0)
+                   this:SetMinMaxValues(0,9)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton");  
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsImpact_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugBFProcFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="150" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <Texture name="$parentTexture" file="Interface\Icons\Ability_mage_brainfreeze">
+                <Size>
+                    <AbsDimension x="26" y="26"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                            <AbsDimension x="2" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="10" y="3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="13"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                           <AbsDimension x="-3" y="4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_ProcBar" inherits="TextStatusBar">
+            <Size x="120" y="8"/>
+            <Anchors>
+                <Anchor point="BOTTOMLEFT" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="27" y="2"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Layers>
+            <Layer level="OVERLAY">
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+            </Layers>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 0, 0)
+                   this:SetMinMaxValues(0,14)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton");  
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsBF_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugMBProcFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="150" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <Texture name="$parentTexture" file="Interface\Icons\ability_Mage_MissileBarrage">
+                <Size>
+                    <AbsDimension x="26" y="26"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                            <AbsDimension x="2" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="12" y="3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="11"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                           <AbsDimension x="-3" y="4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_ProcBar" frameStrata="MEDIUM" inherits="TextStatusBar">
+            <Size x="120" y="8"/>
+            <Anchors>
+                <Anchor point="BOTTOMLEFT" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="27" y="2"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Layers>
+                <Layer level="OVERLAY">
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+			    </Layer>
+            </Layers>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 0.1, 1)
+                   this:SetMinMaxValues(0,14)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton");  
+            self.TimeSinceLastUpdate = 0
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsMB_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugFoFProcFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="150" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <Texture name="$parentTexture" file="Interface\Icons\Ability_Mage_Wintersgrasp">
+                <Size>
+                    <AbsDimension x="26" y="26"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                            <AbsDimension x="2" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER">
+                        <Offset>
+                           <AbsDimension x="10" y="3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="11"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                           <AbsDimension x="-3" y="4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="6"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_ProcBar" inherits="TextStatusBar">
+            <Size x="120" y="8"/>
+            <Anchors>
+                <Anchor point="BOTTOMLEFT" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="27" y="2"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Layers>
+            <Layer level="OVERLAY">
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="20" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+            </Layers>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(1, 1, 1)
+                   this:SetMinMaxValues(0,13)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton");  
+            self.TimeSinceLastUpdate = 0  
+        </OnLoad>
+        <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+        <OnUpdate> 
+            MageNuggetsFoF_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MNSpellSteal_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="130" y="80" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+        <TileSize>
+            <AbsValue val="32"/>
+        </TileSize>
+        <EdgeSize>
+            <AbsValue val="13"/>
+        </EdgeSize>
+        <BackgroundInsets>
+            <AbsInset left="3" right="4" top="4" bottom="3"/>
+        </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="$parentTitleText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Stealable Buffs:">
+                <Anchors>
+			        <Anchor point="TOP" relativeTo="$parent">
+			           	<Offset><AbsDimension x="0" y="-5"/></Offset>
+                    </Anchor>
+			    </Anchors>
+                <FontHeight>
+                   <AbsValue val="12"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentBuffText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+			        <Anchor point="TOP" relativeTo="$parentTitleText">
+			           	<Offset><AbsDimension x="0" y="-12"/></Offset>
+                    </Anchor>
+			    </Anchors>
+                <FontHeight>
+                   <AbsValue val="8"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <Button name="$parentButtonShowOptions" inherits="OptionsButtonTemplate" text="">
+	    <Size>
+        <AbsDimension x="8" y="8"/>
+        </Size>
+        <Anchors>
+		    <Anchor point="TOPRIGHT">
+			    <Offset>
+				    <AbsDimension x="-4" y="-4"/>
+		     	</Offset>
+		    </Anchor>
+	        </Anchors>
+	        <Scripts>
+		        <OnClick> InterfaceOptionsFrame_OpenToCategory("Mage Nuggets"); </OnClick>
+	        </Scripts>
+        </Button>
+    </Frames>
+    <Scripts>
+        <OnLoad> this:RegisterForDrag("LeftButton"); </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnEnter> Monitors_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugMI_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x= "120" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <EdgeSize>
+        <AbsValue val="1"/>
+    </EdgeSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture1" file="Interface\Icons\spell_magic_lesserinvisibilty">
+                <Size>
+                    <AbsDimension x="15" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT">
+                    	<Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+        </Layer> 
+        <Layer level="ARTWORK">
+            <FontString name="$parent_MIText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Mirror Images">
+                 <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="10"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parent_MIText1" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="0" y="-7"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="10"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_MiBar" inherits="TextStatusBar" frameStrata="LOW">
+            <Size x="105" y="15"/>
+            <Anchors>
+                <Anchor point="LEFT" relativeTo="$parentTexture1">
+                    <Offset>
+                        <AbsDimension x="15" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(0, 0, 1)
+                   this:SetMinMaxValues(0,30)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0    
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnUpdate> 
+            MageNuggetsMI_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugWE_Frame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x= "120" y="30" />
+    <Anchors>
+        <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <EdgeSize>
+        <AbsValue val="1"/>
+    </EdgeSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="BACKGROUND">
+            <Texture name="$parentTexture1" file="Interface\Icons\Spell_Frost_SummonWaterElemental_2">
+                <Size>
+                    <AbsDimension x="15" y="15"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT">
+                    	<Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+        </Layer> 
+        <Layer level="ARTWORK">
+            <FontString name="$parent_MIText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Water Elemental">
+                 <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="10"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parent_WEText1" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="CENTER" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="0" y="-7"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="10"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <StatusBar name="$parent_WeBar" inherits="TextStatusBar" frameStrata="LOW">
+            <Size x="105" y="15"/>
+            <Anchors>
+                <Anchor point="LEFT" relativeTo="$parentTexture1">
+                    <Offset>
+                        <AbsDimension x="15" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+            <Scripts>
+                <OnLoad>
+                   this:SetStatusBarColor(0, 0, 1)
+                   this:SetMinMaxValues(0,45)
+                </OnLoad>
+            </Scripts>
+        </StatusBar>
+    </Frames>
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0
+        </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnUpdate> 
+            MageNuggetsWE_OnUpdate(self, elapsed) 
+        </OnUpdate>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugOptionsFrame" toplevel="true" hidden="false" parent="MageNugOptions">
+    <Size>
+        <AbsDimension x="480" y="325"/>
+    </Size>
+    <Anchors>
+        <Anchor point="TOPLEFT"/>
+        <Anchor point="BOTTOMRIGHT"/>
+    </Anchors>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="MNspellstealFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-25"/>
+                        </Offset>
+                    </Anchor>
+                 </Anchors>
+            </FontString>
+            <FontString name="MNprocTextFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-45"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNshieldFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-65"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNmirrorImageFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-85"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNwaterEleFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-105"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNevoFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-125"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNlbCounterFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-145"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNprocMonsFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-165"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNabCounterFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-185"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>   
+            <FontString name="MNPolyFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-205"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>        
+            <FontString name="MNcheckboxScorchFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-225"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxclearcastString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-245"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxSmallLBFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="265" y="-145"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxABcastString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="265" y="-185"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MN_Slider2FontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="55" y="-275"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MN_Slider3FontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="55" y="-315"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MN_Slider4FontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="50" y="-355"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <CheckButton name="$parent_CheckButton2" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT">
+-                   <Offset>
+                        <AbsDimension x="10" y="-20" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    -- Disable Spellsteal Monitor
+                </OnLoad> 
+                <OnClick>
+                    HideSSMonitorToggle();
+                    MNSpellSteal_Frame:Hide(); 
+                </OnClick> 
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton3" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT">
+-                   <Offset>
+                        <AbsDimension x="10" y="-40" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Disable Mage Proc Notify
+                </OnLoad> 
+                <OnClick>
+                    MageProcNoteToggle();
+                </OnClick> 
+                <OnEnter> MageProc_OnEnter() </OnEnter>
+                <OnLeave> GameTooltip:Hide() </OnLeave>
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton5" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="10" y="-60" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --Disable Precise Shield Absorb Notify
+                    </OnLoad> 
+                    <OnClick>
+                        absorbNotifyToggle();
+                    </OnClick> 
+                </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton6" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="10" y="-80" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --Disable Mirror Image Timer
+                    </OnLoad> 
+                    <OnClick>
+                        MirrorImagToggle();
+                    </OnClick> 
+                </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton7" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="10" y="-100" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --Disable Water Elemental Timer
+                    </OnLoad> 
+                    <OnClick>
+                        WaterEleToggle();
+                    </OnClick> 
+                </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton8" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="10" y="-120" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --Disable Evocation Notify
+                    </OnLoad> 
+                    <OnClick>
+                        EvoToggle();
+                    </OnClick> 
+                </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton9" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="10" y="-140" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --Disable Living Bomb Counter
+                    </OnLoad> 
+                    <OnClick>
+                        LivingBToggle();
+                    </OnClick> 
+                </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton11" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="10" y="-160" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --Disable Mage Proc Monitor
+                    </OnLoad> 
+                    <OnClick>
+                        MageProcMonitorToggle();
+                    </OnClick> 
+                </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton13" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT">
+-                   <Offset>
+                        <AbsDimension x="10" y="-180" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Arcane Blast Counter
+                </OnLoad> 
+                <OnClick>
+                    MNArcaneBlastToggle();
+               </OnClick>
+            </Scripts>
+        </CheckButton> 
+        <CheckButton name="$parent_CheckButton14" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT">
+-                   <Offset>
+                        <AbsDimension x="10" y="-200" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Disable Poly Monitor
+                </OnLoad> 
+                <OnClick>
+                    MNpolyToggle();
+                </OnClick>
+            </Scripts>
+        </CheckButton>        
+        <CheckButton name="$parent_ScorchCheckButton" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT">
+-                   <Offset>
+                        <AbsDimension x="10" y="-220" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Scorch
+                </OnLoad> 
+                <OnClick>
+                    ScorchToggle();
+                </OnClick> 
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButtonCC" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="10" y="-240" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Disable Clearcast
+                </OnLoad> 
+                <OnClick>
+                    MNclearcastToggle();
+                </OnClick>
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_SmallLBCheckButton" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="240" y="-140" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --Small LB Counter
+                    </OnLoad> 
+                    <OnClick>
+                        MNSmallLBToggle();
+                    </OnClick> 
+                </Scripts>
+            </CheckButton>
+            <CheckButton name="$parent_ABcastCheckButton" inherits="OptionsCheckButtonTemplate">
+-               <Anchors>
+-                   <Anchor point="TOPLEFT">
+-                       <Offset>
+                            <AbsDimension x="240" y="-180" /> 
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+-               <Scripts>
+                    <OnLoad>
+                        --AB Cast Time
+                    </OnLoad> 
+                    <OnClick>
+                        MNabCastTimeToggle();
+                    </OnClick> 
+                </Scripts>
+            </CheckButton>
+            <Slider name="$parent_Slider2" inherits="OptionsSliderTemplate">
+	            <Size>
+    	            <AbsDimension x="200" y="20"/>
+            	</Size>
+		        <Anchors>
+			        <Anchor point="TOPLEFT" relativeTo="$parent">
+	        	        <Offset>
+                            <AbsDimension x="30" y="-290"/>
+                        </Offset>
+        			</Anchor>
+		        </Anchors>
+		        <Scripts>
+		    	    <OnLoad>
+			    	    --Spellsteal Monitor Size
+    			    	getglobal(this:GetName().."High"):SetText("6");
+	    			    getglobal(this:GetName().."Low"):SetText("0");
+		      	    	this:SetMinMaxValues(0,6);
+			        	this:SetValueStep(1);
+		            </OnLoad>
+		            <OnValueChanged>   
+                        MageNugSSMonitorSize();
+                    </OnValueChanged>
+                    <OnMouseUp>
+                        MNSpellSteal_Frame:Hide();
+                    </OnMouseUp>
+                    <OnMouseDown>
+                        MNSpellSteal_Frame:Show();
+                    </OnMouseDown>
+                </Scripts>
+            </Slider>
+            <Slider name="$parent_Slider3" inherits="OptionsSliderTemplate">
+	            <Size>
+    	            <AbsDimension x="200" y="20"/>
+            	</Size>
+		        <Anchors>
+			        <Anchor point="TOPLEFT" relativeTo="$parent">
+	        	        <Offset>
+                            <AbsDimension x="30" y="-330"/>
+                        </Offset>
+        			</Anchor>
+		        </Anchors>
+		        <Scripts>
+		    	    <OnLoad>
+			    	    --Living Bomb Counter Size
+    			    	getglobal(this:GetName().."High"):SetText("6");
+	    			    getglobal(this:GetName().."Low"):SetText("0");
+		      	    	this:SetMinMaxValues(0,6);
+			        	this:SetValueStep(1);
+		            </OnLoad>
+		            <OnValueChanged>   
+                        MageNugLivingBombSize();
+                    </OnValueChanged>
+                    <OnMouseDown>
+                        MageNugLBTemplate_Anchor:Show();
+                        MageNugAB_Frame:Show();
+                        MageNugSmallLB_Frame:Show();
+                        MageNugScorch_Frame:Show();
+                        MageNugClearcast_Frame:Show();
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        MageNugAB_Frame:Hide();
+                        MageNugLBTemplate_Anchor:Hide();
+                        MageNugSmallLB_Frame:Hide();
+                        MageNugScorch_Frame:Hide();
+                        MageNugClearcast_Frame:Hide();
+                    </OnMouseUp>
+                </Scripts>
+            </Slider>
+            <Slider name="$parent_Slider4" inherits="OptionsSliderTemplate">
+	            <Size>
+    	            <AbsDimension x="200" y="20"/>
+            	</Size>
+		        <Anchors>
+			        <Anchor point="TOPLEFT" relativeTo="$parent">
+	        	        <Offset>
+                            <AbsDimension x="30" y="-370"/>
+                        </Offset>
+        			</Anchor>
+		        </Anchors>
+		        <Scripts>
+		    	    <OnLoad>
+			    	    --Living Bomb Counter Size
+    			    	getglobal(this:GetName().."High"):SetText("6");
+	    			    getglobal(this:GetName().."Low"):SetText("0");
+		      	    	this:SetMinMaxValues(0,6);
+			        	this:SetValueStep(1);
+		            </OnLoad>
+		            <OnValueChanged>   
+                        MageNugProcMonitorSize();
+                    </OnValueChanged>
+                    <OnMouseDown>
+                        MageNugProcFrame:Show();
+                        MageNugMBProcFrame:Show();
+                        MageNugFoFProcFrame:Show();                        
+                        MageNugBFProcFrame:Show();
+                        MageNugImpactProcFrame:Show();
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        MageNugProcFrame:Hide();
+                        MageNugMBProcFrame:Hide();
+                        MageNugFoFProcFrame:Hide();
+                        MageNugBFProcFrame:Hide();
+                        MageNugImpactProcFrame:Hide();
+                    </OnMouseUp>
+                </Scripts>
+            </Slider>
+            <Button name="$parentButton1" inherits="OptionsButtonTemplate">
+             	<Size>
+              		<AbsDimension x="120" y="23"></AbsDimension>
+	            </Size>
+                <Anchors>
+		            <Anchor point="TOPLEFT" relativeTo="$parent">
+	             		<Offset>
+				            <AbsDimension x="255" y="-280"/>
+			            </Offset>
+		            </Anchor>
+	            </Anchors>
+	            <Scripts>
+		            <OnClick> 
+                        ShowConfigFrames();
+                    </OnClick>
+                </Scripts>
+            </Button>
+    </Frames> 
+</Frame>   
+
+<Frame name="MageNugStatMonOptionFrame" toplevel="true" hidden="false" parent="statmonOptions">
+    <Size>
+        <AbsDimension x="480" y="325"/>
+    </Size>
+    <Anchors>
+        <Anchor point="TOPLEFT"/>
+        <Anchor point="BOTTOMRIGHT"/>
+    </Anchors>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="MNcheckbox1FontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="45" y="-30"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckbox2FontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="45" y="-50"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="$parent_SPSliderFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="50" y="-75"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="$parent_BorderSliderFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="90" y="-135"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="$parent_TransSliderFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="45" y="-195"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="$parent_ColorSliderFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="80" y="-255"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <CheckButton name="$parent_CheckButton1" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent">
+-                   <Offset>
+                        <AbsDimension x="20" y="-25" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                     --Disable SP and Crit% Monitor
+                </OnLoad> 
+                <OnClick>
+                    hideMonitorToggle();
+                </OnClick> 
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButton2" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent">
+-                   <Offset>
+                        <AbsDimension x="20" y="-45" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                     --Disable Buffs On Stat Monitor
+                </OnLoad> 
+                <OnClick>
+                    BuffMonitorsToggle();
+                </OnClick> 
+            </Scripts>
+        </CheckButton>
+        <Slider name="$parent_SPSizeSlider" inherits="OptionsSliderTemplate">
+            <Size>
+    	        <AbsDimension x="200" y="20"/>
+	        </Size>
+		    <Anchors>
+		        <Anchor point="TOPLEFT" relativeTo="$parent">
+	              	<Offset>
+                        <AbsDimension x="30" y="-90"/>
+                    </Offset>
+			    </Anchor>
+		    </Anchors>
+		    <Scripts>
+		      	<OnLoad>
+			        --SP and Crit % Monitor Size
+                    getglobal(this:GetName().."High"):SetText("6");
+    	    	    getglobal(this:GetName().."Low"):SetText("0");
+	    	    	this:SetMinMaxValues(0,6);
+		    	    this:SetValueStep(1);
+		        </OnLoad>
+		        <OnValueChanged>   
+                    MageNugSpMonitorSize();
+                </OnValueChanged>
+	        </Scripts>
+        </Slider>
+        <Slider name="$parent_BorderSlider" inherits="OptionsSliderTemplate">
+            <Size>
+    	        <AbsDimension x="200" y="20"/>
+	        </Size>
+		    <Anchors>
+		        <Anchor point="TOPLEFT" relativeTo="$parent">
+	              	<Offset>
+                        <AbsDimension x="30" y="-150"/>
+                    </Offset>
+			    </Anchor>
+		    </Anchors>
+		    <Scripts>
+		     	<OnLoad>
+		            --backdrop Transparency
+		            getglobal(this:GetName().."High"):SetText("6");
+    	    		getglobal(this:GetName().."Low"):SetText("0");
+	    	   		this:SetMinMaxValues(0,6);
+		        	this:SetValueStep(1);
+		        </OnLoad>
+		        <OnValueChanged>   
+                    BorderTypeSlider()
+                </OnValueChanged>
+	     	</Scripts>
+        </Slider>
+        <Slider name="$parent_TransparencySlider" inherits="OptionsSliderTemplate">
+            <Size>
+    	        <AbsDimension x="200" y="20"/>
+	        </Size>
+		    <Anchors>
+		        <Anchor point="TOPLEFT" relativeTo="$parent">
+	              	<Offset>
+                        <AbsDimension x="30" y="-210"/>
+                    </Offset>
+			    </Anchor>
+		    </Anchors>
+		    <Scripts>
+		     	<OnLoad>
+		            --backdrop Transparency
+		            getglobal(this:GetName().."High"):SetText("6");
+    	    		getglobal(this:GetName().."Low"):SetText("0");
+	    	   		this:SetMinMaxValues(0,6);
+		        	this:SetValueStep(1);
+		        </OnLoad>
+		        <OnValueChanged>   
+                    BackdropTransparencySlider()
+                </OnValueChanged>
+	        </Scripts>
+        </Slider>
+        <ColorSelect name="$parentColorSelect" enableMouse="true">
+	        <Size>
+		        <AbsDimension x="100" y="100"></AbsDimension>
+	        </Size>
+	        <Anchors>
+		        <Anchor point="TOPLEFT">
+				    <Offset>
+					    <AbsDimension x="75" y="-280"></AbsDimension>
+				    </Offset>
+		        </Anchor>
+	        </Anchors>
+	        <Scripts>
+                <OnColorSelect>
+                    MNColorSelector();
+                </OnColorSelect>
+            </Scripts>
+            <ColorWheelTexture>
+            </ColorWheelTexture>
+        </ColorSelect>
+        <Button name="$parentBlackBackdropButton" inherits="OptionsButtonTemplate" text="Black Backdrop">
+	        <Size>
+               <AbsDimension x="110" y="20"/>
+            </Size>
+            <Anchors>
+		        <Anchor point="TOPLEFT">
+			        <Offset>
+				       <AbsDimension x="75" y="-395"/>
+		     	    </Offset>
+		        </Anchor>
+	        </Anchors>
+	        <Scripts>
+		        <OnClick>
+                    MNSetBackdropBlack();
+                </OnClick>
+	        </Scripts>
+        </Button>
+    </Frames> 
+    <Scripts>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugMsgOptionFrame" toplevel="true" hidden="false" parent="msgOptions">
+    <Size>
+        <AbsDimension x="480" y="325"/>
+    </Size>
+    <Anchors>
+        <Anchor point="TOPLEFT"/>
+        <Anchor point="BOTTOMRIGHT"/>
+    </Anchors>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="$parent_Text1" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="20" y="-40"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="$parent_Text2" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="20" y="-150"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="$parent_Text3" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="20" y="-260"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="$parent_Text4" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="20" y="-340"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <EditBox name="SlowFallMsgEditBox" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="20" y="-55"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    SlowFallMsgEditBox:SetCursorPosition(0);
+                    SlowFallMsgEditBox:SetAutoFocus(false);
+                </OnShow>
+                <OnCursorChanged>
+                    MageNugz.slowfallMsg = SlowFallMsgEditBox:GetText()
+                </OnCursorChanged>
+                <OnEnter> Tab2_OnEnter() </OnEnter>
+                <OnLeave> GameTooltip:Hide() </OnLeave>
+            </Scripts>
+        </EditBox>
+        <EditBox name="SlowFallMsgEditBox2" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="SlowFallMsgEditBox">
+                    <Offset>
+                        <AbsDimension x="0" y="-30"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    SlowFallMsgEditBox2:SetCursorPosition(0);
+                    SlowFallMsgEditBox2:SetAutoFocus(false);
+                </OnShow>
+                <OnCursorChanged>
+                    MageNugz.slowfallMsg2 = SlowFallMsgEditBox2:GetText()
+                </OnCursorChanged>
+            </Scripts>
+        </EditBox>
+        <EditBox name="SlowFallMsgEditBox3" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="SlowFallMsgEditBox2">
+                    <Offset>
+                        <AbsDimension x="0" y="-30"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    SlowFallMsgEditBox3:SetCursorPosition(0);
+                    SlowFallMsgEditBox3:SetAutoFocus(false);
+                </OnShow>
+                <OnCursorChanged>
+                    MageNugz.slowfallMsg3 = SlowFallMsgEditBox3:GetText()
+                </OnCursorChanged>
+            </Scripts>
+        </EditBox>
+        <EditBox name="FocMagNotifyEditBox" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="SlowFallMsgEditBox3">
+                    <Offset>
+                        <AbsDimension x="" y="-50"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    FocMagNotifyEditBox:SetCursorPosition(0)
+                    FocMagNotifyEditBox:SetAutoFocus(false)
+                </OnShow>
+                <OnCursorChanged>
+	                MageNugz.focusMagicNotify = FocMagNotifyEditBox:GetText()
+                </OnCursorChanged>
+                <OnEnter> Tab2_OnEnter() </OnEnter>
+                <OnLeave> GameTooltip:Hide() </OnLeave>
+            </Scripts>
+        </EditBox>
+        <EditBox name="FocMagNotifyEditBox2" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="FocMagNotifyEditBox">
+                    <Offset>
+                        <AbsDimension x="0" y="-30"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    FocMagNotifyEditBox2:SetCursorPosition(0)
+                    FocMagNotifyEditBox2:SetAutoFocus(false)
+                </OnShow>
+                <OnCursorChanged>
+	                MageNugz.focusMagicNotify2 = FocMagNotifyEditBox2:GetText()
+                </OnCursorChanged>
+            </Scripts>
+        </EditBox>
+        <EditBox name="FocMagNotifyEditBox3" inherits="InputBoxTemplate" >
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="FocMagNotifyEditBox2">
+                    <Offset>
+                        <AbsDimension x="0" y="-30"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    FocMagNotifyEditBox3:SetCursorPosition(0)
+                    FocMagNotifyEditBox3:SetAutoFocus(false)
+                </OnShow>
+                <OnCursorChanged>
+	                MageNugz.focusMagicNotify3 = FocMagNotifyEditBox3:GetText()
+                </OnCursorChanged>
+            </Scripts>
+        </EditBox>
+        <EditBox name="FocMagThankEditBox" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="FocMagNotifyEditBox3">
+                    <Offset>
+                        <AbsDimension x="0" y="-50"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    FocMagThankEditBox:SetCursorPosition(0)
+                    FocMagThankEditBox:SetAutoFocus(false)
+                </OnShow>
+                <OnCursorChanged>
+	                MageNugz.focusMagicThanks = FocMagThankEditBox:GetText()
+                </OnCursorChanged>
+                <OnEnter> Tab2_OnEnter() </OnEnter>
+                <OnLeave> GameTooltip:Hide() </OnLeave>
+            </Scripts>
+        </EditBox>
+        <EditBox name="FocMagThankEditBox2" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="FocMagThankEditBox">
+                    <Offset>
+                        <AbsDimension x="0" y="-30"/>
+                </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    FocMagThankEditBox2:SetCursorPosition(0)
+                    FocMagThankEditBox2:SetAutoFocus(false)
+                </OnShow>
+                <OnCursorChanged>
+	                MageNugz.focusMagicThanks2 = FocMagThankEditBox2:GetText()
+                </OnCursorChanged>
+            </Scripts>
+    </EditBox>
+    <EditBox name="InnervThankEditBox" inherits="InputBoxTemplate">
+        <Size>
+            <AbsDimension x="230" y="26"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="FocMagThankEditBox2">
+                <Offset>
+                    <AbsDimension x="0" y="-50"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Scripts>
+            <OnShow>
+                InnervThankEditBox:SetCursorPosition(0)
+                InnervThankEditBox:SetAutoFocus(false)
+            </OnShow>
+            <OnCursorChanged>
+                MageNugz.innervatThanks = InnervThankEditBox:GetText()
+            </OnCursorChanged>
+            <OnEnter> Tab2_OnEnter() </OnEnter>
+            <OnLeave> GameTooltip:Hide() </OnLeave>
+        </Scripts>
+    </EditBox>
+    <EditBox name="InnervThankEditBox2" inherits="InputBoxTemplate">
+        <Size>
+            <AbsDimension x="230" y="26"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="InnervThankEditBox">
+                <Offset>
+                    <AbsDimension x="0" y="-30"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Scripts>
+            <OnShow>
+                InnervThankEditBox2:SetCursorPosition(0)
+                InnervThankEditBox2:SetAutoFocus(false)
+            </OnShow>
+            <OnCursorChanged>
+                MageNugz.innervatThanks2 = InnervThankEditBox2:GetText()
+            </OnCursorChanged>
+        </Scripts>
+    </EditBox>
+    </Frames> 
+    <Scripts>
+        <OnEnter> Tab2_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugMsg2OptionFrame" toplevel="true" hidden="false" parent="msg2Options">
+    <Size>
+        <AbsDimension x="480" y="325"/>
+    </Size>
+    <Anchors>
+        <Anchor point="TOPLEFT"/>
+        <Anchor point="BOTTOMRIGHT"/>
+    </Anchors>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="$parent_Text1" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-40"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <EditBox name="$parent_PowerInfusionEditBox" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="20" y="-55"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    MageNugMsg2OptionFrame_PowerInfusionEditBox:SetCursorPosition(0);
+                    MageNugMsg2OptionFrame_PowerInfusionEditBox:SetAutoFocus(false);
+                </OnShow>
+                <OnCursorChanged>
+                    MageNugz.powerinfThanks = MageNugMsg2OptionFrame_PowerInfusionEditBox:GetText()
+                </OnCursorChanged>
+            </Scripts>
+        </EditBox>
+    </Frames> 
+    <Scripts>
+        <OnEnter> Tab2_OnEnter() </OnEnter>
+        <OnLeave> GameTooltip:Hide() </OnLeave>
+    </Scripts>
+</Frame>
+
+
+<Frame name="MageNugSoundOptionFrame" toplevel="true" hidden="false" parent="soundOptions">
+        <Anchors>
+            <Anchor point="TOPLEFT"/>
+            <Anchor point="BOTTOMRIGHT"/>
+        </Anchors>
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parent_FontString1" inherits="GameFontNormal" text="Mirror Image \ Treant Sound">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent">
+                            <Offset>
+                                <AbsDimension x="40" y="-30"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                <FontString name="$parent_FontString2" inherits="GameFontNormal" text="Proc Sound">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent">
+                            <Offset>
+                                <AbsDimension x="40" y="-95"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    <Frames>
+        <CheckButton name="$parent_MICheckButton" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent">
+-                   <Offset>
+                        <AbsDimension x="15" y="-25" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Mirror Image Sound
+                </OnLoad> 
+                <OnClick>
+                    MirrorImageSoundToggle();
+                </OnClick> 
+            </Scripts>
+        </CheckButton>
+        <EditBox name="$parent_MISoundEditBox" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="20" y="-50"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    MageNugSoundOptionFrame_MISoundEditBox:SetCursorPosition(0)
+                    MageNugSoundOptionFrame_MISoundEditBox:SetAutoFocus(false)
+                </OnShow>
+                <OnCursorChanged>
+                    MageNugz.miSound = MageNugSoundOptionFrame_MISoundEditBox:GetText()
+                </OnCursorChanged>
+            </Scripts>
+        </EditBox>
+        <CheckButton name="$parent_ProcCheckButton" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent">
+-                   <Offset>
+                        <AbsDimension x="15" y="-90" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Proc Sound
+                </OnLoad> 
+                <OnClick>
+                    ProcSoundToggle();
+                </OnClick> 
+            </Scripts>
+        </CheckButton> 
+        <EditBox name="$parent_ProcSoundEditBox" inherits="InputBoxTemplate">
+            <Size>
+                <AbsDimension x="230" y="26"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="$parent">
+                    <Offset>
+                        <AbsDimension x="20" y="-115"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnShow>
+                    MageNugSoundOptionFrame_ProcSoundEditBox:SetCursorPosition(0)
+                    MageNugSoundOptionFrame_ProcSoundEditBox:SetAutoFocus(false)
+                </OnShow>
+                <OnCursorChanged>
+                    MageNugz.procSound = MageNugSoundOptionFrame_ProcSoundEditBox:GetText()
+                </OnCursorChanged>
+            </Scripts>
+        </EditBox>
+    </Frames> 
+    <Scripts>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugOption2Frame" toplevel="true" hidden="false" parent="mnOptions">
+    <Size>
+        <AbsDimension x="480" y="325"/>
+    </Size>
+    <Anchors>
+        <Anchor point="TOPLEFT"/>
+        <Anchor point="BOTTOMRIGHT"/>
+    </Anchors>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="MNcheckboxMiniMapFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-25"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxCameraFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-45"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxConsoleTextFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-65"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxLockFramesFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-85"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxTTFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-105"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNcheckboxClickThruFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="40" y="-125"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+            <FontString name="MNpolyFrameSizeFontString" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset>
+                            <AbsDimension x="50" y="-185"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <CheckButton name="$parent_MinimapCheckButton" inherits="OptionsCheckButtonTemplate">
+-          <Anchors>
+-               <Anchor point="TOPLEFT">
+-                   <Offset>
+                        <AbsDimension x="10" y="-20" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    -- Disable Minimap Button
+                </OnLoad> 
+                <OnClick>
+                    MNMinimapButtonToggle();
+                </OnClick> 
+            </Scripts>
+        </CheckButton>    
+        <CheckButton name="$parent_CameraCheckButton" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent_MinimapCheckButton">
+-                   <Offset>
+                        <AbsDimension x="0" y="-20" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Disable Maximum Camera Zoom Out
+                </OnLoad> 
+                <OnClick>
+                    cameraZoomToggle();
+                </OnClick>
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_ConsoleTextCheckButton" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent_CameraCheckButton">
+-                   <Offset>
+                        <AbsDimension x="0" y="-20" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Disable Console Text
+                </OnLoad> 
+                <OnClick>
+                    ConsoleTextToggle();
+                </OnClick>
+                <OnEnter> CombatText_OnEnter() </OnEnter>
+                <OnLeave> GameTooltip:Hide() </OnLeave>
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_LockFramesCheckButton" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent_ConsoleTextCheckButton">
+-                   <Offset>
+                        <AbsDimension x="0" y="-20" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Lock Frames
+                </OnLoad> 
+                <OnClick>
+                    LockFramesToggle();
+                </OnClick> 
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_CheckButtonTT" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent_LockFramesCheckButton">
+-                   <Offset>
+                        <AbsDimension x="0" y="-20" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                    --Tool Tips
+                </OnLoad> 
+                <OnClick>
+                    MNtoolTipToggle();
+                </OnClick>
+            </Scripts>
+        </CheckButton>
+        <CheckButton name="$parent_ClickThruCheckButton" inherits="OptionsCheckButtonTemplate">
+-           <Anchors>
+-               <Anchor point="TOPLEFT" relativeTo="$parent_CheckButtonTT">
+-                   <Offset>
+                        <AbsDimension x="0" y="-20" /> 
+                    </Offset>
+                </Anchor>
+            </Anchors>
+-           <Scripts>
+                <OnLoad>
+                </OnLoad> 
+                <OnClick>
+                    MNclickThrough();
+                </OnClick>
+            </Scripts>
+        </CheckButton>
+        <Slider name="$parent_Slider1" inherits="OptionsSliderTemplate">
+	            <Size>
+    	            <AbsDimension x="200" y="20"/>
+            	</Size>
+		        <Anchors>
+			        <Anchor point="TOPLEFT" relativeTo="$parent">
+	        	        <Offset>
+                            <AbsDimension x="30" y="-200"/>
+                        </Offset>
+        			</Anchor>
+		        </Anchors>
+		        <Scripts>
+		    	    <OnLoad>
+			    	    getglobal(this:GetName().."High"):SetText("6");
+	    			    getglobal(this:GetName().."Low"):SetText("0");
+		      	    	this:SetMinMaxValues(0,6);
+			        	this:SetValueStep(1);
+		            </OnLoad>
+		            <OnValueChanged>   
+                        MageNugPolyFrameSize();
+                    </OnValueChanged>
+                    <OnMouseUp>
+                        MageNugPolyFrame:Hide();
+                    </OnMouseUp>
+                    <OnMouseDown>
+                        MageNugPolyFrame:Show();
+                    </OnMouseDown>
+                </Scripts>
+            </Slider>
+    </Frames> 
+    <Scripts>
+    </Scripts>
+</Frame>
+
+<Frame name="MageNugHordeFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="225" y="120" />
+    <Anchors>
+        <Anchor point="TOPRIGHT">
+            <Offset>
+                <AbsDimension x="-200" y="-70"/>
+            </Offset>
+        </Anchor>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <EdgeSize>
+        <AbsValue val="13"/>
+    </EdgeSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Portals">
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                           <AbsDimension x="0" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="11"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Teleport">
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                           <AbsDimension x="0" y="-45"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="11"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+    <Button name="$parentPortDal" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="10" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalDalaran"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				local dalport = GetSpellInfo(53142)
+                if (dalport ~= nil) then
+                    this:SetAttribute("type1", "spell")
+				    this:SetAttribute("spell", dalport)
+			    end
+            </OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Dalaran")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>  
+    <Button name="$parentPortShat" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="40" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalShattrath"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				local shatport = GetSpellInfo(35717)
+                if (shatport ~= nil) then
+                    this:SetAttribute("type1", "spell")
+				    this:SetAttribute("spell", shatport)
+			    end
+            </OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Shattrath")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>  
+    <Button name="$parentPortOrg" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="70" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalOrgrimmar"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(11417))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Orgrimmar")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortUC" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalUndercity"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(11418))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Undercity")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortTB" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="130" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalThunderbluff"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(11420))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Thunder Bluff")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortSMC" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="160" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalSilvermoon"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(32267))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:SilverMoon")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortStonard" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="190" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalStonard"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(49361))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Stonard")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    
+    <Button name="$parentTeleDal" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="10" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportDalaran"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(53140))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Dalaran")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>
+    <Button name="$parentTeleShat" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="40" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportShattrath"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(35715))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Shattrath")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>
+    <Button name="$parentTeleOrg" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="70" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportOrgrimmar"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(3567))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Orgrimmar")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>    
+    <Button name="$parentTeleUC" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportUndercity"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(3563))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Undercity")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>     
+    <Button name="$parentTeleTB" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="130" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportThunderbluff"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(3566))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Thunder Bluff")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>   
+    <Button name="$parentTeleSMC" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="160" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportSilvermoon"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(32272))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Silvermoon")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>   
+    <Button name="$parentTeleStonard" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="190" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportStonard"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(49358))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Stonard")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+        
+    <Button name="$parentHearth" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="20" y="20"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM">
+				<Offset>
+					<AbsDimension x="-70" y="10"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\inv_misc_rune_01"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "item")
+				this:SetAttribute("item", GetItemInfo(6948))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Hearthstone")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>     
+    
+    <Button name="$parentClose" inherits="OptionsButtonTemplate" text="Close">
+	        <Size>
+               <AbsDimension x="60" y="18"/>
+            </Size>
+            <Anchors>
+		        <Anchor point="BOTTOM">
+			        <Offset>
+				       <AbsDimension x="-20" y="10"/>
+		     	    </Offset>
+		        </Anchor>
+	        </Anchors>
+	        <Scripts>
+		        <OnClick>
+                    MageNugHordeFrame:Hide();
+                </OnClick>
+	        </Scripts>
+    </Button>
+    <Button name="$parentShowOptions" inherits="OptionsButtonTemplate" text="Options">
+	        <Size>
+               <AbsDimension x="60" y="18"/>
+            </Size>
+            <Anchors>
+		        <Anchor point="BOTTOM">
+			        <Offset>
+				       <AbsDimension x="50" y="10"/>
+		     	    </Offset>
+		        </Anchor>
+	        </Anchors>
+	        <Scripts>
+		        <OnClick>
+                    MageNugHordeFrame:Hide();
+                    InterfaceOptionsFrame_OpenToCategory("Mage Nuggets");
+                </OnClick>
+	        </Scripts>
+    </Button>    
+    </Frames>
+    <Scripts>
+        <OnLoad> this:RegisterForDrag("LeftButton");  </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnShow>
+            local runeofPort = GetItemCount(17032)
+            local runeofTele = GetItemCount(17031)
+			MageNugHordeFrameText:SetText("Portal:"..runeofPort)
+            MageNugHordeFrameText2:SetText("Teleport:"..runeofTele)
+        </OnShow>
+    </Scripts>
+</Frame>
+
+
+
+<Frame name="MageNugAlliFrame" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+    <Size x="225" y="120" />
+    <Anchors>
+        <Anchor point="TOPRIGHT">
+            <Offset>
+                <AbsDimension x="-200" y="-70"/>
+            </Offset>
+        </Anchor>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+    <TileSize>
+        <AbsValue val="32"/>
+    </TileSize>
+    <EdgeSize>
+        <AbsValue val="13"/>
+    </EdgeSize>
+    <BackgroundInsets>
+        <AbsInset left="2" right="2" top="2" bottom="2"/>
+    </BackgroundInsets>
+    </Backdrop>
+    <Layers>
+        <Layer level="ARTWORK">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Portals">
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                           <AbsDimension x="0" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="11"/>
+                </FontHeight>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Teleport">
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                           <AbsDimension x="0" y="-45"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="11"/>
+                </FontHeight>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+    <Button name="$parentPortDal" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="10" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalDalaran"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(53142))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Dalaran")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>  
+    <Button name="$parentPortShat" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="40" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalShattrath"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(33691))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Shattrath")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>  
+    <Button name="$parentPortIF" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="70" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalIronforge"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(11416))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Ironforge")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortSW" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalStormwind"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				local swport = GetSpellInfo(10059);
+                if (swport == nil) then
+                
+                else
+                    this:SetAttribute("type1", "spell")
+	    			this:SetAttribute("spell", GetSpellInfo(10059))
+		        end
+            </OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Stormwind")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortDarn" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="130" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalDarnassus"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(11419))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Darnassus")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortExo" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="160" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalExodar"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(32266))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Exodar")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    <Button name="$parentPortTheramore" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="190" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_PortalTheramore"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(49360))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Portal:Theramore")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+    
+    <Button name="$parentTeleDal" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="10" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportDalaran"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(53140))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Dalaran")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>
+    <Button name="$parentTeleShat" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="40" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportShattrath"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(33690))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Shattrath")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>
+    <Button name="$parentTeleIF" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="70" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportIronforge"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(3562))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Ironforge")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>    
+    <Button name="$parentTeleSW" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportStormwind"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(3561))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Stormwind")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>     
+    <Button name="$parentTeleDarn" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="130" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportDarnassus"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(3565))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Darnassus")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>   
+    <Button name="$parentTeleExo" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="160" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportExodar"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(32271))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Exodar")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>   
+    <Button name="$parentTeleTheramore" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="190" y="-60"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\Spell_Arcane_TeleportTheramore"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "spell")
+				this:SetAttribute("spell", GetSpellInfo(49359))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Teleport:Theramore")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button> 
+        
+    <Button name="$parentHearth" inherits="SecureActionButtonTemplate">
+		<Size>
+			<AbsDimension x="20" y="20"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM">
+				<Offset>
+					<AbsDimension x="-70" y="10"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTelDalTexture" file="Interface\Icons\inv_misc_rune_01"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetAttribute("type1", "item")
+				this:SetAttribute("item", GetItemInfo(6948))
+			</OnLoad>
+            <OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("Hearthstone")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>     
+    
+    <Button name="$parentClose" inherits="OptionsButtonTemplate" text="Close">
+	        <Size>
+               <AbsDimension x="60" y="18"/>
+            </Size>
+            <Anchors>
+		        <Anchor point="BOTTOM">
+			        <Offset>
+				       <AbsDimension x="-20" y="10"/>
+		     	    </Offset>
+		        </Anchor>
+	        </Anchors>
+	        <Scripts>
+		        <OnClick>
+                    MageNugAlliFrame:Hide();
+                </OnClick>
+	        </Scripts>
+    </Button>
+    <Button name="$parentShowOptions" inherits="OptionsButtonTemplate" text="Options">
+	        <Size>
+               <AbsDimension x="60" y="18"/>
+            </Size>
+            <Anchors>
+		        <Anchor point="BOTTOM">
+			        <Offset>
+				       <AbsDimension x="50" y="10"/>
+		     	    </Offset>
+		        </Anchor>
+	        </Anchors>
+	        <Scripts>
+		        <OnClick>
+                    MageNugAlliFrame:Hide();
+                    InterfaceOptionsFrame_OpenToCategory("Mage Nuggets");
+                </OnClick>
+	        </Scripts>
+    </Button>    
+    </Frames>
+    <Scripts>
+        <OnLoad> this:RegisterForDrag("LeftButton");  </OnLoad>
+	    <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+        <OnShow>
+            local runeofPort = GetItemCount(17032)
+            local runeofTele = GetItemCount(17031)
+			MageNugAlliFrameText:SetText("Portal:"..runeofPort)
+            MageNugAlliFrameText2:SetText("Teleport:"..runeofTele)
+        </OnShow>
+    </Scripts>
+</Frame>
+
+
+<Button name="MageNug_MinimapFrame" parent="Minimap" frameStrata="MEDIUM" enableMouse="true" movable="true" hidden="false">
+    <Size>
+		<AbsDimension x="33" y="33"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPLEFT"/>
+	</Anchors>
+	<Layers>
+		<Layer level="HIGH">
+			<Texture name="$parentTexture" file="Interface\Icons\Ability_mage_burnout">
+				<Size>
+	    			<AbsDimension x="21" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="7" y="-6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+		</Layer>
+		<Layer level="OVERLAY">
+				<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+					<Size>
+						<AbsDimension x="56" y="56"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="MageNugz_MinimapButton_DraggingFrame" hidden="true">
+				<Scripts>
+					<OnUpdate>
+						MageNugz_MinimapButton_DraggingFrame_OnUpdate()
+					</OnUpdate>
+				</Scripts>
+			</Frame>
+		</Frames>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp","RightButtonUp")
+				this:RegisterForDrag("LeftButton","RightButton")
+			</OnLoad>
+			<OnEnter>
+				GameTooltip:SetOwner(this, ANCHOR_TOPLEFT);
+				GameTooltip:AddLine("|cff00BFFFMage |cff00FF00Nuggets")
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+			<OnDragStart>
+				this:LockHighlight()
+				MageNugz_MinimapButton_DraggingFrame:Show()
+			</OnDragStart>
+			<OnDragStop>
+				this:UnlockHighlight()
+				MageNugz_MinimapButton_DraggingFrame:Hide()
+			</OnDragStop>
+			<OnClick>
+				MageNuggets_Minimap_OnClick() 
+			</OnClick>
+		</Scripts>
+</Button>
+	
+<Frame name="MageNugLBTemplate_Anchor" parent="UIParent" hidden="true" enableMouse="true" movable="true">
+	<Anchors>
+		<Anchor point="CENTER">
+			<Offset>
+				<AbsDimension x="150" y="0"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+    <Size>
+		<AbsDimension x="150" y="50"/>
+	</Size>
+    <Layers>
+        <Layer level="ARTWORK">
+            <Texture name="$parentTexture" file="Interface\Icons\ability_mage_livingbomb">
+                <Size>
+                    <AbsDimension x="18" y="18"/>
+                </Size>
+               <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                            <AbsDimension x="12" y="18"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="Living Bomb">
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                           <AbsDimension x="35" y="18"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="16"/>
+                </FontHeight>
+                 <Shadow>
+                    <offset>
+                       <AbsDimension x="1" y="1"/>
+                    </offset>
+                    <color r="0" g="0" b="0"/>
+                </Shadow>
+            </FontString>
+            <FontString name="$parentText2" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal">
+                <Anchors>
+                    <Anchor point="LEFT">
+                        <Offset>
+                           <AbsDimension x="15" y="18"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <FontHeight>
+                   <AbsValue val="18"/>
+                </FontHeight>
+                <color r="1" g="1" b="1"/>
+            </FontString>
+        </Layer>
+    </Layers>    
+    <Scripts>
+        <OnLoad> 
+            this:RegisterForDrag("LeftButton"); 
+            self.TimeSinceLastUpdate = 0   
+        </OnLoad>
+	    <OnUpdate>
+            MageNuggetsLB_OnUpdate(self, elapsed)
+        </OnUpdate>
+        <OnDragStart> MNLockFrames();</OnDragStart>
+	    <OnDragStop> this:StopMovingOrSizing(); this.isMoving = false; </OnDragStop>
+	</Scripts>
+</Frame>
+
+<StatusBar name="MageNugLBTemplate" enableMouse="true" virtual="true" minValue="0" maxValue="1"  inherits="MN_LBBarFrameTemplate">
+    <Size>
+	    <AbsDimension x="130" y="16"/>
+	</Size>
+	<Layers>
+		<Layer level="ARTWORK">
+			<FontString name="$parentTimer" justifyH="RIGHT" inherits="GameFontHighlight">
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+            </FontString>
+	    </Layer>
+	</Layers>
+	<Scripts>
+	    <OnShow/>
+		<OnEvent/>
+        <OnLoad>
+			_G[self:GetName().."Text"]:ClearAllPoints()
+			_G[self:GetName().."Text"]:SetPoint("LEFT", 2, 1)
+			_G[self:GetName().."Text"]:SetWidth(100)
+           	_G[self:GetName().."Text"]:SetJustifyH("LEFT")
+            _G[self:GetName().."Text"]:SetTextHeight(12)
+			self:RegisterForDrag("LeftButton")
+		</OnLoad>
+		<OnUpdate> 
+            self.obj:Update(elapsed)
+		</OnUpdate>
+		<OnDragStart>
+			self:GetParent():StartMoving()
+	    </OnDragStart>
+		<OnDragStop>
+			self:GetParent():StopMovingOrSizing()
+		</OnDragStop>
+		<OnHide>
+			self:GetParent():StopMovingOrSizing()
+		</OnHide>
+    </Scripts>
+</StatusBar>
+    
+<StatusBar name="MN_LBBarFrameTemplate" drawLayer="BORDER" virtual="true">
+    <Layers>
+		<Layer level="BACKGROUND">
+	    	<Texture setAllPoints="true">
+				<Color r="0" g="0" b="0" a="0.5"/>
+			</Texture>		
+		</Layer>
+		<Layer level="ARTWORK">
+			<FontString name="$parentText" inherits="GameFontHighlight">
+				<Size>
+					<AbsDimension x="185" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+                    <FontHeight>
+                        <AbsValue val="6"/>
+                    </FontHeight>
+			</FontString>
+	    </Layer>
+		<Layer level="OVERLAY">
+			<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+				<Size>
+					<AbsDimension x="32" y="48"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+    		</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnLoad>
+		</OnLoad>
+		<OnEvent>
+		</OnEvent>
+		<OnUpdate>
+		</OnUpdate>
+		<OnShow>
+		</OnShow>
+	</Scripts>
+	<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+	<BarColor r="1.0" g="0.0" b="0.0"/>
+</StatusBar>
+
+</Ui>
