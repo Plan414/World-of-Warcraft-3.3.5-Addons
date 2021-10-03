@@ -1,0 +1,130 @@
+1.7.8 release:
+
+- General
+- Added function to catch nil spellID's in case Blizzard decides to change any in coming patches
+- Restored the old functionality of returning text from the CheckAction function for 3rd party addon support
+- Improved support for LunarSphere
+
+- Druid:
+- Added Lunar Guidance, Starlight Wrath, Celestial Focus, Master Shapeshifter, Naturalist, Natural Perfection and Gift of the Earthmother to manually modifiable talents
+- Added Improved Tranquility
+- Corrected Starfall coefficients
+
+- Rogue:
+- Fixed bug affecting Rogues that occurred when a target went from unpoisoned to poisoned or vice versa causing only Mutilate to get updated and not Envenom for example
+
+- Mage:
+- Added Mind Mastery and Netherwind Presence to manually modifiable talents
+- Fixed possible nil error with Summon Water Elemental calculation
+
+- Warlock:
+- Fixed Molten Core to apply to Soul Fire
+
+
+1.7.7 release:
+
+- General:
+- 3.3.3 changes
+- Hermorrhage damage bonus is now correctly mitigated by armor
+- Added Strength of Wrynn and Hellscream's Warsong
+- Simplified options for target level selection; it's now either current target level, +1, +2 or +3. There's no real need to have options for -4 to +10.
+- Clarified target armor options as well; choices are automatic/manual (uses known armor values for bosses and training dummies, plus manual value for the rest), boss (always asumes boss armor), manual (uses manually set armor) and none (no armor is taken into account).
+- Fixed an issue in the Russian client where the priest skill Vampiric Embrace was mistaken for Embrace of the Vampyr (-100% healing) due to identical translations
+- Melee hit calculation now properly increases hit chance for targets of lower level than you (if current target level option is selected)
+- Improved compare stats options by enabling them in the melee module and improved the tooltip implementation to be slightly cleaner. Also added expertise and armor penetration ratings into the comparison.
+- Armor penetration rating is now also displayed in the tooltip +1% damage increase comparison and optionally as a +1% ArP increase value
+- Disabled the +10 SP/AP, +1% crit/hit/arp etc. display by default since it has grown rather large
+- Added icons instead of names into the tooltips of certain abilities with extra effects to make the tooltip more compact
+- Added new actionbar display types for spells: Min crit, max crit, average crit
+- Added new actionbar display type for melee/ranged: Average, Average Hit + Extra, Max Total and to the secondary display DPS and DPSCD for abilities that have such in the tooltip.
+- Improved extra effect display: Now uses the format Avg (Min-Max)
+- Allow damage absorption spells to benefit from Strength of Wrynn/Hellscream's warsong
+- Enabled a limited buff calculation for certain special abilities. The aura calculation was disabled earlier due to not actually benefitting from that many buffs (Life tap, dark pact, all elemental wards, mana shield, ice barrier)
+- Allow the user to disable the first actionbar text, but display the second
+- Add cast time to the first spell display type selection due to request
+- Melee crit cap calculation now takes into account that crit depression can be overcome with more crit
+- Added option for target mitigation % in addition to select target armor. The options are mutually exclusive.
+- Now rounds tooltip dodge and parry values
+
+- Death Knight:
+- 3.3.3: Added Frost Fever to Chains of Ice. 
+- 3.3.3: Added Glyph of Chains of Ice. 
+- 3.3.3: Scourge Strike weapon damage increased to 70%, base damage increased, disease bonus decreased to 12% per disease. 
+- 3.3.3: Nerves of Cold Steel increased to 8/16/25%. 
+- 3.3.3: Rune of Razorice now increases damage 2% per application
+- Fixed Sigils to apply correctly to off-hand strikes with Threat of Thassarian (no off-hand penalty for the Sigil bonus and it's increased by Nerves of Cold Steel)
+- Fixed error when unequipping main-hand before off-hand with the talent Blood-Caked Blade
+- Black Ice now correctly applies to Blood Plague
+- Runes of Razorice and Lichbane are now calculated into all strikes
+- Rune of Razorice doesn't seem to benefit from its own debuff, but benefits from Cinderglacier and Black Ice
+
+- Druid: 
+- 3.3.3: Starfall base damage and coefficients increased
+- 3.3.3: Starfall glyph damage bonus reduced from 20% to 10%
+- 3.3.3: Added Glyph of Mangle (+10% damage)
+- Check for dire bear and bear buffs instead of shapeshift form index for Faerie Fire (Feral)
+
+- Hunter:
+- 3.3.3: Ferocious Inspiration now also increases Steady Shot Damage
+
+- Mage:
+- 3.3.3: Glyph of Fireball changed to -0.15s cast time. Frostbolt snare penalty removed
+- 3.3.3: Torment of the Weak and Empowered Fire applies to Pyroblast
+
+- Paladin:
+- Fixed Sacred Shield incorrectly getting mortal strike penalty and bonus from Divinity. Also slightly adjusted Sacred Shield coefficient.
+
+- Priest:
+- 3.3.3: Added new 4T10 healing priest bonus
+- Focused Power now also seems to increase Glyph of PW:S heals on targets other than yourself
+- Corrected error with PW:S average Divine Aegis calculation
+- Slightly adjusted Lightwell coefficient. Lightwell benefits now from Focused Power and Blessed Resilience, but they're additive unlike on other abilities.
+
+- Rogue:
+- 3.3.3: Ghostly Strike Weapon Damage is now 180% with dagger and Hemorrhage 160% with dagger. 
+- 3.3.3: Rupture can crit. 2T8 is now 20% damage to Rupture.
+- 3.3.3: Serrated Blades is now 3/6/9% armor penetration
+- Added Focused Attacks, Surprise Attacks (dodge part) and Relentless Strikes talents
+- Fixed Lethality to apply to Riposte
+- Fixed Master of Subtlety double stacking
+- Fixed Mutilate to correctly benefit from poison damage increase
+- Fixed Glyph of Garrote calculation
+- Fixed Eviscerate AP Bonus (Blizzard tooltip is wrong for the minimum damage)
+- Fixed Deadly Throw to correctly use ranged weapon base damage
+- Fixed Opportunity to give correct bonus
+- Fixed Rupture crit modifier in conjunction with poisons
+- Ambush, Garrote and Shiv apparently cannot be dodged or parried
+- Shadowstep doesn't benefit Gouge, Shiv, Deadly Throw and Fan of Knives
+- Fan of Knives it not normalized
+- Sinister Calling is in fact multiplicative and applies to base damage as well unlike the tooltip suggests
+
+- Shaman: 
+- 3.3.3: Flame Shock dot can now crit and is affected by haste. Glyph of Flame Shock changed to 60% increased crits from Flame Shock.
+- 3.3.3: Shaman 2T8 Elemental is now 20% to flame shock dot
+- Added metagem crit bonus to Frostbrand and Flametongue
+- Removed earthliving weapon from HST tooltip
+
+- Warlock: 
+- 3.3.3: Immolate dot can now crit. Life Tap no longer gains from Spirit.
+- Added tooltip for Dark Pact
+- Added Glyph of Shadowburn
+- Added Glyph of Imp
+- Added Firebolt, Lash of Pain and Shadowbite calculation and their talents.
+- Demonic Pact is now multiplicative.
+- Added Immolation Aura and Shadow Cleave
+
+- Warrior: 
+- 3.3.3: Revenge buffed by 50%
+- 3.3.3: Improved Revenge is now 30/60% increased damage and adds an extra hit to an additional target for 50/100% damage.
+- 3.3.3: Thunder Clap now crits for 200%
+- Improved Deep Wounds/Sword Specialization calculation
+- Improved Shield Slam diminishing returns calculation
+- Devastate is now calculated automatically with one stack more Sunder Armor than is on the target since it's applied before the hit lands
+- Fixed Sudden Death
+- Fixed Mace Specialization incorrectly applying to one-handed axes
+- Fixed how Impale and Poleaxe Specialization applies to Thunder Clap
+- Fixed Poleaxe specialization to correctly stack with Impale
+- Fixed Execute rage bonus calculation
+- Added Glyph of Blocking
+- Added ticks display to Rend
+- Added Weapon Mastery talent
