@@ -1,0 +1,14 @@
+tag 1.7.7
+d6012dd36eb3bab10d14be6126e2db22597be5df
+emelio <emelio.wow@gmail.com>
+2010-07-01 23:55:12 +0200
+
+InspectEquip 1.7.7:
+- Fixed source information being added twice to recipe tooltips
+- Updated LibBabble for Ruby Sanctum translations
+
+
+--------------------
+
+emelio:
+	- Fixed source information being added twice to recipe tooltips
