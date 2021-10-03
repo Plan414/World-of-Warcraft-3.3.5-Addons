@@ -1,0 +1,17 @@
+## Interface: 30300
+## Title: OneBank3
+## Notes: OneBank3 will combine all the bank bags into one frame.
+## Author: Kaelten
+## X-eMail: kaelten@gmail.com
+## X-Category: Bags & Inventory
+## X-Website: http://www.wowace.com/projects/OneBank3/ 
+## X-Date: @project-timestamp@
+## Version: v3.3.8
+## SavedVariables: OneBank3DB
+## OptionalDeps: Ace3, OneCore
+## X-Curse-Packaged-Version: v3.3.8
+## X-Curse-Project-Name: OneBank3
+## X-Curse-Project-ID: onebank3
+## X-Curse-Repository-ID: wow/onebank3/mainline
+
+OneBank3.xml

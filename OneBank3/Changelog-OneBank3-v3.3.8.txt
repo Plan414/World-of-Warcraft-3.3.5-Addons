@@ -1,0 +1,8 @@
+2009-12-08  Bryan McLemore  <kaelten@gmail.com>
+
+[df45c2536041] [v3.3.8]
+* .docmeta, .hgignore, .hgtags, .pkgmeta, OneBank3.lua, OneBank3.toc, OneBank3.xml, localization/deDE.lua, localization/enUS.lua, localization/esES.lua, localization/esMX.lua, localization/frFR.lua, localization/koKR.lua, localization/load.xml, localization/ruRU.lua, localization/zhCN.lua, localization/zhTW.lua, wiki/Main:
+
+merge
+
+
