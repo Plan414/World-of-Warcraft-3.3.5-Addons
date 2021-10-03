@@ -1,0 +1,49 @@
+------------------------------------------------------------------------
+r674 | ammo | 2009-12-22 13:04:22 +0000 (Tue, 22 Dec 2009) | 1 line
+Changed paths:
+   A /tags/r673-release (from /trunk:673)
+
+Tagging as r673-release
+------------------------------------------------------------------------
+r673 | dridzt | 2009-12-13 19:01:27 +0000 (Sun, 13 Dec 2009) | 3 lines
+Changed paths:
+   M /trunk/Leader/oRA2_Leader.toc
+   M /trunk/Optional/oRA2_Optional.toc
+   M /trunk/Participant/Participant.lua
+   M /trunk/Participant/oRA2_Participant.toc
+   M /trunk/oRA2.toc
+
+- Participant: Alternate method for Reincarnation cooldown detection that doesn't rely on reagent checks (ankh) so should work for glyphed reinc and has talents/items factored in.
+(Reasonably tested)
+- toc updates.
+------------------------------------------------------------------------
+r672 | dridzt | 2009-12-13 10:04:51 +0000 (Sun, 13 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Participant/Participant.lua
+
+- Create Soulstone cooldown corrected for patch 3.3.
+------------------------------------------------------------------------
+r671 | dridzt | 2009-12-12 16:36:38 +0000 (Sat, 12 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Participant/Participant.lua
+
+- Rebirth, Ankh, DI cooldowns corrected for patch 3.3.
+------------------------------------------------------------------------
+r670 | rabbit | 2009-12-11 00:48:36 +0000 (Fri, 11 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Leader/Ready.lua
+
+Prevent the ready check messages spamming chat.
+------------------------------------------------------------------------
+r669 | rabbit | 2009-12-09 20:52:34 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Leader/Ready.lua
+
+Fixfix.
+------------------------------------------------------------------------
+r668 | rabbit | 2009-12-09 20:48:25 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Leader/Ready.lua
+
+Fix the ready check.
+------------------------------------------------------------------------

@@ -1,0 +1,26 @@
+﻿## Interface: 30300
+## Title: oRA2 |cff7fff7f -Ace2-|r
+## Notes: A CT_RaidAssist alternative
+## Notes-ruRU: Альтернатива CT_RaidAssist
+## Notes-koKR: 공격대 도우미(CT_RaidAssist) 애드온의 대체 애드온
+## Notes-zhCN: CT_RaidAssist 外的另一个选择。
+## Notes-zhTW: 除了 CT_RaidAssist 以外的另一個選擇。
+## Notes-frFR: Alternative à CT_RaidAssist.
+## Version: 2.0.$Revision: 673 $
+## Author: Ammo, Rabbit
+## OptionalDeps: Ace2, SharedMedia, LibSharedMedia-3.0, LibDBIcon-1.0, WindowLib, CandyBar
+## X-Category: Raid
+## SavedVariables: oRADB
+## X-Curse-Packaged-Version: r673-release
+## X-Curse-Project-Name: oRA2
+## X-Curse-Project-ID: ora2
+## X-Curse-Repository-ID: wow/ora2/mainline
+
+embeds.xml
+
+LoadOnDemand.lua
+Core.lua
+Options.lua
+
+modules.xml
+

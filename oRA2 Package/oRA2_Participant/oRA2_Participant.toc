@@ -1,0 +1,25 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: r673-release
+## X-Curse-Project-Name: oRA2
+## X-Curse-Project-ID: ora2
+## X-Curse-Repository-ID: wow/ora2/mainline
+
+## Title: oRA2 [|cffeda55fParticipant|r]
+## Notes: oRA2 Participant modules
+## Title-ruRU: oRA2 [|cffeda55fУчастник|r]
+## Notes-ruRU: oRA2 модуль участника
+## Title-zhCN: oRA2 [|cffeda55f参与者|r]
+## Notes-zhCN: oRA2 参与者模块
+## Author: Ammo, Haste & Others
+## Version: 2.0
+## LoadOnDemand: 1
+
+## X-oRA-LoadWithCore: 1
+
+## Dependencies: oRA2
+
+Participant.lua
+Ready.lua
+RaidWarn.lua
+MainTank.lua
+Item.lua

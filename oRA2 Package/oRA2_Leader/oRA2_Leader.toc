@@ -1,0 +1,30 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: r673-release
+## X-Curse-Project-Name: oRA2
+## X-Curse-Project-ID: ora2
+## X-Curse-Repository-ID: wow/ora2/mainline
+
+## Title: oRA2 [|cffeda55fLeader|r]
+## Notes: oRA2 Leader modules
+## Title-ruRU: oRA2 [|cffeda55fЛидер|r]
+## Notes-ruRU: oRA2 модуль лидера
+## Title-zhCN: oRA2 [|cffeda55f队长|r]
+## Notes-zhCN: oRA2 队长模块
+## Author: Ammo, Haste & Others
+## Version: 2.0
+## LoadOnDemand: 1
+
+## X-oRA-LoadAsLeader: 1
+
+## Dependencies: oRA2
+
+Ready.lua
+MainTank.lua
+Item.lua
+Durability.lua
+Resist.lua
+Invite.lua
+RaidWarn.lua
+Loot.lua
+Latency.lua
+
