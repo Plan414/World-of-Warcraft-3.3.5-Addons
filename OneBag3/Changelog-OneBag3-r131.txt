@@ -1,0 +1,202 @@
+2010-09-30  Bryan McLemore  <kaelten@gmail.com>
+
+[b19dd1aa004c] [tip]
+* wiki/Main:
+
+fix
+
+
+[80aecaffbd80]
+* wiki/Main:
+
+test commit
+
+
+2009-12-08  Bryan McLemore  <kaelten@gmail.com>
+
+[7275e961b0ee]
+* .hgtags:
+
+Added tag v3.3.11 for changeset 584c057d523f
+
+
+[584c057d523f] [v3.3.11]
+* .docmeta, .hgignore, .hgtags, .pkgmeta, OneBag3.lua, OneBag3.toc, OneBag3.xml, localization/deDE.lua, localization/enUS.lua, localization/esES.lua, localization/esMX.lua, localization/frFR.lua, localization/koKR.lua, localization/load.xml, localization/ruRU.lua, localization/zhCN.lua, localization/zhTW.lua, wiki/Main:
+
+merge
+
+
+2009-12-08  "Bryan McLemore  <kaelten@gmail.com>
+
+[a17156feadd3]
+* .hgtags:
+
+Added tag v3.3.11-beta for changeset cfb3c7d70f63
+
+
+[cfb3c7d70f63] [v3.3.11-beta]
+* OneBag3.toc:
+
+toc update
+
+
+2009-10-14  "Bryan McLemore  <kaelten@gmail.com>
+
+[1aacca42250a]
+* OneBag3.lua:
+
+fake commit
+
+
+[6620b2c3f609]
+* OneBag3.lua:
+
+fake commit to test repo
+
+
+2009-08-15  Bryan McLemore  <kaelten@gmail.com>
+
+[6ba51751a9a2]
+* .hgtags:
+
+Added tag v3.3.10 for changeset 3f1de8d17e9c
+
+
+2009-08-09  Bryan McLemore  <kaelten@gmail.com>
+
+[3f1de8d17e9c] [v3.3.10]
+* OneBag3.toc:
+
+update toc number
+
+
+[29fe54b90832]
+* OneBag3.lua:
+
+frame updates in the works
+
+
+2009-05-19  Bryan McLemore  <kaelten@gmail.com>
+
+[ccde09b03ced]
+* .hgtags:
+
+Added tag v3.3.9 for changeset b33ee3f1c5dc
+
+
+[b33ee3f1c5dc] [v3.3.9]
+* .hgtags:
+
+Added tag v3.3.8 for changeset a81d57a54428
+
+
+2009-05-16  Bryan McLemore  <kaelten@gmail.com>
+
+[a81d57a54428] [v3.3.8]
+* wiki/Main:
+
+Description Update
+
+
+2009-04-25  Bryan McLemore  <kaelten@gmail.com>
+
+[19b08efe96d4]
+* .hgtags:
+
+Added tag v3.3.7 for changeset 873d8285a2f2
+
+
+[873d8285a2f2] [v3.3.7]
+* .hgtags:
+
+Added tag v3.3.6 for changeset 0e66fd9ab01d
+
+
+[0e66fd9ab01d] [v3.3.6]
+* wiki/Main:
+
+changed formatting on description
+
+
+[1cad830d770d]
+* wiki/Main:
+
+added localization info to description
+
+
+2009-04-20  Bryan McLemore  <kaelten@gmail.com>
+
+[e6ce57dfc3be]
+* .hgtags:
+
+Added tag v3.3.5-beta for changeset 2429fd1330c0
+
+
+[2429fd1330c0] [v3.3.5-beta]
+* .hgtags:
+
+Added tag v3.3.4-beta for changeset 51e00dfacc9e
+
+
+[51e00dfacc9e] [v3.3.4-beta]
+* .hgtags:
+
+Added tag v3.3.3-beta for changeset e117bbc06acc
+
+
+[e117bbc06acc] [v3.3.3-beta]
+* localization/zhTW.lua:
+
+fix broken zhTW localization
+
+
+[11bf5e6215ba]
+* .hgtags:
+
+Added tag v3.3.2-beta for changeset 6bbc04837107
+
+
+[6bbc04837107] [v3.3.2-beta]
+* OneBag3.lua:
+
+fix for positioning
+
+
+[c941cacd50e1]
+* .hgtags:
+
+Added tag v3.3.1-beta for changeset d7d69c8ce586
+
+
+[d7d69c8ce586] [v3.3.1-beta]
+* OneBag3.lua:
+
+forgot to unregister event on close
+
+
+[fe67aa6856d8]
+* .hgtags:
+
+Added tag v3.3.0-beta for changeset b08853b0651b
+
+
+[b08853b0651b] [v3.3.0-beta]
+* OneBag3.lua:
+
+enabled item locks
+
+
+2009-04-19  Bryan McLemore  <kaelten@gmail.com>
+
+[42a4ed83c1ba]
+* wiki/Main:
+
+description update
+
+
+[cd423c426cfd]
+* wiki/Main:
+
+description update
+
+
