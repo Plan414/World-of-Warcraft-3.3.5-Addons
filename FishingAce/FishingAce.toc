@@ -1,0 +1,23 @@
+## Interface: 30300
+## Title: Fishing Ace! |cff7fff7f -Ace2-|r
+## Version: 0.4.5j
+## Notes: Simple right click casting.
+## Title-zhCN: |cff7fff7f-Ace2-|r Fishing Ace!
+## Notes-zhCN: 右键钓鱼
+## Notes-zhTW: 讓你輕鬆的釣魚
+## Author: Sutorix
+## X-Category: Tradeskill
+## X-AceForum: http://www.wowace.com/forums/index.php?topic=4654.0.html
+## X-RelSite-UI.WoW: http://wowui.incgamers.com/?p=mod&m=3939
+## X-Embeds: Ace2
+## OptionalDeps: Ace2
+## SavedVariablesPerCharacter: FishingBuddyDBPC
+## X-Curse-Packaged-Version: Release-0.4.5j
+## X-Curse-Project-Name: FishingAce
+## X-Curse-Project-ID: fishing-ace
+## X-Curse-Repository-ID: wow/fishing-ace/mainline
+
+Embeds.xml
+LibFishing-1.0.lua
+Locales\Locales.xml
+FishingAce.lua
