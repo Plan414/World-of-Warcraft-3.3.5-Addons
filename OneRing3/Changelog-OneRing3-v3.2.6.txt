@@ -1,0 +1,8 @@
+2009-12-08  Bryan McLemore  <kaelten@gmail.com>
+
+[c91104ebeaaf] [v3.2.6]
+* .docmeta, .hgignore, .hgtags, .pkgmeta, OneRing3.lua, OneRing3.toc, OneRing3.xml, localization/deDE.lua, localization/enUS.lua, localization/esES.lua, localization/esMX.lua, localization/frFR.lua, localization/koKR.lua, localization/load.xml, localization/ruRU.lua, localization/zhCN.lua, localization/zhTW.lua, wiki/Main:
+
+merge
+
+

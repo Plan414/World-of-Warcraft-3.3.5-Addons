@@ -1,0 +1,42 @@
+**OneRing3** is a plugin for OneBag3 that styles your keyring frame. 
+
+It follows in the vein of minimalism and stability as the rest of the OneBag suite.  For the purpose of configuration OneRing3 will use the same settings as OneBag3.
+
+===Features
+* Doesn't display more rows than you need to see.
+* Color coded slots by item rarity
+* Inherits from OneBag3 any scale, background color, alpha, and other options.
+          
+===The Family
+; OneCore
+: The brains and the brawn of the outfit, Core does all the heavy lifting both logic and layout wise.  This is embedded in OneBag by default, and you shouldn't need to worry about installing it unless you're running no-lib builds.
+: [[http://www.wowace.com/projects/OneCore|On WowAce]]
+: [[http://wow.curse.com/downloads/wow-addons/details/onecore.aspx|On Curse]] 
+; OneBag3 
+: OneBank's adventurous brother who didn't mind being dragged through a dank swamp, Bag does pretty much the exact same job for your character's bag as OneBank3 does for your bank bags.  
+: [[http://www.wowace.com/projects/OneBag3|On WowAce]]
+: [[http://wow.curse.com/downloads/wow-addons/details/onebag3.aspx|On Curse]]
+; OneBank3 
+: OneBag's brother who always like the safety of town, Bank does pretty much the exact same job for your bankslots as OneBag does for your character's bags.  
+: [[http://www.wowace.com/projects/OneBank3|On WowAce]]
+: [[http://wow.curse.com/downloads/wow-addons/details/onebank3.aspx|On Curse]]
+; OneView3
+: Coming Soon(tm)
+; OneVault3
+: Coming Soon(tm)                        
+
+===Localization
+Localization is powered by WowAce's built in translation system.  Please use the following links to contribute to localization.
+; [[http://www.wowace.com/projects/OneCore/localization/|OneCore]]
+: Currently needing - Latin American Spanish, Simplified Chinese, Spanish
+; [[http://www.wowace.com/projects/OneBag3/localization/|OneBag3]]
+: Currently needing - Latin American Spanish, Simplified Chinese, Spanish
+; [[http://www.wowace.com/projects/OneBank3/localization/|OneBank3]]
+: Currently needing - Latin American Spanish, Simplified Chinese, Spanish
+; [[http://www.wowace.com/projects/OneRing3/localization/|OneRing3]]
+: Currently needing - Latin American Spanish, Simplified Chinese, Spanish                        
+
+===Bug Reports & Suggestions
+Please report all bug reports to [[http://www.wowace.com/projects/OneRing3/tickets|my tracker on WowAce]].
+
+I want to thank all the users who've been using the OneBag suite for so long.  I'm hoping not to leave the code on autopilot quite like I did once OB2 went stable, although it was nice to not have to touch it for almost two years.
