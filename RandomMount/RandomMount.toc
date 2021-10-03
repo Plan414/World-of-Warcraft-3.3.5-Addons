@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: |c333399ffNirriti's |rRandomMount
+## Author: Nirriti@Kath'goroth
+## Version: 2.18
+## Notes: 
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables:
+## SavedVariablesPerCharacter: RandomMountData
+RandomMount.xml

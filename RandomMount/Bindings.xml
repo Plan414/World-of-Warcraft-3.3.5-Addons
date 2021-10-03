@@ -1,0 +1,22 @@
+<Bindings>
+	<Binding name="RMTOGGLE" description="Ein Reittier rufen/wegschicken" header="RMHEADER" runOnUp="true">
+		if (keystate == "down") then
+		else
+			if (IsMounted()) then
+			    RandomMount_MountWegschicken();
+			else
+			    RandomMount_MountAuswaehlen();
+			end
+		end
+	</Binding>
+	<Binding name="RMTOGGLEFAVORITE" description="Lieblingsreittier rufen/wegschicken" header="RMHEADER" runOnUp="true">
+		if (keystate == "down") then
+		else
+			if (IsMounted()) then
+			    RandomMount_FavoriteMountWegschicken();
+			else
+			    RandomMount_FavoriteMountAuswaehlen();
+			end
+		end
+	</Binding>
+</Bindings>

@@ -1,0 +1,57 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="localization.lua"/>
+	<Script file="RandomMount.lua"/>
+
+	<Button name="RandomMountButtonTemplate" inherits="SecureActionButtonTemplate, ActionButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="36" y="36"/>
+		</Size>
+		<Frames>
+			<Cooldown name="$parentCooldown" inherits="CooldownFrameTemplate"/>
+		</Frames>
+		<Scripts>
+			<OnMouseDown>
+				if (arg1 == "RightButton") then
+					if (IsControlKeyDown()) then
+						RandomMountFrame:StartMoving();
+					end
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				if (arg1 == "RightButton") then
+					RandomMountFrame:StopMovingOrSizing();
+				end
+			</OnMouseUp>
+			<OnLoad>
+				this:RegisterForClicks("AnyUp");
+			</OnLoad>
+			<OnEnter>
+				RandomMount_MouseOver(this);
+			</OnEnter>
+			<OnLeave>
+				RandomMount_MouseOut(this);
+			</OnLeave>
+			<OnUpdate>
+				RandomMount_OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Button>
+
+	<Frame name="RandomMountFrame" toplevel="true" parent="UIParent" movable="true">
+		<Size>
+			<AbsDimension x="100" y="100"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				RandomMount_OnLoad();
+			</OnLoad>
+			<OnEvent>
+	 			RandomMounts_OnEvent(event);
+	 		</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>
