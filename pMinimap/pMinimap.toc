@@ -1,0 +1,21 @@
+## Interface: 30300
+## Author: p3lim
+## Version: 30300.8-Release
+## Title: |cffff6000p|rMinimap
+## Notes: Yet another square minimap addon
+## SavedVariables: pMinimapDB
+## OptionalDeps: LibSharedMedia-3.0, SharedMedia
+## X-Curse-Packaged-Version: 30300.8-Release
+## X-Curse-Project-Name: pMinimap
+## X-Curse-Project-ID: pminimap
+## X-Curse-Repository-ID: wow/pminimap/mainline
+
+libs\LibStub.lua
+libs\CallbackHandler-1.0.lua
+libs\LibSharedMedia-3.0.lua
+
+pMinimap.lua
+
+libs\tekKonfig\tekKonfig.xml
+
+Config.lua

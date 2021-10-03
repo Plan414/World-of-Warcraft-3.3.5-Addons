@@ -1,0 +1,18 @@
+tag 30300.8-Release
+de7125aa89e975ccc2f1a81bdd2c169d5251992a
+Adrian L Lange <adrianlund@gmail.com>
+2009-12-08 23:11:15 +0100
+
+Tag 30300.8-Release
+
+
+--------------------
+
+Adrian L Lange:
+	- Update version
+	- Update version
+	- Update version
+	- Bump toc to 3.3
+	- Clean up and move the LFG button
+	- Remove the difficulty texture
+	- Remove deceased objects
