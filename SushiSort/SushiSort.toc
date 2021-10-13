@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: Sushi Sort
+## Notes: Bag ans Bank Sorting Addon. Access the menu with "/ss"
+## SavedVariablesPerCharacter: SOCD
+##
+## Version: 3.3.5.0
+## URL: http://www.sushi-regular.com/
+##
+## X-Curse-Packaged-Version: v3.3.5.0
+## X-Curse-Project-Name: Sushi Sort
+## X-Curse-Project-ID: sushi-sort
+## X-Curse-Repository-ID: wow/sushi-sort/mainline
+SushiSort.lua
+SushiSort.xml
