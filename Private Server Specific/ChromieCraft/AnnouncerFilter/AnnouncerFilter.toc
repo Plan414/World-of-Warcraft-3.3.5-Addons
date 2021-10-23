@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: AnnouncerFilter
+## Author: mdaw
+## Notes: Filters BG Queue Announcer in server system messages
+## Version: 0.0.1
+
+AnnouncerFilter.lua
