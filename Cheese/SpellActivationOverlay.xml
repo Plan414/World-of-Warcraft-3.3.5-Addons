@@ -1,0 +1,65 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="SpellActivationOverlay.lua"/>
+	<Frame name="CheeseSpellActivationOverlayTemplate" virtual="true">
+		<Animations>
+			<AnimationGroup name="$parentAnimIn" parentKey="animIn">
+				<Animation inherits="CheeseAlphaTemplate" duration="0.2">
+					<Scripts>
+						<OnLoad>
+							self.change = 1;
+						</OnLoad>
+					</Scripts>
+				</Animation>
+				<Scripts>
+					<OnPlay function="CheeseSpellActivationOverlayTexture_OnFadeInPlay"/>
+					<OnFinished function="CheeseSpellActivationOverlayTexture_OnFadeInFinished"/>
+				</Scripts>
+			</AnimationGroup>
+			<AnimationGroup name="$parentAnimOut" parentKey="animOut">
+				<Animation inherits="CheeseAlphaTemplate" duration="0.1">
+					<Scripts>
+						<OnLoad>
+							self.change = -1;
+						</OnLoad>
+						<OnFinished function="CheeseSpellActivationOverlayTexture_OnFadeOutFinished"/>
+					</Scripts>
+				</Animation>
+			</AnimationGroup>
+			<AnimationGroup name="$parentPulse" looping="REPEAT" parentKey="pulse">
+				<Animation inherits="CheeseScaleTemplate" duration="0.5" smoothing="IN_OUT" order="1">
+					<Scripts>
+						<OnLoad>
+							self.scaleX, self.scaleY = 1.08, 1.08;
+						</OnLoad>
+					</Scripts>
+				</Animation>
+				<Animation inherits="CheeseScaleTemplate" duration="0.5" smoothing="IN_OUT" order="2">
+					<Scripts>
+						<OnLoad>
+							self.scaleX, self.scaleY = 0.9259, 0.9259;
+						</OnLoad>
+					</Scripts>
+				</Animation>
+			</AnimationGroup>
+		</Animations>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture parentKey="texture" setAllPoints="true"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnShow function="CheeseSpellActivationOverlayTexture_OnShow"/>
+			<OnHide function="CheeseSpellActivationOverlayTexture_OnHide"/>
+		</Scripts>
+	</Frame>
+	<Frame name="CheeseSpellActivationOverlayFrame" parent="UIParent">
+		<Size x="256" y="256"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad function="CheeseSpellActivationOverlay_OnLoad"/>
+		</Scripts>
+	</Frame>
+</Ui>

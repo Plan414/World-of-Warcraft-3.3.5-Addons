@@ -1,0 +1,101 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="InterfaceOptionsPanels.lua"/>
+	
+	<!-- Cheese panel -->
+	
+	<Frame name="InterfaceOptionsCheesePanel" hidden="true" parent="InterfaceOptionsFramePanelContainer">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTitle" text="CHEESE_LABEL" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-16"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSubText" text="CHEESE_SUBTEXT" inherits="GameFontHighlightSmall" nonspacewrap="true" maxLines="3" justifyH="LEFT" justifyV="TOP">
+					<Size>
+						<AbsDimension y="32" x="0"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-8"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-32" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>		
+			<CheckButton name="$parentShowSpellAlerts" inherits="InterfaceOptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentSubText" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-2" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_CHECKBOX;
+						self.label = "cheeseDisplaySpellActivationOverlays";
+						function self:GetValue()
+							return _G[self.label] or "1";
+						end
+						self.uvar = self.label;
+						BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+					</OnLoad>
+				</Scripts>
+			</CheckButton>
+			<Slider name="$parentSpellAlertOpacitySlider" inherits="OptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentShowSpellAlerts" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="24" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.type = CONTROLTYPE_SLIDER;
+						self.label = "cheeseSpellActivationOverlayOpacity";
+						function self:GetCurrentValue()
+							return _G[self.label] or 1.0;
+						end
+						self.SetDisplayValue = self.SetValue;
+						self.SetValue = function (self, value)
+							value = math.floor(value * 100 + 0.5) / 100;
+							self:SetDisplayValue(value);
+							CheeseSpellActivationOverlayFrame:SetAlpha(value);
+						end
+						BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+						
+						BlizzardOptionsPanel_SetupDependentControl(_G[self:GetParent():GetName().."ShowSpellAlerts"], self);
+					</OnLoad>
+					<OnValueChanged>
+						value = math.floor(value * 100 + 0.5) / 100;
+						self.value = value;
+						self:SetValue(value);
+						_G[self.label] = value;
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self.name = CHEESE_LABEL;
+				self.options = CheesePanelOptions;
+				InterfaceOptionsPanel_OnLoad(self);
+			</OnLoad>
+		</Scripts>
+	</Frame>
+</Ui>
